@@ -175,6 +175,14 @@ Een skill vol algemeen coding-advies (gebruik type-annotaties, schrijf tests, be
 
 ---
 
+## Werk met ons samen
+
+Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten met ontwikkelaarsgemeenschappen en leveren B2B AI-oplossingen. Als u hulp wilt bij het bouwen van productie-klare Claude Code-integraties, aangepaste skill-bibliotheken of AI-aangedreven producten — neem contact met ons op.
+
+**[uitbreiden.com](https://uitbreiden.com/)**
+
+---
+
 ## Skill-template
 
 ```markdown

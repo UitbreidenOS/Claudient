@@ -150,6 +150,16 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add your own — including the
 
 ---
 
+## Work With Us
+
+Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions.
+
+If you're a developer, startup, or enterprise team looking to build with Claude Code at scale, integrate AI into your product, or need a technical partner who lives and breathes this stack — come talk to us.
+
+**[uitbreiden.com](https://uitbreiden.com/)**
+
+---
+
 ## License
 
 MIT — use freely, attribution appreciated.

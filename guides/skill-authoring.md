@@ -187,6 +187,14 @@ A skill full of general coding advice (use type hints, write tests, handle error
 
 ---
 
+## Work With Us
+
+Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you want help building production-grade Claude Code integrations, custom skill libraries, or AI-powered products — reach out.
+
+**[uitbreiden.com](https://uitbreiden.com/)**
+
+---
+
 ## Skill Template
 
 ```markdown

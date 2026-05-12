@@ -159,3 +159,11 @@ See `hooks/lifecycle/cost-tracker.sh` for a ready-to-use implementation.
 | Task is self-contained | Use a subagent |
 | Vague request producing long responses | Rewrite as a specific, scoped prompt |
 | CLAUDE.md over 500 lines | Audit and trim dead rules |
+
+---
+
+## Work With Us
+
+Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you're looking to cut AI costs at scale, build Claude Code tooling for your team, or ship B2B AI products — let's talk.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

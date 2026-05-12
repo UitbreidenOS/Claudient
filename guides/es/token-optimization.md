@@ -146,3 +146,11 @@ Ver `hooks/lifecycle/cost-tracker.sh` para una implementación lista para usar.
 | La tarea es autónoma | Usar un sub-agente |
 | Solicitud vaga produciendo respuestas largas | Reescribir como prompt específico y delimitado |
 | CLAUDE.md con más de 500 líneas | Auditar y eliminar reglas obsoletas |
+
+---
+
+## Trabaja con nosotros
+
+Claudient está respaldado por [Uitbreiden](https://uitbreiden.com/) — construimos productos de IA con comunidades de desarrolladores y entregamos soluciones de IA B2B. Si buscas reducir costes de IA a escala, construir herramientas de Claude Code para tu equipo o lanzar productos de IA B2B — hablemos.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

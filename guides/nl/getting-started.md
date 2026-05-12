@@ -154,3 +154,11 @@ Blader door `agents/` om te begrijpen wat beschikbaar is. Wanneer u wilt dat Cla
 **CLAUDE.md wordt niet gelezen**
 — Het moet in de projectroot staan (op hetzelfde niveau als `src/`, `package.json`, etc.)
 — Start de Claude Code-sessie opnieuw na het bewerken
+
+---
+
+## Werk met ons samen
+
+Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten met ontwikkelaarsgemeenschappen en leveren B2B AI-oplossingen. Als u iets serieus bouwt met Claude Code en deskundige hulp, een technische partner, of gewoon deel wilt uitmaken van de gemeenschap — kom ons vinden.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

@@ -154,3 +154,11 @@ Navega por `agents/` para entender qué está disponible. Cuando quieras que Cla
 **CLAUDE.md no se lee**
 — Debe estar en la raíz del proyecto (al mismo nivel que `src/`, `package.json`, etc.)
 — Reinicia la sesión de Claude Code después de editarlo
+
+---
+
+## Trabaja con nosotros
+
+Claudient está respaldado por [Uitbreiden](https://uitbreiden.com/) — construimos productos de IA con comunidades de desarrolladores y entregamos soluciones de IA B2B. Si estás construyendo algo serio con Claude Code y quieres ayuda experta, un socio técnico, o simplemente formar parte de la comunidad — ven a buscarnos.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

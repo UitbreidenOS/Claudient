@@ -146,3 +146,11 @@ Zie `hooks/lifecycle/cost-tracker.sh` voor een kant-en-klare implementatie.
 | Taak staat op zichzelf | Sub-agent gebruiken |
 | Vage aanvraag produceert lange antwoorden | Herschrijven als specifieke, afgebakende prompt |
 | CLAUDE.md over 500 regels | Controleren en verouderde regels verwijderen |
+
+---
+
+## Werk met ons samen
+
+Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten met ontwikkelaarsgemeenschappen en leveren B2B AI-oplossingen. Als u AI-kosten op schaal wilt verlagen, Claude Code-tooling voor uw team wilt bouwen of B2B AI-producten wilt leveren — laten we praten.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

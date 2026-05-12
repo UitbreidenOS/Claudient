@@ -154,3 +154,11 @@ Parcourez `agents/` pour comprendre ce qui est disponible. Quand vous souhaitez 
 **CLAUDE.md n'est pas lu**
 — Il doit se trouver à la racine du projet (au même niveau que `src/`, `package.json`, etc.)
 — Redémarrez la session Claude Code après l'avoir modifié
+
+---
+
+## Travaillez avec nous
+
+Claudient est soutenu par [Uitbreiden](https://uitbreiden.com/) — nous construisons des produits IA avec des communautés de développeurs et livrons des solutions IA B2B. Si vous construisez quelque chose de sérieux avec Claude Code et souhaitez une aide experte, un partenaire technique, ou simplement faire partie de la communauté — venez nous trouver.
+
+**[uitbreiden.com](https://uitbreiden.com/)**

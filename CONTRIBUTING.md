@@ -112,3 +112,11 @@ Supported languages: English (primary), French (`fr/`), German (`de/`), Dutch (`
 ## Questions
 
 Open a GitHub Discussion if you're unsure where something belongs or want feedback before building. Issues are for bugs and concrete gaps in coverage.
+
+---
+
+## Work With Us
+
+Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you want to go beyond contributing to this repo and actually build AI products or B2B solutions with us, reach out.
+
+**[uitbreiden.com](https://uitbreiden.com/)**
