@@ -194,3 +194,68 @@ export const CATEGORY_COLORS: Record<string, string> = {
 }
 
 export const SKILL_CATEGORIES_LIST = SKILL_CATEGORIES
+
+export type WorkflowMeta = {
+  slug: string
+  title: string
+  filePath: string
+}
+
+export function getAllWorkflows(lang: Lang = 'en'): WorkflowMeta[] {
+  const dir = lang === 'en'
+    ? path.join(REPO_ROOT, 'workflows')
+    : path.join(REPO_ROOT, 'workflows', lang)
+  const fallbackDir = path.join(REPO_ROOT, 'workflows')
+  const results: WorkflowMeta[] = []
+
+  const sourceDir = fs.existsSync(dir) ? dir : fallbackDir
+  for (const entry of fs.readdirSync(sourceDir, { withFileTypes: true })) {
+    if (entry.isDirectory()) continue
+    if (!entry.name.endsWith('.md')) continue
+    const slug = entry.name.replace(/\.md$/, '')
+    results.push({ slug, title: titleFromFilename(entry.name), filePath: path.join(sourceDir, entry.name) })
+  }
+  return results
+}
+
+export type HookMeta = {
+  id: string
+  category: string
+  slug: string
+  title: string
+  event: string
+  mdPath: string
+  shPath: string
+}
+
+const HOOK_EVENT_MAP: Record<string, string> = {
+  'pre-tool-use': 'PreToolUse',
+  'post-tool-use': 'PostToolUse',
+  'lifecycle': 'Lifecycle',
+}
+
+export function getAllHooks(): HookMeta[] {
+  const hooksDir = path.join(REPO_ROOT, 'hooks')
+  const results: HookMeta[] = []
+  if (!fs.existsSync(hooksDir)) return results
+
+  for (const catEntry of fs.readdirSync(hooksDir, { withFileTypes: true })) {
+    if (!catEntry.isDirectory()) continue
+    const catDir = path.join(hooksDir, catEntry.name)
+    for (const fileEntry of fs.readdirSync(catDir, { withFileTypes: true })) {
+      if (!fileEntry.name.endsWith('.md')) continue
+      const slug = fileEntry.name.replace(/\.md$/, '')
+      const shPath = path.join(catDir, `${slug}.sh`)
+      results.push({
+        id: `${catEntry.name}/${slug}`,
+        category: catEntry.name,
+        slug,
+        title: titleFromFilename(fileEntry.name),
+        event: HOOK_EVENT_MAP[catEntry.name] ?? catEntry.name,
+        mdPath: path.join(catDir, fileEntry.name),
+        shPath: fs.existsSync(shPath) ? shPath : '',
+      })
+    }
+  }
+  return results
+}
