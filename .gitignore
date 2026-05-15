@@ -55,3 +55,6 @@ coverage/
 # Build outputs
 *.pyc
 *.pyo
+
+# Root-level lockfile (web/ has its own)
+package-lock.json
