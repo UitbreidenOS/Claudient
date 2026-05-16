@@ -119,4 +119,4 @@ Open a GitHub Discussion if you're unsure where something belongs or want feedba
 
 Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you want to go beyond contributing to this repo and actually build AI products or B2B solutions with us, reach out.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

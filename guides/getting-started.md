@@ -161,4 +161,4 @@ Browse `agents/` to understand what's available. When you want Claude to delegat
 
 Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you're building something serious with Claude Code and want expert help, a technical partner, or just want to be part of the community — come find us.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

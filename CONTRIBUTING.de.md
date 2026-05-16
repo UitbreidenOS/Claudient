@@ -121,4 +121,4 @@ Unterstützte Sprachen: Englisch (primär), Französisch (`fr/`), Deutsch (`de/`
 
 Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir entwickeln KI-Produkte mit Entwickler-Communities und liefern B2B-KI-Lösungen. Wenn Sie über das Beitragen zu diesem Repository hinausgehen und tatsächlich KI-Produkte oder B2B-Lösungen mit uns entwickeln möchten, nehmen Sie Kontakt auf.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

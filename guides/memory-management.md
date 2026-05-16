@@ -189,4 +189,4 @@ Automatic compaction fires when the context window fills (~95% capacity). By tha
 
 Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you're building long-running AI workflows, autonomous agents, or need help designing memory architectures for production Claude Code deployments — we can help.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

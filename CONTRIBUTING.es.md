@@ -121,4 +121,4 @@ Abra una GitHub Discussion si no está seguro de dónde encaja algo o si desea r
 
 Claudient está respaldado por [Uitbreiden](https://uitbreiden.com/) — construimos productos de IA con comunidades de desarrolladores y ofrecemos soluciones de IA B2B. Si desea ir más allá de contribuir a este repositorio y realmente construir productos de IA o soluciones B2B con nosotros, contáctenos.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

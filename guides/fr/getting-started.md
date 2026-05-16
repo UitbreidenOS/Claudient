@@ -161,4 +161,4 @@ Parcourez `agents/` pour comprendre ce qui est disponible. Quand vous souhaitez 
 
 Claudient est soutenu par [Uitbreiden](https://uitbreiden.com/) — nous construisons des produits IA avec des communautés de développeurs et livrons des solutions IA B2B. Si vous construisez quelque chose de sérieux avec Claude Code et souhaitez une aide experte, un partenaire technique, ou simplement faire partie de la communauté — venez nous trouver.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

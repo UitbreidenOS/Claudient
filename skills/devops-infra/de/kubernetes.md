@@ -126,4 +126,4 @@ env:
 
 ---
 
-> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. Kubernetes-Infrastruktur oder cloud-native KI-Produkte aufbauen? [uitbreiden.com](https://uitbreiden.com/)
+> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. Kubernetes-Infrastruktur oder cloud-native KI-Produkte aufbauen? [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

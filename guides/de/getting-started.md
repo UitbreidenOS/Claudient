@@ -161,4 +161,4 @@ Durchsuchen Sie `agents/`, um zu verstehen, was verfügbar ist. Wenn Sie möchte
 
 Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/) — wir entwickeln KI-Produkte mit Entwickler-Communities und liefern B2B-KI-Lösungen. Wenn Sie etwas Ernsthaftes mit Claude Code aufbauen und Expertenunterstützung, einen technischen Partner oder einfach Teil der Community sein möchten — kommen Sie zu uns.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

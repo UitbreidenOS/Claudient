@@ -157,4 +157,4 @@ echo '{"tool_name":"Bash","tool_input":{"command":"ls"}}' | bash .claude/hooks/u
 
 Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten met ontwikkelaarsgemeenschappen en leveren B2B AI-oplossingen. Als u aangepaste hook-systemen, geautomatiseerde kwaliteitspoorten of productie-kwaliteit Claude Code-automatisering voor uw team nodig heeft — we bouwen dit voor klanten.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

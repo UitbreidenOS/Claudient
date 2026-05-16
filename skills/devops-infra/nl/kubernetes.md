@@ -126,4 +126,4 @@ env:
 
 ---
 
-> **Werk met ons:** Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten en B2B-oplossingen met ontwikkelaarsgemeenschappen. Kubernetes-infrastructuur of cloud-native AI-producten bouwen? [uitbreiden.com](https://uitbreiden.com/)
+> **Werk met ons:** Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — we bouwen AI-producten en B2B-oplossingen met ontwikkelaarsgemeenschappen. Kubernetes-infrastructuur of cloud-native AI-producten bouwen? [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

@@ -44,9 +44,11 @@ export default function RootLayout({
               <p className="font-black text-lg">CLAUDIENT</p>
               <p className="text-xs text-orange-200 mt-0.5">The definitive Claude Code knowledge system</p>
             </div>
-            <div className="flex items-center gap-6 text-sm">
-              <a href="https://github.com/Claudient/Claudient" className="hover:underline font-bold" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <div className="flex flex-wrap items-center gap-4 text-sm">
+              <a href="https://github.com/Claudients/Claudient" className="hover:underline font-bold" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://uitbreiden.com" className="hover:underline font-bold" target="_blank" rel="noopener noreferrer">Uitbreiden</a>
+              <a href="https://www.reddit.com/r/uitbreiden/" className="hover:underline font-bold" target="_blank" rel="noopener noreferrer">Reddit</a>
+              <a href="https://www.youtube.com/@UITBREIDEN" className="hover:underline font-bold" target="_blank" rel="noopener noreferrer">YouTube</a>
               <span className="text-orange-400">MIT License</span>
             </div>
           </div>

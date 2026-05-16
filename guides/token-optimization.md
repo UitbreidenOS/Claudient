@@ -203,4 +203,4 @@ multi-step sequences where fragment ambiguity risks misread.
 
 Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you're looking to cut AI costs at scale, build Claude Code tooling for your team, or ship B2B AI products — let's talk.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

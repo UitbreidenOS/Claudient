@@ -127,4 +127,4 @@ Toujours taguer chaque ressource avec `Environment` et `ManagedBy = "terraform"`
 
 ---
 
-> **Travaillez avec nous :** Claudient est soutenu par [Uitbreiden](https://uitbreiden.com/) — nous construisons des produits IA et des solutions B2B avec des communautés de développeurs. Vous construisez de l'infrastructure cloud ou des pipelines IaC ? [uitbreiden.com](https://uitbreiden.com/)
+> **Travaillez avec nous :** Claudient est soutenu par [Uitbreiden](https://uitbreiden.com/) — nous construisons des produits IA et des solutions B2B avec des communautés de développeurs. Vous construisez de l'infrastructure cloud ou des pipelines IaC ? [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

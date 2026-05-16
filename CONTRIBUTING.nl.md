@@ -121,4 +121,4 @@ Open een GitHub Discussion als u niet zeker weet waar iets thuishoort of als u f
 
 Claudient wordt ondersteund door [Uitbreiden](https://uitbreiden.com/) — wij bouwen AI-producten samen met ontwikkelaarsgemeenschappen en leveren B2B-AI-oplossingen. Als u verder wilt gaan dan bijdragen aan deze repository en daadwerkelijk AI-producten of B2B-oplossingen met ons wilt bouwen, neem dan contact op.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

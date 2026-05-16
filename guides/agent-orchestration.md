@@ -229,4 +229,4 @@ Subagents communicate back to the parent in two ways:
 
 Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products with developer communities and deliver B2B AI solutions. If you're designing multi-agent systems, autonomous workflows, or production-grade Claude Code orchestration — we've built this in production and can help you do the same.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**

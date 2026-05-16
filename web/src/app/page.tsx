@@ -168,7 +168,7 @@ export default async function HomePage() {
               },
               {
                 title: 'Open source, MIT licensed',
-                body: 'Backed by Uitbreiden. Fork it, extend it, contribute skills. Built with the community in mind from day one.',
+                body: 'Backed by Uitbreiden. Fork it, extend it, contribute skills. Join us on Reddit · YouTube.',
                 accent: 'bg-orange-300',
               },
             ].map(f => (
@@ -216,15 +216,19 @@ export default async function HomePage() {
           <h2 className="text-4xl font-black mb-4">Start using Claudient today</h2>
           <p className="text-orange-200 mb-8 text-lg">Open source, zero runtime dependencies. Works with any Claude Code setup.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://github.com/Claudient/Claudient"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="neo-btn px-8 py-4 bg-orange-500 text-black text-base"
-            >
+            <a href="https://github.com/Claudients/Claudient" target="_blank" rel="noopener noreferrer"
+              className="neo-btn px-6 py-4 bg-orange-500 text-black text-base">
               Star on GitHub
             </a>
-            <Link href="/skills" className="neo-btn px-8 py-4 border-2 border-orange-500 text-orange-100 text-base">
+            <a href="https://www.reddit.com/r/uitbreiden/" target="_blank" rel="noopener noreferrer"
+              className="neo-btn px-6 py-4 border-2 border-orange-300 text-orange-100 text-base">
+              Reddit
+            </a>
+            <a href="https://www.youtube.com/@UITBREIDEN" target="_blank" rel="noopener noreferrer"
+              className="neo-btn px-6 py-4 border-2 border-orange-300 text-orange-100 text-base">
+              YouTube
+            </a>
+            <Link href="/skills" className="neo-btn px-6 py-4 border-2 border-orange-500 text-orange-100 text-base">
               Browse Skills
             </Link>
           </div>

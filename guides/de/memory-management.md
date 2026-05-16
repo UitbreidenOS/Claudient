@@ -150,4 +150,4 @@ Komplexe Projekte profitieren von einer `CONTEXT.md` — einem Glossar domänens
 
 Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/) — wir entwickeln KI-Produkte mit Entwickler-Communities und liefern B2B-KI-Lösungen. Wenn Sie langlebige KI-Workflows, autonome Agenten oder Hilfe beim Entwurf von Speicherarchitekturen für Claude Code-Produktionsdeployments benötigen — wir können helfen.
 
-**[uitbreiden.com](https://uitbreiden.com/)**
+**[uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)**
