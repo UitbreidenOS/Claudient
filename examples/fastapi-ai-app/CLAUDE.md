@@ -191,3 +191,9 @@ ENVIRONMENT=development
 3. Add endpoint in `app/api/v1/endpoints/`
 4. Add Pydantic schema for request/response
 5. Write tests using `AsyncClient` with a real test DB (never mock the DB)
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

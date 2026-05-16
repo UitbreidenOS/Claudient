@@ -44,3 +44,9 @@ All Go files (`*.go`) in any project.
 14. **Sentinel errors for expected conditions, typed errors for structured errors** — `var ErrNotFound = errors.New("not found")` for simple conditions. Custom error types (implementing `error` interface) when callers need to inspect fields.
 
 15. **HTTP handlers get only `(w http.ResponseWriter, r *http.Request)`** — don't embed handlers in structs or use closures for simple handlers. Use dependency injection via a handler struct with a `ServeHTTP` method when dependencies are needed.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

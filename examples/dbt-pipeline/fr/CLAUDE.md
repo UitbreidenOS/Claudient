@@ -269,3 +269,9 @@ models:
 3. Ajouter au minimum `unique` + `not_null` sur la clé primaire
 4. Exécuter `dbt build --select fct_<nom>` pour tester en local
 5. Exécuter `dbt docs generate` pour mettre à jour le site de documentation
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

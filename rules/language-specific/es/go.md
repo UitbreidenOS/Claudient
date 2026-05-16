@@ -46,3 +46,9 @@ Todos los archivos Go (`*.go`) en cualquier proyecto.
 14. **Errores centinela para condiciones esperadas, errores tipados para errores estructurados** — `var ErrNotFound = errors.New("not found")` para condiciones simples. Tipos de error personalizados (implementando la interfaz `error`) cuando los llamadores necesitan inspeccionar campos.
 
 15. **Los manejadores HTTP obtienen solo `(w http.ResponseWriter, r *http.Request)`** — no embutes manejadores en structs ni uses closures para manejadores simples. Usa inyección de dependencias mediante un struct de manejador con un método `ServeHTTP` cuando se necesitan dependencias.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

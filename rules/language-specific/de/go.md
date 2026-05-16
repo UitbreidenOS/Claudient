@@ -46,3 +46,9 @@ Alle Go-Dateien (`*.go`) in jedem Projekt.
 14. **Sentinel-Fehler für erwartete Bedingungen, typisierte Fehler für strukturierte Fehler** — `var ErrNotFound = errors.New("not found")` für einfache Bedingungen. Benutzerdefinierte Fehlertypen (die das `error`-Interface implementieren), wenn Aufrufer Felder inspizieren müssen.
 
 15. **HTTP-Handler erhalten nur `(w http.ResponseWriter, r *http.Request)`** — Handler nicht in Structs einbetten oder Closures für einfache Handler verwenden. Dependency Injection über eine Handler-Struct mit einer `ServeHTTP`-Methode verwenden, wenn Abhängigkeiten benötigt werden.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

@@ -251,3 +251,9 @@ MYTOOL_VERBOSE=true
 3. Ajouter les nouveaux champs de configuration dans `internal/config/config.go`
 4. Écrire les tests dans `internal/cmd/newcmd_test.go` en utilisant le pattern `cmd.SetArgs()`
 5. Mettre à jour la sortie `--help` dans les champs `Short` et `Long`
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

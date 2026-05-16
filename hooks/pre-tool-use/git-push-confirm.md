@@ -44,3 +44,9 @@ chmod +x .claude/hooks/git-push-confirm.sh
 ```
 
 Add the `settings.json` entry above. Can be combined with `block-dangerous.sh` — both run as separate entries in the `PreToolUse` array.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

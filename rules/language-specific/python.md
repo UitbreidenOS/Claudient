@@ -34,3 +34,9 @@ All Python files (`*.py`) in any project.
 14. **Abstract base classes via `abc.ABC`** — when you need enforced interface contracts. `Protocol` for structural subtyping (duck typing with type checking).
 
 15. **Virtual environments always, dependencies in `pyproject.toml`** — `uv` or `poetry` for management. No `requirements.txt` for new projects.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

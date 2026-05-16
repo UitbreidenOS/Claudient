@@ -47,3 +47,9 @@ All TypeScript files (`*.ts`, `*.tsx`) in any project.
     ```
 
 15. **Enable `noUncheckedIndexedAccess`** — array and object index access returns `T | undefined` instead of `T`, forcing null checks where they're needed.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

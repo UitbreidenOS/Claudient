@@ -46,3 +46,9 @@ Alle Go-bestanden (`*.go`) in elk project.
 14. **Sentinaelfouten voor verwachte omstandigheden, getypeerde fouten voor gestructureerde fouten** — `var ErrNotFound = errors.New("not found")` voor eenvoudige omstandigheden. Aangepaste fouttypen (die de `error`-interface implementeren) wanneer aanroepers velden moeten inspecteren.
 
 15. **HTTP-handlers krijgen alleen `(w http.ResponseWriter, r *http.Request)`** — bed handlers niet in in structs of gebruik closures voor eenvoudige handlers. Gebruik dependency injection via een handler-struct met een `ServeHTTP`-methode wanneer afhankelijkheden nodig zijn.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

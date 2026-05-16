@@ -49,3 +49,9 @@ Tous les fichiers TypeScript (`*.ts`, `*.tsx`) dans n'importe quel projet.
     ```
 
 15. **Activer `noUncheckedIndexedAccess`** — l'accès par index aux tableaux et objets retourne `T | undefined` plutôt que `T`, forçant les vérifications null là où elles sont nécessaires.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

@@ -197,3 +197,9 @@ RESEND_API_KEY=re_...
 3. Maak `lib/actions/[feature].ts` aan voor mutaties
 4. Voeg nav-link toe aan `components/sidebar.tsx`
 5. Beveilig met middleware indien nodig (meestal gedekt door de `/dashboard`-matcher)
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

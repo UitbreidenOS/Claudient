@@ -249,3 +249,9 @@ MYTOOL_VERBOSE=true
 3. Add any new config fields to `internal/config/config.go`
 4. Write tests in `internal/cmd/newcmd_test.go` using `cmd.SetArgs()` pattern
 5. Update `--help` output in the `Short` and `Long` fields
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

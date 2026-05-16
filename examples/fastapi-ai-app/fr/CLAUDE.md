@@ -193,3 +193,9 @@ ENVIRONMENT=development
 3. Ajouter l'endpoint dans `app/api/v1/endpoints/`
 4. Ajouter le schéma Pydantic pour la requête/réponse
 5. Écrire les tests avec `AsyncClient` et une vraie base de données de test (ne jamais simuler la DB)
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

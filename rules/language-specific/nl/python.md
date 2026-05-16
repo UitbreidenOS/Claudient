@@ -36,3 +36,9 @@ Alle Python-bestanden (`*.py`) in elk project.
 14. **Abstracte basisklassen via `abc.ABC`** — wanneer je afgedwongen interfacecontracten nodig hebt. `Protocol` voor structureel subtypen (duck typing met typecontrole).
 
 15. **Altijd virtuele omgevingen, afhankelijkheden in `pyproject.toml`** — `uv` of `poetry` voor beheer. Geen `requirements.txt` voor nieuwe projecten.
+
+
+---
+
+> **Work with us:** Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — we build AI products and B2B solutions with developer communities.
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
