@@ -1,6 +1,6 @@
 {
   "name": "claudient",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "The definitive Claude Code knowledge system — skills, agents, hooks, rules, and workflows.",
   "skills": [
     { "id": "backend/python/fastapi", "name": "FastAPI", "file": "skills/backend/python/fastapi.md", "status": "active" },
@@ -9,6 +9,7 @@
     { "id": "backend/nodejs/nestjs", "name": "NestJS", "file": "skills/backend/nodejs/nestjs.md", "status": "active" },
     { "id": "backend/go/go", "name": "Go", "file": "skills/backend/go/go.md", "status": "active" },
     { "id": "backend/dotnet/csharp", "name": "C#/.NET", "file": "skills/backend/dotnet/csharp.md", "status": "active" },
+    { "id": "backend/java/spring-boot", "name": "Spring Boot", "file": "skills/backend/java/spring-boot.md", "status": "active" },
     { "id": "ai-engineering/claude-api", "name": "Claude API", "file": "skills/ai-engineering/claude-api.md", "status": "active" },
     { "id": "ai-engineering/agent-construction", "name": "Agent Construction", "file": "skills/ai-engineering/agent-construction.md", "status": "active" },
     { "id": "devops-infra/kubernetes", "name": "Kubernetes", "file": "skills/devops-infra/kubernetes.md", "status": "active" },
@@ -19,7 +20,8 @@
     { "id": "data-ml/pytorch-tensorflow", "name": "PyTorch & TensorFlow", "file": "skills/data-ml/pytorch-tensorflow.md", "status": "active" },
     { "id": "data-ml/dbt-data-pipelines", "name": "dbt & Data Pipelines", "file": "skills/data-ml/dbt-data-pipelines.md", "status": "active" },
     { "id": "database/graphql", "name": "GraphQL", "file": "skills/database/graphql.md", "status": "active" },
-    { "id": "finance-payments/stripe", "name": "Stripe", "file": "skills/finance-payments/stripe.md", "status": "active" }
+    { "id": "finance-payments/stripe", "name": "Stripe", "file": "skills/finance-payments/stripe.md", "status": "active" },
+    { "id": "productivity/caveman", "name": "Caveman Mode", "file": "skills/productivity/caveman.md", "status": "active" }
   ],
   "agents": [
     { "id": "core/planner", "name": "Planner", "file": "agents/core/planner.md", "status": "active" },
