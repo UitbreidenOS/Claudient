@@ -335,8 +335,100 @@ function updateCommand() {
   }
 }
 
+function loadIndex() {
+  // Try index.json next to package.json first (installed package),
+  // then fall back to filesystem scan (dev/repo context)
+  const indexPath = path.join(REPO_ROOT, 'index.json')
+  if (fs.existsSync(indexPath)) {
+    try { return JSON.parse(fs.readFileSync(indexPath, 'utf-8')) } catch {}
+  }
+  return null
+}
+
 function listCommand(type) {
-  const listSkills = () => {
+  const index = loadIndex()
+
+  if (index) {
+    // Fast path: use pre-built index.json
+    const enOnly = (arr) => arr.filter(i => !i.lang || i.lang === 'en')
+
+    const listSkills = () => {
+      const byCategory = {}
+      for (const s of enOnly(index.skills)) {
+        if (!byCategory[s.category]) byCategory[s.category] = []
+        byCategory[s.category].push(s)
+      }
+      console.log('Skills:\n')
+      for (const [cat, items] of Object.entries(byCategory)) {
+        console.log(`  ${cat}/ (${items.length})`)
+        for (const s of items) console.log(`    ${s.id.split('/').slice(1).join('/')}.md`)
+      }
+      console.log(`\n  Total: ${enOnly(index.skills).length} skills in ${Object.keys(byCategory).length} categories`)
+    }
+
+    const listAgents = () => {
+      const agents = enOnly(index.agents)
+      const byCategory = {}
+      for (const a of agents) {
+        const cat = a.id.split('/')[0]
+        if (!byCategory[cat]) byCategory[cat] = []
+        byCategory[cat].push(a)
+      }
+      console.log('Agents:\n')
+      for (const [cat, items] of Object.entries(byCategory)) {
+        console.log(`  ${cat}/ (${items.length})`)
+        for (const a of items) console.log(`    ${a.title}`)
+      }
+    }
+
+    const listHooks = () => {
+      const byCategory = {}
+      for (const h of index.hooks) {
+        if (!byCategory[h.category]) byCategory[h.category] = []
+        byCategory[h.category].push(h)
+      }
+      console.log('Hooks:\n')
+      for (const [cat, items] of Object.entries(byCategory)) {
+        console.log(`  ${cat}/ (${items.length})`)
+        for (const h of items) console.log(`    ${h.id.split('/')[1]}.sh`)
+      }
+    }
+
+    const listRules = () => {
+      const rules = enOnly(index.rules)
+      const byCategory = {}
+      for (const r of rules) {
+        if (!byCategory[r.category]) byCategory[r.category] = []
+        byCategory[r.category].push(r)
+      }
+      console.log('Rules:\n')
+      for (const [cat, items] of Object.entries(byCategory)) {
+        console.log(`  ${cat}/ (${items.length})`)
+        for (const r of items) console.log(`    ${r.slug}.md`)
+      }
+    }
+
+    const listAll = () => {
+      listSkills(); console.log()
+      listAgents(); console.log()
+      listRules(); console.log()
+      listHooks(); console.log()
+      console.log(`Generated: ${index.generated}`)
+      console.log(`Version:   claudient@${index.version}`)
+    }
+
+    switch (type) {
+      case 'agents': listAgents(); break
+      case 'hooks': listHooks(); break
+      case 'rules': listRules(); break
+      case 'skills': listSkills(); break
+      default: if (!type) listAll(); else listSkills()
+    }
+    return
+  }
+
+  // Fallback: filesystem scan (repo dev context without index.json)
+  const listSkillsFs = () => {
     console.log('Skills:\n')
     for (const cat of SKILL_CATEGORIES) {
       const catDir = path.join(REPO_ROOT, 'skills', cat)
@@ -347,50 +439,14 @@ function listCommand(type) {
     }
   }
 
-  const listAgents = () => {
-    console.log('Agents:\n')
-    const agentsDir = path.join(REPO_ROOT, 'agents')
-    for (const cat of fs.readdirSync(agentsDir, { withFileTypes: true })) {
-      if (!cat.isDirectory() || SUPPORTED_LANGS.includes(cat.name)) continue
-      const files = getFiles(path.join(agentsDir, cat.name)).filter(f => !SUPPORTED_LANGS.some(l => f.includes(`/${l}/`)))
-      console.log(`  ${cat.name}/ (${files.length})`)
-      for (const f of files) console.log(`    ${f}`)
-    }
-  }
-
-  const listHooks = () => {
-    console.log('Hooks:\n')
-    const hooksDir = path.join(REPO_ROOT, 'hooks')
-    for (const cat of fs.readdirSync(hooksDir, { withFileTypes: true })) {
-      if (!cat.isDirectory()) continue
-      const files = fs.readdirSync(path.join(hooksDir, cat.name)).filter(f => f.endsWith('.sh'))
-      console.log(`  ${cat.name}/ (${files.length})`)
-      for (const f of files) console.log(`    ${f}`)
-    }
-  }
-
-  const listRules = () => {
-    console.log('Rules:\n')
-    const rulesDir = path.join(REPO_ROOT, 'rules')
-    for (const cat of fs.readdirSync(rulesDir, { withFileTypes: true })) {
-      if (!cat.isDirectory() || SUPPORTED_LANGS.includes(cat.name)) continue
-      const files = fs.readdirSync(path.join(rulesDir, cat.name)).filter(f => f.endsWith('.md'))
-      console.log(`  ${cat.name}/ (${files.length})`)
-      for (const f of files) console.log(`    ${f}`)
-    }
-  }
-
   switch (type) {
-    case 'agents': listAgents(); break
-    case 'hooks': listHooks(); break
-    case 'rules': listRules(); break
-    case 'skills':
+    case 'agents':
+    case 'hooks':
+    case 'rules':
+      console.log('(index.json not found — run: npm run build-index)')
+      break
     default:
-      if (!type) {
-        listSkills(); console.log(); listAgents(); console.log(); listRules(); console.log(); listHooks()
-      } else {
-        listSkills()
-      }
+      listSkillsFs()
   }
 }
 
