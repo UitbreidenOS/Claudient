@@ -28,9 +28,10 @@ function usage() {
 claudient — Claude Code knowledge system
 
 Usage:
+  npx claudient init                          Interactive first-run setup
   npx claudient add skills [category] [--lang <lang>]
   npx claudient add agents
-  npx claudient add rules
+  npx claudient add rules [--write]
   npx claudient add hooks
   npx claudient add all [--lang <lang>]
   npx claudient remove skills [category]
@@ -393,6 +394,135 @@ function listCommand(type) {
   }
 }
 
+// ── Init (interactive first-run setup) ───────────────────────────────────────
+
+async function initCommand() {
+  const readline = require('readline')
+
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+  const ask = (q) => new Promise(resolve => rl.question(q, resolve))
+
+  const BOLD  = '\x1b[1m'
+  const ORANGE = '\x1b[33m'
+  const GREEN = '\x1b[32m'
+  const DIM   = '\x1b[2m'
+  const RESET = '\x1b[0m'
+
+  console.log(`
+${BOLD}╔══════════════════════════════════════════════╗
+║         CLAUDIENT SETUP                     ║
+║   The Claude Code Knowledge System          ║
+╚══════════════════════════════════════════════╝${RESET}
+`)
+
+  // Check Claude Code installed
+  if (!fs.existsSync(CLAUDE_DIR)) {
+    console.error(`${ORANGE}⚠ ~/.claude not found.${RESET}`)
+    console.error(`  Claude Code must be installed first: https://claude.ai/code\n`)
+    rl.close()
+    process.exit(1)
+  }
+  console.log(`${GREEN}✓ Claude Code detected at ${CLAUDE_DIR}${RESET}\n`)
+
+  const summary = { skills: [], agents: false, hooks: false, rules: false, lang: 'en' }
+
+  // 1. Language
+  console.log(`${BOLD}Step 1/5 — Language${RESET}`)
+  console.log('  Available: en, fr, de, nl, es')
+  const langInput = (await ask('  Which language? [en] ')).trim().toLowerCase() || 'en'
+  summary.lang = SUPPORTED_LANGS.includes(langInput) ? langInput : 'en'
+  console.log(`  → ${summary.lang}\n`)
+
+  // 2. Skill categories
+  console.log(`${BOLD}Step 2/5 — Skills${RESET}`)
+  SKILL_CATEGORIES.forEach((cat, i) => console.log(`  ${i + 1}. ${cat}`))
+  console.log('  a. All categories')
+  console.log('  0. Skip skills')
+  const catInput = (await ask('  Select categories (comma-separated numbers, or a/0): ')).trim()
+
+  if (catInput === '0') {
+    console.log('  → Skipping skills\n')
+  } else if (catInput === 'a' || catInput === '') {
+    summary.skills = [...SKILL_CATEGORIES]
+    console.log(`  → All categories selected\n`)
+  } else {
+    const nums = catInput.split(',').map(n => parseInt(n.trim(), 10)).filter(n => n >= 1 && n <= SKILL_CATEGORIES.length)
+    summary.skills = nums.map(n => SKILL_CATEGORIES[n - 1])
+    console.log(`  → Selected: ${summary.skills.join(', ')}\n`)
+  }
+
+  // 3. Agents
+  console.log(`${BOLD}Step 3/5 — Agents${RESET}`)
+  console.log('  6 subagent definitions: Planner, Architect, Code Reviewer, Security, Build Resolvers')
+  const agentsInput = (await ask('  Install agents? [Y/n] ')).trim().toLowerCase()
+  summary.agents = agentsInput !== 'n'
+  console.log(`  → ${summary.agents ? 'Yes' : 'No'}\n`)
+
+  // 4. Hooks
+  console.log(`${BOLD}Step 4/5 — Hooks${RESET}`)
+  console.log('  7 shell scripts: safety guards, auto-formatter, audit log, cost tracker, session helpers')
+  const hooksInput = (await ask('  Install hooks? [Y/n] ')).trim().toLowerCase()
+  summary.hooks = hooksInput !== 'n'
+  console.log(`  → ${summary.hooks ? 'Yes' : 'No'}\n`)
+
+  // 5. Rules
+  console.log(`${BOLD}Step 5/5 — Rules${RESET}`)
+  console.log('  8 rule sets: coding style, git, security, testing, performance, Python, TypeScript, Go')
+  const rulesInput = (await ask('  Add rules to ./CLAUDE.md? [Y/n] ')).trim().toLowerCase()
+  summary.rules = rulesInput !== 'n'
+  console.log(`  → ${summary.rules ? 'Yes' : 'No'}\n`)
+
+  rl.close()
+
+  // Confirm
+  console.log(`${BOLD}Summary${RESET}`)
+  console.log(`  Language : ${summary.lang}`)
+  console.log(`  Skills   : ${summary.skills.length ? summary.skills.join(', ') : 'none'}`)
+  console.log(`  Agents   : ${summary.agents ? 'yes' : 'no'}`)
+  console.log(`  Hooks    : ${summary.hooks ? 'yes' : 'no'}`)
+  console.log(`  Rules    : ${summary.rules ? 'append to ./CLAUDE.md' : 'no'}`)
+  console.log()
+
+  // Execute
+  if (summary.skills.length) {
+    for (const cat of summary.skills) {
+      console.log(`Installing ${cat} skills...`)
+      addSkills(cat, summary.lang === 'en' ? null : summary.lang)
+    }
+    console.log()
+  }
+
+  if (summary.agents) {
+    console.log('Installing agents...')
+    addAgents()
+    console.log()
+  }
+
+  if (summary.hooks) {
+    console.log('Installing hooks...')
+    addHooks()
+    console.log()
+  }
+
+  if (summary.rules) {
+    console.log('Adding rules to ./CLAUDE.md...')
+    addRulesWrite()
+    console.log()
+  }
+
+  console.log(`${GREEN}${BOLD}✓ Claudient setup complete!${RESET}`)
+  console.log()
+  console.log('Next steps:')
+  if (summary.hooks) {
+    console.log(`  1. Add hook entries to .claude/settings.json`)
+    console.log(`     See: https://github.com/Claudient/Claudient/tree/main/hooks`)
+  }
+  console.log(`  2. Restart Claude Code to activate all installed content`)
+  console.log(`  3. Try a skill — type /fastapi or /kubernetes in Claude Code`)
+  console.log()
+  console.log(`  Full docs: https://github.com/Claudient/Claudient`)
+}
+
 function getFiles(dir, prefix = '') {
   const results = []
   if (!fs.existsSync(dir)) return results
@@ -459,6 +589,9 @@ switch (command) {
     break
   case 'list':
     listCommand(positional[0])
+    break
+  case 'init':
+    initCommand().catch(err => { console.error(err); process.exit(1) })
     break
   case 'help':
   case '--help':

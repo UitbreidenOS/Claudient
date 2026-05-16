@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "generated": "2026-05-16T17:05:17.016Z",
+  "version": "0.4.0",
+  "generated": "2026-05-16T17:19:22.557Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -71,6 +71,34 @@
       "lang": "nl",
       "title": "Go Skill",
       "file": "skills/backend/go/nl/go.md"
+    },
+    {
+      "id": "backend/java/spring-boot",
+      "category": "backend",
+      "lang": "de",
+      "title": "Spring Boot Skill",
+      "file": "skills/backend/java/de/spring-boot.md"
+    },
+    {
+      "id": "backend/java/spring-boot",
+      "category": "backend",
+      "lang": "es",
+      "title": "Skill Spring Boot",
+      "file": "skills/backend/java/es/spring-boot.md"
+    },
+    {
+      "id": "backend/java/spring-boot",
+      "category": "backend",
+      "lang": "fr",
+      "title": "Skill Spring Boot",
+      "file": "skills/backend/java/fr/spring-boot.md"
+    },
+    {
+      "id": "backend/java/spring-boot",
+      "category": "backend",
+      "lang": "nl",
+      "title": "Spring Boot Skill",
+      "file": "skills/backend/java/nl/spring-boot.md"
     },
     {
       "id": "backend/java/spring-boot",
@@ -610,6 +638,34 @@
       "lang": "en",
       "title": "Caveman Mode Skill",
       "file": "skills/productivity/caveman.md"
+    },
+    {
+      "id": "productivity/caveman",
+      "category": "productivity",
+      "lang": "de",
+      "title": "Caveman Mode Skill",
+      "file": "skills/productivity/de/caveman.md"
+    },
+    {
+      "id": "productivity/caveman",
+      "category": "productivity",
+      "lang": "es",
+      "title": "Skill Modo Caveman",
+      "file": "skills/productivity/es/caveman.md"
+    },
+    {
+      "id": "productivity/caveman",
+      "category": "productivity",
+      "lang": "fr",
+      "title": "Skill Mode Caveman",
+      "file": "skills/productivity/fr/caveman.md"
+    },
+    {
+      "id": "productivity/caveman",
+      "category": "productivity",
+      "lang": "nl",
+      "title": "Caveman Mode Skill",
+      "file": "skills/productivity/nl/caveman.md"
     }
   ],
   "agents": [
