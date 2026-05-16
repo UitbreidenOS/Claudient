@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import type { SkillMeta } from '@/lib/content'
-import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/content'
+import type { SkillMeta } from '@/lib/constants'
+import { CATEGORY_LABELS, CATEGORY_COLORS } from '@/lib/constants'
 
 export function SkillCard({ skill }: { skill: SkillMeta }) {
   const categoryColor = CATEGORY_COLORS[skill.category] ?? 'bg-gray-200'
