@@ -1,6 +1,6 @@
 {
-  "version": "1.8.0",
-  "generated": "2026-05-18T17:13:17.655Z",
+  "version": "1.9.0",
+  "generated": "2026-05-18T17:14:13.992Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -283,6 +283,14 @@
       "file": "skills/backend/nodejs/typescript-advanced.md"
     },
     {
+      "id": "backend/nodejs/vue",
+      "category": "backend",
+      "lang": "en",
+      "title": "Vue",
+      "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
+      "file": "skills/backend/nodejs/vue.md"
+    },
+    {
       "id": "backend/python/api-design",
       "category": "backend",
       "lang": "en",
@@ -339,6 +347,14 @@
       "file": "skills/backend/python/es/fastapi.md"
     },
     {
+      "id": "backend/python/python-async",
+      "category": "backend",
+      "lang": "es",
+      "title": "Python Async",
+      "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
+      "file": "skills/backend/python/es/python-async.md"
+    },
+    {
       "id": "backend/python/fastapi",
       "category": "backend",
       "lang": "en",
@@ -385,6 +401,14 @@
       "title": "FastAPI Skill",
       "description": "",
       "file": "skills/backend/python/nl/fastapi.md"
+    },
+    {
+      "id": "backend/python/python-async",
+      "category": "backend",
+      "lang": "nl",
+      "title": "Python Async",
+      "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
+      "file": "skills/backend/python/nl/python-async.md"
     },
     {
       "id": "backend/python/pytest",
@@ -2732,7 +2756,7 @@
     }
   ],
   "summary": {
-    "skills": 48,
+    "skills": 49,
     "agents": 6,
     "hooks": 7,
     "rules": 8,
