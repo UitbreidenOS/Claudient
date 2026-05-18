@@ -1,6 +1,6 @@
 {
   "version": "2.2.0",
-  "generated": "2026-05-18T17:36:58.123Z",
+  "generated": "2026-05-18T17:42:39.982Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -219,6 +219,14 @@
       "file": "skills/backend/nodejs/es/react.md"
     },
     {
+      "id": "backend/nodejs/shadcn",
+      "category": "backend",
+      "lang": "es",
+      "title": "Shadcn",
+      "description": "shadcn/ui: install components, customise variants, theming with CSS variables, compose compound components, extend with custom primitives",
+      "file": "skills/backend/nodejs/es/shadcn.md"
+    },
+    {
       "id": "backend/nodejs/typescript-advanced",
       "category": "backend",
       "lang": "es",
@@ -401,6 +409,14 @@
       "title": "Vue",
       "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
       "file": "skills/backend/nodejs/vue.md"
+    },
+    {
+      "id": "backend/nodejs/wasp",
+      "category": "backend",
+      "lang": "en",
+      "title": "Wasp",
+      "description": "Wasp framework: declarative full-stack config (React + Node.js + Prisma in one .wasp file), Open SaaS boilerplate, AI-legible architecture",
+      "file": "skills/backend/nodejs/wasp.md"
     },
     {
       "id": "backend/python/api-design",
@@ -667,6 +683,14 @@
       "file": "skills/devops-infra/de/monorepo.md"
     },
     {
+      "id": "devops-infra/railway",
+      "category": "devops-infra",
+      "lang": "de",
+      "title": "Railway",
+      "description": "Railway deployment: Dockerfile deploys, managed Postgres/Redis, environment variables, PR preview environments, custom domains, CLI workflow",
+      "file": "skills/devops-infra/de/railway.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "de",
@@ -739,6 +763,14 @@
       "file": "skills/devops-infra/es/monorepo.md"
     },
     {
+      "id": "devops-infra/railway",
+      "category": "devops-infra",
+      "lang": "es",
+      "title": "Railway",
+      "description": "Railway deployment: Dockerfile deploys, managed Postgres/Redis, environment variables, PR preview environments, custom domains, CLI workflow",
+      "file": "skills/devops-infra/es/railway.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "es",
@@ -793,6 +825,14 @@
       "title": "Monorepo",
       "description": "Monorepo tooling: Turborepo, Nx, pnpm workspaces, shared packages, task pipelines, affected builds, CI optimisation",
       "file": "skills/devops-infra/fr/monorepo.md"
+    },
+    {
+      "id": "devops-infra/railway",
+      "category": "devops-infra",
+      "lang": "fr",
+      "title": "Railway",
+      "description": "Railway deployment: Dockerfile deploys, managed Postgres/Redis, environment variables, PR preview environments, custom domains, CLI workflow",
+      "file": "skills/devops-infra/fr/railway.md"
     },
     {
       "id": "devops-infra/terraform",
@@ -875,12 +915,28 @@
       "file": "skills/devops-infra/nl/monorepo.md"
     },
     {
+      "id": "devops-infra/railway",
+      "category": "devops-infra",
+      "lang": "nl",
+      "title": "Railway",
+      "description": "Railway deployment: Dockerfile deploys, managed Postgres/Redis, environment variables, PR preview environments, custom domains, CLI workflow",
+      "file": "skills/devops-infra/nl/railway.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "nl",
       "title": "Terraform Skill",
       "description": "",
       "file": "skills/devops-infra/nl/terraform.md"
+    },
+    {
+      "id": "devops-infra/northflank",
+      "category": "devops-infra",
+      "lang": "en",
+      "title": "Northflank",
+      "description": "Northflank: managed databases, secret injection, preview environments per PR, multi-service deployment — optimal for agent-generated codebases",
+      "file": "skills/devops-infra/northflank.md"
     },
     {
       "id": "devops-infra/railway",
@@ -1081,6 +1137,14 @@
       "title": "Sql",
       "description": "SQL query writing and optimisation: complex joins, window functions, CTEs, indexes, query plans, migration patterns",
       "file": "skills/data-ml/sql.md"
+    },
+    {
+      "id": "data-ml/synthetic-data",
+      "category": "data-ml",
+      "lang": "en",
+      "title": "Synthetic Data",
+      "description": "Synthetic data generation: realistic relational datasets for testing, seeding, and ML training — Faker, factory patterns, constraint-aware generation",
+      "file": "skills/data-ml/synthetic-data.md"
     },
     {
       "id": "database/drizzle",
@@ -1411,12 +1475,28 @@
       "file": "skills/finance-payments/de/stripe.md"
     },
     {
+      "id": "finance-payments/webhooks",
+      "category": "finance-payments",
+      "lang": "de",
+      "title": "Webhooks",
+      "description": "Webhook security: HMAC-SHA256 signature verification, replay attack prevention, idempotency, Stripe + Svix + generic patterns",
+      "file": "skills/finance-payments/de/webhooks.md"
+    },
+    {
       "id": "finance-payments/stripe",
       "category": "finance-payments",
       "lang": "es",
       "title": "Skill de Integración con Stripe",
       "description": "",
       "file": "skills/finance-payments/es/stripe.md"
+    },
+    {
+      "id": "finance-payments/webhooks",
+      "category": "finance-payments",
+      "lang": "es",
+      "title": "Webhooks",
+      "description": "Webhook security: HMAC-SHA256 signature verification, replay attack prevention, idempotency, Stripe + Svix + generic patterns",
+      "file": "skills/finance-payments/es/webhooks.md"
     },
     {
       "id": "finance-payments/stripe",
@@ -1427,12 +1507,28 @@
       "file": "skills/finance-payments/fr/stripe.md"
     },
     {
+      "id": "finance-payments/webhooks",
+      "category": "finance-payments",
+      "lang": "fr",
+      "title": "Webhooks",
+      "description": "Webhook security: HMAC-SHA256 signature verification, replay attack prevention, idempotency, Stripe + Svix + generic patterns",
+      "file": "skills/finance-payments/fr/webhooks.md"
+    },
+    {
       "id": "finance-payments/stripe",
       "category": "finance-payments",
       "lang": "nl",
       "title": "Stripe Integratie Skill",
       "description": "",
       "file": "skills/finance-payments/nl/stripe.md"
+    },
+    {
+      "id": "finance-payments/webhooks",
+      "category": "finance-payments",
+      "lang": "nl",
+      "title": "Webhooks",
+      "description": "Webhook security: HMAC-SHA256 signature verification, replay attack prevention, idempotency, Stripe + Svix + generic patterns",
+      "file": "skills/finance-payments/nl/webhooks.md"
     },
     {
       "id": "finance-payments/stripe",
@@ -1561,6 +1657,14 @@
       "title": "Vercel Ai Sdk",
       "description": "Vercel AI SDK: diffusion de réponses IA vers Next.js, hooks useChat/useCompletion, appels d'outils, UI générative, routage multi-fournisseur (Claude, OpenAI, Gemini)",
       "file": "skills/ai-engineering/fr/vercel-ai-sdk.md"
+    },
+    {
+      "id": "ai-engineering/mastra",
+      "category": "ai-engineering",
+      "lang": "en",
+      "title": "Mastra",
+      "description": "Mastra AI: TypeScript agent framework — agents, workflows, tools, memory, RAG, evals — for building production-grade AI applications",
+      "file": "skills/ai-engineering/mastra.md"
     },
     {
       "id": "ai-engineering/mcp-server-builder",
@@ -3212,7 +3316,7 @@
     }
   ],
   "summary": {
-    "skills": 59,
+    "skills": 63,
     "agents": 6,
     "hooks": 7,
     "rules": 8,
