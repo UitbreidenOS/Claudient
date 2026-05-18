@@ -1,6 +1,6 @@
 {
-  "version": "1.2.0",
-  "generated": "2026-05-18T16:56:34.095Z",
+  "version": "1.3.0",
+  "generated": "2026-05-18T16:58:48.393Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -201,6 +201,14 @@
       "title": "Next.js Skill",
       "description": "",
       "file": "skills/backend/nodejs/nl/nextjs.md"
+    },
+    {
+      "id": "backend/nodejs/react",
+      "category": "backend",
+      "lang": "en",
+      "title": "React",
+      "description": "React patterns: hooks, context, performance optimisation, component composition, state management, common anti-patterns",
+      "file": "skills/backend/nodejs/react.md"
     },
     {
       "id": "backend/python/django",
@@ -515,6 +523,14 @@
       "file": "skills/data-ml/es/pytorch-tensorflow.md"
     },
     {
+      "id": "data-ml/sql",
+      "category": "data-ml",
+      "lang": "es",
+      "title": "Sql",
+      "description": "SQL query writing and optimisation: complex joins, window functions, CTEs, indexes, query plans, migration patterns",
+      "file": "skills/data-ml/es/sql.md"
+    },
+    {
       "id": "data-ml/dbt-data-pipelines",
       "category": "data-ml",
       "lang": "fr",
@@ -627,6 +643,14 @@
       "file": "skills/database/de/graphql.md"
     },
     {
+      "id": "database/neon",
+      "category": "database",
+      "lang": "de",
+      "title": "Neon",
+      "description": "Neon serverless PostgreSQL: connection pooling, database branching, pgvector for AI, autoscaling patterns, Vercel integration",
+      "file": "skills/database/de/neon.md"
+    },
+    {
       "id": "database/graphql",
       "category": "database",
       "lang": "es",
@@ -641,6 +665,14 @@
       "title": "Compétence GraphQL",
       "description": "",
       "file": "skills/database/fr/graphql.md"
+    },
+    {
+      "id": "database/neon",
+      "category": "database",
+      "lang": "fr",
+      "title": "Neon",
+      "description": "Neon serverless PostgreSQL: connection pooling, database branching, pgvector for AI, autoscaling patterns, Vercel integration",
+      "file": "skills/database/fr/neon.md"
     },
     {
       "id": "database/graphql",
@@ -665,6 +697,14 @@
       "title": "GraphQL Skill",
       "description": "",
       "file": "skills/database/nl/graphql.md"
+    },
+    {
+      "id": "database/redis",
+      "category": "database",
+      "lang": "en",
+      "title": "Redis",
+      "description": "Redis patterns: caching, sessions, rate limiting, pub/sub, queues, distributed locks — with Python and Node.js examples",
+      "file": "skills/database/redis.md"
     },
     {
       "id": "database/supabase",
@@ -2348,7 +2388,7 @@
     }
   ],
   "summary": {
-    "skills": 35,
+    "skills": 37,
     "agents": 6,
     "hooks": 7,
     "rules": 8,
