@@ -1,6 +1,6 @@
 {
-  "version": "1.9.0",
-  "generated": "2026-05-18T17:14:13.992Z",
+  "version": "2.0.0",
+  "generated": "2026-05-18T17:24:29.850Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -123,6 +123,14 @@
       "file": "skills/backend/java/spring-boot.md"
     },
     {
+      "id": "backend/nodejs/better-auth",
+      "category": "backend",
+      "lang": "en",
+      "title": "Better Auth",
+      "description": "Better Auth: the open-source auth framework for Next.js/TypeScript — session management, OAuth, 2FA, RBAC, Drizzle/Prisma adapters, no vendor lock-in",
+      "file": "skills/backend/nodejs/better-auth.md"
+    },
+    {
       "id": "backend/nodejs/nestjs",
       "category": "backend",
       "lang": "de",
@@ -153,6 +161,14 @@
       "title": "Typescript Advanced",
       "description": "Advanced TypeScript: generics, conditional types, mapped types, template literals, utility types, type guards, discriminated unions at scale",
       "file": "skills/backend/nodejs/de/typescript-advanced.md"
+    },
+    {
+      "id": "backend/nodejs/vue",
+      "category": "backend",
+      "lang": "de",
+      "title": "Vue",
+      "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
+      "file": "skills/backend/nodejs/de/vue.md"
     },
     {
       "id": "backend/nodejs/nestjs",
@@ -187,6 +203,14 @@
       "file": "skills/backend/nodejs/es/typescript-advanced.md"
     },
     {
+      "id": "backend/nodejs/vue",
+      "category": "backend",
+      "lang": "es",
+      "title": "Vue",
+      "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
+      "file": "skills/backend/nodejs/es/vue.md"
+    },
+    {
       "id": "backend/nodejs/nestjs",
       "category": "backend",
       "lang": "fr",
@@ -217,6 +241,14 @@
       "title": "Typescript Advanced",
       "description": "Advanced TypeScript: generics, conditional types, mapped types, template literals, utility types, type guards, discriminated unions at scale",
       "file": "skills/backend/nodejs/fr/typescript-advanced.md"
+    },
+    {
+      "id": "backend/nodejs/vue",
+      "category": "backend",
+      "lang": "fr",
+      "title": "Vue",
+      "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
+      "file": "skills/backend/nodejs/fr/vue.md"
     },
     {
       "id": "backend/nodejs/nestjs",
@@ -267,6 +299,14 @@
       "file": "skills/backend/nodejs/nl/typescript-advanced.md"
     },
     {
+      "id": "backend/nodejs/vue",
+      "category": "backend",
+      "lang": "nl",
+      "title": "Vue",
+      "description": "Vue 3 patterns: Composition API, composables, Pinia state, Vue Router, async components, performance, TypeScript with Vue",
+      "file": "skills/backend/nodejs/nl/vue.md"
+    },
+    {
       "id": "backend/nodejs/react",
       "category": "backend",
       "lang": "en",
@@ -299,6 +339,14 @@
       "file": "skills/backend/python/api-design.md"
     },
     {
+      "id": "backend/python/api-design",
+      "category": "backend",
+      "lang": "de",
+      "title": "Api Design",
+      "description": "REST API design: resource naming, versioning, pagination, error responses, rate limiting headers, idempotency, OpenAPI documentation",
+      "file": "skills/backend/python/de/api-design.md"
+    },
+    {
       "id": "backend/python/django",
       "category": "backend",
       "lang": "de",
@@ -313,6 +361,14 @@
       "title": "FastAPI Skill",
       "description": "",
       "file": "skills/backend/python/de/fastapi.md"
+    },
+    {
+      "id": "backend/python/pytest",
+      "category": "backend",
+      "lang": "de",
+      "title": "Pytest",
+      "description": "pytest deep dive: fixtures, parametrize, markers, mocking, async tests, coverage, conftest patterns, and CI integration",
+      "file": "skills/backend/python/de/pytest.md"
     },
     {
       "id": "backend/python/python-async",
@@ -331,6 +387,14 @@
       "file": "skills/backend/python/django.md"
     },
     {
+      "id": "backend/python/api-design",
+      "category": "backend",
+      "lang": "es",
+      "title": "Api Design",
+      "description": "REST API design: resource naming, versioning, pagination, error responses, rate limiting headers, idempotency, OpenAPI documentation",
+      "file": "skills/backend/python/es/api-design.md"
+    },
+    {
       "id": "backend/python/django",
       "category": "backend",
       "lang": "es",
@@ -345,6 +409,14 @@
       "title": "Skill de FastAPI",
       "description": "",
       "file": "skills/backend/python/es/fastapi.md"
+    },
+    {
+      "id": "backend/python/pytest",
+      "category": "backend",
+      "lang": "es",
+      "title": "Pytest",
+      "description": "pytest deep dive: fixtures, parametrize, markers, mocking, async tests, coverage, conftest patterns, and CI integration",
+      "file": "skills/backend/python/es/pytest.md"
     },
     {
       "id": "backend/python/python-async",
@@ -363,6 +435,14 @@
       "file": "skills/backend/python/fastapi.md"
     },
     {
+      "id": "backend/python/api-design",
+      "category": "backend",
+      "lang": "fr",
+      "title": "Api Design",
+      "description": "REST API design: resource naming, versioning, pagination, error responses, rate limiting headers, idempotency, OpenAPI documentation",
+      "file": "skills/backend/python/fr/api-design.md"
+    },
+    {
       "id": "backend/python/django",
       "category": "backend",
       "lang": "fr",
@@ -379,12 +459,28 @@
       "file": "skills/backend/python/fr/fastapi.md"
     },
     {
+      "id": "backend/python/pytest",
+      "category": "backend",
+      "lang": "fr",
+      "title": "Pytest",
+      "description": "pytest deep dive: fixtures, parametrize, markers, mocking, async tests, coverage, conftest patterns, and CI integration",
+      "file": "skills/backend/python/fr/pytest.md"
+    },
+    {
       "id": "backend/python/python-async",
       "category": "backend",
       "lang": "fr",
       "title": "Python Async",
       "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
       "file": "skills/backend/python/fr/python-async.md"
+    },
+    {
+      "id": "backend/python/api-design",
+      "category": "backend",
+      "lang": "nl",
+      "title": "Api Design",
+      "description": "REST API design: resource naming, versioning, pagination, error responses, rate limiting headers, idempotency, OpenAPI documentation",
+      "file": "skills/backend/python/nl/api-design.md"
     },
     {
       "id": "backend/python/django",
@@ -401,6 +497,14 @@
       "title": "FastAPI Skill",
       "description": "",
       "file": "skills/backend/python/nl/fastapi.md"
+    },
+    {
+      "id": "backend/python/pytest",
+      "category": "backend",
+      "lang": "nl",
+      "title": "Pytest",
+      "description": "pytest deep dive: fixtures, parametrize, markers, mocking, async tests, coverage, conftest patterns, and CI integration",
+      "file": "skills/backend/python/nl/pytest.md"
     },
     {
       "id": "backend/python/python-async",
@@ -435,6 +539,14 @@
       "file": "skills/devops-infra/cicd.md"
     },
     {
+      "id": "devops-infra/cicd",
+      "category": "devops-infra",
+      "lang": "de",
+      "title": "Cicd",
+      "description": "CI/CD patterns: GitHub Actions workflows, secrets management, deployment gates, matrix builds, caching, reusable workflows, rollbacks",
+      "file": "skills/devops-infra/de/cicd.md"
+    },
+    {
       "id": "devops-infra/docker-compose",
       "category": "devops-infra",
       "lang": "de",
@@ -467,6 +579,14 @@
       "file": "skills/devops-infra/de/kubernetes.md"
     },
     {
+      "id": "devops-infra/monorepo",
+      "category": "devops-infra",
+      "lang": "de",
+      "title": "Monorepo",
+      "description": "Monorepo tooling: Turborepo, Nx, pnpm workspaces, shared packages, task pipelines, affected builds, CI optimisation",
+      "file": "skills/devops-infra/de/monorepo.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "de",
@@ -489,6 +609,14 @@
       "title": "Docker",
       "description": "Dockerfile best practices, multi-stage builds, Compose services, networking, volumes, build caching",
       "file": "skills/devops-infra/docker.md"
+    },
+    {
+      "id": "devops-infra/cicd",
+      "category": "devops-infra",
+      "lang": "es",
+      "title": "Cicd",
+      "description": "CI/CD patterns: GitHub Actions workflows, secrets management, deployment gates, matrix builds, caching, reusable workflows, rollbacks",
+      "file": "skills/devops-infra/es/cicd.md"
     },
     {
       "id": "devops-infra/docker-compose",
@@ -523,12 +651,28 @@
       "file": "skills/devops-infra/es/kubernetes.md"
     },
     {
+      "id": "devops-infra/monorepo",
+      "category": "devops-infra",
+      "lang": "es",
+      "title": "Monorepo",
+      "description": "Monorepo tooling: Turborepo, Nx, pnpm workspaces, shared packages, task pipelines, affected builds, CI optimisation",
+      "file": "skills/devops-infra/es/monorepo.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "es",
       "title": "Skill de Terraform",
       "description": "",
       "file": "skills/devops-infra/es/terraform.md"
+    },
+    {
+      "id": "devops-infra/cicd",
+      "category": "devops-infra",
+      "lang": "fr",
+      "title": "Cicd",
+      "description": "CI/CD patterns: GitHub Actions workflows, secrets management, deployment gates, matrix builds, caching, reusable workflows, rollbacks",
+      "file": "skills/devops-infra/fr/cicd.md"
     },
     {
       "id": "devops-infra/docker-compose",
@@ -563,6 +707,14 @@
       "file": "skills/devops-infra/fr/kubernetes.md"
     },
     {
+      "id": "devops-infra/monorepo",
+      "category": "devops-infra",
+      "lang": "fr",
+      "title": "Monorepo",
+      "description": "Monorepo tooling: Turborepo, Nx, pnpm workspaces, shared packages, task pipelines, affected builds, CI optimisation",
+      "file": "skills/devops-infra/fr/monorepo.md"
+    },
+    {
       "id": "devops-infra/terraform",
       "category": "devops-infra",
       "lang": "fr",
@@ -595,6 +747,14 @@
       "file": "skills/devops-infra/monorepo.md"
     },
     {
+      "id": "devops-infra/cicd",
+      "category": "devops-infra",
+      "lang": "nl",
+      "title": "Cicd",
+      "description": "CI/CD patterns: GitHub Actions workflows, secrets management, deployment gates, matrix builds, caching, reusable workflows, rollbacks",
+      "file": "skills/devops-infra/nl/cicd.md"
+    },
+    {
       "id": "devops-infra/docker-compose",
       "category": "devops-infra",
       "lang": "nl",
@@ -625,6 +785,14 @@
       "title": "Kubernetes Skill",
       "description": "",
       "file": "skills/devops-infra/nl/kubernetes.md"
+    },
+    {
+      "id": "devops-infra/monorepo",
+      "category": "devops-infra",
+      "lang": "nl",
+      "title": "Monorepo",
+      "description": "Monorepo tooling: Turborepo, Nx, pnpm workspaces, shared packages, task pipelines, affected builds, CI optimisation",
+      "file": "skills/devops-infra/nl/monorepo.md"
     },
     {
       "id": "devops-infra/terraform",
@@ -835,6 +1003,14 @@
       "file": "skills/database/de/graphql.md"
     },
     {
+      "id": "database/mongodb",
+      "category": "database",
+      "lang": "de",
+      "title": "Mongodb",
+      "description": "MongoDB patterns: schema design, aggregation pipeline, indexes, transactions, Atlas Search, Mongoose vs native driver",
+      "file": "skills/database/de/mongodb.md"
+    },
+    {
       "id": "database/neon",
       "category": "database",
       "lang": "de",
@@ -875,12 +1051,28 @@
       "file": "skills/database/de/supabase.md"
     },
     {
+      "id": "database/drizzle",
+      "category": "database",
+      "lang": "en",
+      "title": "Drizzle",
+      "description": "Drizzle ORM: TypeScript-first schema, relations, migrations, query builder, Neon/Supabase/PlanetScale integration — the AI-legible ORM",
+      "file": "skills/database/drizzle.md"
+    },
+    {
       "id": "database/graphql",
       "category": "database",
       "lang": "es",
       "title": "Skill de GraphQL",
       "description": "",
       "file": "skills/database/es/graphql.md"
+    },
+    {
+      "id": "database/mongodb",
+      "category": "database",
+      "lang": "es",
+      "title": "Mongodb",
+      "description": "MongoDB patterns: schema design, aggregation pipeline, indexes, transactions, Atlas Search, Mongoose vs native driver",
+      "file": "skills/database/es/mongodb.md"
     },
     {
       "id": "database/neon",
@@ -929,6 +1121,14 @@
       "title": "Compétence GraphQL",
       "description": "",
       "file": "skills/database/fr/graphql.md"
+    },
+    {
+      "id": "database/mongodb",
+      "category": "database",
+      "lang": "fr",
+      "title": "Mongodb",
+      "description": "MongoDB patterns: schema design, aggregation pipeline, indexes, transactions, Atlas Search, Mongoose vs native driver",
+      "file": "skills/database/fr/mongodb.md"
     },
     {
       "id": "database/neon",
@@ -1001,6 +1201,14 @@
       "title": "GraphQL Skill",
       "description": "",
       "file": "skills/database/nl/graphql.md"
+    },
+    {
+      "id": "database/mongodb",
+      "category": "database",
+      "lang": "nl",
+      "title": "Mongodb",
+      "description": "MongoDB patterns: schema design, aggregation pipeline, indexes, transactions, Atlas Search, Mongoose vs native driver",
+      "file": "skills/database/nl/mongodb.md"
     },
     {
       "id": "database/neon",
@@ -1179,6 +1387,14 @@
       "file": "skills/ai-engineering/fr/claude-api.md"
     },
     {
+      "id": "ai-engineering/mcp-server-builder",
+      "category": "ai-engineering",
+      "lang": "en",
+      "title": "Mcp Server Builder",
+      "description": "Build custom MCP servers: expose tools, resources, and prompts via stdio or HTTP/SSE transport — connect proprietary data to Claude Code",
+      "file": "skills/ai-engineering/mcp-server-builder.md"
+    },
+    {
       "id": "ai-engineering/agent-construction",
       "category": "ai-engineering",
       "lang": "nl",
@@ -1193,6 +1409,14 @@
       "title": "Claude API Skill",
       "description": "",
       "file": "skills/ai-engineering/nl/claude-api.md"
+    },
+    {
+      "id": "ai-engineering/vercel-ai-sdk",
+      "category": "ai-engineering",
+      "lang": "en",
+      "title": "Vercel Ai Sdk",
+      "description": "Vercel AI SDK: streaming AI responses to Next.js, useChat/useCompletion hooks, tool calls, generative UI, multi-provider routing (Claude, OpenAI, Gemini)",
+      "file": "skills/ai-engineering/vercel-ai-sdk.md"
     },
     {
       "id": "productivity/batch",
@@ -1291,6 +1515,14 @@
       "file": "skills/productivity/de/security-audit.md"
     },
     {
+      "id": "productivity/test-factories",
+      "category": "productivity",
+      "lang": "de",
+      "title": "Test Factories",
+      "description": "Test factories and fixtures: factory_boy (Python), Fishery/faker-js (TypeScript), seeding test databases, avoiding test data duplication",
+      "file": "skills/productivity/de/test-factories.md"
+    },
+    {
       "id": "productivity/test-generator",
       "category": "productivity",
       "lang": "de",
@@ -1387,6 +1619,14 @@
       "file": "skills/productivity/es/security-audit.md"
     },
     {
+      "id": "productivity/test-factories",
+      "category": "productivity",
+      "lang": "es",
+      "title": "Test Factories",
+      "description": "Test factories and fixtures: factory_boy (Python), Fishery/faker-js (TypeScript), seeding test databases, avoiding test data duplication",
+      "file": "skills/productivity/es/test-factories.md"
+    },
+    {
       "id": "productivity/test-generator",
       "category": "productivity",
       "lang": "es",
@@ -1465,6 +1705,14 @@
       "title": "Security Audit",
       "description": "Security audit for code: OWASP Top 10, injection, auth flaws, secrets, dependency vulnerabilities — with severity and fix for each finding",
       "file": "skills/productivity/fr/security-audit.md"
+    },
+    {
+      "id": "productivity/test-factories",
+      "category": "productivity",
+      "lang": "fr",
+      "title": "Test Factories",
+      "description": "Test factories and fixtures: factory_boy (Python), Fishery/faker-js (TypeScript), seeding test databases, avoiding test data duplication",
+      "file": "skills/productivity/fr/test-factories.md"
     },
     {
       "id": "productivity/test-generator",
@@ -1553,6 +1801,14 @@
       "title": "Security Audit",
       "description": "Security audit for code: OWASP Top 10, injection, auth flaws, secrets, dependency vulnerabilities — with severity and fix for each finding",
       "file": "skills/productivity/nl/security-audit.md"
+    },
+    {
+      "id": "productivity/test-factories",
+      "category": "productivity",
+      "lang": "nl",
+      "title": "Test Factories",
+      "description": "Test factories and fixtures: factory_boy (Python), Fishery/faker-js (TypeScript), seeding test databases, avoiding test data duplication",
+      "file": "skills/productivity/nl/test-factories.md"
     },
     {
       "id": "productivity/test-generator",
@@ -2756,7 +3012,7 @@
     }
   ],
   "summary": {
-    "skills": 49,
+    "skills": 53,
     "agents": 6,
     "hooks": 7,
     "rules": 8,
