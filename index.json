@@ -1,6 +1,6 @@
 {
-  "version": "1.7.0",
-  "generated": "2026-05-18T17:11:20.386Z",
+  "version": "1.8.0",
+  "generated": "2026-05-18T17:13:17.655Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -307,6 +307,14 @@
       "file": "skills/backend/python/de/fastapi.md"
     },
     {
+      "id": "backend/python/python-async",
+      "category": "backend",
+      "lang": "de",
+      "title": "Python Async",
+      "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
+      "file": "skills/backend/python/de/python-async.md"
+    },
+    {
       "id": "backend/python/django",
       "category": "backend",
       "lang": "en",
@@ -355,6 +363,14 @@
       "file": "skills/backend/python/fr/fastapi.md"
     },
     {
+      "id": "backend/python/python-async",
+      "category": "backend",
+      "lang": "fr",
+      "title": "Python Async",
+      "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
+      "file": "skills/backend/python/fr/python-async.md"
+    },
+    {
       "id": "backend/python/django",
       "category": "backend",
       "lang": "nl",
@@ -371,12 +387,28 @@
       "file": "skills/backend/python/nl/fastapi.md"
     },
     {
+      "id": "backend/python/pytest",
+      "category": "backend",
+      "lang": "en",
+      "title": "Pytest",
+      "description": "pytest deep dive: fixtures, parametrize, markers, mocking, async tests, coverage, conftest patterns, and CI integration",
+      "file": "skills/backend/python/pytest.md"
+    },
+    {
       "id": "backend/python/python-async",
       "category": "backend",
       "lang": "en",
       "title": "Python Async",
       "description": "Python asyncio patterns: async/await, concurrent tasks, aiohttp, timeouts, queues, background tasks, common pitfalls",
       "file": "skills/backend/python/python-async.md"
+    },
+    {
+      "id": "devops-infra/cicd",
+      "category": "devops-infra",
+      "lang": "en",
+      "title": "Cicd",
+      "description": "CI/CD patterns: GitHub Actions workflows, secrets management, deployment gates, matrix builds, caching, reusable workflows, rollbacks",
+      "file": "skills/devops-infra/cicd.md"
     },
     {
       "id": "devops-infra/docker-compose",
@@ -833,6 +865,14 @@
       "title": "Neon",
       "description": "Neon serverless PostgreSQL: connection pooling, database branching, pgvector for AI, autoscaling patterns, Vercel integration",
       "file": "skills/database/es/neon.md"
+    },
+    {
+      "id": "database/postgresql",
+      "category": "database",
+      "lang": "es",
+      "title": "Postgresql",
+      "description": "PostgreSQL backend patterns: full-text search, JSONB, arrays, pg_notify, PL/pgSQL functions, connection pooling with asyncpg and node-postgres",
+      "file": "skills/database/es/postgresql.md"
     },
     {
       "id": "database/prisma",
@@ -2692,7 +2732,7 @@
     }
   ],
   "summary": {
-    "skills": 46,
+    "skills": 48,
     "agents": 6,
     "hooks": 7,
     "rules": 8,
