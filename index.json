@@ -1,6 +1,6 @@
 {
   "version": "1.4.0",
-  "generated": "2026-05-19T18:56:27.056Z",
+  "generated": "2026-05-19T19:00:25.150Z",
   "skills": [
     {
       "id": "backend/dotnet/csharp",
@@ -2621,6 +2621,48 @@
   ],
   "agents": [
     {
+      "id": "advisors/ceo-advisor",
+      "lang": "en",
+      "title": "CEO Advisor Agent",
+      "file": "agents/advisors/ceo-advisor.md"
+    },
+    {
+      "id": "advisors/cfo-advisor",
+      "lang": "en",
+      "title": "CFO Advisor Agent",
+      "file": "agents/advisors/cfo-advisor.md"
+    },
+    {
+      "id": "advisors/cmo-advisor",
+      "lang": "en",
+      "title": "CMO Advisor Agent",
+      "file": "agents/advisors/cmo-advisor.md"
+    },
+    {
+      "id": "advisors/coo-advisor",
+      "lang": "en",
+      "title": "COO Advisor Agent",
+      "file": "agents/advisors/coo-advisor.md"
+    },
+    {
+      "id": "advisors/cpo-advisor",
+      "lang": "en",
+      "title": "CPO Advisor Agent",
+      "file": "agents/advisors/cpo-advisor.md"
+    },
+    {
+      "id": "advisors/cto-advisor",
+      "lang": "en",
+      "title": "CTO Advisor Agent",
+      "file": "agents/advisors/cto-advisor.md"
+    },
+    {
+      "id": "advisors/general-counsel",
+      "lang": "en",
+      "title": "General Counsel Advisor Agent",
+      "file": "agents/advisors/general-counsel.md"
+    },
+    {
       "id": "build-resolvers/python-resolver",
       "lang": "de",
       "title": "Python Build Resolver Agent",
@@ -3765,7 +3807,7 @@
   ],
   "summary": {
     "skills": 71,
-    "agents": 6,
+    "agents": 13,
     "hooks": 7,
     "rules": 8,
     "workflows": 5,
