@@ -1,7 +1,7 @@
 {
   "name": "claudient",
-  "version": "1.5.0",
-  "description": "The definitive Claude Code knowledge system — skills, agents, hooks, rules, and workflows.",
+  "version": "2.0.0",
+  "description": "The definitive Claude Code knowledge system — 150+ skills, 22 agents, orchestration protocol, hooks, rules, and workflows.",
   "keywords": [
     "claude-code",
     "claude",
@@ -11,7 +11,15 @@
     "developer-productivity",
     "skills",
     "agents",
-    "hooks"
+    "hooks",
+    "gtm",
+    "legal",
+    "finance",
+    "marketing",
+    "small-business",
+    "cloud-architecture",
+    "compliance",
+    "orchestration"
   ],
   "homepage": "https://github.com/Claudient/Claudient",
   "repository": {

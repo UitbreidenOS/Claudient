@@ -6,8 +6,8 @@
 
 [![npm](https://img.shields.io/npm/v/claudient)](https://www.npmjs.com/package/claudient)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-80+-orange)](#skills)
-[![Agents](https://img.shields.io/badge/agents-13-pink)](#agents)
+[![Skills](https://img.shields.io/badge/skills-150+-orange)](#skills)
+[![Agents](https://img.shields.io/badge/agents-22-pink)](#agents)
 [![Small Business](https://img.shields.io/badge/small_business-12_skills-06b6d4)](#-claude-for-small-business)
 [![Languages](https://img.shields.io/badge/languages-EN%20%7C%20FR%20%7C%20DE%20%7C%20NL%20%7C%20ES-blue)](#translations)
 [![Reddit](https://img.shields.io/badge/Reddit-r%2Fuitbreiden-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/r/uitbreiden/)
@@ -58,6 +58,19 @@ Strategic thinking partners for founders and executives — spawn them with the 
 | `coo-advisor` | Process design, OKRs, scaling operations, bottleneck removal |
 | `cpo-advisor` | Roadmap prioritisation, discovery, pricing, PLG strategy |
 | `general-counsel` | Legal risk identification, contract flags, compliance overview |
+| `cdo-advisor` | AI training data rights, data architecture, data asset valuation |
+| `caio-advisor` | Model build-vs-buy, AI regulatory risk, API-to-self-hosted economics |
+| `ciso-advisor` | Security programme by stage, risk prioritisation, board reporting |
+| `vpe-advisor` | DORA metrics, eng hiring funnel, team structure, production discipline |
+| `chief-of-staff` | Operating rhythm, OKR facilitation, CEO leverage, initiative tracking |
+
+**Role agents** — domain specialists:
+| Agent | Role |
+|---|---|
+| `incident-commander` | SEV classification, comms, PIR, war room coordination |
+| `red-team` | Authorized adversary simulation, MITRE ATT&CK, engagement planning |
+| `senior-backend` | API design review, DB optimisation, auth, security hardening |
+| `senior-frontend` | React/Next.js architecture, performance, a11y, bundle analysis |
 
 ```bash
 npx claudient add agents
@@ -68,11 +81,14 @@ npx claudient add agents
 ## Who is this for?
 
 - **Developers & vibe coders** — Next.js + Drizzle + Better Auth, Supabase, Railway, Vercel AI SDK
-- **AI product builders** — LangGraph, Mastra AI, MCP Server Builder, Claude API
-- **GTM & sales teams** — HubSpot, SDR agents, lead enrichment, CRM hygiene
-- **Marketing teams** — SEO audits, CRO, email sequences, churn prevention
-- **Finance professionals** — DCF models, comps analysis, IC memos, KYC, earnings analysis
-- **Legal teams** — NDA review, termination analysis, DSAR response, AI impact assessment
+- **AI product builders** — LangGraph, Mastra AI, RAG Architect, LLM Eval, Prompt Engineering
+- **GTM & sales teams** — HubSpot, SDR agents, deal desk, RFP responder, revenue ops, partnerships
+- **Marketing teams** — SEO audits, CRO, paid ads, copywriting, analytics tracking, referral programs
+- **Finance professionals** — DCF models, 3-statement model, pitch deck, GL reconciler, deal screening
+- **Legal teams** — GDPR, SOC 2, EU AI Act, ISO 27001, NDA review, IP clearance, brief drafting
+- **Product teams** — discovery, analytics, roadmap, experiment design, UX research, competitive teardown
+- **Engineering leaders** — incident command, DORA metrics, red team, cloud architects, migration planning
+- **C-suite & founders** — CEO, CTO, CFO, CMO, COO, CPO, CDO, CAIO, CISO, VPE, General Counsel, Chief of Staff
 - **Small business owners** — invoicing, cash flow, content, customer service (no code needed)
 
 ---
@@ -182,21 +198,21 @@ npx claudient add skills productivity
 
 | Type | Count | What it does |
 |---|---|---|
-| **Skills** | **80+** | Slash commands for every major stack and workflow |
-| **Agents** | **13** | Core team + C-suite advisors + build resolvers |
+| **Skills** | **150+** | Slash commands for every major stack, workflow, and business domain |
+| **Agents** | **22** | Core team · C-suite advisors · role specialists · build resolvers |
 | Hooks | 7 | Safety guards, auto-format, cost tracking |
 | Rules | 8 | Coding, git, security, testing, language-specific |
 | Workflows | 5 | Feature dev, debugging, code review, refactoring |
-| Guides | 8 | In-depth docs including CLAUDE.md architecture |
+| Guides | 41 | Getting started, orchestration, CLAUDE.md architecture, domain guides |
 | Prompts | 8 | System prompts, starters, task-specific |
 
-All content in **EN · FR · DE · NL · ES**.
+All skills available in **EN · FR · DE · NL · ES**.
 
 ---
 
 ## Full Skills by Category
 
-**Categories:** `small-business` · `backend` · `devops-infra` · `data-ml` · `database` · `finance-payments` · `ai-engineering` · `gtm` · `marketing` · `git` · `productivity` · `automation` · `legal` · `finance`
+**Categories:** `small-business` · `backend` · `devops-infra` · `data-ml` · `database` · `finance-payments` · `ai-engineering` · `gtm` · `marketing` · `product` · `git` · `productivity` · `automation` · `legal` · `finance`
 
 | Category | Skills |
 |---|---|
@@ -206,18 +222,19 @@ All content in **EN · FR · DE · NL · ES**.
 | `backend/go` | Go |
 | `backend/dotnet` | C#/.NET |
 | `backend/java` | Spring Boot |
-| `devops-infra` | Kubernetes, Terraform, Docker, Docker Compose, GitHub Actions, CI/CD, Monorepo, Railway, Coolify, Northflank, Sentry, OpenTelemetry, Feature Flags |
+| `devops-infra` | Kubernetes, Terraform, Docker, Docker Compose, GitHub Actions, CI/CD, Monorepo, Railway, Coolify, Northflank, Sentry, OpenTelemetry, Feature Flags, AWS Architect, Azure Architect, GCP Architect, Cloud Security, Secrets Management, SLO Architect, Observability Designer, Performance Profiler, Chaos Engineering, Dependency Auditor, Migration Architect, Codebase Onboarding, Release Manager |
 | `data-ml` | Pandas/Polars, PyTorch/TF, dbt, MLflow, Spark, SQL, Data Migration, Synthetic Data |
 | `database` | Drizzle ORM, Prisma, PostgreSQL, Supabase, Neon, Redis, MongoDB, GraphQL |
 | `finance-payments` | Stripe, Webhook Security |
-| `ai-engineering` | Claude API, Vercel AI SDK, LangGraph, Agent Construction, Mastra AI, MCP Server Builder |
-| `gtm` | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene |
-| `marketing` | SEO Audit, Page CRO, Email Sequence, Churn Prevention |
-| `finance` | DCF Model, Comps Analysis, IC Memo, KYC Screener, Financial Plan, Earnings Analysis, Deal Screening |
-| `legal` | Contract Review, NDA Review, Termination Review, DSAR Response, AI Impact Assessment, OSS License Review, Privacy PIA |
+| `ai-engineering` | Claude API, Vercel AI SDK, LangGraph, Agent Construction, Mastra AI, MCP Server Builder, RAG Architect, Prompt Engineering, LLM Eval |
+| `gtm` | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Customer Success, Revenue Operations, Deal Desk, RFP Responder, Partnerships |
+| `marketing` | SEO Audit, AI SEO, Programmatic SEO, Page CRO, Email Sequence, Churn Prevention, Paid Ads, Content Strategy, Copywriting, Analytics Tracking, Onboarding CRO, Referral Program, Brand Guidelines, Pricing Strategy, Social Media, Schema Markup |
+| `product` | Product Discovery, Product Analytics, Competitive Teardown, Experiment Designer, Product Roadmap, UX Researcher |
+| `finance` | DCF Model, 3-Statement Model, Comps Analysis, IC Memo, Pitch Deck, KYC Screener, Financial Plan, Earnings Analysis, Deal Screening, GL Reconciler |
+| `legal` | Contract Review, NDA Review, Termination Review, DSAR Response, AI Impact Assessment, OSS License Review, Privacy PIA, GDPR Expert, SOC 2 Compliance, EU AI Act, ISO 27001, IP Clearance, Vendor Contract Review, Brief Section Drafter, Diligence Review |
 | `git` | Commit Writer, PR Description, Changelog Generator |
-| `productivity` | Lean Claude, Batch, Env Doctor, README Generator, Test Generator, Security Audit, Code Review, Refactor, Debug, llms.txt, No-Slop |
-| `automation` | Browser (Playwright) |
+| `productivity` | Lean Claude, Spec-Driven Workflow, Tech Debt Tracker, Jira Expert, Scrum Master, Confluence Expert, PR Review, API Test Builder, Runbook Generator, Lit Review, Grants Writer, Research Dossier, Trend Monitor, Batch, Env Doctor, README Generator, Test Generator, Security Audit, Code Review, Refactor, Debug |
+| `automation` | Browser (Playwright), Playwright Pro |
 
 ---
 
@@ -233,6 +250,18 @@ npx claudient add agents                    # all agents including advisors
 npx claudient add all --lang fr             # everything in French
 npx claudient search "churn prevention"     # find skills by name/description
 npx claudient list                          # browse all content
+```
+
+---
+
+## Orchestration
+
+Combine agents and skills to tackle complex multi-domain work. Read the [Orchestration Guide](guides/orchestration.md) — it's a lightweight protocol (no framework, no dependencies) for coordinating skills and agents across phases.
+
+```
+Phase 1 → cto-advisor + aws-architect + senior-backend  → Build
+Phase 2 → cmo-advisor + copywriting + content-strategy  → Launch
+Phase 3 → ceo-advisor + pricing-strategy + analytics    → Scale
 ```
 
 ---
@@ -258,7 +287,18 @@ npx claudient add agents
 - **CFO Advisor** — unit economics, fundraising, cash management
 - **COO Advisor** — process design, OKRs, scaling
 - **CPO Advisor** — roadmap, discovery, PLG
-- **General Counsel** — legal risk identification
+- **CDO Advisor** — AI training data rights, data architecture, data asset valuation
+- **CAIO Advisor** — model build-vs-buy, AI regulatory risk, self-hosting economics
+- **CISO Advisor** — security programme by stage, risk prioritisation
+- **VPE Advisor** — DORA metrics, hiring funnel, team structure, production discipline
+- **Chief of Staff** — operating rhythm, OKR facilitation, CEO leverage
+- **General Counsel** — legal risk identification, contract flags, compliance
+
+**Role Agents** — domain specialists:
+- **Incident Commander** — SEV classification, comms templates, PIR structure
+- **Red Team** — authorized adversary simulation, MITRE ATT&CK engagement planning
+- **Senior Backend Engineer** — API design, DB optimisation, auth patterns
+- **Senior Frontend Engineer** — React/Next.js, performance, a11y, bundle analysis
 
 ---
 
