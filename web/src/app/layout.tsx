@@ -20,13 +20,24 @@ export const metadata: Metadata = {
   },
   description:
     'Skills, agents, hooks, rules, and workflows for Claude Code. The modular knowledge base that multiplies your output.',
-  keywords: ['claude-code', 'claude', 'anthropic', 'ai-tools', 'developer-productivity'],
+  keywords: ['claude-code', 'claude', 'anthropic', 'ai-tools', 'developer-productivity', 'claude-skills', 'claude-agents', 'ai-productivity', 'vibe-coding', 'llm-tools'],
+  authors: [{ name: 'tushar2704', url: 'https://uitbreiden.com' }],
+  creator: 'tushar2704',
+  publisher: 'Uitbreiden',
   openGraph: {
     title: 'Claudient — The Claude Code Knowledge System',
-    description: 'Skills, agents, hooks, rules, and workflows for Claude Code.',
+    description: 'Skills, agents, hooks, rules, and workflows for Claude Code. 160+ skills across 15 categories.',
     url: 'https://claudient.dev',
     siteName: 'Claudient',
     type: 'website',
+    emails: ['ceo@uitbreiden.com'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Claudient — Claude Code Knowledge System',
+    description: '160+ skills, 25 agents, orchestration — the definitive Claude Code toolkit.',
+    site: '@UITBREIDEN',
+    creator: '@UITBREIDEN',
   },
 }
 

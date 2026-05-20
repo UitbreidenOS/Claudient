@@ -21,7 +21,12 @@
     "compliance",
     "orchestration"
   ],
-  "homepage": "https://github.com/Claudient/Claudient",
+  "author": {
+    "name": "tushar2704",
+    "email": "ceo@uitbreiden.com",
+    "url": "https://uitbreiden.com"
+  },
+  "homepage": "https://github.com/Claudients/Claudient",
   "repository": {
     "type": "git",
     "url": "https://github.com/Claudient/Claudient.git"
