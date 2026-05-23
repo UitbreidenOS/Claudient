@@ -1,137 +1,174 @@
----
-name: sop-writer
-description: "Schrijf standaardwerkproced ures voor elk bedrijfsproces — van werknemersinterne tot openings-/sluitingsroutines tot klantenservicescript s"
----
-
-# SOP Writer Skill
+# SOP Writer
 
 ## Wanneer activeren
-- U moet een proces documenteren zodat een nieuwe werknemer het kan volgen
-- Schrijven van een werknemershandboek of bedrijfsvoeringshandboek
-- Een klantservicescript of FAQ-antwoordgids maken
-- Documenter uw openings-/sluitingsroutine, schoonmaaklijst of kwaliteitschecklist
-- Uw bedrijf voorbereiding om zonder u te werken
+- Een standaard operationele procedure (SOP) schrijven voor een proces dat herhaaldelijk wordt uitgevoerd
+- Processdocumentatie voor teamleden of ingehuurde werknemers
+- Compliance-vereisten documenteren (audit trail nodig)
+- Een bestaand mondelinge of ad-hoc proces formaliseren
+- Onboarding gids maken zodat nieuwe teamleden het proces snel kunnen leren
 
 ## Wanneer NIET gebruiken
-- Juridische of nalevingsver eiste procedures — moet door advocaat worden herzien
-- Medische of veiligheidsprotocollen — vereisen professionele beoordeling
-- Franchiseovereenkomsten — gebruik sjablonen van uw franchisor
+- Eenmalige of unieke taken — SOP's zijn bedoeld voor repetitief werk
+- Snelle, mondeling communicatie tussen twee mensen — overkill
+- Software-handleidingen of gebruikershandleidingen voor externe klanten — ander formaat
+- Beleid of strategische besluiten — SOP's zijn taktisch, niet strategisch
 
 ## Instructies
 
-### Basis SOP van beschrijving
+### SOP Template
 
-```
-Schrijf een SOP voor: [beschrijf het proces in duidelijk Engels]
+```markdown
+# Standard Operating Procedure: [Name]
 
-Bedrijfstype: [uw bedrijf]
-Wie volgt dit: [rol/positie]
-Frequentie: [dagelijks/wekelijks/wanneer X gebeurt]
-Gebruikte tools/systemen: [lijst]
-Belangrijke notities of dingen die vaak fout gaan: [optioneel]
-```
+## Purpose
+[1-2 sentences: what this SOP achieves and who does it]
 
-### Openings-/sluitingsprocedure
+## Scope
+[Who is responsible? Which teams? What's in/out of scope?]
 
-```
-Schrijf een openingsprocedure voor mijn [restaurant/winkel/salon/kantoor].
-Openingstijd: [tijd]
-Stappen die ik momenteel doe (in ruwe volgorde): [beschrijf uw routine]
-Betrokken personeel: [rollen]
-Format: genummerde checklist met geschatte tijd voor elke stap
-```
+## Prerequisites / Prerequisites
+- [Item 1 that must be true before starting]
+- [Item 2: systems/access/training required]
 
-### Klantenservicescript
+## Step-by-step Process
 
-```
-Schrijf een klantenservicescript voor mijn [bedrijfstype] dat omvat:
-1. Een nieuwe klant begroeten
-2. De meestgestelde vraag afhandelen: [wat is het]
-3. Met een klacht over [veelvoorkomend probleem] omgaan
-4. Upselling/aanbeveling van [product/service]
-5. De interactie afsluiten
+### Step 1: [Action]
+- Sub-action a
+- Sub-action b
+**Decision point:** If X, go to Step 3. If Y, continue to Step 2.
 
-Mijn toon: [vriendelijk/professioneel/enthousiast]
-Mijn bedrijfswaarden: [1-2 sleutelzaken]
-```
+### Step 2: [Action]
+- Sub-action a
 
-### Checklist nieuwe werknemersinterne
+### Step 3: [Validation]
+[Checklist to confirm success]
+- [ ] Condition 1 met
+- [ ] Condition 2 met
 
-```
-Maak een eerstedaags onboarding-checklist voor een nieuwe [rol] bij mijn [bedrijfstype].
+## Common Issues & Solutions
 
-Wat ze moeten weten:
-- Onze wichtigste hulpmiddelen: [lijst]
-- Hun kernverantwoordelingen: [beschrijf]
-- Aan wie rapporteren ze: [rol]
-- Het belangrijkste om in week 1 goed te doen: [beschrijf]
+| Issue | Solution |
+|---|---|
+| X happens | Do Y to resolve |
+| Z fails | Check A, then try B |
 
-Format: dagelijks checklist voor dagen 1-5
-```
+## Approval / Sign-off
+- [ ] Manager: __________ Date: __________
+- [ ] Team lead: __________ Date: __________
 
-### Processdocumentatie van interview
+## Version History
+| Date | Author | Change |
+|---|---|---|
+| 2025-05-23 | [Name] | Initial SOP |
 
-```
-Ik ga beschrijven hoe ik [proces] doe en ik wil dat u het in een duidelijke stap-voor-stap SOP omzet
-die iemand anders zou kunnen volgen.
-
-Hier is hoe ik het doe: [beschrijf in je eigen woorden, zo rommelig als je wilt]
+## Related Docs
+- [Linked SOP 1]
+- [Linked SOP 2]
 ```
 
-### Kwaliteitschecklist
+### Elements of a Clear SOP
 
-```
-Maak een kwaliteitschecklist voor [product/service] voordat het aan een klant wordt geleverd.
+**Precision over brevity:**
+- "Click the 'Deploy' button in the top-right corner" — specific
+- "Deploy the app" — vague
 
-Hoe "goed" eruit ziet: [beschrijf uw standaarden]
-Veelvoorkomen de problemen die we opvangen: [beschrijf]
-Wie controleert: [rol]
-Format: checklist met slagen/mislukken criteria
-```
+**Decision trees:**
+- Use flowcharts or if/then steps for conditional logic
+- Never assume — state every path
+
+**Screenshots / video:**
+- One image per 5-10 steps is ideal
+- Label buttons and fields
+- Use arrows to show clicks
+
+**Frequency and scope:**
+- State how often this runs ("weekly", "per customer", "as needed")
+- Who performs it: individual, team, on behalf of whom
+
+### Common SOP Types
+
+- **Customer Service SOP** — ticket handling, escalation
+- **Financial SOP** — expense approval, invoice processing, payroll
+- **Hiring SOP** — job posting, interview scheduling, offer letter
+- **Product Release SOP** — deployment checklist, rollback plan
+- **Data Backup SOP** — frequency, verification, retention
 
 ## Voorbeeld
 
-**U zegt:**
+**Gebruiker:** We're a small agency with a messy invoicing process. Create an SOP so any team member can generate and send invoices without asking me.
+
+**Claude's SOP output:**
+
+```markdown
+# Standard Operating Procedure: Monthly Client Invoicing
+
+## Purpose
+Consistently generate and send client invoices by the 1st of each month. This SOP ensures accurate billing, professional delivery, and audit compliance.
+
+## Scope
+Applied to all active client accounts on the service tier. Does not cover refunds or adjustments (see SOP: Invoice Adjustments).
+
+## Prerequisites
+- Access to accounting software (Xero / Wave)
+- Client contact list (in CRM or email group)
+- Approval from Finance Manager
+
+## Step-by-step Process
+
+### Step 1: Gather Invoice Data (by 25th of month)
+1. Log into [accounting software]
+2. Go to: Invoices → New Invoice
+3. Select client from dropdown
+4. Verify client billing address matches CRM
+5. **Decision:** Is the address correct?
+   - YES → continue to Step 2
+   - NO → update in CRM first, then continue
+
+### Step 2: Enter Line Items
+1. For each service rendered:
+   - Select service from template (e.g., "Design Services")
+   - Enter quantity (hours or units)
+   - System auto-calculates rate and total
+2. Add any reimbursable expenses (receipts attached in [folder path])
+3. Review subtotal
+
+### Step 3: Review and Approve
+Checklist before sending:
+- [ ] Client name and address match master list
+- [ ] All services listed match statement of work
+- [ ] Invoice number is sequential
+- [ ] Due date is 30 days from invoice date
+- [ ] No math errors (system auto-calculates but verify total)
+
+### Step 4: Send
+1. Click "Send" → email template auto-fills
+2. Recipient: auto-filled from client contact (verify it's correct person)
+3. Click "Send"
+4. Screenshot confirmation and file in: [Shared drive]/Invoices/[Month-Year]/Sent
+
+## Common Issues & Solutions
+
+| Issue | Solution |
+|---|---|
+| "Client not found" error | Client may be inactive. Ask Finance Manager to reactivate in system. |
+| Email bounces | Verify email address in CRM matches company records. Call client if unsure. |
+| Math doesn't match hours | Check statement of work for agreed rate. If rate changed, ask FM to update before invoicing. |
+
+## Approval / Sign-off
+- [ ] Finance Manager: _________________ Date: _________
+- [ ] Operations: _________________ Date: _________
+
+## Version History
+| Date | Author | Change |
+|---|---|---|
+| 2025-05-23 | [You] | Initial SOP |
+| TBD | [Name] | Add expense tracking |
+
+## Related Docs
+- SOP: Invoice Adjustments & Refunds
+- Client Contact List (CRM link)
+- Accounting Software Login Guide
 ```
-Schrijf een SOP voor omgang met een klachtiklacht in mijn kapsalon.
-Veelvoorkomen de klachten: wachttijd, kleur komt niet overeen met verwachtingen, prijsverrassing.
-Ik wil dat personeel rustig blijft, oplossingen aanbiedt, nooit betwist.
-We kunnen aanbieden: service herhalen, korting op volgende bezoek, kleine terugbetaling voor kleine problemen.
-Toon: empathisch, professioneel.
-```
-
-**Claude produceert:**
-
-**SOP: Omgang met klachten van klanten — Kapsalon**
-
-**Doel:** Klachten professioneel oplossen, klant behouden, reputatie van salon beschermen.
-
-**Stap 1 — Luister zonder te onderbreken**
-- Oogcontact maken, knikken, volledig laten afmaken
-- Verdedig of verklaar nog niet
-- Zeg: "Het spijt me echt dit te horen — dank je dat je het me hebt verteld"
-
-**Stap 2 — Erkense het gevoel**
-- "Ik begrijp volkomen waarom dat frustrerend is"
-- Zeg niet: "Dat is ons beleid niet" / "Maar we hebben je dat verteld..." / "Dat gebeurt nooit"
-
-**Stap 3 — Identificeer het probleem**
-- Vraag: "Kunt u me helpen te begrijpen wat er precies is gebeurd?"
-- Verduidelijk: gaat het om het resultaat, prijs, wachttijd of ervaring?
-
-**Stap 4 — Bied een oplossing aan**
-- Kleur-/resultaatprobleem: gratis bijwerking aanbieden binnen 7 dagen
-- Prijsverrassing: prijsgesprekscontrole; als ons fout, eerder prijs
-- Wachttijd: oprechte verontschuldiging + kleine korting op vandaag's service
-
-**Stap 5 — Bevestig de oplossing**
-- "Denkt u dat dit een eerlijke oplossing is?"
-- Document: klantnaam, datum, klachttype, oplossing in boekingssysteem
-
-**Stap 6 — Vervolgacties (optioneel maar krachtig)**
-- Voor ernstige klachten: manager belt of stuurt binnen 24 uur
-
-**Nooit:** meningsverschil, andere klanten betrekken, terugbetaling aanbieden zonder managergodkeuring (boven $50)
 
 ---
 
