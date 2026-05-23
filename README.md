@@ -1,107 +1,106 @@
-# Claudient — Skills, Agents & Plugins for Claude Code
+# Claudient — The Claude Code Knowledge Base
 
 [![npm version](https://img.shields.io/npm/v/claudient?color=f97316&label=npm)](https://www.npmjs.com/package/claudient)
 [![npm downloads](https://img.shields.io/npm/dm/claudient?color=f97316)](https://www.npmjs.com/package/claudient)
+[![GitHub Stars](https://img.shields.io/github/stars/Claudient/Claudient?color=f97316&label=stars)](https://github.com/Claudient/Claudient)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-220+-f97316)](#skills-by-category)
-[![Agents](https://img.shields.io/badge/agents-75+-ec4899)](#agents)
+[![Skills](https://img.shields.io/badge/skills-250+-f97316)](#skills-by-category)
+[![Agents](https://img.shields.io/badge/agents-70+-ec4899)](#agents)
+[![MCP](https://img.shields.io/badge/MCP_configs-20+-8b5cf6)](#top-100-mcp-servers)
 [![Languages](https://img.shields.io/badge/languages-EN%20FR%20DE%20NL%20ES-3b82f6)](#translations)
-[![Reddit](https://img.shields.io/badge/Reddit-r%2Fuitbreiden-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/r/uitbreiden/)
-[![YouTube](https://img.shields.io/badge/YouTube-%40UITBREIDEN-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@UITBREIDEN)
 
-> **The community knowledge system for Claude Code.** 220+ slash command skills, 75+ agents, hooks, rules, workflows, and orchestration protocols — for developers, vibe coders, GTM teams, legal, finance, and business owners.
+**Stop explaining your stack to Claude every session.**
+
+Claudient gives Claude Code instant domain expertise — 250+ skills that activate automatically, 70+ specialist agents, configs for the top 100 MCP servers, and hooks that automate your workflow. Install in 30 seconds, works with any Claude Code project.
+
+```bash
+npx claudient add all
+```
 
 ![Claudient Social Preview](web/public/social-preview.svg)
 
-```bash
-npx claudient add all
-```
+---
+
+## Who is this for?
+
+| You are... | You get... |
+|---|---|
+| **Developer / vibe coder** | Skills for Next.js, FastAPI, Rust, Go, Drizzle, tRPC, Docker, k8s, Terraform, and 200+ more stacks — activate with a slash command |
+| **AI product builder** | RAG Architect, LangGraph, Prompt Engineering, LLM Eval, MCP Server Builder, Claude API patterns with prompt caching |
+| **GTM / RevOps engineer** | HubSpot MCP, SDR Agent, Lead Enrichment, CRM Hygiene, Email Automation, Deal Desk |
+| **Finance / Legal professional** | DCF models, 3-statement models, IC memos, contract review, GDPR, SOC 2, EU AI Act — with mandatory human review gates |
+| **Small business owner** | Plain-English skills for invoicing, cash flow, Shopify, reviews, SOPs — no terminal required |
+| **DevOps / Platform team** | SLO design, chaos engineering, Helm, Kubernetes, Terraform, SRE runbooks, cost tracking |
 
 ---
 
-## What is Claudient?
-
-Claudient gives Claude Code **domain expertise on demand**. Instead of describing frameworks and patterns from scratch every session, you install skills that activate instantly.
+## ⚡ Quick Start
 
 ```bash
-# Install a skill
-npx claudient add skills devops-infra
-
-# Use it in Claude Code
-/aws-architect     # Design AWS serverless architecture with IaC templates
-/slo-architect     # Set up SLOs, error budgets, and burn rate alerts
-/chaos-engineering # Plan failure injection experiments with rollback strategy
-```
-
-Every skill is a structured prompt with activation triggers, anti-patterns, concrete examples, and implementation steps — ready for Claude Code, not a generic chatbot.
-
----
-
-## Quick Start
-
-```bash
-# First time — guided setup
-npx claudient init
-
-# Install everything (160+ skills, 25 agents, hooks, rules, guides)
+# Install everything
 npx claudient add all
 
-# Install by role
-npx claudient add skills backend       # Developer stack skills
-npx claudient add skills marketing     # Growth and GTM skills
-npx claudient add skills legal         # GDPR, SOC 2, EU AI Act
-npx claudient add skills finance       # DCF, 3-statement model, pitch deck
-npx claudient add agents               # All 25 advisor agents
+# Install by domain
+npx claudient add skills backend          # 80+ backend skills
+npx claudient add skills devops-infra     # Kubernetes, Terraform, Docker, CI/CD
+npx claudient add skills ai-engineering   # RAG, LangGraph, Claude API, MCP builder
+npx claudient add skills legal            # GDPR, SOC 2, contracts, NDA review
+npx claudient add skills finance          # DCF, 3-statement model, pitch deck
+npx claudient add skills small-business   # Invoice chaser, cash flow, Shopify
+
+# Install agents
+npx claudient add agents                  # All 70+ specialist agents
 
 # Install in your language
-npx claudient add all --lang fr        # French
-npx claudient add all --lang de        # German
-npx claudient add all --lang nl        # Dutch
-npx claudient add all --lang es        # Spanish
+npx claudient add all --lang fr           # French
+npx claudient add all --lang de           # German
+npx claudient add all --lang nl           # Dutch
+npx claudient add all --lang es           # Spanish
 
-# Search and discover
-npx claudient search "churn prevention"
+# Discover
+npx claudient search "circuit breaker"
 npx claudient list
 ```
 
 ---
 
-## Who uses Claudient?
+## 🔥 Most Popular Right Now
 
-| Audience | What they use |
-|---|---|
-| **Developers & vibe coders** | Next.js, Hono, Drizzle, Better Auth, Supabase, Railway, Vercel AI SDK |
-| **AI product builders** | LangGraph, RAG Architect, Prompt Engineering, LLM Eval, MCP Server Builder |
-| **DevOps & platform teams** | AWS/Azure/GCP Architect, Helm, Kubernetes, Terraform, Chaos Engineering |
-| **GTM & RevOps teams** | HubSpot MCP, SDR Agent, Deal Desk, RFP Responder, Revenue Operations |
-| **Marketing teams** | SEO Audit, Paid Ads, Copywriting, Analytics Tracking, Referral Programs |
-| **Finance professionals** | DCF Model, 3-Statement Model, Pitch Deck, GL Reconciler, IC Memo |
-| **Legal & compliance teams** | GDPR Expert, SOC 2, EU AI Act, ISO 27001, NDA Review, IP Clearance |
-| **Product managers** | Product Discovery, UX Research, Experiment Designer, PM Toolkit |
-| **C-suite & founders** | 14 advisor agents — CEO, CTO, CFO, CMO, COO, CPO, CDO, CAIO, CISO, VPE, CRO, CHRO, CCO, General Counsel |
-| **Small business owners** | Invoicing, cash flow, Shopify, content, customer service — no code needed |
+| Skill / Agent | What it does | Category |
+|---|---|---|
+| `/nextjs-app` | Next.js App Router, Server Components, Server Actions, Drizzle | Backend |
+| `/fastapi` | Production FastAPI with auth, Pydantic, async, tests, Docker | Backend |
+| `/sre-engineer` | SLO design, error budgets, burn rate alerts, runbooks | Agent |
+| `/security-audit` | OWASP Top 10 scan, secret exposure check before every PR | Agent |
+| `/invoice-chaser` | Automated AR reminders and payment escalation (no code needed) | Small Business |
+| `/hubspot` | CRM automation via the official HubSpot MCP server | GTM |
+| `/rag-architect` | Chunking strategy, embeddings, retrieval, reranking, eval | AI Engineering |
+| `/kubernetes-architect` | K8s manifests, Helm charts, HPA, NetworkPolicy, RBAC | DevOps |
 
 ---
 
 ## 🔌 Top 100 MCP Servers for Indie Builders
 
-> **The fastest way to extend Claude Code.** MCP servers give Claude direct access to your tools — databases, GitHub, Figma, Stripe, Jira, Notion, and 95 more.
+> **The fastest way to extend Claude Code.** MCP servers give Claude direct access to your tools — GitHub, Figma, Stripe, Jira, Notion, Slack, and 94 more.
 
-**Start here — the indie builder stack:**
+**The indie builder starter stack:**
 
-| Server | What it does | Searches/mo |
-|--------|-------------|-------------|
-| [GitHub MCP](mcp/github.md) | Read PRs, create issues, search code, manage branches | 69K |
+| Server | What it does | Monthly searches |
+|--------|-------------|-----------------|
 | [Playwright MCP](mcp/playwright-mcp.md) | Browser automation — navigate, click, screenshot, scrape | 82K |
 | [Figma MCP](mcp/figma.md) | Read designs, extract tokens, generate components from specs | 74K |
+| [GitHub MCP](mcp/github.md) | Read PRs, create issues, search code, manage releases | 69K |
 | [Atlassian MCP](mcp/atlassian.md) | Jira tickets, Confluence docs, sprint management | 40K |
-| [Memory MCP](mcp/memory.md) | Persistent knowledge graph across sessions | — |
+| [Memory MCP](mcp/memory.md) | Persistent knowledge graph across Claude Code sessions | — |
+| [Stripe MCP](mcp/stripe.md) | Query customers, subscriptions, payments, churn data | — |
+| [Notion MCP](mcp/notion.md) | Read/write pages, query databases, create docs | — |
+| [Taskmaster MCP](mcp/taskmaster.md) | AI task management with context isolation across sessions | — |
 
 **→ [Full guide: Top 100 MCP Servers for Indie Builders](mcp/top-mcp-servers.md)** — installation configs, tier rankings, and curated bundles for every stack.
 
 ```bash
-# Quick install — add GitHub + Memory + Playwright in one step
-npx claudient add mcp starter
+npx claudient add mcp starter   # GitHub + Memory + Playwright
+npx claudient add mcp all       # All 20 individual config guides
 ```
 
 ---
@@ -129,42 +128,33 @@ npx claudient add skills small-business
 
 ---
 
-## 🤖 75+ Agents
+## 🤖 70+ Agents
 
-Strategic thinking partners spawned with the `Agent` tool in Claude Code.
+Specialist agents spawned with the `Agent` tool in Claude Code. Each has a specific model, tool restrictions, and trigger conditions.
 
-### C-Suite Advisors
+### C-Suite Advisors (15 agents)
 
 | Agent | Domain |
 |---|---|
-| `ceo-advisor` | Company strategy, board prep, investor relations, org design |
+| `ceo-advisor` | Strategy, board prep, investor relations, org design |
 | `cto-advisor` | Architecture decisions, build vs buy, technical strategy |
-| `cmo-advisor` | GTM strategy, channel allocation, positioning, demand gen |
 | `cfo-advisor` | Unit economics, fundraising, cash management, modelling |
+| `cmo-advisor` | GTM strategy, channel allocation, positioning, demand gen |
+| `ciso-advisor` | Security programme design, risk prioritisation, board reporting |
 | `coo-advisor` | Process design, OKRs, scaling operations |
 | `cpo-advisor` | Roadmap, discovery, pricing, PLG strategy |
 | `cro-advisor` | Revenue forecasting, NRR analysis, sales model design |
-| `cdo-advisor` | AI training data rights, data architecture, M&A data valuation |
-| `caio-advisor` | Model build-vs-buy, AI regulatory risk, self-hosting economics |
-| `ciso-advisor` | Security programme design, risk prioritisation, board reporting |
-| `vpe-advisor` | DORA metrics, eng hiring funnel, team structure |
-| `chro-advisor` | Hiring strategy, compensation bands, performance management |
-| `cco-advisor` | Customer lifecycle, retention decomposition, CS coverage model |
-| `chief-of-staff` | Operating rhythm, OKR facilitation, CEO leverage |
 | `general-counsel` | Legal risk, contract review, compliance overview |
+| `chief-of-staff` | Operating rhythm, OKR facilitation, CEO leverage |
+| + 5 more | CDO, CAIO, VPE, CHRO, CCO |
 
-### Role Specialists
+### Engineering Specialists
 
-| Agent | Domain |
-|---|---|
-| `incident-commander` | SEV classification, war room comms, PIR structure |
-| `red-team` | Authorized adversary simulation, MITRE ATT&CK planning |
-| `senior-backend` | API design, DB optimisation, auth patterns, code review |
-| `senior-frontend` | React/Next.js architecture, performance, accessibility |
+`sre-engineer` · `chaos-engineer` · `penetration-tester` · `kubernetes-architect` · `security-auditor` · `platform-engineer` · `network-engineer` · `rust-engineer` · `mlops-engineer` · `graphql-architect` · `websocket-engineer` · `fullstack-developer` · `llm-architect` · `codebase-orchestrator` · `multi-agent-coordinator` + 30 more
 
-### Core Engineering Agents
+### Domain Specialists
 
-`Planner` · `Architect` · `Code Reviewer` · `Security Reviewer` · `Python Build Resolver` · `TypeScript Build Resolver`
+`competitive-analyst` · `market-researcher` · `trend-analyst` · `quant-analyst` · `fintech-engineer` · `healthcare-admin` · `legal-advisor` · `nlp-engineer` · `data-pipeline-architect` + more
 
 ```bash
 npx claudient add agents
@@ -172,207 +162,104 @@ npx claudient add agents
 
 ---
 
-## Orchestration Protocol
+## 📦 Skills by Category
 
-Combine agents and skills for multi-domain work — no framework, no dependencies.
+**250+ skills · 15 categories · EN · FR · DE · NL · ES**
 
-```
-Phase 1: cto-advisor + aws-architect + senior-backend   → Build
-Phase 2: cmo-advisor + copywriting + content-strategy  → Launch  
-Phase 3: ceo-advisor + pricing-strategy + analytics    → Scale
-```
-
-Read the [Orchestration Guide](guides/orchestration.md).
-
----
-
-## ⭐ Most Popular Skills
-
-### Vibe Coding
-| Skill | What it does |
-|---|---|
-| [Next.js](skills/backend/nodejs/nextjs.md) | App Router, Server Components, Server Actions |
-| [Hono](skills/backend/nodejs/hono.md) | Edge-native API on Cloudflare Workers + Bun |
-| [Drizzle ORM](skills/database/drizzle.md) | TypeScript-first ORM, SQL-direct, Neon/Supabase |
-| [Better Auth](skills/backend/nodejs/better-auth.md) | OAuth, 2FA, RBAC, open-source auth |
-| [shadcn/ui](skills/backend/nodejs/shadcn.md) | Component library Claude reads and modifies |
-| [Vercel AI SDK](skills/ai-engineering/vercel-ai-sdk.md) | Streaming AI, tool calls, useChat |
-
-### AI Engineering
-| Skill | What it does |
-|---|---|
-| [RAG Architect](skills/ai-engineering/rag-architect.md) | Chunking, embeddings, retrieval, reranking, eval |
-| [LangGraph](skills/ai-engineering/langgraph.md) | Stateful agents, human-in-the-loop, checkpointing |
-| [Prompt Engineering](skills/ai-engineering/prompt-engineering.md) | System prompts, few-shot, CoT, output formatting |
-| [LLM Eval](skills/ai-engineering/llm-eval.md) | RAGAS, LLM-as-judge, production monitoring |
-| [MCP Server Builder](skills/ai-engineering/mcp-server-builder.md) | Connect proprietary data to Claude Code |
-
-### Cloud & DevOps
-| Skill | What it does |
-|---|---|
-| [AWS Architect](skills/devops-infra/aws-architect.md) | Serverless, ECS, CloudFormation, cost optimisation |
-| [Azure Architect](skills/devops-infra/azure-architect.md) | App Service, AKS, Bicep templates |
-| [GCP Architect](skills/devops-infra/gcp-architect.md) | Cloud Run, GKE Autopilot, BigQuery pipelines |
-| [Helm](skills/devops-infra/helm.md) | Chart authoring, values overrides, Helmfile |
-| [SLO Architect](skills/devops-infra/slo-architect.md) | SLIs, error budgets, burn rate alerts |
-| [Chaos Engineering](skills/devops-infra/chaos-engineering.md) | Failure injection, game days, blast radius |
-
-### GTM & Revenue
-| Skill | What it does |
-|---|---|
-| [HubSpot](skills/gtm/hubspot.md) | CRM automation via official MCP server |
-| [Deal Desk](skills/gtm/deal-desk.md) | Enterprise deal structure, discount policy, red flags |
-| [Revenue Operations](skills/gtm/revenue-operations.md) | GTM metrics, forecast accuracy, pipeline analysis |
-| [RFP Responder](skills/gtm/rfp-responder.md) | Security questionnaires, bid scoring, response library |
-| [Partnerships](skills/gtm/partnerships.md) | Tier classification, GTM plan, revenue share model |
-
-### Compliance & Legal
-| Skill | What it does |
-|---|---|
-| [GDPR Expert](skills/legal/gdpr-expert.md) | Privacy risk scan, DPIA generation, data subject rights |
-| [SOC 2 Compliance](skills/legal/soc2-compliance.md) | Control matrix, evidence collection, audit readiness |
-| [EU AI Act](skills/legal/eu-ai-act.md) | Risk tier classification, conformity assessment |
-| [ISO 27001](skills/legal/iso27001.md) | ISMS gap analysis, risk assessment, SoA |
-| [IP Clearance](skills/legal/ip-clearance.md) | Trademark search, FTO analysis, OSS licence audit |
-
-### Finance
-| Skill | What it does |
-|---|---|
-| [DCF Model](skills/finance/dcf-model.md) | WACC, FCF projection, sensitivity table |
-| [3-Statement Model](skills/finance/3-statement-model.md) | P&L, balance sheet, cash flow — integrated |
-| [Pitch Deck](skills/finance/pitch-deck.md) | Investor narrative, TAM/SAM/SOM, traction slide |
-| [GL Reconciler](skills/legal/gdpr-expert.md) | Month-end close, journal entry review, variance analysis |
-| [IC Memo](skills/finance/ic-memo.md) | 9-section investment committee memo |
-
-### Productivity & Engineering
-| Skill | What it does |
-|---|---|
-| [Ship Gate](skills/productivity/ship-gate.md) | Pre-production audit: security, DB, auth, deps — blocks deploys |
-| [PR Review](skills/productivity/pr-review.md) | Blast radius, security scan, breaking change detection |
-| [Spec-Driven Workflow](skills/productivity/spec-driven-workflow.md) | Spec → tests → implementation pattern |
-| [Tech Debt Tracker](skills/productivity/tech-debt-tracker.md) | Debt register, prioritisation, leadership brief |
-| [Git Worktree](skills/productivity/git-worktree.md) | Parallel branches, Claude Code isolation pattern |
-
----
-
-## Skills by Category
-
-**15 categories · 160+ skills · EN · FR · DE · NL · ES**
-
-| Category | Skills |
-|---|---|
-| `small-business` | Invoice Chaser, QuickBooks, Cash Flow, Expense Audit, Content Repurposer, Campaign Brief, Review Response, Customer Inquiry, Shopify, Job Description, SOP Writer, Weekly Pulse |
-| `backend/nodejs` | Next.js, Hono, Express, NestJS, React, Vue 3, TypeScript Advanced, Better Auth, shadcn/ui, tRPC, Astro, Svelte, Wasp, Payload CMS |
-| `backend/python` | FastAPI, Django, pytest, Python Async, API Design |
-| `backend/go` · `backend/dotnet` · `backend/java` | Go, C#/.NET, Spring Boot |
-| `devops-infra` | AWS/Azure/GCP Architect, Kubernetes, Helm, Terraform, Docker, GitHub Actions, CI/CD, Sentry, OpenTelemetry, Secrets Management, SLO Architect, Observability Designer, Chaos Engineering, Release Manager, Migration Architect + 10 more |
-| `database` | Drizzle ORM, Prisma, PostgreSQL, Supabase, Neon, Redis, MongoDB, GraphQL |
-| `data-ml` | Pandas/Polars, PyTorch/TF, dbt, MLflow, Spark, SQL, Synthetic Data |
-| `ai-engineering` | Claude API, Vercel AI SDK, LangGraph, Mastra AI, MCP Server Builder, RAG Architect, Prompt Engineering, LLM Eval |
-| `gtm` | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Customer Success, Revenue Ops, Deal Desk, RFP Responder, Partnerships |
-| `marketing` | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, Copywriting, Analytics Tracking, Onboarding CRO, Referral Program, Brand Guidelines, Pricing Strategy + more |
-| `product` | Product Discovery, Product Analytics, Competitive Teardown, Experiment Designer, Product Roadmap, UX Researcher, PM Toolkit, Landing Page Generator |
-| `finance` | DCF Model, 3-Statement Model, Comps Analysis, IC Memo, Pitch Deck, KYC Screener, Financial Plan, Earnings Analysis, Deal Screening, GL Reconciler |
-| `legal` | Contract Review, NDA Review, Termination Review, DSAR Response, AI Impact Assessment, OSS License Review, Privacy PIA, GDPR Expert, SOC 2, EU AI Act, ISO 27001, IP Clearance, Vendor Contract Review, Brief Section Drafter, Diligence Review |
-| `productivity` | Ship Gate, PR Review, API Test Builder, Spec-Driven Workflow, Tech Debt Tracker, Jira Expert, Scrum Master, Confluence Expert, Git Worktree, Self-Eval, Env Secrets Manager, Runbook Generator, Lit Review, Grants Writer, Research Dossier, Trend Monitor |
-| `automation` | Browser Automation, Playwright Pro |
-| `git` | Commit Writer, PR Description, Changelog Generator |
-
----
-
-## What's Included
-
-| Type | Count | Description |
+| Category | Count | Top skills |
 |---|---|---|
-| **Skills** | **220+** | Slash commands for every major stack, workflow, and business domain |
-| **Agents** | **75+** | C-suite advisors · role specialists · engineering core |
-| **Hooks** | 11 | Secret scanner, test runner, lint check, daily summary, cost tracker + more |
-| **Rules** | 12 | API design, error handling, database migrations, AI/LLM, performance, testing |
-| **Workflows** | 10 | Incident response, API design, database migration, security review, feature launch |
-| **Guides** | **30+** | MCP integration, prompt injection defense, multi-agent patterns, deployment patterns + more |
-| **Prompts** | 14+ | Code reviewer, security auditor, product spec writer, startup advisor, data analyst |
-
-All skills available in **EN · FR · DE · NL · ES**
+| `backend/nodejs` | 20+ | Next.js, Hono, NestJS, tRPC, Astro, Svelte, React Native, Angular, WebSockets |
+| `backend/python` | 5 | FastAPI, Django, pytest, Python Async |
+| `backend/other` | 8 | Go, C#/.NET, Spring Boot, Rust, Rails, Laravel, Elixir, Flutter |
+| `devops-infra` | 20+ | AWS/Azure/GCP, Kubernetes, Helm, Terraform, Terragrunt, Docker, GitHub Actions, Sentry, OpenTelemetry |
+| `ai-engineering` | 10+ | Claude API, Vercel AI SDK, LangGraph, RAG Architect, Prompt Caching, Batch API, MCP Builder |
+| `data-ml` | 8 | dbt, Spark, Kafka, MLOps, NLP Pipelines, Reinforcement Learning, Pandas/Polars, PyTorch |
+| `database` | 8 | Drizzle, Prisma, PostgreSQL, Supabase, Neon, Redis, Elasticsearch, Blockchain/Solidity |
+| `gtm` | 10 | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Deal Desk, Revenue Ops |
+| `legal` | 15 | Contract Review, NDA, DSAR, GDPR, SOC 2, EU AI Act, ISO 27001, IP Clearance, Privacy PIA |
+| `finance` | 10 | DCF Model, 3-Statement Model, IC Memo, Pitch Deck, KYC Screener, GL Reconciler |
+| `marketing` | 10 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
+| `product` | 8 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
+| `productivity` | 20+ | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
+| `small-business` | 12 | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response |
+| `automation` | 6 | Playwright Pro, Browser Automation, Remotion, SaaS Scaffolder, Office Docs |
 
 ---
 
-## Hooks
+## 🪝 Hooks
+
+Event-driven automation — runs outside Claude's context as real shell processes.
 
 | Hook | Event | What it does |
 |---|---|---|
-| `secret-scanner.sh` | PreToolUse | Blocks writes containing API keys or credentials |
-| `lint-check.sh` | PostToolUse | Auto-lints TypeScript/Python after every file edit |
-| `test-runner.sh` | PostToolUse | Runs related tests after editing a source file |
-| `block-dangerous.sh` | PreToolUse | Blocks destructive shell commands |
-| `git-push-confirm.sh` | PreToolUse | Confirms before `git push` |
-| `audit-log.sh` | PostToolUse | Logs every tool call to a session file |
-| `prettier.sh` | PostToolUse | Auto-formats after Write/Edit |
-| `cost-tracker.sh` | PostToolUse | Tracks token costs per session |
-| `daily-summary.sh` | Stop | Appends session summary to daily log |
-| `pre-compact-save.sh` | PreCompact | Saves state before compaction |
-| `session-start.sh` | Notification | Prints branch + context on session start |
+| `secret-scanner` | PreToolUse | Blocks writes containing API keys or credentials |
+| `tdd-guard` | PostToolUse | Blocks implementation files without a matching test |
+| `injection-scanner` | PreToolUse | Scans tool inputs for prompt injection attempts |
+| `plannotator` | ExitPlanMode | Interactive plan annotation before Claude executes |
+| `lint-check` | PostToolUse | Auto-lints TypeScript/Python after every file edit |
+| `test-runner` | PostToolUse | Runs related tests after editing a source file |
+| `telegram-pr-notify` | PostToolUse | Sends Telegram message when a PR is created |
+| `keepalive-poke` | Stop | Continues autonomous sessions without intervention |
+| `sound-system` | All events | Platform-native sounds for 27 Claude Code events |
+| `session-context-loader` | SessionStart | Injects date, branch, recent commits at session start |
+| `ntfy-push` | Notification | Mobile push alerts via ntfy |
+| `tts-announcer` | Stop | Speaks Claude's final message aloud |
+| + 20 more | — | Auto-stage git, transcript backup, output compressor, bug logger, Slack notifier, WhatsApp gate... |
 
 ---
 
-## Guides
+## 📖 Guides & Workflows
 
-| Guide | What it covers |
+### Guides (35+)
+
+[Getting Started](guides/getting-started.md) · [Agent Frontmatter Reference](guides/agent-frontmatter.md) · [Skills Frontmatter Reference](guides/skills-frontmatter.md) · [Decision Framework](guides/decision-framework.md) · [Claude Managed Agents](guides/claude-managed-agents.md) · [Advanced Tool Use](guides/advanced-tool-use.md) · [Voice Dictation](guides/voice-dictation.md) · [Desktop App](guides/desktop-app.md) · [Opus 4.7 Migration](guides/opus-47-migration.md) · [Hooks Cookbook](guides/hooks-cookbook.md) · [Multi-Agent Patterns](guides/multi-agent-patterns.md) · [Subagent Patterns](guides/subagent-patterns.md) · [Context Management](guides/context-management.md) · [Token Cost Reduction](guides/token-cost-reduction.md) · [Notifications Setup](guides/notifications-setup.md) · [Plugin Authoring](guides/plugin-authoring.md) · [RIPER Framework](guides/riper-framework.md) · [RPI Workflow](guides/rpi-workflow.md) · [CLI Reference](guides/cli-reference.md) · [Settings Scope](guides/settings-scope.md) · [Why Use Claude Code](guides/why-use-claude-code.md) · [Routines](guides/routines.md) · [Computer Use](guides/computer-use.md) · [Ultraplan](guides/ultraplan.md) · [Auto Mode](guides/auto-mode.md) + 10 more
+
+### Workflows (20+)
+
+[RPI Feature Development](workflows/rpi-feature.md) · [RIPER](workflows/riper.md) · [Incremental Build](workflows/incremental-build.md) · [Pre-Human Review](workflows/pre-human-review.md) · [Autonomous Loop](workflows/autonomous-loop.md) · [Worktree Lifecycle](workflows/worktree-lifecycle.md) · [Multi-Agent Saga](workflows/multi-agent-saga.md) · [Chaos Game Day](workflows/chaos-game-day.md) · [Error Budget](workflows/error-budget.md) · [Bug Investigation](workflows/bug-investigation.md) · [Compound Engineering](workflows/compound-engineering.md) · [Session Learning](workflows/session-learning.md) + more
+
+---
+
+## 📊 What's Included
+
+| Type | Count |
 |---|---|
-| [Orchestration](guides/orchestration.md) | Multi-phase agent + skill coordination protocol |
-| [Multi-Agent Patterns](guides/multi-agent-patterns.md) | Parallel, pipeline, specialist, map-reduce patterns |
-| [MCP Integration](guides/mcp-integration.md) | Connect external tools and databases to Claude Code |
-| [Prompt Injection Defense](guides/prompt-injection-defense.md) | Protect AI apps from injection attacks |
-| [Context Management](guides/context-management.md) | Context window strategies, CLAUDE.md, /compact |
-| [Cost Optimisation](guides/cost-optimisation.md) | Model selection, caching, batch API, monitoring |
-| [Deployment Patterns](guides/deployment-patterns.md) | Rolling, blue-green, canary, feature flags |
-| [CLAUDE.md Architecture](guides/claude-md-architecture.md) | Structuring for solo/team/monorepo |
-| [Getting Started](guides/getting-started.md) | Setup, first skill, first hook |
-| [Security](guides/security.md) | Isolation, approval, sanitization |
+| **Skills** | **250+** |
+| **Agents** | **70+** |
+| **Hooks** | 30+ |
+| **MCP config guides** | 20+ |
+| **Guides** | 35+ |
+| **Workflows** | 20+ |
+| **Prompts** | 15+ |
+| **Rules** | 9 |
+| **Languages** | 5 (EN · FR · DE · NL · ES) |
 
 ---
 
-## CLI Reference
+## 🌍 5 Languages
 
-```bash
-npx claudient init                          # Guided first-time setup
-npx claudient add all                       # Install everything
-npx claudient add skills                    # All 160+ skills
-npx claudient add skills devops-infra       # Specific category
-npx claudient add skills marketing
-npx claudient add skills legal
-npx claudient add skills finance
-npx claudient add agents                    # All 25 agents
-npx claudient add hooks                     # All hooks
-npx claudient add all --lang fr             # French version
-npx claudient search "circuit breaker"      # Find by name/description
-npx claudient list                          # Browse all content
-npx claudient remove skills productivity    # Remove a category
-```
-
----
-
-## Translations
-
-Every skill, agent, guide, workflow, and prompt in:
+Every skill, agent, guide, workflow, and prompt is available in:
 
 **🇬🇧 English · 🇫🇷 French · 🇩🇪 German · 🇳🇱 Dutch · 🇪🇸 Spanish**
 
 ```bash
+npx claudient add all --lang fr   # French
 npx claudient add all --lang de   # German
 npx claudient add all --lang nl   # Dutch
+npx claudient add all --lang es   # Spanish
 ```
 
 ---
 
-## Contributing
+## 🤝 Add Your Skill — Get Featured
 
-Claudient is community-powered. To add skills, agents, or hooks:
+Claudient is community-powered. Every skill lives in one markdown file.
 
-1. Read the [Skill Authoring Guide](guides/skill-authoring.md)
-2. Open a PR following the [file format](CLAUDE.md)
-3. Skills go live after review
+1. Read the [Skill Authoring Guide](guides/skill-authoring.md) — 5 minutes
+2. Fork, add your skill in one `.md` file
+3. Submit a PR — merged skills get featured in **Most Popular**
 
-**[GitHub Discussions](https://github.com/Claudients/Claudient/discussions) · [CONTRIBUTING.md](CONTRIBUTING.md)**
+**[GitHub Discussions](https://github.com/Claudients/Claudient/discussions) · [CONTRIBUTING.md](CONTRIBUTING.md) · [Reddit](https://www.reddit.com/r/uitbreiden/)**
 
 ---
 
