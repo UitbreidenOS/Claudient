@@ -1,15 +1,15 @@
 ---
 name: adr-writer
-description: "Agent rédacteur ADR — capture les décisions architecturales du contexte de conversation dans des documents ADR structurés avec contexte, décision, justification et conséquences"
+description: "Agent de rédaction ADR — capture les décisions architecturales du contexte de la conversation dans des documents d'enregistrement des décisions architecturales structurés avec contexte, décision, justification et conséquences"
 ---
 
-# ADR Writer Agent
+# Agent de Rédaction ADR
 
 ## Objectif
-Convertir les décisions architecturales discutées dans les sessions Claude Code en Architecture Decision Records (ADR) structurés. Prévient la perte de connaissance lorsque les décisions sont prises verbalement ou en chat sans être formellement documentées.
+Convertit les décisions architecturales discutées dans les sessions Claude Code en archives structurées des décisions architecturales (ADR). Prévient la perte de connaissances lorsque les décisions sont prises verbalement ou par chat sans être formellement documentées.
 
-## Orientation du modèle
-Sonnet – extraire le raisonnement nuancé et écrire des conséquences claires nécessite de la profondeur.
+## Guidage du modèle
+Sonnet — l'extraction d'un raisonnement nuancé et la rédaction de conséquences claires nécessitent de la profondeur.
 
 ## Outils
 - Read (fichiers ADR existants, CLAUDE.md, fichiers source pertinents)
@@ -18,80 +18,80 @@ Sonnet – extraire le raisonnement nuancé et écrire des conséquences claires
 ## Quand déléguer ici
 - Après avoir pris une décision architecturale importante dans une session
 - À la fin d'une rétrospective de session pour capturer les décisions prises
-- Lors de l'examen d'anciennes décisions qui doivent être formellement documentées
-- Lorsqu'une décision présente des compromis que les futurs ingénieurs devraient comprendre
+- Lors de l'examen des anciennes décisions qui doivent être formellement documentées
+- Quand une décision a des compromis que les futurs ingénieurs devraient comprendre
 
 ## Instructions
 
-### Format ADR (standard Nygard)
+### Format ADR (norme Nygard)
 
 Chaque ADR suit cette structure :
 
 ```markdown
-# ADR-[NUMBER]: [Titre descriptif court]
+# ADR-[NUMÉRO] : [Titre descriptif court]
 
-Date: [YYYY-MM-DD]
-Status: Proposed | Accepted | Deprecated | Superseded by ADR-[N]
-Deciders: [qui a pris cette décision]
+Date : [YYYY-MM-DD]
+Statut : Proposé | Accepté | Déprécié | Remplacé par ADR-[N]
+Décideurs : [qui a pris cette décision]
 
-## Context
+## Contexte
 
 [Quelle situation ou problème a motivé cette décision ?
 Quelles forces étaient en jeu ? Quelles contraintes existaient ?
-Soyez spécifique — c'est ce que les futurs ingénieurs doivent comprendre
-pourquoi cette décision a été prise à ce moment précis.]
+Soyez précis — c'est ce que les futurs ingénieurs doivent comprendre
+pourquoi cette décision a été prise à ce moment du temps.]
 
-## Decision
+## Décision
 
-[Énoncez la décision clairement en une ou deux phrases.
-Utilisez la voix active : « Nous utiliserons X » et non « X a été choisi ».]
+[Énoncez clairement la décision en une ou deux phrases.
+Utilisez la voix active : « Nous utiliserons X » pas « X a été choisi ».]
 
-## Rationale
+## Justification
 
 [Pourquoi cette décision plutôt que les alternatives ?
 Énumérez ce qui a été considéré et pourquoi cette option a gagné.
-Référencez des données spécifiques, des benchmarks ou des conversations si disponibles.]
+Référencez les données spécifiques, les benchmarks ou les conversations si disponibles.]
 
-## Alternatives Considered
+## Alternatives Considérées
 
-| Option | Avantages | Inconvénients | Pourquoi rejeté |
+| Option | Avantages | Inconvénients | Pourquoi Rejeté |
 |---|---|---|---|
 | [Alternative 1] | ... | ... | ... |
 | [Alternative 2] | ... | ... | ... |
 
-## Consequences
+## Conséquences
 
-**Positives:**
-- [Avantage 1]
-- [Avantage 2]
+**Positives :**
+- [Bénéfice 1]
+- [Bénéfice 2]
 
-**Negative / Trade-offs:**
+**Négatives / Compromis :**
 - [Coût ou limitation 1]
 - [Dette technique introduite]
 
-**Neutral:**
+**Neutre :**
 - [Choses qui changent mais ne sont ni bonnes ni mauvaises]
 
-## Review Date
+## Date d'Examen
 
 [Quand cette décision devrait-elle être réévaluée ? par ex. « Après 6 mois d'utilisation en production » ou « Lorsque l'équipe dépasse 20 ingénieurs »]
 ```
 
-### Capture du contexte de session
+### Capture à partir du contexte de la session
 
-Lorsqu'il est invoqué après une décision, l'agent :
+Lorsqu'elle est invoquée après qu'une décision soit prise, l'agent :
 1. Lit le contexte de la conversation pour extraire la décision
 2. Identifie le problème résolu, les options considérées et l'approche choisie
 3. Déduit les conséquences du contexte technique
-4. Numérote l'ADR séquentiellement (lit les ADR existants pour trouver le numéro suivant)
-5. Enregistre dans `docs/decisions/ADR-NNN-title.md`
+4. Numérote l'ADR séquentiellement (lit les ADR existants pour trouver le prochain numéro)
+5. Sauvegarde sur `docs/decisions/ADR-NNN-title.md`
 
 ```
-"Write an ADR for the decision we just made about switching from JWT to session-based auth"
+« Écrivez un ADR pour la décision que nous venons de prendre concernant le passage de JWT à l'authentification basée sur les sessions »
 
 → Lit le contexte de la conversation
-→ Extrait: problème (complexité du JWT refresh), décision (auth basée sur session avec Redis), alternatives (JWTs, Firebase Auth), conséquences (dépendance Redis, révocation plus facile)
-→ Écrit: docs/decisions/ADR-012-session-based-auth.md
+→ Extrait : problème (complexité de rafraîchissement JWT), décision (session basée avec Redis), alternatives (JWT, Firebase Auth), conséquences (dépendance Redis, révocation plus facile)
+→ Écrit : docs/decisions/ADR-012-session-based-auth.md
 ```
 
 ### Index ADR
@@ -99,61 +99,61 @@ Lorsqu'il est invoqué après une décision, l'agent :
 Maintient un index `docs/decisions/README.md` :
 
 ```markdown
-# Architecture Decision Records
+# Enregistrements des Décisions Architecturales
 
-| ADR | Titre | Status | Date |
+| ADR | Titre | Statut | Date |
 |---|---|---|---|
-| [ADR-001](ADR-001-database-choice.md) | Use PostgreSQL over MongoDB | Accepted | 2026-01-15 |
-| [ADR-002](ADR-002-auth-approach.md) | JWT for stateless auth | Accepted | 2026-02-03 |
-| [ADR-012](ADR-012-session-auth.md) | Switch to session-based auth | Accepted | 2026-05-20 |
+| [ADR-001](ADR-001-database-choice.md) | Utiliser PostgreSQL plutôt que MongoDB | Accepté | 2026-01-15 |
+| [ADR-002](ADR-002-auth-approach.md) | JWT pour l'authentification sans état | Accepté | 2026-02-03 |
+| [ADR-012](ADR-012-session-auth.md) | Passer à l'authentification basée sur les sessions | Accepté | 2026-05-20 |
 ```
 
-## Cas d'usage
+## Cas d'usage exemple
 
-**Scénario:** Pendant une session, l'équipe a décidé d'utiliser Drizzle ORM au lieu de Prisma.
+**Scénario :** Au cours d'une session, l'équipe a décidé d'utiliser Drizzle ORM au lieu de Prisma.
 
-**Sortie de l'agent:**
+**Sortie de l'agent :**
 
 ```markdown
-# ADR-007: Use Drizzle ORM Instead of Prisma
+# ADR-007 : Utiliser Drizzle ORM Au Lieu de Prisma
 
-Date: 2026-05-20
-Status: Accepted
-Deciders: Engineering team
+Date : 2026-05-20
+Statut : Accepté
+Décideurs : Équipe d'ingénierie
 
-## Context
+## Contexte
 
-Notre application Next.js utilisait Prisma. Au fur et à mesure que nous nous sommes déplacés vers les déploiements edge (Vercel Edge Functions, Cloudflare Workers), nous avons rencontré la limitation de Prisma : il ne peut pas s'exécuter dans les runtimes edge basés sur V8 car il nécessite un sidecar binaire Node.js. Cela a complètement bloqué nos plans de déploiement edge.
+Notre application Next.js utilisait Prisma. Lors du passage aux déploiements de bord (Fonctions Edge de Vercel, Cloudflare Workers), nous avons rencontré la limitation de Prisma : elle ne peut pas s'exécuter dans les runtimes de bord basés sur V8 car elle nécessite un sidecar binaire Node.js. Cela a complètement bloqué nos plans de déploiement de bord.
 
-## Decision
+## Décision
 
-Nous allons remplacer Prisma par Drizzle ORM dans toute la codebase.
+Nous remplaçons Prisma par Drizzle ORM dans toute la base de code.
 
-## Rationale
+## Justification
 
-Drizzle est le seul ORM TypeScript prêt pour la production qui s'exécute nativement dans les runtimes edge V8 sans processus sidecar. Il fournit une définition de schéma TypeScript-first, une construction de requête de type SQL et un accès direct à la base de données — tout ce dont nous avons besoin sans la contrainte d'exécution.
+Drizzle est le seul ORM TypeScript prêt pour la production qui s'exécute nativement dans les runtimes de bord V8 sans processus sidecar. Il fournit une définition de schéma TypeScript-first, une construction de requête de type SQL et un accès direct à la base de données — tout ce dont nous avons besoin sans la contrainte de runtime.
 
-## Alternatives Considered
+## Alternatives Considérées
 
-| Option | Avantages | Inconvénients | Pourquoi rejeté |
+| Option | Avantages | Inconvénients | Pourquoi Rejeté |
 |---|---|---|---|
-| Keep Prisma | Déjà intégré, bon DX | Cannot run on edge | Blocks edge deployment |
-| kysely | Runs on edge | Not an ORM, more verbose | More boilerplate |
-| Raw SQL | No restrictions | No type safety | Maintenance burden |
+| Garder Prisma | Déjà intégré, bonne DX | Ne peut pas s'exécuter sur le bord | Bloque le déploiement sur le bord |
+| kysely | S'exécute sur le bord | Pas un ORM, plus verbeux | Plus de boilerplate |
+| SQL brut | Pas de restrictions | Pas de sécurité de type | Charge de maintenance |
 
-## Consequences
+## Conséquences
 
-**Positive:**
-- Can deploy API routes to Vercel Edge Functions
-- ~40% faster query execution vs Prisma Client
-- Smaller bundle size (no sidecar binary)
+**Positives :**
+- Peut déployer les routes API vers les fonctions Edge de Vercel
+- Exécution des requêtes ~40% plus rapide par rapport à Prisma Client
+- Taille de bundle plus petite (pas de sidecar binaire)
 
-**Negative:**
-- 2-3 days migration effort to rewrite schema and queries
-- Team must learn Drizzle API
-- Losing Prisma Studio (use Drizzle Studio instead)
+**Négatives :**
+- Effort de migration 2-3 jours pour réécrire le schéma et les requêtes
+- L'équipe doit apprendre l'API de Drizzle
+- Perte de Prisma Studio (utilisez Drizzle Studio à la place)
 
-## Review Date
+## Date d'Examen
 
-Reconsider if Prisma releases native edge runtime support.
+Reconsidérez si Prisma publie le support de runtime de bord natif.
 ```

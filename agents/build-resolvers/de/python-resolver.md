@@ -1,64 +1,65 @@
-> 🇩🇪 Dies ist die deutsche Übersetzung. [Englische Version](../python-resolver.md).
-
 # Python Build Resolver Agent
 
 ## Zweck
-Diagnostiziert und behebt Python-Import-Fehler, Laufzeit-Ausnahmen, Type-Annotation-Konflikte (mypy) und Abhängigkeitskonflikte — und gibt korrigierten Code mit einer Erklärung zurück.
+Diagnostiziert und fixet Python Import Errors, Runtime Exceptions, Type Annotation Mismatches (mypy) und Dependency Conflicts — Rückgabe korrigierten Code mit Erklärung.
 
-## Modellempfehlung
-**Haiku 4.5** für Einzeldatei-Fehler (ImportError, AttributeError, NameError, einfache Type-Annotation-Probleme).
+## Modellführung
+**Haiku 4.5** für Single-File Errors (ImportError, AttributeError, NameError, Simple Type Annotation Issues).
 
-**Sonnet 4.6** für Fehler, die mehrere Module umspannen, zirkuläre Imports, mypy-Strict-Mode-Fehler oder Abhängigkeitsversions-Konflikte.
+**Sonnet 4.6** für Errors spanning Multiple Modules, Circular Imports, Mypy Strict Mode Failures, oder Dependency Version Conflicts.
 
-## Tools
-- `Read` — die fehlerhaften Datei und verwandte Module lesen
-- `Edit` — gezielte Korrekturen anwenden
-- `Bash` — `python -m mypy file.py 2>&1`, `python -c "import module"`, `pip show package` zur Diagnose ausführen
+## Werkzeuge
+- `Read` — failing File und related Modules
+- `Edit` — apply Targeted Fixes
+- `Bash` — `python -m mypy file.py 2>&1`, `python -c "import module"`, `pip show package`
 
 ## Wann hierher delegieren
-- `ImportError` oder `ModuleNotFoundError` beim Start oder beim Test-Run
-- `mypy`-Typprüfungsfehler in einer streng typisierten Codebase
-- `AttributeError: module 'x' has no attribute 'y'` (API in Paket-Upgrade geändert)
-- Zirkuläre Import-Fehler
-- Abhängigkeitsversions-Konflikte (`pip install` schlägt fehl oder erzeugt inkompatible Versionen)
+- `ImportError` oder `ModuleNotFoundError` bei Startup oder Test Run
+- `mypy` Type Checking Failures in strictly Typed Codebase
+- `AttributeError: module 'x' has no attribute 'y'` (API changed in Package Upgrade)
+- Circular Import Errors
+- Dependency Version Conflicts
 
-## Wann NICHT hierher delegieren
-- Logikfehler, die keine Import-/Typfehler sind
-- Performance-Probleme
-- Laufzeitfehler, die durch falsche Geschäftslogik verursacht werden (keine strukturellen Python-Fehler)
+## Wenn NICHT delegieren
+- Logic Bugs die nicht Import/Type Errors sind
+- Performance Issues
+- Runtime Errors verursacht durch inkorrekte Business Logic
 
-## Prompt-Vorlage
+## Prompt Template
+
 ```
-You are a Python error resolver. Fix the error — minimal changes only. Do not refactor.
+Sie sind Python Error Resolver. Fixe den Error — minimal Changes nur. Nicht refactor.
 
 Error:
-[paste full traceback or mypy output]
+[paste full Traceback oder mypy Output]
 
-Relevant files:
-[paste file contents where errors occur]
+Relevant Files:
+[paste File Contents wo Errors auftreten]
 
-Python version: [e.g., 3.12]
-Package versions: [paste pip freeze output if relevant]
+Python Version: [z.B., 3.12]
+Package Versions: [paste pip Freeze Output wenn relevant]
 
-For each error:
-1. Explain why the error occurs in one sentence
-2. Apply the minimal fix
-3. If a dependency version conflict: specify the exact version constraint to add/change
+Für jeden Error:
+1. Explain why Error occurs in einer Sentence
+2. Apply minimalen Fix
+3. Falls Dependency Version Conflict: specify exact Version Constraint
 
-Do not change logic. Do not refactor. Fix the error only.
+Nicht ändern Logic. Nicht refactor. Nur Fix Error.
 ```
 
 ## Beispiel-Anwendungsfall
-**Fehler:**
+
+**Error:**
 ```
 ImportError: cannot import name 'AsyncClient' from 'httpx' (0.23.0)
 ```
 
-**Was Resolver zurückgibt:**
-- Ursache: `AsyncClient` wurde in `httpx 0.18.0` hinzugefügt, aber die Verwendung erfordert `httpx>=0.23.0` für die verwendete spezifische API
-- Lösung: `requirements.txt` auf `httpx>=0.23.0,<1.0.0` aktualisieren und `pip install -r requirements.txt` ausführen
-- Falls kein Upgrade möglich: äquivalenten Code für die installierte Version zeigen
+**Was Resolver returned:**
+- Ursache: `AsyncClient` wurde in `httpx 0.18.0` hinzugefügt
+- Fix: Update `requirements.txt` zu `httpx>=0.23.0,<1.0.0`
+- Falls cannot upgrade: zeigen Code Äquivalent für installed Version
 
 ---
 
-> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
+> **Arbeiten Sie mit uns:** Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/).
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

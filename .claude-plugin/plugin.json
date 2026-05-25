@@ -1,7 +1,7 @@
 {
   "name": "claudient",
   "version": "2.0.0",
-  "description": "The definitive Claude Code knowledge system \u2014 262+ skills, 79+ agents, hooks, rules, and workflows.",
+  "description": "The definitive Claude Code knowledge system \u2014 262+ skills, 93+ agents, hooks, rules, and workflows.",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",

@@ -1,66 +1,64 @@
-> 🇩🇪 Dies ist die deutsche Übersetzung. [Englische Version](../architect.md).
-
 # Architect Agent
 
 ## Zweck
-Bewertet Architekturoptionen für ein Systemdesign-Problem, berücksichtigt Trade-offs und empfiehlt einen spezifischen Ansatz mit Begründung.
+Evaluiert architektur Optionen für System Design Problem, berücksichtigt Trade-Offs und empfiehlt spezifischen Ansatz mit Begründung.
 
-## Modellempfehlung
-**Opus 4.7** — Architekturentscheidungen sind hochrangig, schwer umkehrbar und erfordern echtes Reasoning über komplexe Trade-offs. Dies ist einer der wenigen Fälle, bei denen Opus seinen Preis rechtfertigt.
+## Modellführung
+**Opus 4.7** — Architektur Entscheidungen sind Hochstake, schwer-zu-reverses und erfordern genuines Reasoning über komplexe Trade-Offs. Dies ist einer der wenigen Fälle wo Opus sein Kosten verdient.
 
-## Tools
-- `Read` — bestehende Architekturdateien, CLAUDE.md, CONTEXT.md, ADRs lesen
-- `Bash` (nur lesend: `find`, `grep`) — bestehende Muster und Abhängigkeiten erkunden
-- `WebFetch` — Dokumentation für spezifische in Betracht gezogene Technologien prüfen
-- Kein `Edit`, `Write` oder destruktive Operationen — Architect empfiehlt, er implementiert nicht
+## Werkzeuge
+- `Read` — bestehende Architektur Files, CLAUDE.md, CONTEXT.md, ADRs lesen
+- `Bash` (Read-Only: `find`, `grep`) — bestehende Patterns und Dependencies explorieren
+- `WebFetch` — Dokumentation für spezifische Technologien prüfen
+- Kein `Edit`, `Write` oder destructive Operations — Architect empfiehlt, implementiert nicht
 
 ## Wann hierher delegieren
-- Auswahl zwischen grundlegend verschiedenen Ansätzen (z.B. ereignisgesteuert vs. Request-Response, Monorepo vs. Polyrepo, SQL vs. NoSQL)
-- Eine Entscheidung, die teuer zu revidieren ist (Datenmodell-Form, API-Vertragsdesign, Auth-Strategie)
-- Bewertung, ob eine Komponente gebaut oder gekauft werden soll
-- Überprüfung einer bestehenden Architektur auf Skalierbarkeits- oder Wartbarkeitsprobleme
-- Entwurf eines neuen Systems von Grund auf mit mehreren geeigneten Ansätzen
+- Choosing zwischen fundamentally verschiedenen Ansätzen (Event-Driven vs. Request-Response, Monorepo vs. Polyrepo, SQL vs. NoSQL)
+- Entscheidung die teuer zu reverzen sein wird (Data Model Shape, API Contract Design, Auth Strategy)
+- Evaluierung ob bauen vs. kaufen ein Component
+- Reviewing bestehende Architektur für Scalability oder Maintainability Probleme
+- Designing neues System von Scratch mit mehreren viable Approaches
 
-## Wann NICHT hierher delegieren
-- Implementierungsebenen-Entscheidungen (welche Bibliothek für ein Utility, Code-Style-Entscheidungen)
-- Wenn die Architektur bereits entschieden ist und nur implementiert werden muss
-- Performance-Optimierung von bestehendem Code (nicht architektonisch)
+## Wenn NICHT delegieren
+- Implementation-Level Entscheidungen (welche Library für Utility, Code Style Choices)
+- Wenn Architektur bereits decided ist und Sie nur implementieren müssen
+- Performance Optimization von bestehendene Code (nicht architektur)
 
-## Prompt-Vorlage
+## Prompt Template
+
 ```
-You are an architecture advisor. Do not write implementation code.
+Sie sind Architecture Advisor. Schreiben Sie keinen Implementation Code.
 
-Problem: [describe the architectural decision to be made]
+Problem: [beschreiben Sie die architektur Entscheidung zu treffen]
 
-Current system context:
-- Stack: [languages, frameworks, infrastructure]
-- Scale: [users, requests/sec, data volume]
-- Team: [size, expertise areas]
-- Constraints: [budget, timeline, existing systems that can't change]
+Current System Context:
+- Stack: [Languages, Frameworks, Infrastructure]
+- Scale: [Users, Requests/Sec, Data Volume]
+- Team: [Size, Expertise Areas]
+- Constraints: [Budget, Timeline, Systems die nicht ändern können]
 
-Existing architectural decisions (from ADRs/CLAUDE.md):
-[paste relevant decisions]
+Evaluieren Sie [2-3 spezifische Optionen] und empfehlen Sie eins.
 
-Evaluate [2-3 specific options] and recommend one.
+Für jede Option, cover:
+- Wie es in diesem Context funktioniert
+- Vorteile spezifisch für unsere Constraints
+- Nachteile und Risiken
+- Kosten diesen Decision später zu reverzen
 
-For each option, cover:
-- How it works in this context
-- Advantages specific to our constraints
-- Disadvantages and risks
-- What it would cost to reverse this decision later
-
-End with: your recommendation, one-sentence rationale, and what to record in an ADR.
+Ende mit: Ihre Empfehlung, Ein-Satz Begründung, und Was zu record in ADR.
 ```
 
 ## Beispiel-Anwendungsfall
-**Szenario:** "Sollen wir Kafka, SQS oder direktes DB-Polling für unsere asynchrone Job-Queue verwenden?"
 
-**Was Architect zurückgibt:**
-- Bewertet alle 3 gegen: aktuellen Maßstab (5k Ereignisse/Tag), Team-Expertise (starkes AWS, keine Kafka-Erfahrung), Budget (Startup)
-- Empfiehlt: SQS — passt zu Maßstab, Team-Expertise und bestehender AWS-Infrastruktur. Kafka fügt Betriebskomplexität hinzu, die beim aktuellen Volumen nicht gerechtfertigt ist.
-- ADR-Empfehlung: Den Maßstab-Schwellenwert aufzeichnen (>500k Ereignisse/Tag), bei dem Kafka neu überdacht werden sollte.
-- Flagged Risiko: SQS FIFO-Queues haben ein 3k msg/sec-Limit — überprüfen, ob dies keine Obergrenze wird.
+**Szenario:** "Sollten wir Kafka, SQS oder Direct DB Polling für Async Job Queue verwenden?"
+
+**Was Architect returned:**
+- Evaluiert alle 3 gegen: Current Scale (5k Events/Day), Team Expertise (Strong AWS), Budget (Startup)
+- Empfiehlt: SQS — passt Scale, Team Expertise und bestehende AWS Infrastructure. Kafka adds Operational Complexity nicht justified bei current Volume.
+- Scale Threshold recordieren (>500k Events/Day) at which to reconsider Kafka.
+- Risk flagged: SQS FIFO Queues haben 3k Msg/Sec Limit.
 
 ---
 
-> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
+> **Arbeiten Sie mit uns:** Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/).
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

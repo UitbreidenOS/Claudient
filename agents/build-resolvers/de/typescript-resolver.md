@@ -1,65 +1,66 @@
-> 🇩🇪 Dies ist die deutsche Übersetzung. [Englische Version](../typescript-resolver.md).
-
 # TypeScript Build Resolver Agent
 
 ## Zweck
-Diagnostiziert und behebt TypeScript-Kompilierungsfehler, Typ-Konflikte und `tsc`-Fehler — und gibt korrigierten Code mit einer Erklärung zurück, was falsch war.
+Diagnostiziert und fixet TypeScript Compilation Errors, Type Mismatches und `tsc` Failures — Rückgabe korrigierten Code mit Erklärung was falsch war.
 
-## Modellempfehlung
-**Haiku 4.5** für unkomplizierte Typfehler (fehlende Eigenschaft, falscher Argumenttyp, `any`-Leckage).
+## Modellführung
+**Haiku 4.5** für straightforward Type Errors (fehlende Property, falscher Argument Type, `any` Leaking).
 
-**Sonnet 4.6** wenn Fehler mehrere Dateien umspannen, generische Typ-Einschränkungen, bedingte Typen oder komplexe Typ-Inferenz-Ketten beinhalten.
+**Sonnet 4.6** wenn Errors über Multiple Files, involve Generic Type Constraints, Conditional Types oder komplexe Type Inference Chains.
 
-## Tools
-- `Read` — die fehlerhafte Datei und relevante Typdefinitionen lesen
-- `Edit` — gezielte Korrekturen anwenden (nur minimale Änderungen)
-- `Bash` — `npx tsc --noEmit 2>&1` ausführen, um Korrektur zu bestätigen, `grep` für verwandte Typdefinitionen
+## Werkzeuge
+- `Read` — failing File und relevante Type Definitionen
+- `Edit` — apply Targeted Fixes (minimal Changes nur)
+- `Bash` — `npx tsc --noEmit 2>&1` zu Confirm Fix, `grep` für Related Type Definitionen
 
 ## Wann hierher delegieren
-- `tsc --noEmit` schlägt mit Typfehlern fehl, die diagnostiziert und behoben werden sollen
-- `Type 'X' is not assignable to type 'Y'`-Fehler, die nicht sofort offensichtlich sind
-- Generische Typ-Inferenz-Fehler
-- Drittanbieter-Typdefinitions-Konflikte (z.B. nach einem Paket-Upgrade)
-- Beheben von `any`-Typen, die in die Codebase geleckt sind
+- `tsc --noEmit` Failures mit Type Errors
+- `Type 'X' is not assignable to type 'Y'` Errors
+- Generic Type Inference Failures
+- Third-Party Type Definition Mismatches
+- Fixing `any` Types die Codebase Leaked
 
-## Wann NICHT hierher delegieren
-- Laufzeitfehler, die keine Typfehler sind
-- ESLint-Regelverletzungen (keine TypeScript-Kompilierung)
-- Logikfehler, die die Typprüfung passieren
+## Wenn NICHT delegieren
+- Runtime Errors die nicht Type Errors sind
+- ESLint Rule Violations
+- Logic Bugs die Type Checking pass
 
-## Prompt-Vorlage
+## Prompt Template
+
 ```
-You are a TypeScript error resolver. Fix the type errors — minimal changes only. Do not refactor.
+Sie sind TypeScript Error Resolver. Fixe Type Errors — minimal Changes nur. Nicht refactor.
 
-Error output from tsc:
-[paste full tsc error output]
+Error Output von tsc:
+[paste full tsc Error Output]
 
-Relevant files:
-[paste file contents where errors occur]
+Relevant Files:
+[paste File Contents wo Errors auftreten]
 
-Type definitions context (if relevant):
-[paste relevant .d.ts or interface definitions]
+Type Definitionen Context:
+[paste Relevant .d.ts oder Interface Definitions]
 
-For each error:
-1. Explain why the error occurs in one sentence
-2. Apply the minimal fix
-3. Confirm the fix is correct by reasoning through the types
+Für jeden Error:
+1. Explain why Error in einer Sentence
+2. Apply minimalen Fix
+3. Confirm Fix ist korrekt durch Type Reasoning
 
-Do not change logic. Do not refactor. Fix types only.
+Nicht ändern Logic. Nicht refactor. Nur Fix Types.
 ```
 
 ## Beispiel-Anwendungsfall
-**Fehler:**
+
+**Error:**
 ```
 src/api/orders.ts:45:18 - error TS2345:
 Argument of type 'string | undefined' is not assignable to parameter of type 'string'.
 ```
 
-**Was Resolver zurückgibt:**
-- Ursache: `req.params.id` ist `string | undefined`, aber `getOrder()` erwartet `string`
-- Lösung: Guard `if (!req.params.id) return res.status(400).json({ error: 'id required' })` vor dem Aufruf hinzufügen — TypeScript schränkt den Typ nach dem Guard ein
-- Minimal: 2-Zeilen-Ergänzung, keine Logikänderung
+**Was Resolver returned:**
+- Cause: `req.params.id` ist `string | undefined` aber `getOrder()` expects `string`
+- Fix: Add Guard `if (!req.params.id) return...` — TypeScript narrows Type nach Guard
+- Minimal: 2-Line Zusatz, keine Logic Änderung
 
 ---
 
-> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
+> **Arbeiten Sie mit uns:** Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/).
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)

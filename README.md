@@ -5,15 +5,15 @@
 [![GitHub Stars](https://img.shields.io/github/stars/Claudient/Claudient?color=f97316&label=stars)](https://github.com/Claudient/Claudient)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-262+-f97316)](#skills-by-category)
-[![Agents](https://img.shields.io/badge/agents-79+-ec4899)](#agents)
-[![MCP](https://img.shields.io/badge/MCP_configs-28+-8b5cf6)](#top-100-mcp-servers)
+[![Agents](https://img.shields.io/badge/agents-93+-ec4899)](#agents)
+[![MCP](https://img.shields.io/badge/MCP_configs-31+-8b5cf6)](#top-100-mcp-servers)
 [![Languages](https://img.shields.io/badge/languages-EN%20FR%20DE%20NL%20ES-3b82f6)](#translations)
 [![Reddit](https://img.shields.io/badge/Reddit-r%2Fuitbreiden-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/r/uitbreiden/)
 [![YouTube](https://img.shields.io/badge/YouTube-%40UITBREIDEN-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@UITBREIDEN)
 
 **Stop explaining your stack to Claude every session.**
 
-Claudient gives Claude Code instant domain expertise — 256+ skills that activate automatically, 77+ specialist agents, configs for the top 100 MCP servers, and hooks that automate your workflow. Install in 30 seconds, works with any Claude Code project.
+Claudient gives Claude Code instant domain expertise — 262+ skills that activate automatically, 93+ specialist agents, configs for 31 MCP servers, and hooks that automate your workflow. Install in 30 seconds, works with any Claude Code project.
 
 ```bash
 npx claudient add all
@@ -51,7 +51,7 @@ npx claudient add skills finance          # DCF, 3-statement model, pitch deck
 npx claudient add skills small-business   # Invoice chaser, cash flow, Shopify
 
 # Install agents
-npx claudient add agents                  # All 77+ specialist agents
+npx claudient add agents                  # All 93+ specialist agents
 
 # Install in your language
 npx claudient add all --lang fr           # French
@@ -130,7 +130,7 @@ npx claudient add skills small-business
 
 ---
 
-## 🤖 77+ Agents
+## 🤖 93+ Agents
 
 Specialist agents spawned with the `Agent` tool in Claude Code. Each has a specific model, tool restrictions, and trigger conditions.
 
@@ -166,7 +166,7 @@ npx claudient add agents
 
 ## 📦 Skills by Category
 
-**256+ skills · 15 categories · EN · FR · DE · NL · ES**
+**262+ skills · 15 categories · EN · FR · DE · NL · ES**
 
 | Category | Count | Top skills |
 |---|---|---|
@@ -226,12 +226,12 @@ Event-driven automation — runs outside Claude's context as real shell processe
 
 | Type | Count |
 |---|---|
-| **Skills** | **256+** |
-| **Agents** | **77+** |
+| **Skills** | **262+** |
+| **Agents** | **93+** |
 | **Hooks** | 30+ |
-| **MCP config guides** | 25+ |
-| **Guides** | 45+ |
-| **Workflows** | 20+ |
+| **MCP config guides** | 31+ |
+| **Guides** | 53+ |
+| **Workflows** | 23+ |
 | **Prompts** | 15+ |
 | **Rules** | 9 |
 | **Languages** | 5 (EN · FR · DE · NL · ES) |

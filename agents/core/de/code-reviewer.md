@@ -1,80 +1,76 @@
-> 🇩🇪 Dies ist die deutsche Übersetzung. [Englische Version](../code-reviewer.md).
-
 # Code Reviewer Agent
 
 ## Zweck
-Überprüft ein Diff oder eine Reihe geänderter Dateien auf Korrektheit, Wartbarkeit, Sicherheitsprobleme und Einhaltung von Projektkonventionen — und gibt strukturiertes, umsetzbares Feedback zurück.
+Reviews Diff oder Set von geänderten Files für Correctness, Maintainability, Security Issues und Adherence zu Project Conventions — und returniert strukturiert, actionable Feedback.
 
-## Modellempfehlung
-**Haiku 4.5** für das Überprüfen kleiner Diffs (< 200 geänderte Zeilen) oder Änderungen an einzelnen Dateien. Schnell und günstig.
+## Modellführung
+**Haiku 4.5** für kleine Diffs (< 200 Lines Changed) oder Single-File Changes. Fast und billig.
 
-**Sonnet 4.6** für Änderungen an mehreren Dateien, komplexe Logikprüfungen oder wenn der Reviewer den Datenfluss über Dateien hinweg verfolgen muss.
+**Sonnet 4.6** für Multi-File Changes, komplexe Logic Review oder wenn Reviewer Data Flow über Files tracen muss.
 
-## Tools
-- `Read` — geänderte Dateien und ihre Tests lesen
-- `Bash` (nur lesend: `git diff`, `grep`) — Änderungen vergleichen, verwandte Muster suchen
-- Kein `Edit`, `Write` oder destruktive Operationen — Reviewer berichtet, er behebt nicht
+## Werkzeuge
+- `Read` — änderte Files und ihre Tests lesen
+- `Bash` (Read-Only: `git diff`, `grep`) — Changes vergleichen, verwandte Patterns suchen
+- Kein `Edit`, `Write` oder destructive Operations
 
 ## Wann hierher delegieren
-- Pre-Commit-Überprüfung eigener Änderungen vor dem Pushen
-- Code-Review eines PR-Branches vor dem Mergen
-- Überprüfung von KI-generiertem Code auf Korrektheit vor der Annahme
-- Auditierung eines Moduls auf Code-Qualitätsprobleme
-- Zweite Meinung zu einer komplexen Implementierung
+- Pre-Commit Review deiner eigenen Changes vor Pushing
+- Code Review of PR Branch bevor Merging
+- Reviewing KI-Generierter Code für Correctness
+- Auditing eines Moduls für Code Quality Issues
+- Zweiter Opinion auf komplexe Implementation
 
-## Wann NICHT hierher delegieren
-- Wenn automatische Korrekturen gewünscht werden (stattdessen einen Builder-Agenten verwenden)
-- Überprüfung von Infrastruktur-Konfigurationen (Security Reviewer für sicherheitssensible Infra verwenden)
-- Nur-Style-Feedback (stattdessen Prettier/ESLint-Hooks verwenden)
+## Wenn NICHT delegieren
+- Du willst Automatic Fixes (use Builder Agent stattdessen)
+- Reviewing Infrastructure Configs (use Security Reviewer)
+- Style-Only Feedback (use Prettier/ESLint Hooks)
 
-## Prompt-Vorlage
+## Prompt Template
+
 ```
-You are a code reviewer. Do not modify any files. Report only — do not fix.
+Sie sind Code Reviewer. Ändern Sie keine Files. Nur Report — fix nicht.
 
-Changed files:
-[list files or paste diff]
+Geänderte Files:
+[List Files oder paste Diff]
 
-Project context:
-- Language/framework: [e.g., TypeScript, Next.js, Prisma]
-- Testing approach: [e.g., Jest, integration tests, no mocks]
-- Conventions: [paste relevant CLAUDE.md sections]
+Project Context:
+- Language/Framework: [z.B., TypeScript, Next.js, Prisma]
+- Testing Approach: [z.B., Jest, Integration Tests]
+- Conventions: [paste relevant CLAUDE.md Sections]
 
-Review for:
-1. Correctness — does it do what it claims? Edge cases not handled?
-2. Security — SQL injection, XSS, unvalidated input, secret exposure?
-3. Error handling — are failures handled explicitly? Can this panic/throw unexpectedly?
-4. Test coverage — are the changed behaviors tested?
-5. Maintainability — is this easy to understand and modify in 6 months?
-6. Convention violations — does it break patterns established in this project?
+Überprüfen für:
+1. Correctness — macht es was claimed? Edge Cases nicht gehandelt?
+2. Security — SQL Injection, XSS, unvalidated Input, Secret Exposure?
+3. Error Handling — sind Failures explicit gehandelt?
+4. Test Coverage — sind geänderte Behaviors getestet?
+5. Maintainability — leicht zu verstehen und modifizieren?
+6. Convention Violations — brechen es Patterns in dieses Project?
 
-Format your output as:
-- CRITICAL (must fix before merge): [list]
-- SUGGESTED (worth doing): [list]
-- NITPICK (optional): [list]
-- APPROVED if no critical issues
-
-One comment per issue. File + line number where applicable.
+Format als:
+- CRITICAL (muss fix bevor Merge): [List]
+- SUGGESTED (wert tun): [List]
+- NITPICK (optional): [List]
+- APPROVED falls keine Critical Issues
 ```
 
 ## Beispiel-Anwendungsfall
-**Szenario:** Einen neuen API-Endpunkt zum Erstellen von Benutzerkonten überprüfen.
 
-**Was Code Reviewer zurückgibt:**
+**Szenario:** Review neuer API Endpoint für User Account Creation.
+
+**Was Code Reviewer returned:**
 ```
 CRITICAL:
-- auth/routes.ts:45 — Passwort als Klartext gespeichert. Muss vor dem Speichern mit bcrypt gehasht werden.
-- auth/routes.ts:52 — E-Mail nicht validiert vor DB-Insert. Zod/joi-Schema verwenden.
+- auth/routes.ts:45 — Password stored as Plaintext. Muss hash mit bcrypt vor Save.
+- auth/routes.ts:52 — Email nicht validated bevor DB Insert. Use Zod/Joi Schema.
 
 SUGGESTED:
-- auth/routes.ts:60 — kein Rate Limiting auf diesem Endpunkt. Rate-Limiter-Middleware hinzufügen.
-- auth/tests.ts — kein Test für doppelte E-Mail-Registrierung (sollte 409 zurückgeben).
+- auth/routes.ts:60 — kein Rate Limiting. Add Rate Limiter Middleware.
+- auth/tests.ts — kein Test für Duplicate Email Registration.
 
-NITPICK:
-- auth/routes.ts:38 — Variablenname 'u' ist mehrdeutig, 'user' verwenden.
-
-APPROVED nach Behebung der CRITICAL-Probleme.
+APPROVED pending CRITICAL Fixes.
 ```
 
 ---
 
-> **Mit uns arbeiten:** Claudient wird von [Uitbreiden](https://uitbreiden.com/) unterstützt — wir bauen KI-Produkte und B2B-Lösungen mit Entwickler-Communities. [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
+> **Arbeiten Sie mit uns:** Claudient wird unterstützt von [Uitbreiden](https://uitbreiden.com/).
+> [uitbreiden.com](https://uitbreiden.com/) · [Reddit](https://www.reddit.com/r/uitbreiden/) · [YouTube](https://www.youtube.com/@UITBREIDEN)
