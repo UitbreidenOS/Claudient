@@ -4,16 +4,19 @@ import Layout from "../layouts/Layout.astro";
 import { pathToParts, slugToTitle, titleFromEntry, descriptionFromEntry, urlForEntry } from "../lib/content";
 import { popularSkills, popularAgents, popularMcp } from "../data/featured";
 
-// Live counts: pull every English content file from the repo at build time
+// Live counts: English-only files (locale filter prevents 5× inflation from translations)
+const enOnly = ({ id, data }: { id: string; data: { draft?: boolean } }) =>
+  !data.draft && pathToParts(id).locale === "en";
+
 const [skills, agents, hooks, mcp, workflows, guides, prompts, rules] = await Promise.all([
-  getCollection("skills", ({ data }) => !data.draft),
-  getCollection("agents", ({ data }) => !data.draft),
-  getCollection("hooks", ({ data }) => !data.draft),
-  getCollection("mcp", ({ data }) => !data.draft),
-  getCollection("workflows", ({ data }) => !data.draft),
-  getCollection("guides", ({ data }) => !data.draft),
-  getCollection("prompts", ({ data }) => !data.draft),
-  getCollection("rules", ({ data }) => !data.draft),
+  getCollection("skills", enOnly),
+  getCollection("agents", enOnly),
+  getCollection("hooks", enOnly),
+  getCollection("mcp", enOnly),
+  getCollection("workflows", enOnly),
+  getCollection("guides", enOnly),
+  getCollection("prompts", enOnly),
+  getCollection("rules", enOnly),
 ]);
 
 // Build category cards from real skill data — group by top-level folder

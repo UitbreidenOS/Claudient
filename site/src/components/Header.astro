@@ -1,10 +1,15 @@
 ---
+const NON_DEFAULT = ["fr", "de", "nl", "es"];
+const segs = Astro.url.pathname.split("/").filter(Boolean);
+const currentLang = (segs[0] && NON_DEFAULT.includes(segs[0])) ? segs[0] : "";
+const p = currentLang ? `/${currentLang}` : "";
+
 const navItems = [
-  { label: "Skills", href: "/skills/" },
-  { label: "Agents", href: "/agents/" },
-  { label: "Hooks", href: "/hooks/" },
-  { label: "MCP", href: "/mcp/" },
-  { label: "Guides", href: "/guides/" },
+  { label: "Skills", href: `${p}/skills/` },
+  { label: "Agents", href: `${p}/agents/` },
+  { label: "Hooks", href: `${p}/hooks/` },
+  { label: "MCP", href: `${p}/mcp/` },
+  { label: "Guides", href: `${p}/guides/` },
 ];
 
 const LOCALES = [
@@ -100,14 +105,8 @@ const LOCALES = [
 >
   <div class="container-page flex items-center justify-between h-16 gap-3">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 font-semibold text-lg tracking-tight shrink-0">
-      <span
-        class="inline-flex items-center justify-center w-7 h-7 rounded-md text-white font-bold text-sm"
-        style="background-color: var(--color-accent);"
-      >
-        C
-      </span>
-      <span>Claudient</span>
+    <a href={p + "/"} class="shrink-0" aria-label="Claudient home">
+      <img src="/logo.png" alt="Claudient" height="36" class="h-9 w-auto" />
     </a>
 
     <!-- Desktop nav -->
@@ -192,7 +191,7 @@ const LOCALES = [
       >
         GitHub
       </a>
-      <a href="/install/" class="btn-primary">
+      <a href={`${p}/install/`} class="btn-primary">
         Install
       </a>
 

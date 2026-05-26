@@ -376,7 +376,7 @@ Claudient is community-powered. Every skill lives in one markdown file.
 2. Fork, add your skill in one `.md` file
 3. Submit a PR — merged skills get featured in **Most Popular**
 
-**[GitHub Discussions](https://github.com/Claudients/Claudient/discussions) · [CONTRIBUTING.md](CONTRIBUTING.md) · [Reddit](https://www.reddit.com/r/uitbreiden/)**
+**[GitHub Discussions](https://github.com/Claudient/Claudient/discussions) · [CONTRIBUTING.md](CONTRIBUTING.md) · [Reddit](https://www.reddit.com/r/uitbreiden/)**
 
 ---
 
