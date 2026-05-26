@@ -1,0 +1,204 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categories = [
+  {
+    name: "Backend",
+    count: "40+",
+    description: "Next.js, FastAPI, Hono, NestJS, Rust, Go, Rails, Laravel, Elixir",
+    href: "/skills/backend/",
+  },
+  {
+    name: "DevOps & Infra",
+    count: "20+",
+    description: "Kubernetes, Terraform, Docker, GitHub Actions, Sentry, OpenTelemetry",
+    href: "/skills/devops-infra/",
+  },
+  {
+    name: "AI Engineering",
+    count: "10+",
+    description: "Claude API, LangGraph, RAG, prompt caching, batch API, MCP builder",
+    href: "/skills/ai-engineering/",
+  },
+  {
+    name: "Small Business",
+    count: "30+",
+    description: "Invoice chasing, dental, salon, ecommerce, coaching, newsletter, podcasts",
+    href: "/skills/small-business/",
+  },
+  {
+    name: "GTM & RevOps",
+    count: "10+",
+    description: "HubSpot, SDR agent, lead enrichment, email automation, CRM hygiene",
+    href: "/skills/gtm/",
+  },
+  {
+    name: "Legal",
+    count: "15+",
+    description: "Contract review, NDA, GDPR, SOC 2, EU AI Act, IP clearance",
+    href: "/skills/legal/",
+  },
+  {
+    name: "Finance",
+    count: "10+",
+    description: "DCF, 3-statement model, IC memo, pitch deck, KYC, GL reconciliation",
+    href: "/skills/finance/",
+  },
+  {
+    name: "Data & ML",
+    count: "8+",
+    description: "dbt, Spark, Kafka, MLOps, NLP pipelines, Pandas/Polars, PyTorch",
+    href: "/skills/data-ml/",
+  },
+];
+
+const claudeForVerticals = [
+  { label: "Solopreneurs", href: "/claude-for/solopreneurs/" },
+  { label: "Ecommerce", href: "/claude-for/ecommerce/" },
+  { label: "Local services", href: "/claude-for/local-services/" },
+  { label: "Coaches & consultants", href: "/claude-for/coaches-consultants/" },
+  { label: "Creators", href: "/claude-for/creators/" },
+];
+---
+
+<Layout
+  title="Claudient — the Claude Code knowledge base"
+  description="277+ skills, 95+ agents, 30+ hooks, 30+ MCP configs for Claude Code. Install in 30 seconds. Open source. Available in 5 languages."
+>
+  <!-- Hero -->
+  <section class="container-page py-20 md:py-28">
+    <div class="max-w-3xl">
+      <p class="pill mb-6">v1.8 · 277+ skills · MIT</p>
+      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+        Stop explaining your stack to Claude every session.
+      </h1>
+      <p class="mt-6 text-lg md:text-xl max-w-2xl" style="color: var(--color-muted);">
+        Claudient gives Claude Code instant domain expertise — skills that activate
+        automatically, specialist agents, hooks, and MCP configs. Install in 30
+        seconds, works with any Claude Code project.
+      </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <code
+          class="inline-flex items-center px-4 py-3 rounded-md font-mono text-sm"
+          style="background-color: var(--color-bg-elevated); border: 1px solid var(--color-border);"
+        >
+          <span style="color: var(--color-subtle);">$</span>&nbsp;npx claudient add all
+        </code>
+        <a href="/install/" class="btn-primary">Get started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="container-page pb-24">
+    <div class="flex items-end justify-between mb-8">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">
+        Browse by category
+      </h2>
+      <a href="/skills/" class="text-sm hover:underline" style="color: var(--color-muted);">
+        All categories →
+      </a>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {
+        categories.map((cat) => (
+          <a href={cat.href} class="card p-5 block group">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-semibold text-base">{cat.name}</h3>
+              <span
+                class="text-xs font-medium"
+                style="color: var(--color-accent);"
+              >
+                {cat.count}
+              </span>
+            </div>
+            <p class="text-sm" style="color: var(--color-muted);">
+              {cat.description}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Claude for vertical -->
+  <section
+    class="border-y"
+    style="background-color: var(--color-bg-elevated); border-color: var(--color-border);"
+  >
+    <div class="container-page py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">
+        Claude for your business
+      </h2>
+      <p class="mt-3 max-w-2xl" style="color: var(--color-muted);">
+        Plain-English workflows for small business owners and operators — no
+        terminal required. Built for the tools you already pay for: QuickBooks,
+        HubSpot, Shopify, and the rest.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-2">
+        {
+          claudeForVerticals.map((v) => (
+            <a
+              href={v.href}
+              class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border transition-colors hover:bg-[var(--color-bg)]"
+              style="background-color: var(--color-bg); border-color: var(--color-border);"
+            >
+              {v.label} →
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="container-page py-20">
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-10">
+      How it works
+    </h2>
+    <div class="grid gap-8 md:grid-cols-3">
+      <div>
+        <div
+          class="inline-flex items-center justify-center w-9 h-9 rounded-md mb-4 text-sm font-semibold"
+          style="background-color: var(--color-accent-soft); color: var(--color-accent);"
+        >
+          1
+        </div>
+        <h3 class="font-semibold mb-2">Install with npx</h3>
+        <p class="text-sm" style="color: var(--color-muted);">
+          One command installs the skills, agents, hooks, and MCP configs you
+          need into your Claude Code environment.
+        </p>
+      </div>
+      <div>
+        <div
+          class="inline-flex items-center justify-center w-9 h-9 rounded-md mb-4 text-sm font-semibold"
+          style="background-color: var(--color-accent-soft); color: var(--color-accent);"
+        >
+          2
+        </div>
+        <h3 class="font-semibold mb-2">Claude knows your domain</h3>
+        <p class="text-sm" style="color: var(--color-muted);">
+          Skills activate automatically based on what you're working on. Agents
+          spawn when their expertise is needed. Hooks run on the right events.
+        </p>
+      </div>
+      <div>
+        <div
+          class="inline-flex items-center justify-center w-9 h-9 rounded-md mb-4 text-sm font-semibold"
+          style="background-color: var(--color-accent-soft); color: var(--color-accent);"
+        >
+          3
+        </div>
+        <h3 class="font-semibold mb-2">Ship faster</h3>
+        <p class="text-sm" style="color: var(--color-muted);">
+          Less explaining, more building. The drop-ins work in any Claude Code
+          project and can be composed with anything you already have.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
