@@ -6,6 +6,14 @@ const navItems = [
   { label: "MCP", href: "/mcp/" },
   { label: "Guides", href: "/guides/" },
 ];
+
+const LOCALES = [
+  { code: "en", label: "English" },
+  { code: "fr", label: "Français" },
+  { code: "de", label: "Deutsch" },
+  { code: "nl", label: "Nederlands" },
+  { code: "es", label: "Español" },
+];
 ---
 
 <!-- Pagefind UI assets. These files only exist after `npm run build`. -->
@@ -162,6 +170,19 @@ const navItems = [
         </svg>
       </button>
 
+      <!-- Language switcher -->
+      <select
+        id="lang-switcher"
+        class="btn-ghost text-sm py-1 px-2 cursor-pointer appearance-none bg-transparent border-0 outline-none"
+        aria-label="Select language"
+        title="Select language"
+        style="color: var(--color-fg);"
+      >
+        {LOCALES.map((locale) => (
+          <option value={locale.code}>{locale.label}</option>
+        ))}
+      </select>
+
       <a
         href="https://github.com/Claudient/Claudient"
         target="_blank"
@@ -305,4 +326,34 @@ const navItems = [
       new PagefindUI({ element: "#search-mobile", showImages: false });
     }
   });
+
+  // ── Language switcher ──────────────────────────────────────────────────────
+  // Navigates to the equivalent page in the selected locale.
+  // Strips existing locale prefix then re-prefixes with the new locale (none for "en").
+  (function () {
+    var SUPPORTED = ["fr", "de", "nl", "es"];
+    var select = document.getElementById("lang-switcher");
+
+    // Detect current locale from URL path and pre-select the matching option.
+    var segs = window.location.pathname.split("/").filter(Boolean);
+    var currentLocale = (segs[0] && SUPPORTED.indexOf(segs[0]) !== -1) ? segs[0] : "en";
+    select.value = currentLocale;
+
+    select.addEventListener("change", function () {
+      var newLocale = select.value;
+      var pathSegs = window.location.pathname.split("/").filter(Boolean);
+
+      // Strip existing locale prefix if present.
+      if (pathSegs[0] && SUPPORTED.indexOf(pathSegs[0]) !== -1) {
+        pathSegs = pathSegs.slice(1);
+      }
+
+      // Build new path: no prefix for English, /<locale>/ prefix for others.
+      var newPath = newLocale === "en"
+        ? "/" + pathSegs.join("/") + (pathSegs.length > 0 ? "/" : "")
+        : "/" + newLocale + "/" + pathSegs.join("/") + (pathSegs.length > 0 ? "/" : "");
+
+      window.location.href = newPath;
+    });
+  })();
 </script>

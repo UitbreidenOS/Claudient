@@ -1,0 +1,100 @@
+# Claudient — Dual License
+
+Copyright © 2026 Tushar Aggarwal · [Uitbreiden](https://uitbreiden.com/)
+
+Claudient is dual-licensed depending on the file type. This split keeps the
+knowledge base freely shareable while ensuring the software around it stays
+open over the network.
+
+---
+
+## Code — GNU Affero General Public License v3.0
+
+The full text of the AGPL-3.0 license is in [LICENSE-CODE](LICENSE-CODE).
+
+**What's covered:** all executable code in this repository, including:
+
+- The Astro website under `site/`
+- Hook scripts (`hooks/**/*.sh`, `hooks/**/*.py`)
+- Helper scripts under `scripts/`
+- Plugin manifest and any TypeScript/JavaScript under `.claude-plugin/`
+- The npm package entry points (when the project is published to npm)
+- Any other source code added in the future
+
+**What this means in plain English:**
+
+- You may use, modify, and distribute the code freely.
+- If you modify the code and run it as a network service (e.g. host a fork of
+  the site), you must make your modified source available to the users of that
+  service.
+- Derivative works must be released under AGPL-3.0 or a compatible license.
+
+If you need a different licensing arrangement for commercial use, contact
+[hello@uitbreiden.com](mailto:hello@uitbreiden.com).
+
+---
+
+## Content — Creative Commons Attribution-ShareAlike 4.0
+
+The full text of the CC-BY-SA-4.0 license is in [LICENSE-CONTENT](LICENSE-CONTENT).
+
+**What's covered:** all Markdown content in this repository, including:
+
+- Skills (`skills/**/*.md`)
+- Agents (`agents/**/*.md`)
+- Hook documentation (`hooks/**/*.md`)
+- MCP configurations (`mcp/**/*.md`)
+- Workflows (`workflows/**/*.md`)
+- Guides (`guides/**/*.md`)
+- Prompts (`prompts/**/*.md`)
+- Rules (`rules/**/*.md`)
+- README, CONTRIBUTING, CONTEXT, and other repo documentation in Markdown
+
+**What this means in plain English:**
+
+- You may copy, redistribute, remix, transform, and build upon the content for
+  any purpose, including commercially.
+- You must give appropriate credit to "Tushar Aggarwal / Uitbreiden / Claudient"
+  with a link to https://claudient.tools (or this repository).
+- If you remix or build upon the content, you must distribute your contributions
+  under the same license.
+
+---
+
+## Why the split
+
+A pure AGPL repo would restrict downstream content reuse in ways that hurt the
+project's mission: an Anthropic employee, a community blogger, or a vendor
+should be able to quote a Claudient skill in their own documentation without
+having to release everything they ship under AGPL.
+
+A pure permissive license (MIT, Apache, CC-BY) would allow a commercial vendor
+to fork the site, host it as a network service, and never contribute back. The
+AGPL on the software prevents that specific failure mode.
+
+Splitting code and content gives each piece the right license for its purpose:
+strong copyleft for code, attribution-only for content.
+
+---
+
+## Contributions
+
+By contributing to this repository, you agree that:
+
+- Code contributions are licensed under AGPL-3.0.
+- Content contributions are licensed under CC-BY-SA-4.0.
+
+If you can't agree to those terms, please don't submit the contribution.
+
+---
+
+## Files moved away from MIT
+
+This project was previously MIT-licensed. The MIT license still applies to all
+commits up to and including the one preceding the relicense commit — historical
+versions of files in the git history are unaffected. From the relicense commit
+forward, everything is dual-licensed as described above.
+
+For attribution and contact, write to
+[hello@uitbreiden.com](mailto:hello@uitbreiden.com) or open an issue at
+https://github.com/Claudient/Claudient.

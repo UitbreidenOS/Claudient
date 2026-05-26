@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import { titleFromEntry, descriptionFromEntry } from "../../lib/content";
+import { titleFromEntry, descriptionFromEntry, pathToParts } from "../../lib/content";
 
 const allGuides = await getCollection("guides", ({ data }) => !data.draft);
 const verticals = allGuides
+  .filter((e) => pathToParts(e.id).locale === "en")
   .filter((e) => e.id.replace(/\.md$/, "").startsWith("claude-for-"))
   .sort((a, b) => titleFromEntry(a).localeCompare(titleFromEntry(b)));
 ---

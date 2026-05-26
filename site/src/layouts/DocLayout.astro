@@ -23,6 +23,15 @@ interface Props {
 
 const { title, description, collection, collectionLabel, category, breadcrumbs, jsonLd, readingMinutes, headings, related } = Astro.props;
 
+// Derive download URL from the current pathname
+const SUPPORTED_LANGS = ["fr", "de", "nl", "es"];
+const rawPath = Astro.url.pathname.replace(/\/$/, "");
+const segs = rawPath.split("/").filter(Boolean);
+const hasLang = SUPPORTED_LANGS.includes(segs[0]);
+const langPart = hasLang ? `/${segs[0]}` : "";
+const rest = (hasLang ? segs.slice(1) : segs).join("/");
+const downloadUrl = `${langPart}/raw/${rest}.md`;
+
 const crumbs: BreadcrumbItem[] = breadcrumbs ?? [
   { label: "Home", href: "/" },
   { label: collectionLabel, href: `/${collection}/` },
@@ -75,6 +84,15 @@ const showToc = headings && headings.length >= 4;
           <span class="pill">{collectionLabel}</span>
           {category && <span class="pill">{slugToTitle(category)}</span>}
           {readingMinutes && <span class="pill">{readingMinutes} min read</span>}
+          <a
+            href={downloadUrl}
+            download
+            class="pill download-btn"
+            title="Download the source markdown"
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Download .md</span>
+          </a>
         </div>
         <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">{title}</h1>
         {description && (
@@ -169,6 +187,19 @@ const showToc = headings && headings.length >= 4;
 </Layout>
 
 <style>
+  /* Download button */
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .download-btn:hover {
+    background-color: var(--color-muted-bg);
+  }
+
   /* TOC layout — two-column on lg+ viewports */
   .toc-layout {
     display: flex;

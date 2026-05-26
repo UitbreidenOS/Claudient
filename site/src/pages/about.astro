@@ -4,19 +4,20 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout
   title="About Claudient — community Claude Code knowledge base"
-  description="Claudient is an open-source community knowledge base for Claude Code. 277+ skills, 95+ agents, MIT licensed, backed by Uitbreiden. Not affiliated with Anthropic."
+  description="Claudient is an open-source community knowledge base for Claude Code. 277+ skills, 95+ agents, dual-licensed (AGPL code + CC-BY-SA content), backed by Uitbreiden. Not affiliated with Anthropic."
 >
   <!-- Hero -->
   <section class="container-page py-20 md:py-28">
     <div class="max-w-3xl">
-      <p class="pill mb-6">MIT · Community · v1.8</p>
+      <p class="pill mb-6">Open source · Community · v1.9</p>
       <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
         Domain expertise for Claude Code, built by the community.
       </h1>
       <p class="mt-6 text-lg md:text-xl max-w-2xl" style="color: var(--color-muted);">
         Claudient is a knowledge system — skills, agents, hooks, rules, workflows, and
         prompts that give Claude Code instant domain expertise across stacks, industries,
-        and languages. Free to use, open to contributions, MIT licensed.
+        and languages. Free to use, open to contributions, dual-licensed (AGPL-3.0 for
+        code, CC-BY-SA-4.0 for content).
       </p>
     </div>
   </section>
@@ -112,11 +113,11 @@ import Layout from "../layouts/Layout.astro";
     style="background-color: var(--color-bg-elevated); border-color: var(--color-border);"
   >
     <div class="container-page py-16">
-      <h2 class="text-2xl font-semibold tracking-tight mb-8">Open source, MIT licensed</h2>
+      <h2 class="text-2xl font-semibold tracking-tight mb-8">Open source — dual licensed</h2>
       <div class="grid gap-6 md:grid-cols-3">
         {[
-          { title: "Free to use", desc: "Install, use, fork, and modify. The MIT license places no restrictions on personal or commercial use." },
-          { title: "Community-powered", desc: "Every skill lives in one markdown file. Anyone can contribute — and merged skills get featured in Most Popular." },
+          { title: "Code: AGPL-3.0", desc: "The Astro site, hook scripts, and tooling are AGPL-3.0. Free to use and modify; copyleft on network-hosted derivatives. See LICENSE-CODE." },
+          { title: "Content: CC-BY-SA-4.0", desc: "Every skill, agent, guide, and workflow is Creative Commons. Copy, remix, attribute Uitbreiden, share alike. See LICENSE-CONTENT." },
           { title: "Five languages", desc: "All content ships in English, French, German, Dutch, and Spanish. Hook scripts are English-only — shell is universal." },
         ].map((item) => (
           <div class="card p-6">

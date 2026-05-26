@@ -5,13 +5,14 @@ import { pathToParts, titleFromEntry, descriptionFromEntry, slugToTitle, urlForE
 
 export async function getStaticPaths() {
   const entries = await getCollection("prompts", ({ data }) => !data.draft);
+  const englishOnly = entries.filter((e) => pathToParts(e.id).locale === "en");
   const cats = new Set<string>();
-  for (const e of entries) cats.add(pathToParts(e.id).category);
+  for (const e of englishOnly) cats.add(pathToParts(e.id).category);
   return [...cats].map((category) => ({
     params: { category },
     props: {
       category,
-      entries: entries.filter((e) => pathToParts(e.id).category === category),
+      entries: englishOnly.filter((e) => pathToParts(e.id).category === category),
     },
   }));
 }

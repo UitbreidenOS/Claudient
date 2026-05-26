@@ -3,7 +3,8 @@
 [![npm version](https://img.shields.io/npm/v/claudient?color=f97316&label=npm)](https://www.npmjs.com/package/claudient)
 [![npm downloads](https://img.shields.io/npm/dm/claudient?color=f97316)](https://www.npmjs.com/package/claudient)
 [![GitHub Stars](https://img.shields.io/github/stars/Claudient/Claudient?color=f97316&label=stars)](https://github.com/Claudient/Claudient)
-[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
+[![License: AGPL-3.0](https://img.shields.io/badge/code-AGPL--3.0-3b82f6.svg)](LICENSE-CODE)
+[![Content License: CC-BY-SA-4.0](https://img.shields.io/badge/content-CC--BY--SA--4.0-ec4899.svg)](LICENSE-CONTENT)
 [![Skills](https://img.shields.io/badge/skills-277+-f97316)](#skills-by-category)
 [![Agents](https://img.shields.io/badge/agents-95+-ec4899)](#agents)
 [![Claude for Small Business](https://img.shields.io/badge/small_business-30+_skills-06b6d4)](#-claude-for-small-business)
@@ -391,4 +392,11 @@ Claudient is backed by [Uitbreiden](https://uitbreiden.com/) — building AI pro
 
 ## License
 
-MIT — free to use, modify, and distribute.
+Dual licensed:
+
+- **Code** — [AGPL-3.0](LICENSE-CODE). The Astro site, hook scripts, npm package source, anything executable.
+- **Content** — [CC-BY-SA-4.0](LICENSE-CONTENT). All markdown skills, agents, hooks, MCP configs, workflows, guides, prompts, rules, and documentation.
+
+See [LICENSE](LICENSE) for the rationale and full details. For commercial licensing inquiries, write to [hello@uitbreiden.com](mailto:hello@uitbreiden.com).
+
+© 2026 [Uitbreiden](https://uitbreiden.com/) · Tushar Aggarwal
