@@ -4,8 +4,9 @@
 [![npm downloads](https://img.shields.io/npm/dm/claudient?color=f97316)](https://www.npmjs.com/package/claudient)
 [![GitHub Stars](https://img.shields.io/github/stars/Claudient/Claudient?color=f97316&label=stars)](https://github.com/Claudient/Claudient)
 [![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-262+-f97316)](#skills-by-category)
-[![Agents](https://img.shields.io/badge/agents-93+-ec4899)](#agents)
+[![Skills](https://img.shields.io/badge/skills-277+-f97316)](#skills-by-category)
+[![Agents](https://img.shields.io/badge/agents-95+-ec4899)](#agents)
+[![Claude for Small Business](https://img.shields.io/badge/small_business-30+_skills-06b6d4)](#-claude-for-small-business)
 [![MCP](https://img.shields.io/badge/MCP_configs-31+-8b5cf6)](#top-100-mcp-servers)
 [![Languages](https://img.shields.io/badge/languages-EN%20FR%20DE%20NL%20ES-3b82f6)](#translations)
 [![Reddit](https://img.shields.io/badge/Reddit-r%2Fuitbreiden-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/r/uitbreiden/)
@@ -13,13 +14,13 @@
 
 **Stop explaining your stack to Claude every session.**
 
-Claudient gives Claude Code instant domain expertise — 262+ skills that activate automatically, 93+ specialist agents, configs for 31 MCP servers, and hooks that automate your workflow. Install in 30 seconds, works with any Claude Code project.
+Claudient gives Claude Code instant domain expertise — 277+ skills that activate automatically, 95+ specialist agents, configs for 31 MCP servers, and hooks that automate your workflow. Including the most complete community knowledge base for **Claude for Small Business** with 30+ vertical and operator skills for solopreneurs, ecommerce, local services, coaches, and creators. Install in 30 seconds, works with any Claude Code project.
 
 ```bash
 npx claudient add all
 ```
 
-![Claudient Social Preview](web/public/social-preview.png)
+![Claudient Social Preview](assets/social-preview.png)
 
 ---
 
@@ -109,11 +110,26 @@ npx claudient add mcp all       # All 20 individual config guides
 
 ## 🏪 Claude for Small Business
 
-> **Not a developer? Claudient works for you too.** Plain English skills, no terminal required.
+> **The most complete community knowledge base for using Claude in a small business.** Plain English skills, no terminal required, written for owners who already pay for QuickBooks, Shopify, HubSpot, and the rest. Claudient extends Anthropic's official [Claude for Small Business](guides/claude-for-small-business.md) launch with 30+ skills covering the long tail of verticals and workflows.
 
 ```bash
 npx claudient add skills small-business
 ```
+
+### Claude for Small Business by vertical
+
+Each guide is an end-to-end landing page for a specific industry — setup, skill stack, 30/60/90 expectations, FAQ.
+
+| You are a... | Start here |
+|---|---|
+| **Solopreneur, solo founder, side-hustler** | [Claude for Solopreneurs](guides/claude-for-solopreneurs.md) |
+| **Shopify, Amazon, Etsy, or DTC seller** | [Claude for Ecommerce](guides/claude-for-ecommerce.md) |
+| **Trades, salon, dental, fitness, restaurant, real estate operator** | [Claude for Local Services](guides/claude-for-local-services.md) |
+| **Executive coach, business consultant, fractional advisor** | [Claude for Coaches and Consultants](guides/claude-for-coaches-consultants.md) |
+| **Newsletter writer, podcaster, course creator** | [Claude for Creators](guides/claude-for-creators.md) |
+| **First-time, want the full overview** | [Claude for Small Business — Product Guide](guides/claude-for-small-business.md) |
+
+### Top small business skills
 
 | Skill | Automates | Works with |
 |---|---|---|
@@ -127,6 +143,104 @@ npx claudient add skills small-business
 | `/shopify-operations` | Product descriptions, inventory alerts | Shopify |
 | `/sop-writer` | Standard operating procedures | Any business |
 | `/weekly-pulse` | KPI dashboard from all your tools | Multi-tool |
+
+### Vertical-specific skills (new)
+
+| Vertical | Skill |
+|---|---|
+| Ecommerce (multi-platform) | [`/ecommerce-seller`](skills/small-business/ecommerce-seller.md) |
+| Salon, spa, barbershop | [`/salon-spa-ops`](skills/small-business/salon-spa-ops.md) |
+| Dental practice | [`/dental-practice`](skills/small-business/dental-practice.md) |
+| Fitness studio, gym | [`/fitness-gym-ops`](skills/small-business/fitness-gym-ops.md) |
+| Coaching practice | [`/coaching-business`](skills/small-business/coaching-business.md) |
+| Online course | [`/online-course-creator`](skills/small-business/online-course-creator.md) |
+| Newsletter | [`/newsletter-publisher`](skills/small-business/newsletter-publisher.md) |
+| Marketing/creative agency | [`/agency-operations`](skills/small-business/agency-operations.md) |
+| Trades (plumbing, HVAC, electrical) | [`/contractor-trades`](skills/small-business/contractor-trades.md) |
+| Photography studio | [`/photography-studio`](skills/small-business/photography-studio.md) |
+| Bookkeeping firm | [`/bookkeeper-practice`](skills/small-business/bookkeeper-practice.md) |
+| Podcast | [`/podcast-monetizer`](skills/small-business/podcast-monetizer.md) |
+| Real estate | [`/real-estate-listing`](skills/small-business/real-estate-listing.md) |
+| Restaurant | [`/restaurant-ops`](skills/small-business/restaurant-ops.md) |
+
+### Operator skills (cross-cutting)
+
+| Skill | Use case |
+|---|---|
+| [`/hiring-pipeline`](skills/small-business/hiring-pipeline.md) | Structured screening for high-volume applicant flow |
+| [`/churn-prevention`](skills/small-business/churn-prevention.md) | At-risk identification and recovery for subscription businesses |
+| [`/pricing-optimizer`](skills/small-business/pricing-optimizer.md) | Structured price review, migration plan, A/B test design |
+| [`/freelancer-proposal`](skills/small-business/freelancer-proposal.md) | Discovery call → branded proposal in 20 minutes |
+| [`/lead-triager`](skills/small-business/lead-triager.md) | ICP scoring on new contacts, prioritized call list |
+| [`/meeting-to-action`](skills/small-business/meeting-to-action.md) | Transcript → action list + follow-up email |
+| [`/customer-feedback-synthesizer`](skills/small-business/customer-feedback-synthesizer.md) | Pattern detection across 100+ reviews |
+| [`/competitor-monitor`](skills/small-business/competitor-monitor.md) | What your 3 closest competitors shipped this month |
+| [`/margin-analyzer`](skills/small-business/margin-analyzer.md) | Gross margin by product, channel, customer |
+| [`/tax-organizer`](skills/small-business/tax-organizer.md) | CPA packet from QuickBooks and receipt folder |
+
+### Specialist agents for small business
+
+- [`small-business-advisor`](agents/specialists/small-business-advisor.md) — generalist diagnosis and workflow prioritization
+- [`ecommerce-specialist`](agents/specialists/ecommerce-specialist.md) — for Shopify/Amazon/Etsy/DTC operators
+- [`local-services-specialist`](agents/specialists/local-services-specialist.md) — for trades, salon, dental, fitness, restaurant, real estate
+- [`restaurant-specialist`](agents/roles/restaurant-specialist.md) — restaurant-specific operations
+- [`real-estate-specialist`](agents/roles/real-estate-specialist.md) — real estate agent and brokerage operations
+
+```bash
+npx claudient add agents small-business
+```
+
+---
+
+## ❓ FAQ — Claude for Small Business
+
+### What is Claude for Small Business?
+
+Claude for Small Business is Anthropic's small-business-focused product layer inside Claude Cowork, launched May 13, 2026, with 15 official workflows. Claudient is the community knowledge base that extends those workflows with 30+ additional skills covering the long tail of verticals (dental, salon, trades, photography, coaching, ecommerce) and operator workflows (hiring, churn, pricing, proposals). [Read the product guide](guides/claude-for-small-business.md).
+
+### Is Claude good for small business owners?
+
+Yes. Owners running 1-50 person businesses typically save 6-12 hours per week within 30 days, on the mechanical work that previously filled their evenings — invoicing, lead follow-up, weekly reporting, content repurposing, customer FAQs. The Claudient skills are written operator-first, no terminal required.
+
+### How is Claude different from ChatGPT for small business?
+
+ChatGPT is a generalist chat assistant. Claude for Small Business connects to your actual business tools — QuickBooks, HubSpot, PayPal, Google Workspace, Shopify — and produces outputs grounded in your real data. ChatGPT can write a generic invoice reminder; Claude reads your actual AR aging report and drafts personalized reminders by invoice. The difference compounds across every workflow.
+
+### How much does Claude cost for a small business?
+
+$20/month for Claude Pro covers most solo owners and small operations. $30/seat/month for Claude Team if you have a partner, office manager, or assistant using the workflows. $100/month for Claude Max if you run 6+ workflows daily on large datasets. Everything else — QuickBooks, HubSpot, Shopify — you already pay for.
+
+### Do I need to know how to code?
+
+No. The official Claude for Small Business workflows are point-and-click inside Claude Cowork. The Claudient skills in this repo are activated by typing plain English to Claude. The only setup is OAuth-connecting your existing tools, which takes a few clicks per tool.
+
+### Can Claude read my QuickBooks data?
+
+Yes, once you authorize the QuickBooks Online integration via OAuth. Claude reads your invoices, transactions, customers, and reports at the moment a workflow runs. It does not poll your account in the background, and Anthropic does not use connected business data to train Claude.
+
+### Can Claude replace my bookkeeper or CPA?
+
+No, and you shouldn't want it to. Claude prepares the reconciliation, organizes the receipts, and drafts the P&L. Your bookkeeper or CPA reviews and signs off. The combined cost is lower than a bookkeeper alone, and the turnaround is faster.
+
+### Does Claude work with Shopify?
+
+Yes, via the official Shopify MCP. The [Shopify Operations skill](skills/small-business/shopify-operations.md) and the [Ecommerce Seller skill](skills/small-business/ecommerce-seller.md) cover product descriptions, inventory alerts, SEO titles, collection updates, and cross-platform listing work.
+
+### Does Claude work with HubSpot?
+
+Yes, via the official HubSpot MCP. [Lead Triager](skills/small-business/lead-triager.md), [Cold Outreach](skills/small-business/cold-outreach.md), and [Email Campaign](skills/small-business/email-campaign.md) all read from and write to HubSpot via the integration.
+
+### How do I get started?
+
+Run `npx claudient add skills small-business` to install every small-business skill into your Claude Code environment. Then start with one workflow — [Invoice Chaser](skills/small-business/invoice-chaser.md) is the highest-ROI starting point for most businesses — and review the output carefully on the first run.
+
+### Is Claude for Small Business worth it?
+
+For businesses where the owner spends 6+ hours per week on the activities Claude covers (invoicing, lead follow-up, reporting, content, customer FAQs, vertical operations), yes — typically a 3-5x ROI within 60 days. For businesses already running tight automated stacks, the marginal return is smaller. Read the [ROI guide](guides/small-business-roi.md) for the calculator and benchmark data.
+
+### What if I'm not using any of these tools?
+
+The Claudient skills run on copy-paste data when a direct integration isn't available. You lose some of the workflow automation but keep the structured drafting, scoring, and analysis. For example, [Review Response](skills/small-business/review-response.md) works on Google reviews you paste in, even without a Google integration.
 
 ---
 
@@ -183,7 +297,7 @@ npx claudient add agents
 | `marketing` | 10 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
 | `product` | 8 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
 | `productivity` | 20+ | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
-| `small-business` | 12 | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response |
+| `small-business` | 30+ | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response, Dental Practice, Salon-Spa, Fitness Gym, Contractor Trades, Coaching, Newsletter, Online Course, Agency Operations, Hiring Pipeline, Churn Prevention, Pricing Optimizer |
 | `automation` | 6 | Playwright Pro, Browser Automation, Remotion, SaaS Scaffolder, Office Docs |
 
 ---
@@ -226,8 +340,8 @@ Event-driven automation — runs outside Claude's context as real shell processe
 
 | Type | Count |
 |---|---|
-| **Skills** | **262+** |
-| **Agents** | **93+** |
+| **Skills** | **277+** |
+| **Agents** | **95+** |
 | **Hooks** | 30+ |
 | **MCP config guides** | 31+ |
 | **Guides** | 53+ |
