@@ -105,37 +105,49 @@ const claudeForVerticals = [
 >
   <!-- Hero -->
   <section class="container-page py-20 md:py-28">
-    <div class="max-w-3xl">
-      <p class="pill mb-6">{stats.skills} skills · {stats.agents} agents · Open source</p>
-      <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
-        Stop explaining your stack to Claude every session.
-      </h1>
-      <p class="mt-6 text-lg md:text-xl max-w-2xl" style="color: var(--color-muted);">
-        Claudient gives Claude Code instant domain expertise — {stats.skills} skills that activate
-        automatically, {stats.agents} specialist agents, hooks, and MCP configs. Install in 30
-        seconds, works with any Claude Code project.
-      </p>
+    <div class="hero-grid">
+      <!-- Left: headline + CTA -->
+      <div>
+        <p class="pill mb-6">{stats.skills} skills · {stats.agents} agents · Open source</p>
+        <h1 class="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+          Stop explaining your stack to Claude every session.
+        </h1>
+        <p class="mt-6 text-lg md:text-xl" style="color: var(--color-muted);">
+          Claudient gives Claude Code instant domain expertise — {stats.skills} skills that activate
+          automatically, {stats.agents} specialist agents, hooks, and MCP configs. Install in 30
+          seconds, works with any Claude Code project.
+        </p>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <code
-          class="inline-flex items-center px-4 py-3 rounded-md font-mono text-sm"
-          style="background-color: var(--color-bg-elevated); border: 1px solid var(--color-border);"
-        >
-          <span style="color: var(--color-subtle);">$</span>&nbsp;npx claudient add all
-        </code>
-        <a href="/install/" class="btn-primary">Get started</a>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <code
+            class="inline-flex items-center px-4 py-3 rounded-md font-mono text-sm"
+            style="background-color: var(--color-bg-elevated); border: 1px solid var(--color-border);"
+          >
+            <span style="color: var(--color-subtle);">$</span>&nbsp;npx claudient add all
+          </code>
+          <a href="/install/" class="btn-primary">Get started</a>
+        </div>
       </div>
 
-      <!-- Live stats bar -->
-      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-y-4 gap-x-8 text-sm" style="color: var(--color-muted);">
-        <div><a href="/skills/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.skills}</span> skills</a></div>
-        <div><a href="/agents/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.agents}</span> agents</a></div>
-        <div><a href="/hooks/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.hooks}</span> hooks</a></div>
-        <div><a href="/mcp/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.mcp}</span> MCP configs</a></div>
-        <div><a href="/workflows/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.workflows}</span> workflows</a></div>
-        <div><a href="/guides/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.guides}</span> guides</a></div>
-        <div><a href="/prompts/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.prompts}</span> prompts</a></div>
-        <div><a href="/rules/" class="hover:underline"><span class="font-semibold" style="color: var(--color-fg);">{stats.rules}</span> rules</a></div>
+      <!-- Right: live stats grid -->
+      <div class="hero-stats-panel">
+        <div class="grid grid-cols-2 gap-6">
+          {[
+            { href: "/skills/", count: stats.skills, label: "skills" },
+            { href: "/agents/", count: stats.agents, label: "agents" },
+            { href: "/hooks/", count: stats.hooks, label: "hooks" },
+            { href: "/mcp/", count: stats.mcp, label: "MCP configs" },
+            { href: "/workflows/", count: stats.workflows, label: "workflows" },
+            { href: "/guides/", count: stats.guides, label: "guides" },
+            { href: "/prompts/", count: stats.prompts, label: "prompts" },
+            { href: "/rules/", count: stats.rules, label: "rules" },
+          ].map(({ href, count, label }) => (
+            <a href={href} class="stat-card card p-5 block hover:no-underline">
+              <span class="text-3xl font-bold tracking-tight" style="color: var(--color-fg);">{count}</span>
+              <span class="block text-sm mt-1" style="color: var(--color-muted);">{label}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -349,3 +361,33 @@ const claudeForVerticals = [
     </div>
   </section>
 </Layout>
+
+<style>
+  /* Hero two-column on large screens */
+  .hero-grid {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .hero-stats-panel {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-stats-panel {
+      display: block;
+    }
+  }
+
+  .stat-card {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>

@@ -210,8 +210,6 @@ const showToc = headings && headings.length >= 4;
   .toc-content {
     flex: 1;
     min-width: 0;
-    /* override container-page centering inside the flex layout */
-    max-width: 44rem;
     margin-inline: 0;
     padding-inline: 0;
   }
@@ -225,7 +223,7 @@ const showToc = headings && headings.length >= 4;
       display: block;
       position: sticky;
       top: 5rem;
-      width: 14rem;
+      width: 18rem;
       flex-shrink: 0;
       order: 2;
     }

@@ -87,14 +87,19 @@ hr {
 /* ---- Reusable utilities ---- */
 
 .container-page {
-  max-width: 72rem;
-  margin-inline: auto;
+  width: 100%;
   padding-inline: 1.25rem;
 }
 
 @media (min-width: 768px) {
   .container-page {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-page {
+    padding-inline: 4rem;
   }
 }
 
@@ -342,6 +347,27 @@ hr {
 /* Hide first-child H1 in prose — the page header already shows the title */
 .prose > h1:first-child {
   display: none;
+}
+
+/* Inside toc-layout, let prose expand to fill the flex column */
+.toc-content .prose {
+  max-width: none;
+}
+
+/* ---- Shiki dual-theme: light default, .dark class activates dark palette ---- */
+
+/* Light mode (default) — Shiki emits @media prefers-color-scheme but we use .dark class */
+.astro-code,
+.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+/* Dark mode — activated by .dark on <html> */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
 }
 
 /* ---- Code block wrapper (copy button + language badge) ---- */

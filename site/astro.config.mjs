@@ -4,6 +4,11 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://claudient.tools",
   output: "static",
+  markdown: {
+    shikiConfig: {
+      themes: { light: "github-light", dark: "github-dark" },
+    },
+  },
   trailingSlash: "always",
   build: {
     format: "directory",

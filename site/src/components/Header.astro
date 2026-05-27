@@ -52,17 +52,6 @@ const LOCALES = [
     --pagefind-ui-scale: 0.85;
   }
 
-  /* Search container — desktop inline, hidden on mobile */
-  #search-wrapper {
-    display: none;
-    width: 220px;
-  }
-  @media (min-width: 768px) {
-    #search-wrapper {
-      display: block;
-    }
-  }
-
   /* Search modal backdrop */
   #search-modal {
     display: none;
@@ -125,17 +114,12 @@ const LOCALES = [
       }
     </nav>
 
-    <!-- Desktop search (inline) -->
-    <div id="search-wrapper">
-      <div id="search-desktop"></div>
-    </div>
-
     <!-- Right-side actions -->
     <div class="flex items-center gap-2 shrink-0">
-      <!-- Mobile search trigger -->
+      <!-- Search trigger (all viewports) -->
       <button
         id="search-mobile-btn"
-        class="md:hidden btn-ghost p-1.5"
+        class="btn-ghost p-1.5"
         aria-label="Open search"
         title="Search"
       >
@@ -322,7 +306,6 @@ const LOCALES = [
   // The search widget will silently fail in `npm run dev` — that is expected.
   window.addEventListener("DOMContentLoaded", function () {
     if (typeof PagefindUI !== "undefined") {
-      new PagefindUI({ element: "#search-desktop", showImages: false });
       new PagefindUI({ element: "#search-mobile", showImages: false });
     }
   });
