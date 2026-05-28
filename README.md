@@ -21,9 +21,8 @@ Claudient gives Claude Code instant domain expertise — 277+ skills that activa
 npx claudient add all
 ```
 
+<img width="800" height="450" alt="hero11" src="https://github.com/user-attachments/assets/8f15589d-4f59-4c1f-991f-166170d00cc8" />
 
-
-https://github.com/user-attachments/assets/9763e564-ef26-4267-b2c1-38a26dfeff8f
 
 
 
