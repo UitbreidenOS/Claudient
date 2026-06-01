@@ -5,8 +5,8 @@
 [![GitHub Stars](https://img.shields.io/github/stars/Claudient/Claudient?color=f97316&label=stars)](https://github.com/Claudient/Claudient)
 [![License: AGPL-3.0](https://img.shields.io/badge/code-AGPL--3.0-3b82f6.svg)](LICENSE-CODE)
 [![Content License: CC-BY-SA-4.0](https://img.shields.io/badge/content-CC--BY--SA--4.0-ec4899.svg)](LICENSE-CONTENT)
-[![Skills](https://img.shields.io/badge/skills-277+-f97316)](#skills-by-category)
-[![Agents](https://img.shields.io/badge/agents-95+-ec4899)](#agents)
+[![Skills](https://img.shields.io/badge/skills-295+-f97316)](#skills-by-category)
+[![Agents](https://img.shields.io/badge/agents-99+-ec4899)](#agents)
 [![Claude for Small Business](https://img.shields.io/badge/small_business-30+_skills-06b6d4)](#-claude-for-small-business)
 [![MCP](https://img.shields.io/badge/MCP_configs-31+-8b5cf6)](#top-100-mcp-servers)
 [![Languages](https://img.shields.io/badge/languages-EN%20FR%20DE%20NL%20ES-3b82f6)](#translations)
@@ -15,7 +15,7 @@
 
 **Stop explaining your stack to Claude every session.**
 
-Claudient gives Claude Code instant domain expertise — 277+ skills that activate automatically, 95+ specialist agents, configs for 31 MCP servers, and hooks that automate your workflow. Including the most complete community knowledge base for **Claude for Small Business** with 30+ vertical and operator skills for solopreneurs, ecommerce, local services, coaches, and creators. Install in 30 seconds, works with any Claude Code project.
+Claudient is the largest open-source knowledge base for **Claude Code** — 295+ skills, 99+ specialist agents, 31 MCP server configs, 64 guides, 31 hooks, and 23 workflows, all installable in 30 seconds. Skills activate automatically based on what you're working on. Agents spawn when their expertise is needed. Hooks run on the right events. Works with any Claude Code project, in 5 languages. Including the most complete community knowledge base for **Claude for Small Business** — 30+ vertical and operator skills for solopreneurs, ecommerce, local services, coaches, and creators.
 
 ```bash
 npx claudient add all
@@ -28,7 +28,22 @@ npx claudient add all
 
 ---
 
-## Who is this for?
+## Why Claudient?
+
+| Problem | Without Claudient | With Claudient |
+|---|---|---|
+| **Domain context** | Re-explain your stack every session | Skills activate automatically |
+| **Specialist tasks** | Claude guesses at best practices | 99+ expert agents with scoped tools |
+| **Tool integrations** | Manual copy-paste between tools | 31 MCP server configs ready to install |
+| **Event automation** | Manual triggers, forgotten steps | 31 hooks that fire on the right events |
+| **Team / language** | English only, one-size config | 5 languages, composable per project |
+| **Small business** | Generic AI advice | 30+ vertical skills for real workflows |
+
+**One command gives Claude instant expertise across every domain you work in.**
+
+---
+
+## Who Is This For?
 
 | You are... | You get... |
 |---|---|
@@ -56,7 +71,7 @@ npx claudient add skills finance          # DCF, 3-statement model, pitch deck
 npx claudient add skills small-business   # Invoice chaser, cash flow, Shopify
 
 # Install agents
-npx claudient add agents                  # All 93+ specialist agents
+npx claudient add agents                  # All 99+ specialist agents
 
 # Install in your language
 npx claudient add all --lang fr           # French
@@ -107,7 +122,7 @@ npx claudient list
 
 ```bash
 npx claudient add mcp starter   # GitHub + Memory + Playwright
-npx claudient add mcp all       # All 20 individual config guides
+npx claudient add mcp all       # All 31 individual config guides
 ```
 
 ---
@@ -120,7 +135,7 @@ npx claudient add mcp all       # All 20 individual config guides
 npx claudient add skills small-business
 ```
 
-### Claude for Small Business by vertical
+### Claude for Small Business by Vertical
 
 Each guide is an end-to-end landing page for a specific industry — setup, skill stack, 30/60/90 expectations, FAQ.
 
@@ -133,7 +148,7 @@ Each guide is an end-to-end landing page for a specific industry — setup, skil
 | **Newsletter writer, podcaster, course creator** | [Claude for Creators](guides/claude-for-creators.md) |
 | **First-time, want the full overview** | [Claude for Small Business — Product Guide](guides/claude-for-small-business.md) |
 
-### Top small business skills
+### Top Small Business Skills
 
 | Skill | Automates | Works with |
 |---|---|---|
@@ -148,7 +163,7 @@ Each guide is an end-to-end landing page for a specific industry — setup, skil
 | `/sop-writer` | Standard operating procedures | Any business |
 | `/weekly-pulse` | KPI dashboard from all your tools | Multi-tool |
 
-### Vertical-specific skills (new)
+### Vertical-Specific Skills
 
 | Vertical | Skill |
 |---|---|
@@ -167,7 +182,7 @@ Each guide is an end-to-end landing page for a specific industry — setup, skil
 | Real estate | [`/real-estate-listing`](skills/small-business/real-estate-listing.md) |
 | Restaurant | [`/restaurant-ops`](skills/small-business/restaurant-ops.md) |
 
-### Operator skills (cross-cutting)
+### Operator Skills (Cross-Cutting)
 
 | Skill | Use case |
 |---|---|
@@ -182,7 +197,7 @@ Each guide is an end-to-end landing page for a specific industry — setup, skil
 | [`/margin-analyzer`](skills/small-business/margin-analyzer.md) | Gross margin by product, channel, customer |
 | [`/tax-organizer`](skills/small-business/tax-organizer.md) | CPA packet from QuickBooks and receipt folder |
 
-### Specialist agents for small business
+### Specialist Agents for Small Business
 
 - [`small-business-advisor`](agents/specialists/small-business-advisor.md) — generalist diagnosis and workflow prioritization
 - [`ecommerce-specialist`](agents/specialists/ecommerce-specialist.md) — for Shopify/Amazon/Etsy/DTC operators
@@ -248,9 +263,9 @@ The Claudient skills run on copy-paste data when a direct integration isn't avai
 
 ---
 
-## 🤖 93+ Agents
+## 🤖 99+ Agents
 
-Specialist agents spawned with the `Agent` tool in Claude Code. Each has a specific model, tool restrictions, and trigger conditions.
+Specialist agents spawned with the `Agent` tool in Claude Code. Each has a specific model, tool restrictions, and trigger conditions so Claude delegates the right work to the right expert.
 
 ### C-Suite Advisors (15 agents)
 
@@ -284,31 +299,31 @@ npx claudient add agents
 
 ## 📦 Skills by Category
 
-**262+ skills · 15 categories · EN · FR · DE · NL · ES**
+**295+ skills · 15 categories · EN · FR · DE · NL · ES**
 
 | Category | Count | Top skills |
 |---|---|---|
 | `backend/nodejs` | 20+ | Next.js, Hono, NestJS, tRPC, Astro, Svelte, React Native, Angular, WebSockets |
 | `backend/python` | 5 | FastAPI, Django, pytest, Python Async |
 | `backend/other` | 8 | Go, C#/.NET, Spring Boot, Rust, Rails, Laravel, Elixir, Flutter |
-| `devops-infra` | 20+ | AWS/Azure/GCP, Kubernetes, Helm, Terraform, Terragrunt, Docker, GitHub Actions, Sentry, OpenTelemetry |
-| `ai-engineering` | 10+ | Claude API, Vercel AI SDK, LangGraph, RAG Architect, Prompt Caching, Batch API, MCP Builder |
-| `data-ml` | 8 | dbt, Spark, Kafka, MLOps, NLP Pipelines, Reinforcement Learning, Pandas/Polars, PyTorch |
-| `database` | 8 | Drizzle, Prisma, PostgreSQL, Supabase, Neon, Redis, Elasticsearch, Blockchain/Solidity |
-| `gtm` | 10 | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Deal Desk, Revenue Ops |
-| `legal` | 15 | Contract Review, NDA, DSAR, GDPR, SOC 2, EU AI Act, ISO 27001, IP Clearance, Privacy PIA |
-| `finance` | 10 | DCF Model, 3-Statement Model, IC Memo, Pitch Deck, KYC Screener, GL Reconciler |
-| `marketing` | 10 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
-| `product` | 8 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
-| `productivity` | 20+ | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
-| `small-business` | 30+ | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response, Dental Practice, Salon-Spa, Fitness Gym, Contractor Trades, Coaching, Newsletter, Online Course, Agency Operations, Hiring Pipeline, Churn Prevention, Pricing Optimizer |
-| `automation` | 6 | Playwright Pro, Browser Automation, Remotion, SaaS Scaffolder, Office Docs |
+| `devops-infra` | 34 | AWS/Azure/GCP, Kubernetes, Helm, Terraform, Terragrunt, Docker, GitHub Actions, Sentry, OpenTelemetry |
+| `ai-engineering` | 17 | Claude API, Vercel AI SDK, LangGraph, RAG Architect, Prompt Caching, Batch API, MCP Builder |
+| `data-ml` | 12 | dbt, Spark, Kafka, MLOps, NLP Pipelines, Reinforcement Learning, Pandas/Polars, PyTorch |
+| `database` | 12 | Drizzle, Prisma, PostgreSQL, Supabase, Neon, Redis, Elasticsearch, Blockchain/Solidity |
+| `gtm` | 12 | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Deal Desk, Revenue Ops |
+| `legal` | 19 | Contract Review, NDA, DSAR, GDPR, SOC 2, EU AI Act, ISO 27001, IP Clearance, Privacy PIA |
+| `finance` | 12 | DCF Model, 3-Statement Model, IC Memo, Pitch Deck, KYC Screener, GL Reconciler |
+| `marketing` | 16 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
+| `product` | 10 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
+| `productivity` | 50 | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
+| `small-business` | 41 | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response, Dental Practice, Salon-Spa, Fitness Gym, Contractor Trades, Coaching, Newsletter, Online Course, Agency Operations, Hiring Pipeline, Churn Prevention, Pricing Optimizer |
+| `automation` | 14 | Playwright Pro, Browser Automation, Remotion, SaaS Scaffolder, Office Docs |
 
 ---
 
-## 🪝 Hooks
+## 🪝 31 Hooks
 
-Event-driven automation — runs outside Claude's context as real shell processes.
+Event-driven automation for Claude Code — runs outside Claude's context as real shell processes on the right lifecycle events.
 
 | Hook | Event | What it does |
 |---|---|---|
@@ -324,17 +339,17 @@ Event-driven automation — runs outside Claude's context as real shell processe
 | `session-context-loader` | SessionStart | Injects date, branch, recent commits at session start |
 | `ntfy-push` | Notification | Mobile push alerts via ntfy |
 | `tts-announcer` | Stop | Speaks Claude's final message aloud |
-| + 20 more | — | Auto-stage git, transcript backup, output compressor, bug logger, Slack notifier, WhatsApp gate... |
+| + 19 more | — | Auto-stage git, transcript backup, output compressor, bug logger, Slack notifier, WhatsApp gate... |
 
 ---
 
 ## 📖 Guides & Workflows
 
-### Guides (45+)
+### Guides (64+)
 
-[Getting Started](guides/getting-started.md) · [Agent Frontmatter Reference](guides/agent-frontmatter.md) · [Skills Frontmatter Reference](guides/skills-frontmatter.md) · [Decision Framework](guides/decision-framework.md) · [Claude Managed Agents](guides/claude-managed-agents.md) · [Advanced Tool Use](guides/advanced-tool-use.md) · [Voice Dictation](guides/voice-dictation.md) · [Desktop App](guides/desktop-app.md) · [Opus 4.7 Migration](guides/opus-47-migration.md) · [Hooks Cookbook](guides/hooks-cookbook.md) · [Multi-Agent Patterns](guides/multi-agent-patterns.md) · [Subagent Patterns](guides/subagent-patterns.md) · [Context Management](guides/context-management.md) · [Token Cost Reduction](guides/token-cost-reduction.md) · [Notifications Setup](guides/notifications-setup.md) · [Plugin Authoring](guides/plugin-authoring.md) · [RIPER Framework](guides/riper-framework.md) · [RPI Workflow](guides/rpi-workflow.md) · [CLI Reference](guides/cli-reference.md) · [Settings Scope](guides/settings-scope.md) · [Why Use Claude Code](guides/why-use-claude-code.md) · [Routines](guides/routines.md) · [Computer Use](guides/computer-use.md) · [Ultraplan](guides/ultraplan.md) · [Auto Mode](guides/auto-mode.md) + 10 more
+[Getting Started](guides/getting-started.md) · [Agent Frontmatter Reference](guides/agent-frontmatter.md) · [Skills Frontmatter Reference](guides/skills-frontmatter.md) · [Decision Framework](guides/decision-framework.md) · [Claude Managed Agents](guides/claude-managed-agents.md) · [Advanced Tool Use](guides/advanced-tool-use.md) · [Voice Dictation](guides/voice-dictation.md) · [Desktop App](guides/desktop-app.md) · [Opus 4.7 Migration](guides/opus-47-migration.md) · [Hooks Cookbook](guides/hooks-cookbook.md) · [Multi-Agent Patterns](guides/multi-agent-patterns.md) · [Subagent Patterns](guides/subagent-patterns.md) · [Context Management](guides/context-management.md) · [Token Cost Reduction](guides/token-cost-reduction.md) · [Notifications Setup](guides/notifications-setup.md) · [Plugin Authoring](guides/plugin-authoring.md) · [RIPER Framework](guides/riper-framework.md) · [RPI Workflow](guides/rpi-workflow.md) · [CLI Reference](guides/cli-reference.md) · [Settings Scope](guides/settings-scope.md) · [Why Use Claude Code](guides/why-use-claude-code.md) · [Routines](guides/routines.md) · [Computer Use](guides/computer-use.md) · [Ultraplan](guides/ultraplan.md) · [Auto Mode](guides/auto-mode.md) + 39 more
 
-### Workflows (20+)
+### Workflows (23+)
 
 [RPI Feature Development](workflows/rpi-feature.md) · [RIPER](workflows/riper.md) · [Incremental Build](workflows/incremental-build.md) · [Pre-Human Review](workflows/pre-human-review.md) · [Autonomous Loop](workflows/autonomous-loop.md) · [Worktree Lifecycle](workflows/worktree-lifecycle.md) · [Multi-Agent Saga](workflows/multi-agent-saga.md) · [Chaos Game Day](workflows/chaos-game-day.md) · [Error Budget](workflows/error-budget.md) · [Bug Investigation](workflows/bug-investigation.md) · [Compound Engineering](workflows/compound-engineering.md) · [Session Learning](workflows/session-learning.md) + more
 
@@ -344,15 +359,15 @@ Event-driven automation — runs outside Claude's context as real shell processe
 
 | Type | Count |
 |---|---|
-| **Skills** | **277+** |
-| **Agents** | **95+** |
-| **Hooks** | 30+ |
-| **MCP config guides** | 31+ |
-| **Guides** | 53+ |
-| **Workflows** | 23+ |
-| **Prompts** | 15+ |
-| **Rules** | 9 |
-| **Languages** | 5 (EN · FR · DE · NL · ES) |
+| **Skills** | **295+** |
+| **Agents** | **99+** |
+| **Hooks** | **31+** |
+| **MCP config guides** | **31+** |
+| **Guides** | **64+** |
+| **Workflows** | **23+** |
+| **Prompts** | **31+** |
+| **Rules** | **12** |
+| **Languages** | **5 (EN · FR · DE · NL · ES)** |
 
 ---
 
@@ -373,7 +388,7 @@ npx claudient add all --lang es   # Spanish
 
 ## 🤝 Add Your Skill — Get Featured
 
-Claudient is community-powered. Every skill lives in one markdown file.
+Claudient is community-powered. Every skill lives in one markdown file. Contributing a Claude Code skill takes less time than filing a GitHub issue.
 
 1. Read the [Skill Authoring Guide](guides/skill-authoring.md) — 5 minutes
 2. Fork, add your skill in one `.md` file
