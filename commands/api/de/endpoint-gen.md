@@ -1,28 +1,28 @@
 ---
-description: Erzeuge einen vollständig typisierten REST-Endpunkt mit Validierung, Fehlerbehandlung und Tests
+description: Einen vollständig typisierten REST-Endpoint mit Validierung, Fehlerbehandlung und Tests erstellen
 argument-hint: "[method] [path] [description]"
 ---
-Generiere einen produktionsreifen REST-API-Endpunkt aus der Spezifikation: $ARGUMENTS
+Generiere einen produktionsreifen REST-API-Endpoint aus der Spezifikation: $ARGUMENTS
 
-Analysiere die Eingabe als: HTTP-Methode, Pfad und eine kurze Beschreibung der Ressourcenoperation.
+Parse die Eingabe als: HTTP-Methode, Pfad und eine kurze Beschreibung der Ressourcenoperation.
 
 Regeln:
-- Leite das Framework aus der bestehenden Codebasis ab (Express, FastAPI, Gin, Rails, etc.)
-- Beachte die bestehende Dateistruktur, Namenskonventionen und Import-Stil des Projekts
-- Definiere Request-/Response-Typen unter Verwendung des Typ-Systems des Projekts (TypeScript-Schnittstellen, Pydantic-Modelle, Go-Strukturen, etc.)
-- Validiere alle Eingaben an der Grenze — lehne fehlerhafte Anfragen ab, bevor die Geschäftslogik ausgeführt wird
-- Gib standard-HTTP-Statuscodes zurück: 200/201 Erfolg, 400 Fehlerhafte Anfrage, 401 Nicht authentifiziert, 403 Verboten, 404 Nicht gefunden, 409 Konflikt, 422 Nicht verarbeitbar, 500 Interner Fehler
-- Gebe niemals Stack-Traces oder interne Fehlerdetails in Response-Body preis
-- Extrahiere Geschäftslogik in eine Service-Schicht, halte den Controller schlank
-- Füge Authentication-/Authorization-Checks hinzu, wenn das Projekt Middleware-Guards nutzt
-- Schreibe mindestens drei Tests: Happy-Path, Validierungsfehler, Nicht-gefunden-Fall
-- Befolge RESTful-Ressourcenkonventionen — verwende Substantive in Pfaden, keine Verben
+- Leiten Sie das Framework aus der bestehenden Codebasis ab (Express, FastAPI, Gin, Rails, etc.)
+- Beachten Sie die bestehende Dateistruktur, Namenskonventionen und Importstil des Projekts
+- Definieren Sie Request/Response-Typen mit dem Typ-System des Projekts (TypeScript-Interfaces, Pydantic-Modelle, Go-Structs, etc.)
+- Validieren Sie alle Eingaben an der Grenze — lehnen Sie malformed Requests ab, bevor Business-Logik ausgeführt wird
+- Geben Sie Standard-HTTP-Statuscodes zurück: 200/201 Erfolg, 400 Ungültige Anfrage, 401 Nicht authentifiziert, 403 Verboten, 404 Nicht gefunden, 409 Konflikt, 422 Nicht verarbeitbar, 500 Interner Fehler
+- Geben Sie niemals Stack Traces oder interne Fehlerdetails in Response-Bodies preis
+- Extrahieren Sie Business-Logik in eine Service-Schicht, halten Sie den Controller dünn
+- Fügen Sie Authentication/Authorization-Checks hinzu, wenn das Projekt Middleware-Guards verwendet
+- Schreiben Sie mindestens drei Tests: Happy Path, Validierungsfehler, Not-Found-Fall
+- Befolgen Sie RESTful-Ressourcenkonventionen — verwenden Sie Substantive in Pfaden, keine Verben
 
-Ausgabe:
-1. Route/Controller-Datei (oder Ergänzung zu bestehendem Router)
-2. Request/Response-Typ-Definitionen
-3. Service-Funktion (Stub oder Implementierung, wenn die Logik einfach ist)
+Output:
+1. Route/Controller-Datei (oder Hinzufügung zu einem bestehenden Router)
+2. Request/Response-Typdefinitionen
+3. Service-Funktions-Stub (oder Implementierung, wenn die Logik einfach ist)
 4. Test-Datei mit den drei erforderlichen Fällen
-5. Eventuelle Migration oder Schema-Änderung, wenn der Endpunkt die Datenbank berührt
+5. Jede Migration oder Schemaänderung, wenn der Endpoint die DB berührt
 
-Falls $ARGUMENTS leer ist, frage nach: Methode, Pfad und was der Endpunkt macht.
+Wenn $ARGUMENTS leer ist, fragen Sie: Methode, Pfad und was der Endpoint macht.

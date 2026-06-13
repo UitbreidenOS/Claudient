@@ -1,12 +1,12 @@
 ---
-description: Ein einheitliches Fehlerantwortschema für alle API-Endpunkte definieren und durchsetzen
+description: Definieren und durchsetzen eines konsistenten Error-Response-Schemas über alle API-Endpunkte hinweg
 argument-hint: "[scope: file, router, or 'all']"
 ---
-Überprüfen und durchsetzen eines einheitlichen Fehlerantwortschemas für: $ARGUMENTS
+Audit und Durchsetzung eines konsistenten Error-Response-Schemas für: $ARGUMENTS
 
-Der Scope wird auf die gesamte API gesetzt, wenn $ARGUMENTS leer ist oder „all".
+Der Bereich wird standardmäßig auf die gesamte API gesetzt, wenn $ARGUMENTS leer oder „all" ist.
 
-Zielfehlerschema (RFC 9457 / Problem Details for HTTP APIs):
+Ziel-Error-Schema (RFC 9457 / Problem Details for HTTP APIs):
 ```json
 {
   "type": "https://example.com/errors/validation-failed",
@@ -18,24 +18,24 @@ Zielfehlerschema (RFC 9457 / Problem Details for HTTP APIs):
 }
 ```
 
-Verwenden Sie dieses Schema, es sei denn, das Projekt hat bereits ein etabliertes Fehlerformat — falls ja, standardisieren Sie stattdessen auf dieses.
+Verwenden Sie dieses Schema, es sei denn, das Projekt hat bereits ein etabliertes Error-Format — falls ja, standardisieren Sie auf dieses statt.
 
 Schritte:
-1. Scannen Sie alle Fehler-Rückgabepfade: geworfene Ausnahmen, Error Middleware, Catch-Blöcke, Validierungshandler
-2. Identifizieren Sie Unstimmigkeiten: bloße Strings, inkonsistente Schlüssel (`message` vs `error` vs `detail`), fehlende Statuscodes, gemischte Formen
-3. Definieren Sie einen einzelnen Fehlertyp/Interface/Klasse im Projektwurzelverzeichnis (`ApiError` oder äquivalent)
-4. Ersetzen Sie jede Ad-hoc-Fehlerantwort mit einer strukturierten Konstruktion dieses Typs
-5. Zentralisieren Sie alle Fehler-Serialisierung an einer Stelle (Error Middleware / Exception Handler) — nicht verstreut über Controller
-6. Stellen Sie sicher, dass Validierungsfehler pro-Feld-Fehler aufzählen:
+1. Scannen Sie alle Error-zurückgebenden Code-Pfade: geworfene Exceptions, Error-Middleware, Catch-Blöcke, Validation-Handler
+2. Identifizieren Sie Inkonsistenzen: reine Strings, inkonsistente Schlüssel (`message` vs `error` vs `detail`), fehlende Status-Codes, gemischte Formen
+3. Definieren Sie einen einzigen Error-Typ/Interface/Klasse in der Projektwurzel (`ApiError` oder äquivalent)
+4. Ersetzen Sie jeden Ad-hoc-Error-Response durch strukturierte Konstruktion dieses Typs
+5. Zentralisieren Sie alle Error-Serialisierung an einer Stelle (Error-Middleware / Exception-Handler) — nicht verstreut über Controller
+6. Stellen Sie sicher, dass Validierungsfehler Fehler pro Feld aufzählen:
    ```json
    "errors": [{ "field": "email", "message": "Invalid format" }]
    ```
-7. Entfernen Sie Stack Traces aus Produktionsantworten — protokollieren Sie sie serverseitig, senden Sie sie niemals an Clients
-8. Ordnen Sie interne Fehlertypen HTTP-Statuscodes in einer Nachschlagetabelle zu — keine Statuscode-Literale außerhalb dieser Map
-9. Fügen Sie eine `trace_id` hinzu, die mit Ihrem Logging-System korreliert, falls eines verwendet wird
+7. Entfernen Sie Stack-Traces aus Production-Responses — protokollieren Sie sie serverseitig, senden Sie sie nie an den Client
+8. Ordnen Sie interne Error-Typen HTTP-Status-Codes in einer Lookup-Tabelle zu — keine Status-Code-Literale außerhalb dieser Tabelle
+9. Fügen Sie eine `trace_id` hinzu, die mit Ihrem Logging-System korreliert ist, falls vorhanden
 
 Ausgabe:
-- Die Fehlertyp-Definition
-- Der zentralisierte Error Handler
+- Die Error-Typ-Definition
+- Der zentralisierte Error-Handler
 - Liste aller geänderten Dateien
-- Alle Fehlerantworten, die nicht standardisiert werden konnten (mit Grund)
+- Alle Error-Responses, die nicht standardisiert werden konnten (mit Grund)

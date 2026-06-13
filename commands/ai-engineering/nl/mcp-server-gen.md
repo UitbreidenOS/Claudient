@@ -1,36 +1,36 @@
 ---
-description: Genereer een volledig ingestelde MCP-server die tools, resources of prompts beschikbaar maakt voor een bepaald domein
-argument-hint: "[domain or service to expose, e.g. 'GitHub issues' or 'Postgres query']"
+description: Genereer een volledig uitgewerkte MCP-server die tools, resources of prompts voor een bepaald domein beschikbaar stelt
+argument-hint: "[domein of service om bloot te stellen, bijv. 'GitHub issues' of 'Postgres query']"
 ---
-Genereer een production-ready MCP (Model Context Protocol) server voor: $ARGUMENTS
+Genereer een productie-klare MCP (Model Context Protocol) server voor: $ARGUMENTS
 
-**Stap 1 — Capaciteitsontwerp**
+**Stap 1 — Mogelijkheden ontwerpen**
 
-Zet op basis van het domein in $ARGUMENTS uit wat de server moet beschikbaar stellen in elke MCP-primitive:
+Van het domein in $ARGUMENTS, opsommen wat de server moet blootstellen via elk MCP-primitief:
 
-- **Tools** — acties die het model kan uitvoeren (create, update, delete, query). Vermeld naam, beschrijving, invoerschema (JSON Schema) en retourformaat.
-- **Resources** — gegevens die het model kan lezen (lijst + lees URI-patronen). Vermeld URI-template en inhoudstype.
-- **Prompts** — herbruikbare promptsjablonen die de host kan aanbieden. Vermeld naam, argumenten en prompttekst.
+- **Tools** — acties die het model kan aanroepen (create, update, delete, query). Vermeld naam, beschrijving, invoerschema (JSON Schema) en retourshape.
+- **Resources** — gegevens die het model kan lezen (list + read URI-patronen). Vermeld URI-sjabloon en inhoudstype.
+- **Prompts** — herbruikbare promptsjablonen die de host kan oppervlakken. Vermeld naam, argumenten en prompttekst.
 
-Vermeld alleen wat geschikt is voor het domein — niet alle drie primitives zijn altijd nodig.
+Vermeld alleen wat geschikt is voor het domein — niet altijd alle drie primitieven zijn nodig.
 
 **Stap 2 — Genereer de server**
 
-Schrijf een complete Python MCP-server met het `mcp`-pakket (`pip install mcp`). Vereisten:
+Schrijf een volledige Python MCP-server met behulp van het `mcp` pakket (`pip install mcp`). Vereisten:
 
 - Gebruik `mcp.server.Server` en `stdio_server()` transport
 - Registreer elke tool, resource en prompt die in Stap 1 is geïdentificeerd
 - Elke tool-handler moet:
   - Invoer valideren met Pydantic-modellen
-  - Retourneer `[TextContent(...)]` of `[ImageContent(...)]` naar gelang van toepassing
-  - Raise `McpError` met een passende `ErrorCode` bij fout (retourneer geen foutstrings in content)
-- Voeg een `__main__`-blok in: `asyncio.run(main())`
+  - `[TextContent(...)]` of `[ImageContent(...)]` retourneren waar passend
+  - `McpError` opheffen met een passende `ErrorCode` bij fout (geef geen foutstrings in inhoud terug)
+- Inclueer een `__main__` blok: `asyncio.run(main())`
 - Gebruik `httpx.AsyncClient` of de relevante SDK voor uitgaande API-aanroepen — geen `requests`
-- Secrets via omgevingsvariabelen alleen — nooit hardcoded
+- Secrets alleen via omgevingsvariabelen — nooit hardcoded
 
-**Stap 3 — settings.json-registratiesnippet**
+**Stap 3 — settings.json registratiefragment**
 
-Toon het exacte JSON-blok dat in `.claude/settings.json` (of `~/.claude/settings.json`) moet worden geplakt om de server te registreren:
+Toon het exacte JSON-blok om in `.claude/settings.json` (of `~/.claude/settings.json`) te plakken om de server te registreren:
 
 ```json
 {
@@ -48,10 +48,10 @@ Toon het exacte JSON-blok dat in `.claude/settings.json` (of `~/.claude/settings
 
 **Stap 4 — Smoke test**
 
-Schrijf een `test_server.py` met `mcp.client.session.ClientSession` en `stdio_client` die:
+Schrijf een `test_server.py` met behulp van `mcp.client.session.ClientSession` en `stdio_client` die:
 - Verbinding maakt met de server via subprocess
-- Tools, resources en prompts opsomst
-- Elke tool aanroept met minimaal geldige invoer en stelt een antwoord zonder fouten vast
-- Draait met `pytest -xvs test_server.py`
+- Tools, resources en prompts opsomt
+- Elke tool aanroept met minimaal geldige invoer en een antwoord zonder fout bevat
+- Uitvoert met `pytest -xvs test_server.py`
 
-**Output:** `server.py`, `settings.json`-snippet, `test_server.py`. Geen `# TODO`-stubs. Geen placeholder-logica.
+**Output:** `server.py`, `settings.json` fragment, `test_server.py`. Geen `# TODO` stubs. Geen plaatsaanduiding-logica.

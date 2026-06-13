@@ -1,28 +1,28 @@
 ---
-description: Genera un endpoint REST completamente tipado con validación, manejo de errores y pruebas
-argument-hint: "[method] [path] [description]"
+description: Generar un endpoint REST completamente tipado con validación, manejo de errores y pruebas
+argument-hint: "[método] [ruta] [descripción]"
 ---
-Genera un endpoint de API REST listo para producción a partir de la especificación: $ARGUMENTS
+Generar un endpoint REST listo para producción a partir de la especificación: $ARGUMENTS
 
-Analiza la entrada como: método HTTP, ruta y una breve descripción de la operación del recurso.
+Analizar la entrada como: método HTTP, ruta y una breve descripción de la operación del recurso.
 
 Reglas:
-- Infiere el framework del código existente (Express, FastAPI, Gin, Rails, etc.)
-- Coincide con la estructura de archivos, convenciones de nombres y estilo de importaciones existentes del proyecto
-- Define tipos de solicitud/respuesta usando el sistema de tipos del proyecto (interfaces TypeScript, modelos Pydantic, structs de Go, etc.)
-- Valida todas las entradas en el límite — rechaza solicitudes mal formadas antes de que se ejecute la lógica empresarial
-- Devuelve códigos de estado HTTP estándar: 200/201 éxito, 400 solicitud incorrecta, 401 no autenticado, 403 prohibido, 404 no encontrado, 409 conflicto, 422 no procesable, 500 error interno
-- Nunca expongas trazas de pila o detalles internos de errores en cuerpos de respuesta
-- Extrae la lógica empresarial en una capa de servicio, mantén el controlador delgado
-- Añade verificaciones de autenticación/autorización si el proyecto usa protecciones de middleware
-- Escribe al menos tres pruebas: caso de éxito, fallo de validación, caso no encontrado
-- Sigue convenciones de recursos RESTful — usa sustantivos en las rutas, no verbos
+- Inferir el framework del código base existente (Express, FastAPI, Gin, Rails, etc.)
+- Coincidir con la estructura de archivos existente del proyecto, convenciones de nombres e estilo de importaciones
+- Definir tipos de solicitud/respuesta usando el sistema de tipos del proyecto (interfaces de TypeScript, modelos Pydantic, estructuras Go, etc.)
+- Validar todas las entradas en el límite — rechazar solicitudes mal formadas antes de que la lógica empresarial se ejecute
+- Retornar códigos de estado HTTP estándar: 200/201 éxito, 400 solicitud incorrecta, 401 no autenticado, 403 prohibido, 404 no encontrado, 409 conflicto, 422 no procesable, 500 error interno
+- Nunca exponer trazas de pila o detalles de errores internos en cuerpos de respuesta
+- Extraer la lógica empresarial en una capa de servicio, mantener el controlador delgado
+- Agregar comprobaciones de autenticación/autorización si el proyecto utiliza guardias de middleware
+- Escribir al menos tres pruebas: caso feliz, fallo de validación, caso no encontrado
+- Seguir convenciones de recursos RESTful — usar sustantivos en rutas, no verbos
 
 Salida:
-1. Archivo de ruta/controlador (o adición al router existente)
+1. Archivo de ruta/controlador (o adición al enrutador existente)
 2. Definiciones de tipos de solicitud/respuesta
 3. Función de servicio stub (o implementación si la lógica es simple)
 4. Archivo de prueba con los tres casos requeridos
-5. Cualquier migración o cambio de esquema si el endpoint toca la BD
+5. Cualquier migración o cambio de esquema si el endpoint toca la base de datos
 
-Si $ARGUMENTS está vacío, pregunta: método, ruta y qué hace el endpoint.
+Si $ARGUMENTS está vacío, preguntar: método, ruta y qué hace el endpoint.
