@@ -21,7 +21,7 @@
 
 **Stop explaining your stack to Claude every session.**
 
-Claudient is the largest open-source knowledge base for **Claude Code** — 380+ skills, 182+ specialist agents, 100+ slash commands, 99+ guides, 40 hooks, 45 workflows, 82 project structures, 10 personas, 32 rules, 20 annotated CLAUDE.md examples, cross-harness adapters (Cursor/Windsurf/Codex/Gemini/Copilot), plus output styles, themes, statuslines, keybindings, settings templates, routines, and an Agent SDK pack — all installable in 30 seconds.
+Claudient is the largest open-source knowledge base for **Claude Code** — 380+ skills, 182+ specialist agents, 100+ slash commands, 100+ guides, 40 hooks, 45 workflows, 82 project structures, 10 personas, 32 rules, 20 annotated CLAUDE.md examples, cross-harness adapters (Cursor/Windsurf/Codex/Gemini/Copilot), plus output styles, themes, statuslines, keybindings, settings templates, routines, and an Agent SDK pack — all installable in 30 seconds.
 
 ```bash
 # Install as a Claude Code plugin marketplace (recommended)
@@ -64,8 +64,9 @@ Claudient ships as a native Claude Code **plugin marketplace**. Add it once, the
 | `claudient-gtm` | 32 | `claudient-database` | 12 |
 | `claudient-marketing` | 22 | `claudient-git` | 3 |
 | `claudient-legal` | 21 | `claudient-commands` | 100 commands |
-| `claudient-sdr` | 18 | `claudient-personas` | 10 personas |
-| `claudient-ai-engineering` | 17 | `claudient-everything` | meta-bundle |
+| `claudient-sdr` | 22 | `claudient-personas` | 10 personas |
+| `claudient-ai-engineering` | 17 | `claudient-finance-payments` | 2 |
+| `claudient-everything` | meta-bundle | | |
 
 Every skill is validated with `claude plugin validate --strict`. Prefer npm? `npx claudient add all` still works.
 
@@ -84,7 +85,7 @@ Claudient covers every primitive Claude Code supports, not just skills:
 | **Statuslines** | 6 scripts — minimal, full, cost-watch, context-budget, git-focused, rate-limit | point `settings.json` `statusLine` at them |
 | **Keybindings** | 4 presets — vim, emacs, ergonomic, power-user | merge into `~/.claude/keybindings.json` |
 | **Settings templates** | 5 starters — solo-dev, team, security-hardened, enterprise, minimal | drop into `.claude/settings.json` |
-| **Hooks** | 96 across all 2026 events — including new `http`, `prompt`, and `agent` hook types | see [`hooks/`](hooks/) |
+| **Hooks** | 40 across all 2026 events — including new `http`, `prompt`, and `agent` hook types | see [`hooks/`](hooks/) |
 | **Routines** | 4 scheduled cloud-agent templates — daily-standup, pr-triage, dependency-audit, incident-watch | see [`routines/`](routines/) |
 | **Computer-use skills** | 4 — ui-testing, visual-qa, legacy-app-automation, screenshot-verify | `/plugin install` or copy |
 | **CLAUDE.md gallery** | 20 annotated real-world templates — Next.js SaaS, FastAPI, monorepo, CLI tool, dbt, mobile, OSS library, k8s, small business, legal, fintech, game dev, embedded, and more | see [`claude-md-examples/`](claude-md-examples/) |
@@ -123,9 +124,9 @@ Install: `/plugin install claudient-commands@claudient` or copy [`commands/`](co
 | Problem | Without Claudient | With Claudient |
 |---|---|---|
 | **Domain context** | Re-explain your stack every session | Skills activate automatically |
-| **Specialist tasks** | Claude guesses at best practices | 99+ expert agents with scoped tools |
+| **Specialist tasks** | Claude guesses at best practices | 182+ expert agents with scoped tools |
 | **Tool integrations** | Manual copy-paste between tools | 31 MCP server configs ready to install |
-| **Event automation** | Manual triggers, forgotten steps | 31 hooks that fire on the right events |
+| **Event automation** | Manual triggers, forgotten steps | 40 hooks that fire on the right events |
 | **Team / language** | English only, one-size config | 5 languages, composable per project |
 | **Small business** | Generic AI advice | 30+ vertical skills for real workflows |
 
@@ -208,7 +209,7 @@ Each pack includes: domain-specific slash commands, a curated agent roster, a da
 npx claudient add all
 
 # Install by domain
-npx claudient add skills backend          # 80+ backend skills
+npx claudient add skills backend          # 40+ backend skills
 npx claudient add skills devops-infra     # Kubernetes, Terraform, Docker, CI/CD
 npx claudient add skills ai-engineering   # RAG, LangGraph, Claude API, MCP builder
 npx claudient add skills legal            # GDPR, SOC 2, contracts, NDA review
@@ -216,7 +217,7 @@ npx claudient add skills finance          # DCF, 3-statement model, pitch deck
 npx claudient add skills small-business   # Invoice chaser, cash flow, Shopify
 
 # Install agents
-npx claudient add agents                  # All 99+ specialist agents
+npx claudient add agents                  # All 182+ specialist agents
 
 # Install in your language
 npx claudient add all --lang fr           # French
@@ -310,9 +311,9 @@ Claudient/
 │   ├── context/              # context injection hooks
 │   └── advanced/             # sound-system · audit-log · output-size-warn
 │
-├── guides/                   # 64+ human-readable documentation files
+├── guides/                   # 100+ human-readable documentation files
 │   └── [de/ · es/ · fr/ · nl/]    # Translated versions
-├── workflows/                # 23+ end-to-end process workflows
+├── workflows/                # 45+ end-to-end process workflows
 │   └── [de/ · es/ · fr/ · nl/]
 ├── prompts/                  # 31+ reusable prompt templates
 │   ├── system-prompts/       # Role-based system prompt templates
@@ -530,7 +531,7 @@ The Claudient skills run on copy-paste data when a direct integration isn't avai
 
 <a name="agents"></a>
 
-## 99+ Claude Code Specialist Agents
+## 182+ Claude Code Specialist Agents
 
 Specialist agents spawned with the `Agent` tool in Claude Code. Each has a specific model, tool restrictions, and trigger conditions so Claude delegates the right work to the right expert.
 
@@ -568,29 +569,33 @@ npx claudient add agents
 
 ## Skills by Category — 380+ Claude Code Skills
 
-**380+ skills · 15 categories · EN · FR · DE · NL · ES**
+**380+ skills · 19 categories · EN · FR · DE · NL · ES**
 
 | Category | Count | Top skills |
 |---|---|---|
-| `backend/nodejs` | 20+ | Next.js, Hono, NestJS, tRPC, Astro, Svelte, React Native, Angular, WebSockets |
+| `backend/nodejs` | 25 | Next.js, Hono, NestJS, tRPC, Astro, Svelte, React Native, Angular, WebSockets |
 | `backend/python` | 5 | FastAPI, Django, pytest, Python Async |
-| `backend/other` | 8 | Go, C#/.NET, Spring Boot, Rust, Rails, Laravel, Elixir, Flutter |
-| `devops-infra` | 34 | AWS/Azure/GCP, Kubernetes, Helm, Terraform, Terragrunt, Docker, GitHub Actions, Sentry, OpenTelemetry |
+| `backend/other` | 11 | Go, C#/.NET, Spring Boot, Rust, Rails, Laravel, Elixir, Flutter, PHP, Ruby, Swift |
+| `devops-infra` | 36 | AWS/Azure/GCP, Kubernetes, Helm, Terraform, Terragrunt, Docker, GitHub Actions, Sentry, OpenTelemetry |
 | `ai-engineering` | 17 | Claude API, Vercel AI SDK, LangGraph, RAG Architect, Prompt Caching, Batch API, MCP Builder |
-| `data-ml` | 12 | dbt, Spark, Kafka, MLOps, NLP Pipelines, Reinforcement Learning, Pandas/Polars, PyTorch |
+| `data-ml` | 15 | dbt, Spark, Kafka, MLOps, NLP Pipelines, Reinforcement Learning, Pandas/Polars, PyTorch |
 | `database` | 12 | Drizzle, Prisma, PostgreSQL, Supabase, Neon, Redis, Elasticsearch, Blockchain/Solidity |
-| `gtm` | 12 | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Deal Desk, Revenue Ops |
-| `legal` | 19 | Contract Review, NDA, DSAR, GDPR, SOC 2, EU AI Act, ISO 27001, IP Clearance, Privacy PIA |
-| `finance` | 12 | DCF Model, 3-Statement Model, IC Memo, Pitch Deck, KYC Screener, GL Reconciler |
-| `marketing` | 16 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
-| `product` | 10 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
-| `productivity` | 50 | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
-| `small-business` | 41 | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response, Dental Practice, Salon-Spa, Fitness Gym, Contractor Trades, Coaching, Newsletter, Online Course, Agency Operations, Hiring Pipeline, Churn Prevention, Pricing Optimizer |
+| `gtm` | 32 | HubSpot, SDR Agent, Lead Enrichment, Email Automation, CRM Hygiene, Deal Desk, Revenue Ops |
+| `legal` | 21 | Contract Review, NDA, DSAR, GDPR, SOC 2, EU AI Act, ISO 27001, IP Clearance, Privacy PIA |
+| `finance` | 16 | DCF Model, 3-Statement Model, IC Memo, Pitch Deck, KYC Screener, GL Reconciler |
+| `marketing` | 22 | SEO Audit, AI SEO, Programmatic SEO, Paid Ads, Content Strategy, CRO, Copywriting |
+| `product` | 15 | Product Discovery, Experiment Designer, Competitive Teardown, UX Research, Roadmap |
+| `productivity` | 66 | Ship Gate, PR Review, ADR Writer, Tech Debt Tracker, Context Engineering, TDD Guard |
+| `small-business` | 47 | Invoice Chaser, QuickBooks, Cash Flow, Shopify, SOP Writer, Review Response, Dental Practice, Salon-Spa, Fitness Gym, Contractor Trades, Coaching, Newsletter, Online Course, Agency Operations, Hiring Pipeline, Churn Prevention, Pricing Optimizer |
+| `sdr` | 18 | Research Brief, Cold Outreach, LinkedIn Prospecting, Objection Handler, Follow-up Sequences |
 | `automation` | 14 | Playwright Pro, Browser Automation, Remotion, SaaS Scaffolder, Office Docs |
+| `computer-use` | 4 | UI Testing, Visual QA, Legacy App Automation, Screenshot Verify |
+| `finance-payments` | 2 | Payments, Fintech |
+| `git` | 3 | Git Workflow Automation |
 
 ---
 
-## 31 Claude Code Hooks — Event-Driven Automation
+## 40 Claude Code Hooks — Event-Driven Automation
 
 Event-driven automation for Claude Code — runs outside Claude's context as real shell processes on the right lifecycle events.
 
@@ -608,17 +613,17 @@ Event-driven automation for Claude Code — runs outside Claude's context as rea
 | `session-context-loader` | SessionStart | Injects date, branch, recent commits at session start |
 | `ntfy-push` | Notification | Mobile push alerts via ntfy |
 | `tts-announcer` | Stop | Speaks Claude's final message aloud |
-| + 19 more | — | Auto-stage git, transcript backup, output compressor, bug logger, Slack notifier, WhatsApp gate... |
+| + 28 more | — | Auto-stage git, transcript backup, output compressor, bug logger, Slack notifier, WhatsApp gate... |
 
 ---
 
-## Guides & Workflows — 64+ Claude Code Guides and Workflows
+## Guides & Workflows — 100+ Claude Code Guides and Workflows
 
-### Guides (64+)
+### Guides (100+)
 
 [Getting Started](guides/getting-started.md) · [Agent Frontmatter Reference](guides/agent-frontmatter.md) · [Skills Frontmatter Reference](guides/skills-frontmatter.md) · [Decision Framework](guides/decision-framework.md) · [Claude Managed Agents](guides/claude-managed-agents.md) · [Advanced Tool Use](guides/advanced-tool-use.md) · [Voice Dictation](guides/voice-dictation.md) · [Desktop App](guides/desktop-app.md) · [Opus 4.7 Migration](guides/opus-47-migration.md) · [Hooks Cookbook](guides/hooks-cookbook.md) · [Multi-Agent Patterns](guides/multi-agent-patterns.md) · [Subagent Patterns](guides/subagent-patterns.md) · [Context Management](guides/context-management.md) · [Token Cost Reduction](guides/token-cost-reduction.md) · [Notifications Setup](guides/notifications-setup.md) · [Plugin Authoring](guides/plugin-authoring.md) · [RIPER Framework](guides/riper-framework.md) · [RPI Workflow](guides/rpi-workflow.md) · [CLI Reference](guides/cli-reference.md) · [Settings Scope](guides/settings-scope.md) · [Why Use Claude Code](guides/why-use-claude-code.md) · [Routines](guides/routines.md) · [Computer Use](guides/computer-use.md) · [Ultraplan](guides/ultraplan.md) · [Auto Mode](guides/auto-mode.md) + 39 more
 
-### Workflows (23+)
+### Workflows (45+)
 
 [RPI Feature Development](workflows/rpi-feature.md) · [RIPER](workflows/riper.md) · [Incremental Build](workflows/incremental-build.md) · [Pre-Human Review](workflows/pre-human-review.md) · [Autonomous Loop](workflows/autonomous-loop.md) · [Worktree Lifecycle](workflows/worktree-lifecycle.md) · [Multi-Agent Saga](workflows/multi-agent-saga.md) · [Chaos Game Day](workflows/chaos-game-day.md) · [Error Budget](workflows/error-budget.md) · [Bug Investigation](workflows/bug-investigation.md) · [Compound Engineering](workflows/compound-engineering.md) · [Session Learning](workflows/session-learning.md) + more
 
@@ -629,13 +634,13 @@ Event-driven automation for Claude Code — runs outside Claude's context as rea
 | Type | Count |
 |---|---|
 | **Skills** | **380+** |
-| **Agents** | **99+** |
-| **Hooks** | **31+** |
+| **Agents** | **182+** |
+| **Hooks** | **40** |
 | **MCP config guides** | **31+** |
-| **Guides** | **64+** |
-| **Workflows** | **23+** |
+| **Guides** | **100+** |
+| **Workflows** | **45+** |
 | **Prompts** | **31+** |
-| **Rules** | **12** |
+| **Rules** | **32** |
 | **Languages** | **5 (EN · FR · DE · NL · ES)** |
 
 ---

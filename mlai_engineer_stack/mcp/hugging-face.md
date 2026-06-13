@@ -1,0 +1,1 @@
+Hugging Face hub integration stub
