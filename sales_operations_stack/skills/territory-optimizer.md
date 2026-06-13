@@ -1,17 +1,17 @@
 ---
 name: territory-optimizer
-description: Analyzes territory design fairness and account distribution. Identifies coverage gaps, quota imbalance, and revenue concentration risk. Recommends realignment.
-allowed-tools: Read, Write
+description: Analyzes territory design for account distribution balance, quota fairness, overlap detection, and capacity planning. Recommends realignment to maximize revenue potential and reduce rep burden.
+allowed-tools: Read, Write, WebFetch
 effort: high
 ---
 
 ## When to activate
 
-Quarterly or after headcount changes. Use before assigning new sales hires or when management suspects territories are unfairly distributed.
+Run monthly, after new hires, after quota changes, or on-demand when territory gaps or unfair allocations suspected. Requires account list with assigned rep, territory, revenue potential, and current quota.
 
 ## When NOT to use
 
-Not for individual rep coaching — use quota-tracker. Not for account research — use account-researcher. Not for sales comp plan design — use sales-compensation-auditor.
+Not for individual rep performance review—use quota-tracker. Not for one-off account assignments; use for systematic territory design. Not during forecast lock (final week of month).
 
 ## Territory Analysis Framework
 
