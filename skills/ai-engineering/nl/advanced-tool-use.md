@@ -1,17 +1,22 @@
+---
+name: advanced-tool-use
+updated: 2026-06-13
+---
+
 # Advanced Tool Use
 
-## Wanneer activeren
-Gebruiker wil tool use patronen optimaliseren in Claude API applicaties, tokens van tool definities of call overhead reduceren, nauwkeurigheid verbeteren op complexe tool parameters, of geavanceerde tool-calling workflows bouwen.
+## When to activate
+Gebruiker wil toolgebruikspatronen in Claude API-applicaties optimaliseren, tokens uit tool definities of call overhead verminderen, nauwkeurigheid op complexe tool parameters verbeteren, of geavanceerde tool-calling workflows bouwen.
 
-## Wanneer NIET gebruiken
+## When NOT to use
 - Eenvoudige single-tool workflows waar overhead optimalisatie irrelevant is
-- Applicaties met standard Messages API en minder dan 5 tools zonder herhaalde calls
-- Debugging van gebroken tool definitie — zet eerst correctheid, daarna optimalisatie
+- Applicaties die de standaard Messages API gebruiken met minder dan 5 tools en geen herhaalde calls
+- Debug van een verbroken tool definitie — fix eerst de correctheid, optimaliseer daarna
 
-## Instructies
+## Instructions
 
 ### Pattern 1: Programmatic Tool Calling (PTC)
-Claude schrijft Python orchestration code in plaats van tools één-voor-één aan te roepen. Reduceert round trips en tokens.
+Claude schrijft Python orchestration code in plaats van tools één-voor-één aan te roepen. Vermindert round trips en tokens.
 
 **Token reductie: ~37% voor multi-tool workflows.**
 
@@ -25,18 +30,18 @@ Inschakelen per tool:
 }
 ```
 
-Wanneer ingeschakeld, kan Claude ervoor kiezen Python loop te schrijven die deze tool N keer aanroept in plaats van N aparte tool_use blokken. Gebruik voor: repetitieve read/lookup patronen, data transformation pipelines, elke tool aangeroepen >3 keer per turn.
+Wanneer ingeschakeld, kan Claude ervoor kiezen om een Python loop te schrijven die deze tool N keer aanroept in plaats van N aparte tool_use blocks te maken. Gebruik voor: repetitieve read/lookup patronen, data transformation pipelines, elke tool aangeroepen >3 keer per turn.
 
-Niet inschakelen voor tools met side effects (write, delete, deploy) of tools die per-call autorisatie vereisen.
+Schakel niet in voor tools met bijwerkingen (write, delete, deploy) of tools die per-call autorisatie vereisen.
 
 ---
 
 ### Pattern 2: Dynamic Filtering for Web Tools
-Nieuwe built-in tool types voor web search en fetch die resultaten filteren voordat ze context binnenkomen.
+Nieuwe ingebouwde tool types voor web search en fetch die resultaten filteren voordat ze in de context binnenkomen.
 
 **Beta header vereist:** `anthropic-beta: code-execution-web-tools-2026-02-09`
 
-**Token reductie: ~24% minder input tokens. Nauwkeurigheid verbetering: +13–16 percentage punten.**
+**Token reductie: ~24% minder input tokens. Nauwkeurigheidsverbetering: +13–16 percentage punten.**
 
 ```python
 import anthropic
@@ -54,20 +59,20 @@ response = client.messages.create(
 )
 ```
 
-Met deze tool types schrijft Claude filter code die alleen relevante data uit search resultaten of fetched pages extraheert voordat de content context window binnengaat. Een volledige web pagina van 50.000 tokens wordt een 200-token extract.
+Met deze tool types schrijft Claude filteringscode die alleen de relevante gegevens uit zoekresultaten of opgehaalde pagina's haalt voordat de content in het context window binnengaat. Een volledige webpagina van 50.000 tokens wordt een 200-token extract.
 
 ---
 
 ### Pattern 3: Tool Search / Deferred Loading
-Voor grote tool catalogi, deferreer zelden gebruikte tools zodat ze niet in context geladen worden tenzij nodig.
+Voor grote tool catalogi, stellen u zelden gebruikte tools uit zodat ze niet in de context worden geladen tenzij nodig.
 
 **Token reductie: ~85% voor catalogi met veel tools.**
 
-Inschakelen via environment variable:
+Inschakelen via omgevingsvariabele:
 ```
 ENABLE_TOOL_SEARCH=auto:N
 ```
-Waarbij N de drempel is — tools voorbij top N meest relevant zijn uitgesteld.
+Waarbij N de drempel is — tools buiten de top N meest relevante worden uitgesteld.
 
 Markeer individuele tools als deferrable:
 ```python
@@ -79,16 +84,16 @@ Markeer individuele tools als deferrable:
 }
 ```
 
-Uitgestelde tools worden on-demand door Claude ontdekt via MCPSearch wanneer het bepaalt dat het een capability nodig heeft niet in huidige geladen context. Gebruik voor: grote MCP tool catalogi, enterprise APIs met honderden endpoints, plugin systems waarbij meeste tools zelden gebruikt zijn.
+Uitgestelde tools worden door Claude on-demand ontdekt via MCPSearch wanneer het bepaalt dat het een mogelijkheid nodig heeft die niet in de huidige geladen context staat. Gebruik voor: grote MCP tool catalogi, enterprise APIs met honderden endpoints, plugin systemen waar de meeste tools zelden worden gebruikt.
 
-Defer niet tools die in bijna elke conversatie aangeroepen zijn — de discovery overhead elimineert de savings.
+Stel geen tools uit die in bijna elk gesprek worden aangeroepen — de discovery overhead elimineert de besparingen.
 
 ---
 
 ### Pattern 4: Tool Use Examples (`input_examples`)
-Voeg concrete call voorbeelden toe aan tool definities voorbij JSON schema.
+Voeg concrete call voorbeelden toe aan tool definities buiten het JSON schema.
 
-**Nauwkeurigheid verbetering: ~72% → ~90% op complexe parameters.**
+**Nauwkeurigheidsverbetering: ~72% → ~90% op complexe parameters.**
 
 ```python
 {
@@ -117,17 +122,17 @@ Voeg concrete call voorbeelden toe aan tool definities voorbij JSON schema.
 }
 ```
 
-`input_examples` is meest waardevol voor:
-- Tools met niet-voor-de-hand-liggende parameter combinaties
-- Complexe geneste schemas
-- Parameters waar format meer telt dan type (SQL strings, regex, JSON paths)
-- Tools waar Claude consistent dezelfde parameter fout maakt zonder voorbeelden
+`input_examples` is het meest waardevol voor:
+- Tools met niet-voor-de-hand liggende parametercombinaties
+- Complexe geneste schema's
+- Parameters waarbij het formaat meer uitmaakt dan het type (SQL strings, regex, JSON paths)
+- Tools waar Claude consistent dezelfde parameterfout maakt zonder voorbeelden
 
 ---
 
 ### Combining Patterns
 
-Maximale efficiency stack voor grote tool catalog:
+Maximaal efficiëntie stack voor een grote tool catalogus:
 
 ```python
 tools = [
@@ -161,14 +166,14 @@ tools += [
 ]
 ```
 
-## Voorbeeld
+## Example
 
-Een agent met 120 tools (volledige API surface van SaaS platform):
+Een agent met 120 tools (volledige API oppervlak van een SaaS platform):
 
-Zonder optimalisatie: 120 tool definities × ~150 tokens elk = ~18.000 tokens per call, alleen voor tool definities. Meeste tools worden nooit aangeroepen.
+Zonder optimalisatie: 120 tool definities × ~150 tokens elk = ~18.000 tokens per call, alleen voor tool definities. De meeste tools worden nooit aangeroepen.
 
-Met deferred loading (`ENABLE_TOOL_SEARCH=auto:10`): alleen top 10 meest waarschijnlijke tools geladen. Token cost voor tool definities daalt van 18.000 naar ~1.500 — 85% reductie. Wanneer Claude zelden gebruikte tool nodig heeft, het zoekt en laadt on demand, voegend ~200 tokens toe voor die turn alleen.
+Met uitgestelde loading (`ENABLE_TOOL_SEARCH=auto:10`): alleen de 10 meest waarschijnlijke tools worden geladen. Token kosten voor tool definities dalen van 18.000 naar ~1.500 — 85% reductie. Wanneer Claude een zelden gebruikte tool nodig heeft, zoekt het die op en laadt het on demand, wat ~200 tokens voor die turn toevoegt.
 
-Toevoegen van `input_examples` aan 10 altijd geladen tools verhoogt parameter nauwkeurigheid van 72% naar 90% op tools die het meeste uitmaken.
+Het toevoegen van `input_examples` aan de 10 altijd geladen tools verhoogt de parameternauwkeurigheid van 72% naar 90% op de tools die het meest uitmaken.
 
 ---

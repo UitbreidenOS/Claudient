@@ -1,34 +1,40 @@
 > 🇫🇷 This is the French translation. [English version](../claude-api.md).
 
-# Compétence API Claude
+---
+name: claude-api
+description: "Anthropic Claude API: prompt caching, streaming, tool use, batch processing, model selection, cost optimization"
+updated: 2026-06-13
+---
+
+# Claude API Skill
 
 ## Quand activer
-- Rédiger du code qui appelle l'API Claude Anthropic (SDK Python ou TypeScript)
-- Implémenter le prompt caching, le streaming ou le traitement par lots
+- Écrire du code appelant l'API Claude Anthropic (SDK Python ou TypeScript)
+- Implémenter la mise en cache de prompts, le streaming ou le traitement par lots
 - Concevoir la gestion des conversations multi-tours
 - Sélectionner le bon modèle Claude (Haiku, Sonnet, Opus) pour une tâche
-- Ajouter l'utilisation d'outils / function calling à une intégration Claude
+- Ajouter tool use / function calling à une intégration Claude
 - Optimiser le coût ou la latence dans une application Claude de production
 
 ## Quand NE PAS utiliser
-- APIs OpenAI ou autres fournisseurs — SDK différent, patterns différents
-- Conseils génériques sur les LLM sans rapport avec l'API Anthropic
-- Projets utilisant déjà des abstractions LangChain ou LlamaIndex — adresser la couche d'abstraction à la place
+- APIs OpenAI ou d'autres fournisseurs — SDK et motifs différents
+- Conseils LLM génériques non liés à l'API Anthropic
+- Projets utilisant déjà les abstractions LangChain ou LlamaIndex — adressez la couche d'abstraction à la place
 
 ## Instructions
 
 ### Guide de sélection du modèle
 | Modèle | Utiliser quand | Éviter quand |
-|--------|---------------|--------------|
-| `claude-haiku-4-5-20251001` | Classification, extraction, routage, Q&R simple, haut volume faible coût | Raisonnement complexe, génération de code multi-étapes |
-| `claude-sonnet-4-6` | Usage général : code, analyse, rédaction, workflows agentiques | Budgets token contraints à très grande échelle |
-| `claude-opus-4-7` | Raisonnement expert, jugement nuancé, longues formes complexes | La plupart des tâches — Sonnet est généralement suffisant |
+|--------|----------|------------|
+| `claude-haiku-4-5-20251001` | Classification, extraction, routage, Q&A simple, haut volume à bas coût | Raisonnement complexe, génération de code multi-étapes |
+| `claude-sonnet-4-6` | Usage général : code, analyse, rédaction, workflows agentic | Budgets très limités à grande échelle |
+| `claude-opus-4-7` | Raisonnement expert, jugement nuancé, long-form complexe | La plupart des tâches — généralement Sonnet suffit |
 
 ### Appel de message basique (Python)
 ```python
 import anthropic
 
-client = anthropic.Anthropic()  # lit ANTHROPIC_API_KEY depuis l'env
+client = anthropic.Anthropic()  # lit ANTHROPIC_API_KEY depuis env
 
 message = client.messages.create(
     model="claude-sonnet-4-6",
@@ -41,8 +47,8 @@ message = client.messages.create(
 print(message.content[0].text)
 ```
 
-### Prompt caching (critique pour le coût)
-Le prompt caching peut réduire les coûts jusqu'à 90% pour les contextes répétés. Mettre en cache le contenu stable (system prompts, grands documents, exemples few-shot).
+### Prompt caching (critique pour les coûts)
+La mise en cache des prompts peut réduire les coûts jusqu'à 90% pour le contexte répété. Mettez en cache le contenu stable (prompts système, grands documents, exemples few-shot).
 
 ```python
 message = client.messages.create(
@@ -52,7 +58,7 @@ message = client.messages.create(
         {
             "type": "text",
             "text": "You are a code review assistant. Here are our coding standards: ...",
-            "cache_control": {"type": "ephemeral"}  # Mettre ce bloc en cache
+            "cache_control": {"type": "ephemeral"}  # Mettre en cache ce bloc
         }
     ],
     messages=[
@@ -62,7 +68,7 @@ message = client.messages.create(
                 {
                     "type": "text",
                     "text": large_document,
-                    "cache_control": {"type": "ephemeral"}  # Mettre le document en cache aussi
+                    "cache_control": {"type": "ephemeral"}  # Mettre aussi le document en cache
                 },
                 {
                     "type": "text",
@@ -77,9 +83,9 @@ print(message.usage.cache_read_input_tokens)   # tokens lus depuis le cache
 print(message.usage.cache_creation_input_tokens)  # tokens écrits dans le cache
 ```
 
-Règles du cache :
-- Bloc minimum cacheable : 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
-- TTL du cache : 5 minutes
+Règles de cache :
+- Bloc minimal cacheable : 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
+- Cache TTL : 5 minutes
 - Seul le dernier bloc `cache_control` dans un tableau de messages compte — les points de cache sont cumulatifs
 
 ### Streaming
@@ -98,10 +104,10 @@ with client.messages.stream(...) as stream:
         if event.type == "content_block_delta":
             print(event.delta.text, end="")
         elif event.type == "message_stop":
-            print()  # retour à la ligne quand c'est terminé
+            print()  # nouvelle ligne quand terminé
 ```
 
-### Utilisation d'outils
+### Tool use
 ```python
 tools = [
     {

@@ -1,39 +1,39 @@
 ---
-description: Genereer een back-up- en herstelplan voor databases afgestemd op de stack van het project en RTO/RPO-vereisten
-argument-hint: "[databasetype, hostingomgeving of RTO/RPO-vereisten]"
+description: Genereer een databaseback-up- en herstelplan afgestemd op de stack van het project en RTO/RPO-vereisten
+argument-hint: "[databasetype, hostingomgeving, of RTO/RPO-vereisten]"
 ---
-Genereer een back-up- en herstelplan voor databases voor: $ARGUMENTS
+Genereer een databaseback-up- en herstelplan voor: $ARGUMENTS
 
-Als $ARGUMENTS een databasetype en/of omgeving specificeert, gebruik die. Anders detecteert u de database-engine en hostingcontext uit projectconfiguratie (docker-compose, .env, database.yml, enz.).
+Als $ARGUMENTS een databasetype en/of omgeving aangeeft, gebruik dat. Gebruik anders de database-engine en hosting-context van projectconfiguratiebestanden (docker-compose, .env, database.yml, enz.).
 
-Produceer een compleet back-upplan dat het volgende behandelt:
+Produceer een volledig back-upplan met betrekking tot:
 
 1. Back-upstrategie:
-   - Volledige back-upfrequentie en -planning (cron-expressie).
-   - Incrementele of WAL-gebaseerde continue back-up indien ondersteund door de engine (PostgreSQL WAL-archivering, MySQL binlog, MSSQL transactionlogverzending).
-   - Logisch vs. fysiek back-upafwegingen voor deze engine en gegevenssetgrootte.
-   - Aanbevolen tools: pg_dump / pg_basebackup, mysqldump / Percona XtraBackup, mongodump, sqlite3 .backup, cloudeigen snapshots (RDS, Cloud SQL, Azure Database).
+   - Frequentie en schema van volledige back-ups (cron-expressie).
+   - Incrementele of WAL-gebaseerde continue back-up indien de engine dit ondersteunt (PostgreSQL WAL-archivering, MySQL binlog, MSSQL transaction log shipping).
+   - Logische versus fysieke back-upafwegingen voor deze engine en gegevenssetgrootte.
+   - Aanbevolen tools: pg_dump / pg_basebackup, mysqldump / Percona XtraBackup, mongodump, sqlite3 .backup, cloud-native snapshots (RDS, Cloud SQL, Azure Database).
 
-2. Bewaarbeleid:
-   - Dagelijkse back-ups voor N dagen, wekelijks voor N weken, maandelijks voor N maanden — zorg voor een concrete aanbeveling op basis van veronderstelde compliance-vereisten.
-   - Richtlijn voor schatting van opslagkosten (verhouding tussen gecomprimeerde back-upgrootte en grootte van ruwe database).
+2. Retentiebeleid:
+   - Dagelijkse back-ups gedurende N dagen, wekelijks voor N weken, maandelijks voor N maanden — geef een concrete aanbeveling op basis van impliciete compliancevereisten.
+   - Richtlijnen voor schatting van opslagkosten (verhouding gecomprimeerde back-upgrootte versus onbewerkte databasegrootte).
 
 3. Opslag en beveiliging:
-   - Vereiste voor off-site of cross-regio opslag.
-   - Versleuteling in rust (back-upbestanden moeten worden versleuteld — zorg voor de vlag/configuratie voor het gekozen tool).
-   - Toegangscontrole: back-upcredentials moeten gescheiden zijn van toepassingscredentials.
+   - Vereiste voor off-site of cross-region opslag.
+   - Encryptie in rust (back-upbestanden moeten worden versleuteld — geef de vlag/config voor het gekozen hulpmiddel).
+   - Toegangsbeheer: back-up-aanmeldingsgegevens moeten gescheiden zijn van toepassingsgegevens.
 
-4. Herstelaprocedures:
-   - Stap-voor-stap herstellopdrachten voor de aanbevolen tools.
-   - Instructies voor point-in-time recovery (PITR) indien WAL/binlog-archivering is geconfigureerd.
-   - Geschat RTO op basis van back-upgrootte en herstelmethode.
+4. Herstelprocedures:
+   - Stap-voor-stap herstellingsopdrachten voor de aanbevolen tools.
+   - Herstel naar een bepaald moment (PITR) instructies als WAL/binlog-archivering is geconfigureerd.
+   - Geschatte RTO op basis van back-upgrootte en herstelmethode.
 
 5. Back-upvalidatie:
-   - Wekelijkse hersteltestprocedure in een stagingomgeving.
-   - Verificatiestap voor controlsommen of rijentelling na herstellen.
-   - Waarschuwing: wat u moet monitoren (back-uptaak-exitcode, back-upleeftijd, afwijking in back-upgrootte).
+   - Wekelijkse procedure voor hersteltest in een faseringsomgeving.
+   - Checksum- of rijtellingverificatiestap na herstel.
+   - Waarschuwingen: wat u moet controleren (back-upjob-afsluitcode, back-upouderdom, afwijking in back-upgrootte).
 
 6. Runbook-sjabloon:
-   - Een korte incident-runbook: "Database is weg — wat moet ik in de volgende 15 minuten doen?"
+   - Een korte incident-runbook: "Database is weg — wat doe ik in de volgende 15 minuten?"
 
-Zorg voor concrete opdrachten, niet voor generieke adviezen. Alle opdrachten moeten ongewijzigd kunnen worden uitgevoerd of met minimale variabelevervanging.
+Voer concrete opdrachten uit, geen generieke adviezen. Alle opdrachten moeten as-is uitvoerbaar zijn of met minimale variabelesubstitutie.

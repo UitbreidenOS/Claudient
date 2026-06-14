@@ -4,31 +4,31 @@
 
 ## Wanneer te activeren
 - Code schrijven die de Anthropic Claude API aanroept (Python of TypeScript SDK)
-- Prompt-caching, streaming of batchverwerking implementeren
-- Beheer van gesprekken met meerdere beurten ontwerpen
-- Het juiste Claude-model (Haiku, Sonnet, Opus) kiezen voor een taak
-- Toolgebruik / function calling toevoegen aan een Claude-integratie
-- Optimaliseren voor kosten of latentie in een productie-Claude-app
+- Prompt caching, streaming of batchverwerking implementeren
+- Beheer van multi-turn conversaties ontwerpen
+- Het juiste Claude-model (Haiku, Sonnet, Opus) voor een taak selecteren
+- Tool use / function calling toevoegen aan een Claude-integratie
+- Optimaliseren voor kosten of latentie in een productie Claude-app
 
 ## Wanneer NIET te gebruiken
 - OpenAI of andere provider-API's — andere SDK, andere patronen
-- Algemeen LLM-advies dat niet gerelateerd is aan de Anthropic API
-- Projecten die al LangChain of LlamaIndex-abstracties gebruiken — adresseer de abstractielaag in plaats daarvan
+- Generiek LLM-advies zonder relatie tot de Anthropic API
+- Projecten die al LangChain of LlamaIndex-abstracties gebruiken — richt je op de abstractielaag
 
 ## Instructies
 
 ### Modelselectiegids
 | Model | Gebruik wanneer | Vermijd wanneer |
 |-------|----------|------------|
-| `claude-haiku-4-5-20251001` | Classificatie, extractie, routing, eenvoudige Q&A, hoog-volume goedkoop | Complexe redenering, meerstaps codegeneratie |
-| `claude-sonnet-4-6` | Algemeen gebruik: code, analyse, schrijven, agentische workflows | Token-beperkte budgetten op massale schaal |
-| `claude-opus-4-7` | Expertniveau-redenering, genuanceerd oordeel, complexe lange tekst | De meeste taken — Sonnet is meestal voldoende |
+| `claude-haiku-4-5-20251001` | Classificatie, extractie, routing, eenvoudige Q&A, hoog-volume laag-kosten | Complexe redenering, meerstaps code generatie |
+| `claude-sonnet-4-6` | Algemeen gebruik: code, analyse, schrijven, agentic workflows | Token-beperkte budgetten op massale schaal |
+| `claude-opus-4-7` | Expertniveau redenering, genuanceerd oordeel, complexe lange vorm | De meeste taken — meestal is Sonnet voldoende |
 
-### Basis berichtaanroep (Python)
+### Basis message call (Python)
 ```python
 import anthropic
 
-client = anthropic.Anthropic()  # leest ANTHROPIC_API_KEY uit omgeving
+client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY from env
 
 message = client.messages.create(
     model="claude-sonnet-4-6",
@@ -41,8 +41,8 @@ message = client.messages.create(
 print(message.content[0].text)
 ```
 
-### Prompt-caching (kritisch voor kosten)
-Prompt-caching kan kosten met maximaal 90% verlagen voor herhaalde context. Cache stabiele inhoud (systeemprompts, grote documenten, few-shot-voorbeelden).
+### Prompt caching (kritiek voor kosten)
+Prompt caching kan kosten met tot 90% verminderen voor herhaalde context. Cache stabiele inhoud (systeemprompts, grote documenten, few-shot voorbeelden).
 
 ```python
 message = client.messages.create(
@@ -52,7 +52,7 @@ message = client.messages.create(
         {
             "type": "text",
             "text": "You are a code review assistant. Here are our coding standards: ...",
-            "cache_control": {"type": "ephemeral"}  # Cache dit blok
+            "cache_control": {"type": "ephemeral"}  # Cache this block
         }
     ],
     messages=[
@@ -62,7 +62,7 @@ message = client.messages.create(
                 {
                     "type": "text",
                     "text": large_document,
-                    "cache_control": {"type": "ephemeral"}  # Cache ook het document
+                    "cache_control": {"type": "ephemeral"}  # Also cache the document
                 },
                 {
                     "type": "text",
@@ -72,15 +72,15 @@ message = client.messages.create(
         }
     ]
 )
-# Controleer cachegebruik in respons
-print(message.usage.cache_read_input_tokens)   # tokens gelezen uit cache
-print(message.usage.cache_creation_input_tokens)  # tokens geschreven naar cache
+# Check cache usage in response
+print(message.usage.cache_read_input_tokens)   # tokens read from cache
+print(message.usage.cache_creation_input_tokens)  # tokens written to cache
 ```
 
-Cacheregels:
-- Minimaal cacheerbaar blok: 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
-- Cache-TTL: 5 minuten
-- Alleen het laatste `cache_control`-blok in een berichtarray telt — cachepunten zijn cumulatief
+Cache-regels:
+- Minimaal cacheable blok: 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
+- Cache TTL: 5 minuten
+- Alleen het laatste `cache_control` blok in een message array telt — cache punten zijn cumulatief
 
 ### Streaming
 ```python
@@ -92,16 +92,16 @@ with client.messages.stream(
     for text in stream.text_stream:
         print(text, end="", flush=True)
 
-# Of met events:
+# Or with events:
 with client.messages.stream(...) as stream:
     for event in stream:
         if event.type == "content_block_delta":
             print(event.delta.text, end="")
         elif event.type == "message_stop":
-            print()  # nieuwe regel wanneer klaar
+            print()  # newline when done
 ```
 
-### Toolgebruik
+### Tool use
 ```python
 tools = [
     {
@@ -125,12 +125,12 @@ response = client.messages.create(
     messages=[{"role": "user", "content": "What's the weather in Paris?"}]
 )
 
-# Controleer of Claude een tool wil gebruiken
+# Check if Claude wants to use a tool
 if response.stop_reason == "tool_use":
     tool_use = next(b for b in response.content if b.type == "tool_use")
     tool_result = call_tool(tool_use.name, tool_use.input)
 
-    # Ga door met gesprek met toolresultaat
+    # Continue conversation with tool result
     follow_up = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
@@ -150,7 +150,7 @@ if response.stop_reason == "tool_use":
     )
 ```
 
-### Gesprek met meerdere beurten
+### Multi-turn conversation
 ```python
 class Conversation:
     def __init__(self, system: str, model: str = "claude-sonnet-4-6"):
@@ -172,7 +172,7 @@ class Conversation:
         return assistant_message
 ```
 
-### Batchverwerking
+### Batch processing
 ```python
 from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
 from anthropic.types.messages.batch_create_params import Request
@@ -192,7 +192,7 @@ requests = [
 batch = client.messages.batches.create(requests=requests)
 print(f"Batch ID: {batch.id}")
 
-# Poll voor resultaten (of gebruik webhooks)
+# Poll for results (or use webhooks)
 import time
 while True:
     batch = client.messages.batches.retrieve(batch.id)
@@ -204,7 +204,7 @@ for result in client.messages.batches.results(batch.id):
     print(result.custom_id, result.result.message.content[0].text)
 ```
 
-### Foutafhandeling en herhaalpogingen
+### Error handling and retries
 ```python
 from anthropic import APIStatusError, APITimeoutError, RateLimitError
 

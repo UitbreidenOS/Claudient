@@ -1,46 +1,51 @@
-# SDK del Agente Claude
+---
+name: agent-sdk
+updated: 2026-06-13
+---
 
-## Cuándo activar
-Construir una aplicación Python o TypeScript que utiliza las capacidades de Claude Code de manera programática; desplegar Claude como agente autónomo dentro de un producto; escribir código que impulsa el CLI `claude` en modo no interactivo; script de flujos de trabajo agentic que necesitan llamadas de herramientas, reintentos y gestión de contexto manejados automáticamente.
+# Claude Agent SDK
 
-## Cuándo NO usar
-Usar Claude Code interactivamente en la terminal — esa es la experiencia predeterminada, no un caso de uso de SDK; crear un chatbot simple o interfaz de Q&A de turno único (usar directamente la API de Mensajes); cuando Anthropic Managed Agents es un mejor ajuste (infraestructura hospedada, escalado automático, persistencia de memoria integrada).
+## When to activate
+Construir una aplicación en Python o TypeScript que utiliza las capacidades de Claude Code de forma programática; desplegar Claude como un agente autónomo dentro de un producto; escribir código que impulse la CLI `claude` en modo no interactivo; crear scripts con flujos de trabajo de agentes que necesitan que las llamadas a herramientas, reintentos y gestión de contexto se manejen automáticamente.
 
-## Instrucciones
+## When NOT to use
+Usar Claude Code de forma interactiva en la terminal — esa es la experiencia predeterminada, no un caso de uso de SDK; crear un chatbot simple o una interfaz de pregunta y respuesta de una sola vuelta (usa la API de Messages directamente); cuando Anthropic Managed Agents es una mejor opción (infraestructura alojada, escalado automático, persistencia de memoria integrada).
 
-**Qué es el SDK del Agente :**
-Mismo loop de herramientas, gestión de contexto y capacidades de agente que Claude Code interactivo — empaquetado como una biblioteca que incrusta en su propia aplicación. Usted controla la infraestructura; Anthropic proporciona el modelo y el loop de agente.
+## Instructions
 
-**SDK versus alternativas — elegir la capa correcta :**
+**Lo que es el Agent SDK:**
+El mismo bucle de herramientas, gestión de contexto y capacidades de agentes que Claude Code interactivo, empaquetado como una biblioteca que integras en tu propia aplicación. Tú controlas la infraestructura; Anthropic proporciona el modelo y el bucle de agentes.
+
+**SDK vs alternativas — elige la capa correcta:**
 
 | Necesidad | Usar |
 |---|---|
-| Incrustar Claude agentic en app, controlar infra | SDK del Agente |
-| Claude agentic hospedado por Anthropic, ops sin intervención | Managed Agents |
-| Respuestas de turno único, sin necesidad de loop de herramientas | API de Mensajes |
-| Flujo de trabajo interactivo de terminal | CLI Claude Code |
+| Integrar Claude agéntico en tu aplicación, controlar la infraestructura | Agent SDK |
+| Claude agéntico alojado por Anthropic, operaciones sin complicaciones | Managed Agents |
+| Respuestas de una sola vuelta, no se necesita bucle de herramientas | Messages API |
+| Flujo de trabajo interactivo en terminal | Claude Code CLI |
 
-**Instalación :**
+**Instalación:**
 
-Python :
+Python:
 ```bash
 pip install claude-code-sdk
 ```
 
-TypeScript :
+TypeScript:
 ```bash
 npm install @anthropic-ai/claude-code
 ```
 
-**Bandera `--bare` mediante opciones :** Omite la carga de `CLAUDE.md` y el descubrimiento del servidor MCP. Use esto en contextos de CI y scripting donde la velocidad de inicio importa — aproximadamente 10× inicialización más rápida.
+**Flag `--bare` mediante opciones:** Omite la carga de `CLAUDE.md` y el descubrimiento de servidores MCP. Usa esto en contextos de CI y scripting donde la velocidad de inicio es importante — aproximadamente 10× más rápida la inicialización.
 
-**Facturación (15 de junio de 2026+) :** Las sesiones del SDK del Agente extraen de un pool de créditos dedicados del SDK del Agente, separado de los límites de sesión interactiva.
+**Facturación (15 de junio de 2026+):** Las sesiones del Agent SDK se extraen de un grupo de créditos dedicados a Agent SDK, separado de los límites de sesiones interactivas.
 
-**Herramientas en proceso :** Las herramientas se ejecutan en proceso en lugar de generar subprocesos. Use esto para llamadas de alta frecuencia donde la sobrecarga de subprocess se suma.
+**Herramientas en proceso:** Las herramientas se ejecutan en proceso en lugar de generar subprocesos. Usa esto para llamadas de alta frecuencia donde la sobrecarga de subprocesos se suma.
 
-**Soporte de proveedor de nube :** AWS Bedrock, Google Vertex AI y Microsoft Azure AI Foundry son todos compatibles. Configure mediante variables de entorno — no se requieren cambios de código del SDK.
+**Soporte de proveedores de nube:** AWS Bedrock, Google Vertex AI y Microsoft Azure AI Foundry son todos compatibles. Configura mediante variables de entorno — no se requieren cambios de código en SDK.
 
-**Ejemplo de Python :**
+**Ejemplo de Python:**
 ```python
 import asyncio
 from claude_code_sdk import query, ClaudeCodeOptions
@@ -54,7 +59,7 @@ async def run_agent(task: str):
 asyncio.run(run_agent("Review this PR diff and list security issues"))
 ```
 
-**Ejemplo de TypeScript :**
+**Ejemplo de TypeScript:**
 ```typescript
 import { query, ClaudeCodeOptions } from "@anthropic-ai/claude-code";
 
@@ -69,12 +74,12 @@ for await (const message of query({ prompt: "Review this PR diff", options })) {
 }
 ```
 
-**SDK del Agente versus Managed Agents — guía de decisión :**
-- SDK del Agente: control total de infraestructura, se ejecuta en su CI/CD, cargas de trabajo sensibles a latencia, logging y observabilidad personalizados
-- Managed Agents: Anthropic maneja crashes, escalado y persistencia de memoria; sin infraestructura que administrar; mejor para equipos no técnicos que despliegan agentes como una característica de producto
+**Agent SDK vs Managed Agents — guía de decisión:**
+- Agent SDK: control total de infraestructura, se ejecuta en tu CI/CD, cargas de trabajo sensibles a latencia, logging y observabilidad personalizados
+- Managed Agents: Anthropic maneja fallos, escalado y persistencia de memoria; sin infraestructura que gestionar; mejor para equipos no técnicos que despliegan agentes como una característica de producto
 
-## Ejemplo
+## Example
 
-Un pipeline de revisión de código en CI: en cada evento de apertura de PR, un job de GitHub Actions llama al SDK del Agente con el diff del PR como prompt. El agente revisa el diff, llama a herramientas internas para verificar la base de datos de cobertura de pruebas, y publica un comentario de revisión estructurado de vuelta al PR a través de la API de GitHub. La bandera `--bare` mantiene el tiempo de inicio en frío por debajo de 2 segundos.
+Un pipeline de revisión de código en CI: en cada evento de apertura de PR, un trabajo de GitHub Actions llama al Agent SDK con el diff del PR como el prompt. El agente revisa el diff, llama a herramientas internas para verificar la base de datos de cobertura de pruebas, y publica un comentario de revisión estructurado en el PR a través de la API de GitHub. El flag `--bare` mantiene el tiempo de inicio en frío por debajo de 2 segundos.
 
 ---

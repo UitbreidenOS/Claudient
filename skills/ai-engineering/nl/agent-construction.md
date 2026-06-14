@@ -1,43 +1,47 @@
-> 🇳🇱 Dit is de Nederlandse vertaling. [Engelse versie](../agent-construction.md).
+---
+name: agent-construction
+description: "Multi-agent architectuur, orchestrator patronen, tool design, agent loops, geheugen, foutafhandeling, handoffs"
+updated: 2026-06-13
+---
 
 # Agent Construction Skill
 
-## Wanneer te activeren
-- Een multi-agent systeem ontwerpen met Claude (orchestrator + subagenten)
-- Een Claude-aangedreven agent bouwen die tools gebruikt over meerdere beurten
-- Geheugen ontwerpen voor een langlopende agent (in-context vs. extern)
-- Agentfouten, herhaalpogingen en stopomstandigheden afhandelen
-- Agent-overdrachten implementeren tussen gespecialiseerde subagenten
+## When to activate
+- Een multi-agent systeem met Claude ontwerpen (orchestrator + subagents)
+- Een Claude-aangedreven agent bouwen die tools over meerdere turns gebruikt
+- Geheugen voor een langlopende agent ontwerpen (in-context vs. extern)
+- Agent fouten, retries en stoppingscondities afhandelen
+- Agent handoffs implementeren tussen gespecialiseerde subagents
 
-## Wanneer NIET te gebruiken
-- Enkelvoudige Claude API-aanroepen — de Claude API skill is voldoende
-- Eenvoudige chatbots zonder toolgebruik of autonome besluitvorming
-- LangChain/LlamaIndex-abstracties — adresseer de abstractielaag direct
+## When NOT to use
+- Single-turn Claude API calls — de Claude API skill is voldoende
+- Eenvoudige chatbots zonder tool use of autonoom besluitvormingsvermogen
+- LangChain/LlamaIndex abstracties — adresseer de abstractielaag direct
 
-## Instructies
+## Instructions
 
-### Agent-architectuurpatronen
+### Agent architecture patterns
 
-**Enkele agent met tools** — één Claude-instantie, meerdere tools, loopt totdat taak is voltooid:
+**Single agent with tools** — één Claude instantie, meerdere tools, loopt tot taak klaar is:
 ```
-Gebruiker → Agent → [Tool A] → [Tool B] → Agent → Gebruiker
-```
-
-**Orchestrator + subagenten** — één ouder verwekt gespecialiseerde kinderen:
-```
-Gebruiker → Orchestrator → [ResearchAgent] → [WriterAgent] → Orchestrator → Gebruiker
+User → Agent → [Tool A] → [Tool B] → Agent → User
 ```
 
-**Pipeline** — agenten geven resultaten door in volgorde:
+**Orchestrator + subagents** — één parent spawnt gespecialiseerde children:
 ```
-Gebruiker → Agent1(classificeer) → Agent2(extraheer) → Agent3(genereer) → Gebruiker
+User → Orchestrator → [ResearchAgent] → [WriterAgent] → Orchestrator → User
 ```
 
-Kies de eenvoudigste architectuur die het probleem oplost. Enkele agent met tools handelt de meeste gevallen af.
+**Pipeline** — agents geven resultaten sequentieel door:
+```
+User → Agent1(classify) → Agent2(extract) → Agent3(generate) → User
+```
 
-### Tool-ontwerp
+Kies de eenvoudigste architectuur die het probleem oplost. Single agent with tools handelt de meeste gevallen af.
+
+### Tool design
 ```python
-# Tool-definities voor multi-beurt agent-loop
+# Tool definitions for multi-turn agent loop
 tools = [
     {
         "name": "search_web",
@@ -76,13 +80,13 @@ tools = [
 ]
 ```
 
-Tool-ontwerpregels:
-- Beschrijving moet Claude vertellen WANNEER het te gebruiken, niet alleen wat het doet
-- Houd `input_schema` minimaal — alleen vereiste velden, geen optionele ruis
-- Retourneer gestructureerde data (JSON), geen proza, zodat Claude het betrouwbaar kan gebruiken
-- Één tool per actie — bundel lezen+schrijven niet in één tool
+Tool design rules:
+- Description must tell Claude WHEN to use it, not just what it does
+- Keep `input_schema` minimal — only required fields, no optional noise
+- Return structured data (JSON), not prose, so Claude can use it reliably
+- One tool per action — don't bundle read+write into one tool
 
-### Agent-loop
+### Agent loop
 ```python
 import anthropic
 import json
@@ -101,15 +105,15 @@ def run_agent(task: str, max_iterations: int = 20) -> str:
             messages=messages,
         )
         
-        # Voeg het antwoord van de assistent toe
+        # Append assistant's response
         messages.append({"role": "assistant", "content": response.content})
         
         if response.stop_reason == "end_turn":
-            # Extraheer definitief tekstantwoord
+            # Extract final text response
             return next(b.text for b in response.content if hasattr(b, "text"))
         
         if response.stop_reason == "tool_use":
-            # Voer alle tool-aanroepen in dit antwoord uit
+            # Execute all tool calls in this response
             tool_results = []
             for block in response.content:
                 if block.type == "tool_use":
@@ -122,7 +126,7 @@ def run_agent(task: str, max_iterations: int = 20) -> str:
             
             messages.append({"role": "user", "content": tool_results})
         else:
-            # Onverwachte stopreden
+            # Unexpected stop reason
             break
     
     raise RuntimeError(f"Agent exceeded {max_iterations} iterations without completing")
@@ -141,7 +145,7 @@ def execute_tool(name: str, inputs: dict) -> any:
             return {"error": f"Unknown tool: {name}"}
 ```
 
-### Systeemprompt voor agenten
+### System prompt for agents
 ```
 AGENT_SYSTEM_PROMPT = """You are an autonomous agent completing tasks step by step.
 
@@ -160,13 +164,13 @@ Never loop more than 3 times on the same tool call with the same inputs.
 """
 ```
 
-### Geheugenpatronen
+### Memory patterns
 
-**In-context geheugen** (berichtarray) — voor enkele sessie, kleine state:
+**In-context memory** (messages array) — for single session, small state:
 ```python
-# Samenvatten wanneer context te groot wordt
+# Summarize when context grows large
 if count_tokens(messages) > 150_000:
-    summary = summarize_messages(messages[:-5])  # bewaar laatste 5 beurten
+    summary = summarize_messages(messages[:-5])  # keep last 5 turns
     messages = [
         {"role": "user", "content": f"[Previous context summary]\n{summary}"},
         {"role": "assistant", "content": "Understood. Continuing from where we left off."},
@@ -174,9 +178,9 @@ if count_tokens(messages) > 150_000:
     ]
 ```
 
-**Extern geheugen** (voor multi-sessie agenten):
+**External memory** (for multi-session agents):
 ```python
-# Eenvoudig bestandsgebaseerd geheugen
+# Simple file-based memory
 class AgentMemory:
     def __init__(self, path: str):
         self.path = Path(path)
@@ -197,18 +201,18 @@ class AgentMemory:
         return "Known context:\n" + "\n".join(lines)
 ```
 
-### Orchestratorpatroon
+### Orchestrator pattern
 ```python
 def orchestrate(task: str) -> str:
-    # Stap 1: Planning-agent decomponeert de taak
+    # Step 1: Planning agent decomposes the task
     plan = run_subagent(
         model="claude-sonnet-4-6",
         system="You are a planner. Decompose tasks into numbered steps.",
         task=f"Decompose this task into steps: {task}",
-        tools=[]  # Geen tools nodig voor planning
+        tools=[]  # No tools needed for planning
     )
 
-    # Stap 2: Voer elke stap uit met gespecialiseerde agenten
+    # Step 2: Execute each step with specialized agents
     results = []
     for step in parse_steps(plan):
         agent_type = classify_step(step)  # "research" | "code" | "write"
@@ -217,11 +221,11 @@ def orchestrate(task: str) -> str:
             system=agent_system_prompt(agent_type),
             task=step,
             tools=agent_tools(agent_type),
-            context="\n".join(results)  # Geef context van vorige stappen
+            context="\n".join(results)  # Give context from previous steps
         )
         results.append(f"Step result: {result}")
 
-    # Stap 3: Synthese-agent combineert resultaten
+    # Step 3: Synthesis agent combines results
     return run_subagent(
         model="claude-sonnet-4-6",
         system="You are a synthesizer. Combine step results into a final answer.",
@@ -230,7 +234,7 @@ def orchestrate(task: str) -> str:
     )
 ```
 
-### Foutafhandeling en stopomstandigheden
+### Error handling and stopping conditions
 ```python
 class AgentError(Exception):
     pass
@@ -253,9 +257,9 @@ def execute_tool_safe(name: str, inputs: dict, consecutive_failures: dict) -> di
         return {"success": False, "error": str(e), "retry": True}
 ```
 
-### Overdrachtspatroon
+### Handoff pattern
 ```python
-# Ouderagent geeft context expliciet door — subagenten hebben geen sessieheugen
+# Parent agent passes context explicitly — subagents have no session memory
 def handoff_to_specialist(context: dict, task: str, specialist: str) -> str:
     handoff_prompt = f"""
 Context from orchestrator:
@@ -271,15 +275,15 @@ Your task:
     )
 ```
 
-## Voorbeeld
+## Example
 
-**Gebruiker:** Bouw een onderzoeksagent die een onderwerp neemt, het web doorzoekt op 3 bronnen, elke URL leest en een samenvatting van 500 woorden met citaten naar een bestand schrijft.
+**User:** Build a research agent that takes a topic, searches the web for 3 sources, reads each URL, and writes a 500-word summary with citations to a file.
 
-**Verwachte output:**
-- `tools`-lijst: `search_web`, `fetch_url`, `write_file`
-- Systeemprompt: instrueert agent om te zoeken → 3 URL's op te halen → samen te vatten → bestand te schrijven voor klaar te melden
-- `run_agent(task)`-loop met `max_iterations=15`
-- Foutafhandeling: als `fetch_url` mislukt, probeer volgend zoekresultaat
-- Definitieve output: pad naar het geschreven samenvattingsbestand
+**Expected output:**
+- `tools` list: `search_web`, `fetch_url`, `write_file`
+- System prompt: instructs agent to search → fetch 3 URLs → synthesize → write file before declaring done
+- `run_agent(task)` loop with `max_iterations=15`
+- Error handling: if `fetch_url` fails, try next search result
+- Final output: path to the written summary file
 
 ---

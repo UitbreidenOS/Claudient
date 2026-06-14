@@ -1,30 +1,34 @@
-> 🇪🇸 Esta es la traducción en español. [Versión en inglés](../claude-api.md).
+---
+name: claude-api
+description: "API de Anthropic Claude: almacenamiento en caché de prompts, streaming, uso de herramientas, procesamiento por lotes, selección de modelo, optimización de costos"
+updated: 2026-06-13
+---
 
-# Skill de Claude API
+# Habilidad Claude API
 
 ## Cuándo activar
-- Escribir código que llama a la API de Claude de Anthropic (SDK de Python o TypeScript)
-- Implementar caché de prompts, streaming o procesamiento por lotes
-- Diseñar la gestión de conversaciones multi-turno
-- Seleccionar el modelo de Claude adecuado (Haiku, Sonnet, Opus) para una tarea
-- Agregar uso de herramientas / llamadas a funciones a una integración de Claude
-- Optimizar el costo o la latencia en una aplicación Claude de producción
+- Escribir código que llame a la API de Claude de Anthropic (SDK de Python o TypeScript)
+- Implementar almacenamiento en caché de prompts, streaming o procesamiento por lotes
+- Diseñar gestión de conversaciones multi-turno
+- Seleccionar el modelo Claude correcto (Haiku, Sonnet, Opus) para una tarea
+- Agregar uso de herramientas / llamadas de función a una integración de Claude
+- Optimizar por costo o latencia en una aplicación Claude de producción
 
 ## Cuándo NO usar
 - APIs de OpenAI u otros proveedores — SDK diferente, patrones diferentes
-- Consejos genéricos sobre LLM no relacionados con la API de Anthropic
-- Proyectos que ya usan abstracciones de LangChain o LlamaIndex — abordar la capa de abstracción directamente
+- Consejos genéricos de LLM no relacionados con la API de Anthropic
+- Proyectos que ya utilizan abstracciones de LangChain o LlamaIndex — abordar la capa de abstracción en su lugar
 
 ## Instrucciones
 
-### Guía de selección de modelos
+### Guía de selección de modelo
 | Modelo | Usar cuando | Evitar cuando |
 |-------|----------|------------|
-| `claude-haiku-4-5-20251001` | Clasificación, extracción, routing, Q&A simple, alto volumen bajo costo | Razonamiento complejo, generación de código multi-paso |
-| `claude-sonnet-4-6` | Uso general: código, análisis, escritura, flujos de trabajo agénticos | Presupuestos de tokens muy ajustados a escala masiva |
-| `claude-opus-4-7` | Razonamiento de nivel experto, juicio matizado, contenido largo complejo | La mayoría de tareas — Sonnet suele ser suficiente |
+| `claude-haiku-4-5-20251001` | Clasificación, extracción, enrutamiento, preguntas simples, volumen alto bajo costo | Razonamiento complejo, generación de código multi-paso |
+| `claude-sonnet-4-6` | Propósito general: código, análisis, escritura, flujos de trabajo agénticos | Presupuestos restringidos por tokens a escala masiva |
+| `claude-opus-4-7` | Razonamiento de nivel experto, juicio matizado, documento largo complejo | La mayoría de tareas — generalmente Sonnet es suficiente |
 
-### Llamada básica a messages (Python)
+### Llamada de mensaje básica (Python)
 ```python
 import anthropic
 
@@ -33,16 +37,16 @@ client = anthropic.Anthropic()  # lee ANTHROPIC_API_KEY del entorno
 message = client.messages.create(
     model="claude-sonnet-4-6",
     max_tokens=1024,
-    system="You are a helpful assistant specialized in Python.",
+    system="Eres un asistente útil especializado en Python.",
     messages=[
-        {"role": "user", "content": "Explain Python's GIL in 3 sentences."}
+        {"role": "user", "content": "Explica el GIL de Python en 3 oraciones."}
     ]
 )
 print(message.content[0].text)
 ```
 
-### Caché de prompts (crítico para el costo)
-La caché de prompts puede reducir costos hasta un 90% para contexto repetido. Cachea contenido estable (prompts de sistema, documentos grandes, ejemplos few-shot).
+### Almacenamiento en caché de prompts (crítico para costos)
+El almacenamiento en caché de prompts puede reducir costos hasta en un 90% para contextos repetidos. Almacena en caché contenido estable (prompts de sistema, documentos grandes, ejemplos few-shot).
 
 ```python
 message = client.messages.create(
@@ -51,8 +55,8 @@ message = client.messages.create(
     system=[
         {
             "type": "text",
-            "text": "You are a code review assistant. Here are our coding standards: ...",
-            "cache_control": {"type": "ephemeral"}  # Cachear este bloque
+            "text": "Eres un asistente de revisión de código. Aquí están nuestros estándares de codificación: ...",
+            "cache_control": {"type": "ephemeral"}  # Almacena este bloque en caché
         }
     ],
     messages=[
@@ -62,25 +66,25 @@ message = client.messages.create(
                 {
                     "type": "text",
                     "text": large_document,
-                    "cache_control": {"type": "ephemeral"}  # También cachear el documento
+                    "cache_control": {"type": "ephemeral"}  # También almacena el documento en caché
                 },
                 {
                     "type": "text",
-                    "text": "Summarize the key points."
+                    "text": "Resume los puntos clave."
                 }
             ]
         }
     ]
 )
-# Verificar uso de caché en la respuesta
-print(message.usage.cache_read_input_tokens)   # tokens leídos de la caché
-print(message.usage.cache_creation_input_tokens)  # tokens escritos en la caché
+# Verifica el uso de caché en la respuesta
+print(message.usage.cache_read_input_tokens)   # tokens leídos del caché
+print(message.usage.cache_creation_input_tokens)  # tokens escritos en caché
 ```
 
 Reglas de caché:
-- Bloque mínimo cacheable: 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
+- Bloque almacenable en caché mínimo: 1024 tokens (Sonnet/Opus), 2048 tokens (Haiku)
 - TTL de caché: 5 minutos
-- Solo el último bloque `cache_control` en un array de mensajes importa — los puntos de caché son acumulativos
+- Solo el último bloque `cache_control` en una matriz de mensajes importa — los puntos de caché son acumulativos
 
 ### Streaming
 ```python
@@ -98,7 +102,7 @@ with client.messages.stream(...) as stream:
         if event.type == "content_block_delta":
             print(event.delta.text, end="")
         elif event.type == "message_stop":
-            print()  # nueva línea al terminar
+            print()  # nueva línea cuando termina
 ```
 
 ### Uso de herramientas
@@ -106,11 +110,11 @@ with client.messages.stream(...) as stream:
 tools = [
     {
         "name": "get_weather",
-        "description": "Get current weather for a city",
+        "description": "Obtener el clima actual para una ciudad",
         "input_schema": {
             "type": "object",
             "properties": {
-                "city": {"type": "string", "description": "City name"},
+                "city": {"type": "string", "description": "Nombre de la ciudad"},
                 "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]}
             },
             "required": ["city"]
@@ -122,21 +126,21 @@ response = client.messages.create(
     model="claude-sonnet-4-6",
     max_tokens=1024,
     tools=tools,
-    messages=[{"role": "user", "content": "What's the weather in Paris?"}]
+    messages=[{"role": "user", "content": "¿Cuál es el clima en París?"}]
 )
 
-# Verificar si Claude quiere usar una herramienta
+# Verifica si Claude quiere usar una herramienta
 if response.stop_reason == "tool_use":
     tool_use = next(b for b in response.content if b.type == "tool_use")
     tool_result = call_tool(tool_use.name, tool_use.input)
 
-    # Continuar la conversación con el resultado de la herramienta
+    # Continúa la conversación con el resultado de la herramienta
     follow_up = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=1024,
         tools=tools,
         messages=[
-            {"role": "user", "content": "What's the weather in Paris?"},
+            {"role": "user", "content": "¿Cuál es el clima en París?"},
             {"role": "assistant", "content": response.content},
             {
                 "role": "user",
@@ -183,16 +187,16 @@ requests = [
         params=MessageCreateParamsNonStreaming(
             model="claude-haiku-4-5-20251001",
             max_tokens=256,
-            messages=[{"role": "user", "content": f"Classify: {review}"}],
+            messages=[{"role": "user", "content": f"Clasificar: {review}"}],
         )
     )
     for i, review in enumerate(reviews)
 ]
 
 batch = client.messages.batches.create(requests=requests)
-print(f"Batch ID: {batch.id}")
+print(f"ID de lote: {batch.id}")
 
-# Sondear resultados (o usar webhooks)
+# Sondea resultados (o usa webhooks)
 import time
 while True:
     batch = client.messages.batches.retrieve(batch.id)
@@ -227,21 +231,21 @@ def call_with_retry(client, **kwargs, max_retries=3):
 ```
 
 ### Lista de verificación de optimización de costos
-- Usar Haiku para clasificación, routing y tareas de extracción simple
-- Habilitar caché de prompts para cualquier prompt de sistema > 1024 tokens
-- Usar la API de lotes para cargas de trabajo offline/asíncronas — 50% de reducción de costo
-- Establecer `max_tokens` al mínimo necesario — pagas por los tokens de salida generados
-- Cachear documentos grandes en el mensaje del usuario, no solo en el prompt del sistema
-- Monitorear la relación `cache_read_input_tokens` vs `input_tokens` — objetivo >80% para contextos estables
+- Usa Haiku para tareas de clasificación, enrutamiento y extracción simple
+- Habilita almacenamiento en caché de prompts para cualquier prompt de sistema > 1024 tokens
+- Usa API de lotes para cargas de trabajo sin conexión/asincrónicas — reducción de costos del 50%
+- Establece `max_tokens` al mínimo necesario — pagas por tokens de salida generados
+- Almacena documentos grandes en caché en el mensaje del usuario, no solo en el prompt del sistema
+- Monitorea la relación `cache_read_input_tokens` vs `input_tokens` — objetivo >80% para contextos estables
 
 ## Ejemplo
 
-**Usuario:** Construir una clase Python que clasifica tickets de soporte al cliente en categorías usando Claude, con caché de prompts para la lista de categorías y streaming para la explicación.
+**Usuario:** Construir una clase de Python que clasifique tickets de atención al cliente en categorías usando Claude, con almacenamiento en caché de prompts para la lista de categorías y streaming para la explicación.
 
 **Salida esperada:**
 - Clase `TicketClassifier` con `ANTHROPIC_API_KEY` del entorno
-- Prompt de sistema con todas las categorías cacheadas mediante `cache_control: ephemeral`
-- `classify(ticket_text)` → devuelve `{category: str, confidence: str}` parseado de salida estructurada
+- Prompt de sistema con todas las categorías almacenadas en caché vía `cache_control: ephemeral`
+- `classify(ticket_text)` → devuelve `{category: str, confidence: str}` analizado desde salida estructurada
 - `classify_and_explain(ticket_text)` → transmite la explicación a stdout
 - Usa `claude-haiku-4-5-20251001` para clasificación (eficiente en costo), `claude-sonnet-4-6` para explicación
 

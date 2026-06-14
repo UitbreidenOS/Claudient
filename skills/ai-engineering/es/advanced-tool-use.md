@@ -1,19 +1,24 @@
+---
+name: advanced-tool-use
+updated: 2026-06-13
+---
+
 # Uso Avanzado de Herramientas
 
 ## Cuándo activar
-El usuario quiere optimizar patrones de uso de herramientas en aplicaciones de Claude API, reducir tokens de definiciones o gastos de llamadas de herramientas, mejorar la precisión en parámetros de herramientas complejos, o construir flujos de trabajo sofisticados con llamadas a herramientas.
+El usuario quiere optimizar patrones de uso de herramientas en aplicaciones de Claude API, reducir tokens de definiciones de herramientas o gastos generales de llamadas, mejorar la precisión en parámetros de herramientas complejos, o construir flujos de trabajo sofisticados con llamadas a herramientas.
 
 ## Cuándo NO usar
-- Flujos de trabajo simples con una única herramienta donde la optimización de gastos generales es irrelevante
-- Aplicaciones usando la Messages API estándar con menos de 5 herramientas y sin llamadas repetidas
-- Depuración de una definición de herramienta rota — primero arregla la corrección, luego optimiza
+- Flujos de trabajo simples con una sola herramienta donde la optimización de gastos generales es irrelevante
+- Aplicaciones que usan la API estándar de Messages con menos de 5 herramientas y sin llamadas repetidas
+- Depuración de una definición de herramienta rota — primero corrige la exactitud, luego optimiza
 
 ## Instrucciones
 
-### Patrón 1: Llamadas Programáticas de Herramientas (PTC)
-Claude escribe código de orquestación Python en lugar de llamar a herramientas una por una. Reduce viajes redondos y tokens.
+### Patrón 1: Llamadas a Herramientas Programáticas (PTC)
+Claude escribe código de orquestación Python en lugar de llamar a herramientas una por una. Reduce viajes de ida y vuelta y tokens.
 
-**Reducción de tokens: ~37% para flujos de trabajo multi-herramientas.**
+**Reducción de tokens: ~37% para flujos de trabajo con múltiples herramientas.**
 
 Habilitar por herramienta:
 ```python
@@ -25,16 +30,16 @@ Habilitar por herramienta:
 }
 ```
 
-Cuando está habilitado, Claude puede elegir escribir un bucle Python llamando a esta herramienta N veces en lugar de hacer N bloques tool_use separados. Usar para: patrones repetidos de lectura/búsqueda, tuberías de transformación de datos, cualquier herramienta llamada >3 veces por turno.
+Cuando está habilitado, Claude puede elegir escribir un bucle Python que llama a esta herramienta N veces en lugar de hacer N bloques tool_use separados. Usa para: patrones de lectura/búsqueda repetitivos, tuberías de transformación de datos, cualquier herramienta llamada >3 veces por turno.
 
-No habilitar para herramientas con efectos secundarios (escribir, eliminar, desplegar) o herramientas que requieran autorización por llamada.
+No habilites para herramientas con efectos secundarios (escribir, eliminar, desplegar) o herramientas que requieren autorización por llamada.
 
 ---
 
 ### Patrón 2: Filtrado Dinámico para Herramientas Web
-Nuevos tipos de herramientas integrados para búsqueda web y búsqueda que filtran resultados antes de que entren en contexto.
+Nuevos tipos de herramientas integradas para búsqueda web y obtención que filtran resultados antes de entrar en el contexto.
 
-**Encabezado beta requerido:** `anthropic-beta: code-execution-web-tools-2026-02-09`
+**Encabezado Beta requerido:** `anthropic-beta: code-execution-web-tools-2026-02-09`
 
 **Reducción de tokens: ~24% menos tokens de entrada. Mejora de precisión: +13–16 puntos porcentuales.**
 
@@ -59,7 +64,7 @@ Con estos tipos de herramientas, Claude escribe código de filtrado que extrae s
 ---
 
 ### Patrón 3: Búsqueda de Herramientas / Carga Diferida
-Para catálogos grandes de herramientas, diferir las herramientas que se usan poco frecuentemente para que no se carguen en contexto a menos que sea necesario.
+Para catálogos grandes de herramientas, difiere herramientas usadas infrecuentemente para que no se carguen en el contexto a menos que sea necesario.
 
 **Reducción de tokens: ~85% para catálogos con muchas herramientas.**
 
@@ -67,9 +72,9 @@ Habilitar mediante variable de entorno:
 ```
 ENABLE_TOOL_SEARCH=auto:N
 ```
-Donde N es el umbral — herramientas más allá del top N más relevantes se difieren.
+Donde N es el umbral — las herramientas más allá de las N más relevantes se difieren.
 
-Marcar herramientas individuales como deferibles:
+Marca herramientas individuales como diferibles:
 ```python
 {
     "name": "advanced_analytics",
@@ -79,14 +84,14 @@ Marcar herramientas individuales como deferibles:
 }
 ```
 
-Las herramientas diferidas se descubren a demanda por Claude a través de MCPSearch cuando determina que necesita una capacidad que no está en el contexto cargado actualmente. Usar para: catálogos grandes de herramientas MCP, APIs empresariales con cientos de puntos finales, sistemas de complementos donde la mayoría de las herramientas se usan raramente.
+Las herramientas diferidas son descubiertas por Claude bajo demanda a través de MCPSearch cuando determina que necesita una capacidad que no está en el contexto cargado actual. Usa para: catálogos grandes de herramientas MCP, APIs empresariales con cientos de puntos finales, sistemas de complementos donde la mayoría de herramientas rara vez se usan.
 
-No diferir herramientas que se llaman en casi todas las conversaciones — el gasto de descubrimiento elimina los ahorros.
+No diferas herramientas que se llaman en casi todas las conversaciones — el gasto general de descubrimiento elimina los ahorros.
 
 ---
 
 ### Patrón 4: Ejemplos de Uso de Herramientas (`input_examples`)
-Agregar ejemplos de llamadas concretas a las definiciones de herramientas más allá del esquema JSON.
+Agrega ejemplos de llamadas concretos a definiciones de herramientas más allá del esquema JSON.
 
 **Mejora de precisión: ~72% → ~90% en parámetros complejos.**
 
@@ -120,14 +125,14 @@ Agregar ejemplos de llamadas concretas a las definiciones de herramientas más a
 `input_examples` es más valioso para:
 - Herramientas con combinaciones de parámetros no obvias
 - Esquemas anidados complejos
-- Parámetros donde el formato importa más que el tipo (cadenas SQL, regex, rutas JSON)
-- Herramientas donde Claude consistentemente comete el mismo error de parámetro sin ejemplos
+- Parámetros donde el formato importa más que el tipo (strings SQL, regex, rutas JSON)
+- Herramientas donde Claude consistentemente hace el mismo error de parámetro sin ejemplos
 
 ---
 
-### Combinación de Patrones
+### Combinando Patrones
 
-Stack de máxima eficiencia para un catálogo grande de herramientas:
+Pila de máxima eficiencia para un catálogo grande de herramientas:
 
 ```python
 tools = [
@@ -153,7 +158,7 @@ tools = [
 ]
 ```
 
-Usar tipos de herramientas web cuando la búsqueda/obtención web esté en alcance:
+Usa tipos de herramientas web cuando la búsqueda/obtención web esté en el ámbito:
 ```python
 tools += [
     {"type": "web_search_20260209", "name": "web_search"},
@@ -163,12 +168,12 @@ tools += [
 
 ## Ejemplo
 
-Un agente con 120 herramientas (superficie completa de API de una plataforma SaaS):
+Un agente con 120 herramientas (la superficie API completa de una plataforma SaaS):
 
 Sin optimización: 120 definiciones de herramientas × ~150 tokens cada una = ~18,000 tokens por llamada, solo para definiciones de herramientas. La mayoría de herramientas nunca se llaman.
 
-Con carga diferida (`ENABLE_TOOL_SEARCH=auto:10`): solo las 10 herramientas más probables se cargan. El costo de tokens para definiciones de herramientas cae de 18,000 a ~1,500 — reducción del 85%. Cuando Claude necesita una herramienta raramente usada, la busca y carga a demanda, agregando ~200 tokens solo para ese turno.
+Con carga diferida (`ENABLE_TOOL_SEARCH=auto:10`): solo las 10 herramientas más probables se cargan. El costo de tokens para definiciones de herramientas baja de 18,000 a ~1,500 — reducción del 85%. Cuando Claude necesita una herramienta poco usada, la busca y carga bajo demanda, agregando ~200 tokens solo para ese turno.
 
-Agregar `input_examples` a las 10 herramientas siempre cargadas aumenta la precisión de parámetros del 72% al 90% en las herramientas que importan más.
+Agregar `input_examples` a las 10 herramientas siempre cargadas eleva la precisión de parámetros de 72% a 90% en las herramientas que más importan.
 
 ---

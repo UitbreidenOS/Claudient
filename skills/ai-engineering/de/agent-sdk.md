@@ -1,46 +1,51 @@
+---
+name: agent-sdk
+updated: 2026-06-13
+---
+
 # Claude Agent SDK
 
 ## Wann aktivieren
-Aufbau einer Python- oder TypeScript-Anwendung, die Claude Code-Funktionen programmgesteuert nutzt; Bereitstellung von Claude als autonomer Agent in einem Produkt; Schreiben von Code, der die `claude` CLI im Non-Interactive-Modus steuert; Scripting von agentic-Workflows, die Tool-Aufrufe, Versuche und Kontextverwaltung automatisch benötigen.
+Eine Python- oder TypeScript-Anwendung erstellen, die Claude Code-Funktionen programmgesteuert nutzt; Claude als autonomen Agent in ein Produkt einsetzen; Code schreiben, der die `claude` CLI im nicht-interaktiven Modus nutzt; agentenbasierte Workflows mit automatischer Verarbeitung von Tool-Aufrufen, Wiederholungen und Kontextmanagement.
 
-## Wann NICHT verwenden
-Interaktive Nutzung von Claude Code im Terminal — das ist die Standarderfahrung, kein SDK-Anwendungsfall; Aufbau eines einfachen Chatbots oder Single-Turn-Q&A-Interface (direkt Messages API nutzen); wenn Anthropic Managed Agents besser passt (gehostete Infrastruktur, automatische Skalierung, integrierte Memory-Persistierung).
+## Wann NICHT nutzen
+Claude Code interaktiv im Terminal nutzen — das ist die Standard-Nutzung, keine SDK-Anwendung; einen einfachen Chatbot oder einseitigen Q&A-Interface bauen (nutze stattdessen die Messages API direkt); wenn Anthropic Managed Agents eine bessere Lösung darstellt (gehostete Infrastruktur, automatische Skalierung, eingebaute Persistenz des Gedächtnisses).
 
-## Anweisungen
+## Anleitung
 
-**Was ist das Agent SDK :**
-Gleiche Tool-Loop, Kontextverwaltung, und Agent-Funktionen wie interaktives Claude Code — als Bibliothek verpackt, die Sie in Ihre eigene Anwendung einbetten. Sie kontrollieren die Infrastruktur; Anthropic bietet das Modell und die Agent-Loop.
+**Was das Agent SDK ist:**
+Die gleiche Tool-Schleife, das Kontextmanagement und die Agent-Funktionen wie interaktives Claude Code — verpackt als Bibliothek, die du in deine eigene Anwendung einbindest. Du kontrollierst die Infrastruktur; Anthropic stellt das Modell und die Agent-Schleife bereit.
 
-**SDK vs Alternativen — richtige Layer wählen :**
+**SDK vs. Alternativen — wähle die richtige Ebene:**
 
-| Bedarf | Nutzen |
+| Anforderung | Nutze |
 |---|---|
-| Agentic Claude in App einbetten, Infra kontrollieren | Agent SDK |
-| Agentic Claude von Anthropic gehostet, Ops Hands-Off | Managed Agents |
-| Single-Turn-Antworten, keine Tool-Loop nötig | Messages API |
+| Agentenbasiertes Claude in deiner App einbinden, eigene Infrastruktur | Agent SDK |
+| Agentenbasiertes Claude von Anthropic gehostet, ohne Ops-Aufwand | Managed Agents |
+| Einseitige Responses, keine Tool-Schleife nötig | Messages API |
 | Interaktiver Terminal-Workflow | Claude Code CLI |
 
-**Installation :**
+**Installation:**
 
-Python :
+Python:
 ```bash
 pip install claude-code-sdk
 ```
 
-TypeScript :
+TypeScript:
 ```bash
 npm install @anthropic-ai/claude-code
 ```
 
-**`--bare`-Flag via Optionen :** Überspringt `CLAUDE.md`-Laden und MCP-Server-Erkennung. Nutzen Sie dies in CI und Scripting-Kontexten, wo Startup-Geschwindigkeit zählt — ungefähr 10× schnellere Initialisierung.
+**`--bare` Flag über Optionen:** Überspringt das Laden von `CLAUDE.md` und die MCP-Server-Erkennung. Nutze dies in CI und Scripting-Kontexten, wo die Startgeschwindigkeit wichtig ist — ungefähr 10× schnellere Initialisierung.
 
-**Abrechnung (15. Juni 2026+) :** Agent SDK Sessions zeichnen aus einem dedizierten Agent SDK Credit Pool, getrennt von Interactive Session Limits.
+**Abrechnung (ab 15. Juni 2026):** Agent SDK-Sitzungen werden aus einem dedizierten Agent SDK-Guthaben-Pool abgezogen, getrennt von den Limits für interaktive Sitzungen.
 
-**In-Process Tools :** Tools laufen in-process statt Subprozesse zu spawnen. Nutzen Sie dies für hochfrequente Aufrufe, wo Subprocess-Overhead sich addiert.
+**In-Process-Tools:** Tools werden in-process ausgeführt, anstatt Subprozesse zu spawnen. Nutze dies für häufige Aufrufe, bei denen der Subprocess-Overhead sich summiert.
 
-**Cloud-Provider-Unterstützung :** AWS Bedrock, Google Vertex AI und Microsoft Azure AI Foundry werden alle unterstützt. Konfigurieren Sie via Umgebungsvariablen — keine SDK-Code-Änderungen erforderlich.
+**Cloud-Provider-Unterstützung:** AWS Bedrock, Google Vertex AI und Microsoft Azure AI Foundry werden alle unterstützt. Konfiguriere über Umgebungsvariablen — keine SDK-Codeänderungen erforderlich.
 
-**Python-Beispiel :**
+**Python-Beispiel:**
 ```python
 import asyncio
 from claude_code_sdk import query, ClaudeCodeOptions
@@ -54,7 +59,7 @@ async def run_agent(task: str):
 asyncio.run(run_agent("Review this PR diff and list security issues"))
 ```
 
-**TypeScript-Beispiel :**
+**TypeScript-Beispiel:**
 ```typescript
 import { query, ClaudeCodeOptions } from "@anthropic-ai/claude-code";
 
@@ -69,12 +74,12 @@ for await (const message of query({ prompt: "Review this PR diff", options })) {
 }
 ```
 
-**Agent SDK vs Managed Agents — Entscheidungsleitfaden :**
-- Agent SDK: volle Infrastruktur-Kontrolle, läuft in Ihrem CI/CD, latensempfindliche Workloads, benutzerdefiniertes Logging und Observability
-- Managed Agents: Anthropic kümmert sich um Crashes, Skalierung und Memory-Persistierung; keine Infrastruktur zu verwalten; besser für nicht-technische Teams, die Agents als Product-Feature bereitstellen
+**Agent SDK vs. Managed Agents — Entscheidungsleitfaden:**
+- Agent SDK: vollständige Infrastrukturkontrolle, läuft in deiner CI/CD, latenzempfindliche Workloads, benutzerdefiniertes Logging und Observability
+- Managed Agents: Anthropic kümmert sich um Abstürze, Skalierung und Persistenz des Gedächtnisses; keine Infrastruktur zum Verwalten; besser für nicht-technische Teams, die Agents als Produktmerkmal einsetzen
 
 ## Beispiel
 
-Eine Code-Review-Pipeline in CI: Bei jedem PR Open-Event ruft ein GitHub Actions Job das Agent SDK mit dem PR Diff als Prompt auf. Der Agent überprüft den Diff, ruft interne Tools auf, um die Test-Coverage-Datenbank zu prüfen, und postet einen strukturierten Review-Kommentar zurück auf den PR via GitHub API. Das `--bare`-Flag hält Cold-Start-Zeit unter 2 Sekunden.
+Eine Code-Review-Pipeline in CI: Bei jedem PR-Open-Event ruft ein GitHub Actions-Job das Agent SDK mit dem PR-Diff als Eingabe auf. Der Agent überprüft den Diff, ruft interne Tools auf, um die Test-Coverage-Datenbank zu prüfen, und gibt einen strukturierten Review-Kommentar über die GitHub API an den PR zurück. Das `--bare` Flag hält die Cold-Start-Zeit unter 2 Sekunden.
 
 ---

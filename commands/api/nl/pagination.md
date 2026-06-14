@@ -1,21 +1,21 @@
 ---
-description: Voeg cursor-gebaseerde of offset-paginering toe aan een list-endpoint met een consistente response-shape
+description: Voeg cursor-gebaseerde of offset paginering toe aan een list-eindpunt met consistente responsstructuur
 argument-hint: "[endpoint-of-model]"
 ---
-Paginering toevoegen aan het endpoint of de resource: $ARGUMENTS
+Voeg paginering toe aan het eindpunt of de bron: $ARGUMENTS
 
-Als $ARGUMENTS leeg is, vind alle list-endpoints (die arrays retourneren) en pas paginering toe op elk.
+Als $ARGUMENTS leeg is, zoek alle list-eindpunten (die arrays retourneren) en pas paginering toe op elk.
 
-Kies de pagineringsstrategie op basis van het gebruik:
-- Cursor-gebaseerd (standaard voor feeds en grote datasets): stabiel onder gelijktijdige schrijfbewerkingen, ondersteunt infinite scroll, kan niet naar willekeurige pagina gaan
-- Offset/page-gebaseerd (alleen als de gebruikersinterface "ga naar pagina N" vereist): eenvoudiger maar inconsistent onder schrijfbewerkingen
+Kies de pageringstrategie op basis van het gebruiksscenario:
+- Cursor-gebaseerd (standaard voor de meeste feeds en grote datasets): stabiel onder gelijktijdige schrijfbewerkingen, ondersteunt oneindig scrollen, kan niet naar een willekeurige pagina springen
+- Offset/pagina-gebaseerd (alleen als de UI "ga naar pagina N" vereist): eenvoudiger maar inconsistent onder schrijfbewerkingen
 
 Cursor-gebaseerde implementatie:
-- Cursor codeert de sorteerkolom-waarde + primaire sleutel van de laatst geziene rij — base64-codering gebruiken, nooit ruwe DB-waarden blootstellen
-- Standaardsortering: aflopend op `created_at`, secundaire sortering op `id` voor tie-breaking
-- Accepteer `cursor` (ondoorzichtige string) en `limit` (geheel getal, 1–100, standaard 20) als queryparameters
-- Valideer `limit` — wijs < 1 of > 100 af met 400
-- Response-shape:
+- Cursor codeert de sorteerkolom waarde + primaire sleutel van de laatst geziene rij — base64-coderen, nooit ruwe DB-waarden blootleggen
+- Standaard sortering: aflopend op `created_at`, secundaire sortering op `id` voor gelijkspel
+- Accepteer `cursor` (ondoorzichtige tekenreeks) en `limit` (geheel getal, 1–100, standaard 20) als queryparameters
+- Valideer `limit` — weiger < 1 of > 100 met 400
+- Responsstructuur:
   ```json
   {
     "data": [...],
@@ -26,16 +26,16 @@ Cursor-gebaseerde implementatie:
     }
   }
   ```
-- `next_cursor` is null wanneer er geen volgende pagina's meer zijn
-- Geef totale aantal nooit prijs tenzij expliciet vereist — het is duur op schaal
+- `next_cursor` is null als er geen volgende pagina's zijn
+- Lek nooit het totale aantal tenzij expliciet vereist — het is duur op schaal
 
-Offset-gebaseerde implementatie (alleen indien aangevraagd):
+Offset-gebaseerde implementatie (alleen als aangevraagd):
 - Accepteer `page` (1-geïndexeerd) en `per_page` (1–100, standaard 20)
-- Voeg `total`, `page`, `per_page`, `total_pages` toe aan de response-envelope
+- Voeg `total`, `page`, `per_page`, `total_pages` toe aan de responsenvelope
 
 Beide strategieën:
-- Voeg een database-index toe aan de sorteerkolom als deze nog niet bestaat
-- De query moet één DB-aanroep zijn — geen N+1 door afzonderlijk het aantal op te halen tenzij offset-paginering dit vereist
-- Werk de OpenAPI-specificatie voor het endpoint bij als deze bestaat
+- Voeg een database-index toe op de sorteerkolom als deze nog niet bestaat
+- De query moet een enkele DB-aanroep zijn — geen N+1 door apart het aantal op te halen tenzij offset paginering dit vereist
+- Werk de OpenAPI-spec voor het eindpunt bij, indien aanwezig
 
-Tests schrijven: eerste pagina, tweede pagina via cursor, leeg resultaat, limiet-grensvalidatie.
+Schrijf tests: eerste pagina, tweede pagina via cursor, leeg resultaat, limietvalidatie.

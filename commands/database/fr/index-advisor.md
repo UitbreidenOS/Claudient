@@ -1,38 +1,38 @@
 ---
-description: Recommander des indexes pour une table ou une charge de travail de requêtes basée sur le schéma et les patterns d'accès
+description: Recommander des index pour une table ou une charge de requêtes basée sur le schéma et les modèles d'accès
 argument-hint: "[nom de table, requête, ou fichier de schéma]"
 ---
-Analyser le schéma de base de données et les patterns d'accès pour: $ARGUMENTS
+Analysez le schéma de base de données et les modèles d'accès pour : $ARGUMENTS
 
-Si $ARGUMENTS est un nom de table, localiser son schéma dans les migrations, modèles ORM, ou fichiers de schéma. Si c'est une requête, analyser les patterns d'accès de cette requête. Si c'est un chemin de fichier, le lire.
+Si $ARGUMENTS est un nom de table, localisez son schéma dans les migrations, les modèles ORM ou les fichiers de schéma. Si c'est une requête, analysez les modèles d'accès de cette requête. Si c'est un chemin de fichier, lisez-le.
 
-Effectuer cette analyse:
+Effectuez cette analyse :
 
-1. Cartographier les indexes actuels:
-   - Lister tous les indexes existants (clé primaire, unique, composite, partiel, basé sur expression).
-   - Identifier quels indexes sont redondants (préfixe couvert par un autre index).
-   - Identifier les indexes inutilisés ou à faible sélectivité (p. ex., colonnes booléennes, énumérations à faible cardinalité).
+1. Mappez les index actuels :
+   - Listez tous les index existants (clé primaire, unique, composite, partiel, basé sur une expression).
+   - Identifiez les index redondants (couverts par un préfixe d'un autre index).
+   - Identifiez les index inutilisés ou à faible sélectivité (p. ex., colonnes booléennes, énumérations de faible cardinalité).
 
-2. Analyser la charge de travail des requêtes:
-   - Si des requêtes sont fournies ou découvrables dans la base de code (appels de requête ORM, SQL brut), extraire leurs patterns WHERE, JOIN, ORDER BY, et GROUP BY.
-   - Identifier les colonnes qui apparaissent régulièrement dans les prédicats de filtre.
-   - Noter les requêtes de plage qui bénéficient d'indexes B-tree par rapport aux requêtes d'égalité uniquement.
+2. Analysez la charge de requêtes :
+   - Si des requêtes sont fournies ou détectables dans la base de code (appels de requête ORM, SQL brut), extrayez leurs modèles WHERE, JOIN, ORDER BY et GROUP BY.
+   - Identifiez les colonnes qui apparaissent à plusieurs reprises dans les prédicats de filtre.
+   - Notez les requêtes de plage qui bénéficient des index B-tree par rapport aux requêtes d'égalité uniquement.
 
-3. Recommander de nouveaux indexes:
-   - Pour chaque recommandation, indiquer:
-     a. L'instruction CREATE INDEX exacte (utiliser CONCURRENTLY pour PostgreSQL si approprié).
-     b. Quelles requêtes ou patterns d'accès il couvre.
-     c. Impact de sélectivité estimé (cardinalité haute/moyenne/basse).
-     d. Coût overhead d'écriture — les indexes qui réduisent le débit INSERT/UPDATE doivent être signalés.
-   - Préférer les indexes composites aux indexes single-column multiples lorsque le pattern de requête le justifie.
-   - Considérer les indexes partiels (clause WHERE) pour les conditions rares (p. ex., patterns de soft-delete, filtres de statut avec valeurs null/inactif dominantes).
-   - Considérer les covering indexes (colonnes INCLUDE) pour éliminer les accès au tas de table pour les chemins de lecture actifs.
+3. Recommandez de nouveaux index :
+   - Pour chaque recommandation, indiquez :
+     a. L'instruction CREATE INDEX exacte (utilisez CONCURRENTLY pour PostgreSQL si approprié).
+     b. Quelles requêtes ou modèles d'accès il couvre.
+     c. Impact estimé de sélectivité (cardinalité haute/moyenne/basse).
+     d. Coût de surcharge d'écriture — les index qui ralentissent le débit INSERT/UPDATE doivent être signalés.
+   - Préférez les index composites aux index simple-colonne multiples lorsque le modèle de requête le justifie.
+   - Considérez les index partiels (clause WHERE) pour les conditions clairsemées (p. ex., modèles de suppression logicielle, filtres de statut avec des valeurs null/inactives dominantes).
+   - Considérez les index couvrants (colonnes INCLUDE) pour éliminer les accès au tas de la table pour les chemins de lecture actifs.
 
-4. Signaler les indexes à supprimer:
-   - Indexes dupliqués.
-   - Indexes sur des colonnes jamais utilisées dans les filtres ou les joins.
-   - Indexes qui sont remplacés par un index composite.
+4. Signallez les index à supprimer :
+   - Index dupliqués.
+   - Index sur des colonnes jamais utilisées dans les filtres ou les jointures.
+   - Index qui sont remplacés par un index composite.
 
-5. Produire un plan d'action priorisé: HIGH (gain immédiat, risque faible) / MEDIUM (utile, overhead d'écriture mineur) / LOW (marginal, évaluer sous charge).
+5. Sortie d'un plan d'action priorisé : ÉLEVÉ (gain immédiat, risque faible) / MOYEN (utile, surcharge d'écriture mineure) / BAS (marginal, évaluer en charge).
 
-Indiquer le moteur de base de données supposé à partir du contexte de syntaxe ou de configuration.
+Précisez le moteur de base de données supposé à partir du contexte de syntaxe ou de configuration.

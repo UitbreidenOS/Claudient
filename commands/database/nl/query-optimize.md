@@ -1,38 +1,38 @@
 ---
-description: Analyseer een langzame of problematische SQL-query en maak een geoptimaliseerde versie met uitleg
+description: Analyseer een trage of problematische SQL-query en produceer een geoptimaliseerde versie met uitleg
 argument-hint: "[SQL-query of bestandspad]"
 ---
-Je bent een expert in het optimaliseren van databasequery's. Analyseer en optimaliseer de volgende query: $ARGUMENTS
+Je bent een expert in optimalisatie van databasequeries. Analyseer en optimaliseer de volgende query: $ARGUMENTS
 
-Als $ARGUMENTS een bestandspad is, lees het bestand. Als het ruwe SQL is, gebruik het rechtstreeks.
+Als $ARGUMENTS een bestandspad is, lees het bestand. Gebruik het bestand direct als het onbewerkte SQL is.
 
 Voer de volgende analyse uit:
 
 1. Parse de querystructuur:
-   - Identificeer alle tabellen, joins, subquery's, CTE's en window functions.
-   - Wijs WHERE, GROUP BY, ORDER BY, HAVING clausules toe.
+   - Identificeer alle tabellen, joins, subqueries, CTEs en window functions.
+   - Wijs WHERE, GROUP BY, ORDER BY, HAVING-clausules toe.
    - Noteer eventuele impliciete typeconversies of functieaanroepen op geïndexeerde kolommen die indexgebruik zouden voorkomen.
 
 2. Identificeer prestatieproblemen:
-   - Full table scans (ontbrekende index, of index niet gebruikt vanwege functiewrapping).
-   - Cartesische producten of onbedoelde cross joins.
-   - N+1 patronen uitgedrukt als gecorreleerde subquery's.
-   - Redundante subquery's die naar CTE's of JOIN's kunnen worden verplaatst.
+   - Volledige tabelscans (ontbrekende index of index niet gebruikt vanwege functieverpakking).
+   - Cartesiaanse producten of onbedoelde cross joins.
+   - N+1-patronen uitgedrukt als gecorreleerde subqueries.
+   - Redundante subqueries die kunnen worden verheven naar CTEs of JOINs.
    - Aggregaties over grote ongefilterde sets.
    - SELECT * wanneer specifieke kolommen volstaan.
-   - Non-sargable predicaten (bijv. `WHERE YEAR(created_at) = 2024` in plaats van een bereik).
+   - Niet-sargable predicaten (bijv. `WHERE YEAR(created_at) = 2024` in plaats van een bereik).
 
-3. Maak een geoptimaliseerde query:
-   - Herschrijf naar sargable waarbij predicaten momenteel non-sargable zijn.
-   - Vervang gecorreleerde subquery's door JOIN's of window functions waar van toepassing.
-   - Duw filters zo vroeg mogelijk (predicate pushdown).
-   - Gebruik covering index hints in opmerkingen waar een index een tabelbevraagd zou elimineren.
-   - Behoud exacte semantiek — de resultaatset moet identiek zijn.
+3. Produceer een geoptimaliseerde query:
+   - Herschrijf zodat predicaten sargable zijn waar dit momenteel niet het geval is.
+   - Vervang gecorreleerde subqueries door JOINs of window functions waar passend.
+   - Push filters zo vroeg mogelijk (predicate pushdown).
+   - Gebruik hints voor verwachtingsindexen in opmerkingen waar een index een tabelzoeking zou elimineren.
+   - Behoud exacte semantiek — de resultatenset moet identiek zijn.
 
-4. Toon een diff tussen de originele en geoptimaliseerde versies.
+4. Toon een diff tussen originele en geoptimaliseerde versies.
 
-5. Leg elke wijziging uit in een lijst met opsommingstekens, inclusief de verwachte impact (bijv. "elimineert seq scan op orders, geschatte 10-100x vermindering van gecontroleerde rijen").
+5. Leg elke wijziging uit in een bulletlijst, inclusief de verwachte impact (bijv. "elimineert seq scan op orders, geschat 10-100x reductie in onderzochte rijen").
 
-6. Geef een lijst met indexen die moeten worden gemaakt ter ondersteuning van de geoptimaliseerde query, met de exacte CREATE INDEX statement.
+6. Vermeld alle indexen die moeten worden gemaakt ter ondersteuning van de geoptimaliseerde query, met de exacte CREATE INDEX-instructie.
 
-Geef de aangenomen databaseengine aan (PostgreSQL, MySQL, SQLite, MSSQL, enz.) op basis van gedetecteerde syntaxis. Pas aanbevelingen dienovereenkomstig aan.
+Stel de aangenomen database-engine in (PostgreSQL, MySQL, SQLite, MSSQL, enz.) op basis van gedetecteerde syntaxis. Pas aanbevelingen dienovereenkomstig aan.

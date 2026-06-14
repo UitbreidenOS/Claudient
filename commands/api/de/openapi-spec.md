@@ -2,27 +2,27 @@
 description: OpenAPI 3.1 Spezifikation aus vorhandenen Routen oder einer Beschreibung generieren oder aktualisieren
 argument-hint: "[Quelldatei-oder-Beschreibung]"
 ---
-Generiere oder aktualisiere eine OpenAPI 3.1 Spezifikation basierend auf: $ARGUMENTS
+Generieren oder aktualisieren Sie eine OpenAPI 3.1 Spezifikation basierend auf: $ARGUMENTS
 
-Wenn $ARGUMENTS ein Dateipfad ist, lese die Routendefinitionen aus dieser Datei. Wenn es eine Beschreibung ist, erstelle eine Spezifikation von Grund auf. Wenn leer, scanne die Codebasis nach allen Routendefinitionen und generiere eine vollständige Spezifikation.
+Wenn $ARGUMENTS ein Dateipfad ist, lesen Sie die Routendefinitionen aus dieser Datei. Wenn es eine Beschreibung ist, erstellen Sie eine Spezifikation von Grund auf. Wenn leer, scannen Sie die Codebasis nach allen Routendefinitionen und generieren Sie eine vollständige Spezifikation.
 
 Anforderungen:
-- Verwende OpenAPI 3.1.0 (nicht 3.0.x — verwende `type: "null"` nicht `nullable: true`)
-- Jeder Pfad muss folgende Eigenschaften haben: summary, operationId (camelCase, eindeutig), tags, parameters, requestBody (falls vorhanden) und responses
-- Definiere alle Schemas unter `components/schemas` — Inline-Schemas in Path-Elementen sind nicht erlaubt
-- Verwende `$ref` für jeden Schema, auf den mehr als einmal verwiesen wird
-- Dokumentiere jeden möglichen Response-Statuscode, den der Code tatsächlich zurückgibt — erfinde keine zusätzlichen Codes
-- Erforderliche Felder müssen in `required` Arrays vorhanden sein — keine stillschweigend optionalen Felder
-- Enum-Werte müssen mit dem übereinstimmen, was der Code erzwingt
-- Füge Sicherheitsschema-Definitionen hinzu, falls die API Authentifizierung verwendet (Bearer JWT, API-Schlüssel, OAuth2, etc.)
-- Füge `description` Felder zu allen nicht offensichtlichen Eigenschaften hinzu
-- Markiere veraltete Endpoints mit `deprecated: true` falls vorhanden
+- Verwenden Sie OpenAPI 3.1.0 (nicht 3.0.x — verwenden Sie `type: "null"` anstelle von `nullable: true`)
+- Jeder Pfad muss haben: summary, operationId (camelCase, eindeutig), tags, parameters, requestBody (falls zutreffend) und responses
+- Definieren Sie alle Schemas unter `components/schemas` — Inline-Schemas in Path-Elementen sind verboten
+- Verwenden Sie `$ref` für alle Schemas, auf die mehr als einmal verwiesen wird
+- Dokumentieren Sie jeden möglichen Response-Statuscode, den der Code tatsächlich zurückgibt — erfinden Sie keine zusätzlichen
+- Erforderliche Felder müssen in `required` Arrays stehen — keine stillen Optionale
+- Enum-Werte müssen dem entsprechen, was der Code erzwingt
+- Fügen Sie Sicherheitsschemadefinitionen hinzu, falls die API Authentifizierung verwendet (Bearer JWT, API-Schlüssel, OAuth2, etc.)
+- Fügen Sie `description` Felder für alle nicht offensichtlichen Eigenschaften hinzu
+- Markieren Sie veraltete Endpunkte mit `deprecated: true`, falls vorhanden
 
 Formatierungsregeln:
-- YAML-Ausgabe, 2-Leerzeichen Einrückung
-- Halte `paths` alphabetisch nach Route sortiert
-- Halte `components/schemas` alphabetisch sortiert
+- YAML-Ausgabe, 2-Leerzeichen Einzug
+- Halten Sie `paths` alphabetisch nach Route sortiert
+- Halten Sie `components/schemas` alphabetisch sortiert
 
-Gebe die vollständige `openapi.yaml` Datei aus. Wenn eine vorhandene Spezifikation aktualisiert wird, zeige nur die geänderten Abschnitte mit ausreichendem Kontext, um sie zu positionieren, und schreibe dann die vollständige aktualisierte Datei.
+Geben Sie die vollständige `openapi.yaml` Datei aus. Wenn Sie eine vorhandene Spezifikation aktualisieren, zeigen Sie nur die geänderten Abschnitte mit ausreichend Kontext, um sie zu platzieren, und schreiben Sie dann die vollständige aktualisierte Datei.
 
-Wenn die Routenquelle mehrdeutig ist oder Framework-spezifische Dekoratoren nicht erkannt werden, liste auf, welche Routen übersprungen wurden und warum.
+Falls die Route-Quelle mehrdeutig ist oder Framework-spezifische Dekorateure nicht erkannt werden, listen Sie auf, welche Routen übersprungen wurden und warum.

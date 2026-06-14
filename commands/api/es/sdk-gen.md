@@ -1,6 +1,6 @@
 ---
 description: Generar un SDK cliente tipado desde una especificación OpenAPI o rutas API existentes
-argument-hint: "[language] [spec-file-or-base-url]"
+argument-hint: "[lenguaje] [archivo-spec-o-url-base]"
 ---
 Generar un SDK cliente para: $ARGUMENTS
 

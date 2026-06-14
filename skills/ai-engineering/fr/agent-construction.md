@@ -1,69 +1,73 @@
-> 🇫🇷 This is the French translation. [English version](../agent-construction.md).
+---
+name: agent-construction
+description: "Architecture multi-agents, patterns d'orchestration, conception d'outils, boucles d'agents, mémoire, gestion d'erreurs, transferts"
+updated: 2026-06-13
+---
 
-# Compétence Construction d'Agents
+# Compétence de Construction d'Agents
 
 ## Quand activer
-- Concevoir un système multi-agents avec Claude (orchestrateur + sous-agents)
-- Construire un agent alimenté par Claude qui utilise des outils sur plusieurs tours
-- Concevoir la mémoire pour un agent long-running (en contexte vs. externe)
-- Gérer les erreurs, les réessais et les conditions d'arrêt des agents
-- Implémenter les transferts d'agent entre sous-agents spécialisés
+- Conception d'un système multi-agents avec Claude (orchestrateur + sous-agents)
+- Construction d'un agent alimenté par Claude qui utilise des outils sur plusieurs tours
+- Conception de la mémoire pour un agent long terme (en contexte vs. externe)
+- Gestion des erreurs d'agents, des tentatives et des conditions d'arrêt
+- Implémentation des transferts d'agents entre sous-agents spécialisés
 
-## Quand NE PAS utiliser
-- Appels API Claude à tour unique — la compétence API Claude est suffisante
-- Chatbots simples sans utilisation d'outils ou prise de décision autonome
-- Abstractions LangChain/LlamaIndex — adresser la couche d'abstraction directement
+## Quand NE PAS l'utiliser
+- Appels API Claude simples (un seul tour) — la compétence Claude API est suffisante
+- Chatbots simples sans utilisation d'outils ou de prise de décision autonome
+- Abstractions LangChain/LlamaIndex — adressez directement la couche d'abstraction
 
 ## Instructions
 
-### Patterns d'architecture d'agent
+### Patterns d'architecture d'agents
 
-**Agent unique avec outils** — une instance Claude, plusieurs outils, boucle jusqu'à l'achèvement de la tâche :
+**Agent unique avec outils** — une instance Claude, plusieurs outils, boucle jusqu'à fin de tâche :
 ```
 User → Agent → [Tool A] → [Tool B] → Agent → User
 ```
 
-**Orchestrateur + sous-agents** — un parent crée des enfants spécialisés :
+**Orchestrateur + sous-agents** — un parent génère des enfants spécialisés :
 ```
 User → Orchestrator → [ResearchAgent] → [WriterAgent] → Orchestrator → User
 ```
 
-**Pipeline** — les agents transmettent les résultats en séquence :
+**Pipeline** — les agents se transmettent les résultats en séquence :
 ```
 User → Agent1(classify) → Agent2(extract) → Agent3(generate) → User
 ```
 
-Choisir l'architecture la plus simple qui résout le problème. Un agent unique avec des outils gère la plupart des cas.
+Choisissez l'architecture la plus simple qui résout le problème. Un agent unique avec outils gère la plupart des cas.
 
-### Conception des outils
+### Conception d'outils
 ```python
-# Définitions d'outils pour la boucle d'agent multi-tours
+# Définitions d'outils pour boucle d'agent multi-turn
 tools = [
     {
         "name": "search_web",
-        "description": "Search the web for current information. Use when you need facts not in your training data.",
+        "description": "Rechercher sur le web les informations actuelles. À utiliser quand vous avez besoin de faits non présents dans vos données d'entraînement.",
         "input_schema": {
             "type": "object",
             "properties": {
-                "query": {"type": "string", "description": "Search query"}
+                "query": {"type": "string", "description": "Requête de recherche"}
             },
             "required": ["query"]
         }
     },
     {
         "name": "read_file",
-        "description": "Read contents of a file by path.",
+        "description": "Lire le contenu d'un fichier par chemin.",
         "input_schema": {
             "type": "object",
             "properties": {
-                "path": {"type": "string", "description": "Absolute file path"}
+                "path": {"type": "string", "description": "Chemin de fichier absolu"}
             },
             "required": ["path"]
         }
     },
     {
         "name": "write_file",
-        "description": "Write content to a file. Creates the file if it doesn't exist.",
+        "description": "Écrire du contenu dans un fichier. Crée le fichier s'il n'existe pas.",
         "input_schema": {
             "type": "object",
             "properties": {
@@ -76,11 +80,11 @@ tools = [
 ]
 ```
 
-Règles de conception des outils :
-- La description doit dire à Claude QUAND l'utiliser, pas seulement ce qu'il fait
-- Garder `input_schema` minimal — uniquement les champs requis, pas de bruit optionnel
-- Retourner des données structurées (JSON), pas de prose, pour que Claude puisse les utiliser de façon fiable
-- Un outil par action — ne pas regrouper lecture+écriture dans un seul outil
+Règles de conception d'outils :
+- La description doit dire à Claude QUAND l'utiliser, pas juste ce qu'il fait
+- Gardez `input_schema` minimal — seulement les champs requis, pas de bruit optionnel
+- Retournez des données structurées (JSON), pas de prose, pour que Claude puisse les utiliser de manière fiable
+- Un outil par action — ne fusionnez pas lecture+écriture dans un seul outil
 
 ### Boucle d'agent
 ```python
@@ -141,22 +145,22 @@ def execute_tool(name: str, inputs: dict) -> any:
             return {"error": f"Unknown tool: {name}"}
 ```
 
-### System prompt pour les agents
+### Prompt système pour les agents
 ```
-AGENT_SYSTEM_PROMPT = """You are an autonomous agent completing tasks step by step.
+AGENT_SYSTEM_PROMPT = """Vous êtes un agent autonome accomplissant des tâches étape par étape.
 
-Approach:
-1. Analyze the task before acting
-2. Use the minimum tools necessary
-3. Check your work before declaring done
-4. If a tool returns an error, diagnose and retry once — if it fails again, report the error
+Approche :
+1. Analysez la tâche avant d'agir
+2. Utilisez le minimum d'outils nécessaires
+3. Vérifiez votre travail avant de déclarer terminer
+4. Si un outil renvoie une erreur, diagnostiquez et réessayez une fois — s'il échoue à nouveau, signalez l'erreur
 
-Stopping conditions — declare "DONE: <result>" when:
-- The task is fully complete
-- You've hit an unrecoverable error after retrying
-- You've been asked to do something harmful or impossible
+Conditions d'arrêt — déclarez "DONE: <result>" quand :
+- La tâche est complètement achevée
+- Vous avez atteint une erreur irrécupérable après nouvelle tentative
+- On vous a demandé de faire quelque chose de nuisible ou impossible
 
-Never loop more than 3 times on the same tool call with the same inputs.
+Ne bouchez jamais plus de 3 fois sur le même appel d'outil avec les mêmes entrées.
 """
 ```
 
@@ -164,7 +168,7 @@ Never loop more than 3 times on the same tool call with the same inputs.
 
 **Mémoire en contexte** (tableau de messages) — pour une seule session, petit état :
 ```python
-# Résumer quand le contexte devient trop grand
+# Résumé quand le contexte s'agrandit
 if count_tokens(messages) > 150_000:
     summary = summarize_messages(messages[:-5])  # garder les 5 derniers tours
     messages = [
@@ -174,9 +178,9 @@ if count_tokens(messages) > 150_000:
     ]
 ```
 
-**Mémoire externe** (pour les agents multi-sessions) :
+**Mémoire externe** (pour les agents multi-session) :
 ```python
-# Mémoire simple basée sur des fichiers
+# Mémoire simple basée sur fichier
 class AgentMemory:
     def __init__(self, path: str):
         self.path = Path(path)
@@ -197,15 +201,15 @@ class AgentMemory:
         return "Known context:\n" + "\n".join(lines)
 ```
 
-### Pattern d'orchestration
+### Pattern Orchestrateur
 ```python
 def orchestrate(task: str) -> str:
     # Étape 1 : L'agent de planification décompose la tâche
     plan = run_subagent(
         model="claude-sonnet-4-6",
-        system="You are a planner. Decompose tasks into numbered steps.",
-        task=f"Decompose this task into steps: {task}",
-        tools=[]  # Pas d'outils nécessaires pour la planification
+        system="Vous êtes un planificateur. Décomposez les tâches en étapes numérotées.",
+        task=f"Décomposez cette tâche en étapes : {task}",
+        tools=[]  # Aucun outil nécessaire pour la planification
     )
 
     # Étape 2 : Exécuter chaque étape avec des agents spécialisés
@@ -224,8 +228,8 @@ def orchestrate(task: str) -> str:
     # Étape 3 : L'agent de synthèse combine les résultats
     return run_subagent(
         model="claude-sonnet-4-6",
-        system="You are a synthesizer. Combine step results into a final answer.",
-        task=f"Original task: {task}\n\nStep results:\n" + "\n".join(results),
+        system="Vous êtes un synthétiseur. Combinez les résultats des étapes en une réponse finale.",
+        task=f"Tâche originale : {task}\n\nRésultats des étapes :\n" + "\n".join(results),
         tools=[]
     )
 ```
@@ -258,10 +262,10 @@ def execute_tool_safe(name: str, inputs: dict, consecutive_failures: dict) -> di
 # L'agent parent passe le contexte explicitement — les sous-agents n'ont pas de mémoire de session
 def handoff_to_specialist(context: dict, task: str, specialist: str) -> str:
     handoff_prompt = f"""
-Context from orchestrator:
+Contexte de l'orchestrateur :
 {json.dumps(context, indent=2)}
 
-Your task:
+Votre tâche :
 {task}
 """
     return run_subagent(
@@ -273,13 +277,13 @@ Your task:
 
 ## Exemple
 
-**Utilisateur :** Construire un agent de recherche qui prend un sujet, recherche sur le web 3 sources, lit chaque URL et rédige un résumé de 500 mots avec citations dans un fichier.
+**Utilisateur :** Construisez un agent de recherche qui prend un sujet, recherche sur le web 3 sources, lit chaque URL et écrit un résumé de 500 mots avec citations dans un fichier.
 
-**Sortie attendue :**
+**Résultat attendu :**
 - Liste `tools` : `search_web`, `fetch_url`, `write_file`
-- System prompt : demande à l'agent de chercher → récupérer 3 URLs → synthétiser → écrire le fichier avant de déclarer terminé
+- Prompt système : instruit l'agent à rechercher → récupérer 3 URLs → synthétiser → écrire le fichier avant de déclarer terminé
 - Boucle `run_agent(task)` avec `max_iterations=15`
-- Gestion des erreurs : si `fetch_url` échoue, essayer le prochain résultat de recherche
-- Sortie finale : chemin vers le fichier de résumé écrit
+- Gestion des erreurs : si `fetch_url` échoue, essayez le résultat de recherche suivant
+- Résultat final : chemin du fichier de résumé écrit
 
 ---
