@@ -70,24 +70,24 @@ Read, Edit, Write, WebSearch, Bash
 - Proporción LTV:CAC: > 3:1 es mínimo viable; > 5:1 es saludable; > 10:1 significa que estás subinvirtiendo en crecimiento
 
 ### Modos de fallo comunes
-- Construir para un comprador que no puede pagar — el entusiasmo de los usuarios no equivale a voluntad de pagar; valida presupuesto temprano
-- Resolver el problema parcialmente y enviar de todos modos — los compradores B2B se cancelan si el producto no resuelve completamente su flujo de trabajo; las soluciones parciales pierden contra competidores
-- Ignorar al comprador económico versus el usuario — en B2B, la persona que usa el producto a menudo no es la persona que lo paga; construye para ambos
-- Movimiento de ventas empresarial prematuro — los tratos empresariales antes del ajuste de mercado de producto crean trabajo personalizado que fragmenta la base de código y retrasa PMF
-- No cobrar lo suficiente — los precios bajos señalan bajo valor; los compradores B2B correlacionan precio con confiabilidad; aumenta precios como palanca de crecimiento antes de añadir características
+- Construir para un comprador que en realidad no puede pagar — el entusiasmo de los usuarios no es igual a disposición a pagar; valida el presupuesto temprano
+- Resolver el problema parcialmente y enviar de todas formas — Los compradores B2B renuncian si el producto no resuelve completamente su flujo de trabajo; las soluciones parciales pierden contra los incumbentes
+- Ignorar al comprador económico vs. al usuario — en B2B, la persona que usa el producto a menudo no es la que lo paga; construye para ambos
+- Movimiento de ventas empresarial prematuro — los tratos empresariales antes del encaje de producto-mercado crean trabajo personalizado que fragmenta la base de código y retrasa PMF
+- No cobrar lo suficiente — subpreciación señala bajo valor; los compradores B2B correlacionan el precio con la confiabilidad; aumenta los precios como palanca de crecimiento antes de añadir características
 
-## Caso de uso ejemplo
+## Caso de uso de ejemplo
 
-**Entrada:** "Tenemos una herramienta de analítica de RRHH con 30 clientes pagadores, $8K MRR, principalmente compañías de 50–200 personas. Queremos pasar al mercado empresarial. ¿Qué necesitamos hacer?"
+**Entrada:** "Tenemos una herramienta de análisis de RR.HH. con 30 clientes pagadores, $8K MRR, principalmente empresas de 50–200 personas. Queremos ascender a empresas. ¿Qué tenemos que hacer?"
 
 **Salida:**
-- ACV actual: ~$3.2K — las empresas comienzan en $20–50K ACV; eso es un aumento de precio de 6–15x que requiere entrega de valor diferente y movimiento de ventas
-- Brechas de producto a cerrar antes de pasar al mercado: SSO SAML (requisito del equipo de seguridad), registros de auditoría (requisito de TI/cumplimiento), permisos basados en roles con jerarquía de gestor, opción de residencia de datos (clientes de la UE)
-- Cambio de movimiento de ventas: contrata un AE empresarial con experiencia vendiendo tecnología de RRHH a compañías de 500–2000 personas; conocen el proceso de compra que no conoces
-- Estructura de trato piloto: ofrece un piloto de 90 días en $15K con incorporación completa — prueba valor antes del contrato anual, reduce riesgo de compra para el comprador
-- Métrica de éxito para el cambio: primer trato empresarial cerrado dentro de 6 meses; si no, vuelve a examinar si el producto tiene diferenciación de grado empresarial
+- ACV actual: ~$3.2K — la empresa comienza en $20–50K ACV; eso es un aumento de precio de 6–15x que requiere entrega de valor y motivo de ventas diferentes
+- Brechas de producto a cerrar antes de ascender: SAML SSO (requisito del equipo de seguridad), registros de auditoría (requisito de TI/cumplimiento), permisos basados en roles con jerarquía de gerente, opción de residencia de datos (clientes de la UE)
+- Cambio del motivo de ventas: contrata un AE empresarial con experiencia vendiendo tecnología de RR.HH. a empresas de 500–2000 personas; conocen el proceso de adquisición que tú no
+- Estructura del trato piloto: ofrece un piloto de 90 días a $15K con incorporación completa — prueba valor antes de contrato anual, reduce riesgo de adquisición para el comprador
+- Métrica de éxito para el movimiento: primer trato empresarial cerrado en 6 meses; si no, reexamina si el producto tiene diferenciación de nivel empresarial
 
 ---
 
 
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
+📺 **[Suscríbete a nuestro canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
