@@ -158,7 +158,7 @@ struct UserDetailView: View {
 ### Swift Concurrency
 
 ```swift
-// async/await — replaces completion handlers
+// async/await — ersetzt Completion Handler
 func fetchUser(id: UUID) async throws -> User {
   let url = URL(string: "https://api.example.com/users/\(id)")!
   let (data, response) = try await URLSession.shared.data(from: url)
@@ -170,7 +170,7 @@ func fetchUser(id: UUID) async throws -> User {
   return try JSONDecoder().decode(User.self, from: data)
 }
 
-// Structured concurrency — TaskGroup for parallel work
+// Structured Concurrency — TaskGroup für parallele Arbeit
 func fetchAllProfiles(ids: [UUID]) async throws -> [User] {
   try await withThrowingTaskGroup(of: User.self) { group in
     for id in ids {
@@ -180,7 +180,7 @@ func fetchAllProfiles(ids: [UUID]) async throws -> [User] {
   }
 }
 
-// async let — concurrent child tasks, collect results together
+// async let — nebenläufige Child Tasks, Ergebnisse zusammenfassen
 func loadDashboard() async throws -> Dashboard {
   async let user = fetchUser(id: currentUserId)
   async let stats = fetchStats()
@@ -193,7 +193,7 @@ func loadDashboard() async throws -> Dashboard {
   )
 }
 
-// Actor — thread-safe reference type, serializes access
+// Actor — Thread-sichere Referenztyp, serialisiert Zugriff
 actor ImageCache {
   private var cache: [URL: UIImage] = [:]
 
@@ -206,10 +206,10 @@ actor ImageCache {
   }
 }
 
-// MainActor — ensures execution on main thread
+// MainActor — garantiert Ausführung im Main Thread
 @MainActor
 func updateUI(with user: User) {
-  titleLabel.text = user.name // safe: guaranteed main thread
+  titleLabel.text = user.name // sicher: garantiert Main Thread
 }
 ```
 
