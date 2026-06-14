@@ -43,8 +43,6 @@ jobs:
 
       - name: Validate skill/agent/hook format
         run: node scripts/validate-frontmatter.js
-        # TODO: Remove continue-on-error once all 106 skill files have frontmatter added
-        continue-on-error: true
 
   link-check:
     name: Internal Link Check
@@ -68,6 +66,7 @@ jobs:
             -not -path "guides/nl/*" \
             | head -30 \
             | xargs -I{} markdown-link-check -q -c .markdown-link-check.json {} || true
+        # Link check is advisory — external URLs may be temporarily down
         continue-on-error: true
 
   manifest-consistency:
@@ -82,8 +81,6 @@ jobs:
 
       - name: Validate manifest alignment
         run: node scripts/validate-manifests.js
-        # TODO: Remove continue-on-error once plugin.json stubs are resolved
-        continue-on-error: true
 
   freshness-check:
     name: Skill Freshness
@@ -109,4 +106,17 @@ jobs:
           node-version: 18
 
       - name: Validate workspace stack completeness
-        run: node scripts/validate-stacks.js --warn-only
+        run: node scripts/validate-stacks.js
+
+  cli-smoke-tests:
+    name: CLI Smoke Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Run CLI smoke tests
+        run: node scripts/test-cli.js

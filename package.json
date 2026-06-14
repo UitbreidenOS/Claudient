@@ -78,6 +78,8 @@
     "validate:stacks": "node scripts/validate-stacks.js",
     "backfill-dates": "node scripts/backfill-dates.js",
     "dep-graph": "node scripts/dependency-graph.js",
-    "changelog": "node scripts/generate-changelog.js --write"
+    "changelog": "node scripts/generate-changelog.js --write",
+    "test": "node scripts/test-cli.js",
+    "add-descriptions": "node scripts/add-descriptions.js"
   }
 }
