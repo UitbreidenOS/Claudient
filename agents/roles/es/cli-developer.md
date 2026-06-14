@@ -111,56 +111,56 @@ func init() {
 ```
 
 **Principios de diseño de argumentos:**
-- Subcomandos: agrupa operaciones relacionadas (`tool init`, `tool deploy`, `tool config`) — prefiere sobre flags que cambian comportamiento fundamental
-- Flags vs args posicionales: args posicionales para entradas requeridas, bien entendidas (rutas de archivos, nombres); flags para modificadores opcionales
-- `--dry-run`: siempre implementa en cualquier comando que escriba archivos o llame APIs externas — obligatorio para buena UX de CLI
-- Flags booleanos: pareja `--verbose` / `--no-verbose`; nunca requieras `--verbose=true`
-- Operaciones destructivas: requiere confirmación explícita (`--yes` / `-y` para saltar prompt, o confirmación interactiva `y/N`)
+- Subcomandos: agrupar operaciones relacionadas (`tool init`, `tool deploy`, `tool config`) — prefiere sobre banderas que cambian comportamiento fundamental
+- Banderas vs argumentos posicionales: argumentos posicionales para entradas requeridas, bien entendidas (rutas de archivos, nombres); banderas para modificadores opcionales
+- `--dry-run`: siempre implemente en cualquier comando que escriba archivos o llame a API externas — obligatorio para una buena UX de CLI
+- Banderas booleanas: par `--verbose` / `--no-verbose`; nunca requiera `--verbose=true`
+- Operaciones destructivas: requiere confirmación explícita (`--yes` / `-y` para omitir solicitud, o confirmación interactiva `y/N`)
 
-**Convenciones de archivo de config:**
-- XDG Base Directory: `$XDG_CONFIG_HOME/toolname/config.toml` (default: `~/.config/toolname/config.toml`) — correcto para Linux/macOS
-- Jerarquía de fallback: `./toolname.config.toml` (proyecto) → `~/.config/toolname/config.toml` (usuario) → defaults
-- Override de variable de entorno: `TOOLNAME_API_KEY` overrides `config.api_key` — usa prefijo consistente y uppercase snake_case
-- Orden de precedencia de config (mayor a menor): CLI flags → vars env → config de proyecto → config de usuario → defaults
-- Nunca almacenes secretos en archivos de config comprometidos a git — usa vars env o un gestor de secretos; advierte si un valor que parece secreto se encuentra en un archivo de config
+**Convenciones de archivos de configuración:**
+- Directorio Base XDG: `$XDG_CONFIG_HOME/toolname/config.toml` (predeterminado: `~/.config/toolname/config.toml`) — correcto para Linux/macOS
+- Jerarquía de respaldo: `./toolname.config.toml` (proyecto) → `~/.config/toolname/config.toml` (usuario) → predeterminados
+- Anulación de variable de entorno: `TOOLNAME_API_KEY` anula `config.api_key` — use prefijo consistente y snake_case en mayúsculas
+- Orden de precedencia de configuración (mayor a menor): banderas CLI → variables de entorno → configuración de proyecto → configuración de usuario → predeterminados
+- Nunca almacene secretos en archivos de configuración comprometidos con git — use variables de entorno o un administrador de secretos; advierta si se encuentra un valor que parece ser un secreto en un archivo de configuración
 
 **Códigos de salida:**
 - 0: éxito
-- 1: error de runtime general (capturado y manejado)
-- 2: mal uso de CLI (argumentos incorrectos, valores de flag inválidos) — imprime uso a stderr
-- 126: permiso denegado (ejecutando un archivo que existe pero no es ejecutable)
+- 1: error de tiempo de ejecución general (capturado y manejado)
+- 2: mal uso de CLI (argumentos incorrectos, valores de bandera inválidos) — imprima el uso en stderr
+- 126: permiso denegado (ejecutar un archivo que existe pero no es ejecutable)
 - 127: comando no encontrado
 - 130: interrumpido por Ctrl+C (SIGINT)
-- Siempre sale con non-zero en error — scripts de shell dependen de esto para `set -e` pipelines
+- Siempre salga con un valor distinto de cero en caso de error — los scripts shell dependen de esto para tuberías `set -e`
 
-**Completado de shell:**
+**Finalización de shell:**
 - Cobra: `rootCmd.GenBashCompletionFile("completion.bash")`, `GenZshCompletionFile`, `GenFishCompletionFile` — todos integrados
-- Commander.js: usa plugin `commander-completion` o escribe script de completado que llama `program.parse(['--help'])` y analiza salida
-- Typer: `myapp --install-completion` instala completado para shell detectado automáticamente
-- Distribución: incluye subcomando `completion` que salida el script; documenta configuración `eval "$(mytool completion bash)"`
+- Commander.js: use el complemento `commander-completion` o escriba un script de finalización que llame a `program.parse(['--help'])` y analice la salida
+- Typer: `myapp --install-completion` instala automáticamente la finalización para el shell detectado
+- Distribución: incluya un subcomando `completion` que genere el script; documente la configuración `eval "$(mytool completion bash)"` en README
 
 **Distribución de binarios vía GoReleaser:**
-- `.goreleaser.yaml`: define `builds` (matriz GOOS/GOARCH), `archives` (tar.gz), `checksum`, `changelog`, `brews` (tap Homebrew)
-- Tap Homebrew: crea repositorio `homebrew-tap` en GitHub; GoReleaser auto-genera fórmula y pushea en lanzamiento
-- Trigger de GitHub Actions: `on: push: tags: ['v*']` → `goreleaser release --clean`
-- Signing: añade config `signs` para firmar binarios con GPG o cosign para seguridad de cadena de suministro
-- `ldflags`: inyecta versión, commit, fecha de compilación en link time: `-X main.version={{.Version}} -X main.commit={{.Commit}}`
+- `.goreleaser.yaml`: defina `builds` (matriz GOOS/GOARCH), `archives` (tar.gz), `checksum`, `changelog`, `brews` (tap de Homebrew)
+- Tap de Homebrew: cree repositorio `homebrew-tap` de GitHub; GoReleaser auto-genera fórmula e impulsa el lanzamiento
+- Disparador de GitHub Actions: `on: push: tags: ['v*']` → `goreleaser release --clean`
+- Firma: agregue configuración `signs` para firmar binarios con GPG o cosign para seguridad de la cadena de suministro
+- `ldflags`: inyecte versión, commit, fecha de compilación en tiempo de enlace: `-X main.version={{.Version}} -X main.commit={{.Commit}}`
 
 **Paquete npm con campo `bin`:**
-- `package.json`: `"bin": { "mytool": "./dist/index.js" }` — npm crea un symlink en PATH en instalación
-- Añade shebang al archivo de entrada: `#!/usr/bin/env node`
-- Campo `files`: solo publica lo necesario — `["dist/", "LICENSE"]`; excluye `src/`, `test/`, archivos de source `*.ts`
-- Script `prepublishOnly`: ejecuta `npm run build` antes de publicar para asegurar que dist está actualizado
-- Versionado con `npm version patch/minor/major` que crea un git tag; publica con `npm publish --access=public`
+- `package.json`: `"bin": { "mytool": "./dist/index.js" }` — npm crea un enlace simbólico en PATH en la instalación
+- Agregue shebang al archivo de entrada: `#!/usr/bin/env node`
+- Campo `files`: solo publique lo que sea necesario — `["dist/", "LICENSE"]`; excluya `src/`, `test/`, archivos fuente `*.ts`
+- Script `prepublishOnly`: ejecute `npm run build` antes de publicar para asegurar que dist está actualizado
+- Versión con `npm version patch/minor/major` que crea una etiqueta git; publique con `npm publish --access=public`
 
-## Ejemplo de uso
+## Caso de uso de ejemplo
 
-Herramienta CLI de Node.js con Commander.js y publicación npm:
+Herramienta CLI Node.js con Commander.js y publicación de npm:
 1. Entrada: `src/index.ts` con programa Commander que define subcomandos `init`, `deploy` y `config`
-2. Subcomando `init`: asistente Inquirer pregunta nombre de proyecto, framework (lista), features (checkbox) → valida nombre no vacío → genera archivos desde plantillas
-3. Spinner Ora envuelve operaciones async (npm install, llamadas API); colores Chalk marcan salida de estado; Listr2 ejecuta `lint → build → test` en paralelo con estado por tarea
-4. Config: lee `~/.config/mytool/config.toml` con fallback a vars env (`MYTOOL_TOKEN`)
-5. Completado de shell: `mytool completion bash` salida script de completado bash; documenta setup `eval "$(mytool completion bash)"`
-6. Publicar: `package.json` con campo `bin`; `prepublishOnly` ejecuta `tsc`; `npm publish --access=public`
+2. Subcomando `init`: asistente de Inquirer pregunta nombre del proyecto, framework (lista), características (casilla de verificación) → valida nombre no vacío → genera archivos de plantillas
+3. Spinner de Ora envuelve operaciones asincrónicas (npm install, llamadas API); colores de Chalk de salida de estado; Listr2 ejecuta `lint → build → test` en paralelo con estado por tarea
+4. Configuración: lee `~/.config/mytool/config.toml` con respaldo a variables de entorno (`MYTOOL_TOKEN`)
+5. Finalización de shell: `mytool completion bash` genera script de finalización bash; documenta configuración `eval "$(mytool completion bash)"`
+6. Publicación: `package.json` con campo `bin`; `prepublishOnly` ejecuta `tsc`; `npm publish --access=public`
 
 ---

@@ -45,54 +45,54 @@ Read, Edit, Write, Bash (clojure, lein, clj, bb), mcp__ide__getDiagnostics
 - Verwandte Funktionen in Feature-Namespaces gruppieren; `core.clj` nur als Einstiegspunkt halten.
 
 ### Fehlerbehandlung
-- `ex-info` für Domain-Fehler mit einer Datenmap und einer Nachricht.
-- `try`/`catch` an Grenzen; `Throwable` nicht fangen — spezifische Exception-Typen fangen.
+- `ex-info` für Domain-Fehler mit einer Datenkarte und einer Nachricht.
+- `try`/`catch` an Grenzen; nicht `Throwable` abfangen — spezifische Ausnahmtypen abfangen.
 - `{:error ...}` Maps von Funktionen zurückgeben, die auf erwartete Weise fehlschlagen können; `throw` für wirklich außergewöhnliche Fälle.
 - `clojure.spec.alpha/assert` oder `malli` Schema-Validierung an öffentlichen API-Einstiegspunkten.
 
 ### Ring / Pedestal / Reitit
-- Middleware-Stacks als reine Funktionswrapper über Handler-Funktionen zusammenstellen.
-- Rousentabellen als reine Daten (Reitit): `["/users/:id" {:get handle-get-user}]`.
-- Interceptor-Ketten (Pedestal) für übergreifende Belange: Auth, Logging, Validierung.
-- Ring-Response-Maps zurückgeben `{:status 200 :headers {} :body ...}` — Request-Map niemals mutieren.
+- Middleware-Stacks als reine Funktions-Wrapper über Handler-Funktionen zusammensetzen.
+- Routing-Tabellen als reine Daten (Reitit): `["/users/:id" {:get handle-get-user}]`.
+- Interceptor-Ketten (Pedestal) für Cross-Cutting Concerns: Auth, Logging, Validierung.
+- Ring-Response-Maps zurückgeben `{:status 200 :headers {} :body ...}` — niemals die Request-Map mutieren.
 
 ### core.async
-- `go` Blöcke für Lightweight-Concurrency verwenden; `thread` für Blocking I/O.
-- `pipeline` und `pipeline-async` für parallele Kanal-Transformationen mit Backpressure.
-- Kanäle immer mit `close!` auf Shutdown-Pfaden schließen.
-- Tief verschachtelte `go` Blöcke vermeiden — Sub-Routinen mit benannten `go` Funktionen extrahieren.
+- `go`-Blöcke für leichte Parallelität verwenden; `thread` für blockierende I/O.
+- `pipeline` und `pipeline-async` für parallele Channel-Transformationen mit Backpressure.
+- Kanäle immer mit `close!` auf Abfahrtspfaden schließen.
+- Tiefe verschachtelte `go`-Blöcke vermeiden — Sub-Routinen mit benannten `go`-Funktionen extrahieren.
 
 ### clojure.spec / malli
-- Spec für alle öffentlichen API-Eingaben und Outputs mit Namespace-qualifizierten Schlüsseln.
-- `s/fdef` zur Spec-Funktion Argumente und Rückgabewerte; `instrument` in der Entwicklung verwenden.
+- Jede öffentliche API-Eingabe und Ausgangs-Namespace-Schlüssel spezifizieren.
+- `s/fdef` zum Spezifizieren von Funktionsargumenten und Rückgabewerten; `instrument` in der Entwicklung verwenden.
 - Generative Tests mit `clojure.test.check`; `prop/for-all` für eigenschaftsbasierte Tests.
-- Malli für neuen Code bevorzugt: datengesteuerte Schemas, bessere Fehlermeldungen, keine globale Registry.
+- Malli bevorzugt für neuen Code: datengesteuerte Schemas, reichere Fehlermeldungen, keine globale Registry.
 
 ### Makros
 - Ein Makro nur schreiben, wenn eine Funktion die Abstraktion nicht ausdrücken kann (Kontrollfluss, Code-Generierung).
-- `defmacro` als dünnen Wrapper über eine `-impl` Helper-Funktion für Testbarkeit bevorzugen.
-- `gensym` oder Auto-gensym (`name#`) für alle lokal eingeführten Symbole zur Vermeidung von Erfassung.
-- Makros durch `macroexpand-1` Inspektion und durch Verhalten testen — beides ist erforderlich.
+- `defmacro` lieber als dünnen Wrapper über eine `-impl` Helper-Funktion für Testbarkeit bevorzugen.
+- `gensym` oder Auto-Gensym (`name#`) für alle lokal eingeführten Symbole zur Vermeidung von Capture.
+- Makros testen mit `macroexpand-1` Inspektion und nach Verhalten — beide sind erforderlich.
 
 ### Datomic
 - Schema als Daten: `{:db/ident :order/id, :db/valueType :db.type/uuid, :db/cardinality :db.cardinality/one}`.
 - Datalog-Abfragen (`d/q`) mit benannten Eingaben — niemals String-verkettete Abfragen.
-- Transaktionsfunktionen (`db/fn`) für ACID-Geschäftsregeln im Transactor.
+- Transaktionsfunktionen (`db/fn`) für ACID-Geschäftsregeln am Transactor.
 - Pull-Syntax für Entity-Graphs: `(d/pull db [:order/id {:order/items [:item/sku :item/qty]}] eid)`.
 
 ### Tooling
-- `tools.deps` (`deps.edn`) für neue Projekte; Leiningen für Legacy oder Plugin-schwere Projekte.
-- Babashka (`bb`) für Scripting und Task-Ausführung — Shell-Skripte ersetzen.
-- REPL-gesteuerte Entwicklung: immer eine laufende REPL haben; schrittweise evaluieren.
+- `tools.deps` (`deps.edn`) für neue Projekte; Leiningen für Legacy- oder Plugin-intensive Projekte.
+- Babashka (`bb`) zum Scripting und Task-Running — Shell-Skripte ersetzen.
+- REPL-gesteuerte Entwicklung: immer eine laufende REPL haben; inkrementell auswerten.
 - `clj-kondo` zum Linting; `cljfmt` zum Formatieren — beide in CI.
 
 ## Beispiel-Anwendungsfall
 
-**Input:** "Erstelle einen Reitit HTTP API-Endpunkt, der eine JSON-Bestellanfrage akzeptiert, sie mit malli validiert, sie in Datomic persistiert und die erstellte Order-Entity zurückgibt."
+**Eingabe:** "Erstellen Sie einen Reitit HTTP API-Endpunkt, der eine JSON-Bestellanfrage akzeptiert, mit malli validiert, in Datomic persistiert und die erstellte Bestellentität zurückgibt."
 
-**Output:** Ein `routes.clj` mit `["/orders" {:post create-order-handler}]`, ein malli Schema für die Order-Eingabe, ein `db/transact` Aufruf, der den Datom-Vektor aus der validierten Map aufbaut, `d/pull`, das die Entity zurückgibt, und `clojure.test` Tests mit einer In-Memory Datomic Datenbank.
+**Ausgabe:** Eine `routes.clj` mit `["/orders" {:post create-order-handler}]`, ein malli-Schema für die Bestelleingabe, ein `db/transact`-Aufruf, der den Datom-Vektor aus der validierten Map erstellt, `d/pull` gibt die Entity zurück, und `clojure.test`-Tests mit einer In-Memory Datomic-Datenbank.
 
 ---
 
 
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
+📺 **[Abonnieren Sie unseren YouTube-Kanal für tiefere Einblicke](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

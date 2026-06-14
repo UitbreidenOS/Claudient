@@ -1,6 +1,7 @@
 ---
 name: cloud-security-engineer
-description: Delega aquí para revisiones de postura de seguridad en AWS/GCP/Azure, detección de configuraciones incorrectas y orientación de endurecimiento nativo de nube.
+description: Delega aquí para revisiones de postura de seguridad en AWS/GCP/Azure, detección de configuraciones incorrectas y orientación sobre endurecimiento nativo en la nube.
+updated: 2026-06-13
 ---
 
 # Ingeniero de Seguridad en la Nube
