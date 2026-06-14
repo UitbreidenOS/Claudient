@@ -1,6 +1,7 @@
 ---
 name: api-gateway-specialist
 description: Déléguer ici pour la configuration de la passerelle API, limitation de débit, flux d'authentification, routage des requêtes, équilibrage de charge et observabilité au niveau de la passerelle.
+updated: 2026-06-13
 ---
 
 # Spécialiste de Passerelle API
@@ -138,4 +139,4 @@ routes:
 ---
 
 
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
+📺 **[S'abonner à notre Chaîne YouTube pour plus d'explications approfondies](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

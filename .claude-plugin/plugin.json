@@ -1540,28 +1540,40 @@
       "status": "active"
     },
     {
-      "name": "fastify",
-      "title": "Fastify"
+      "id": "backend/nodejs/fastify",
+      "name": "Fastify",
+      "file": "skills/backend/nodejs/fastify.md",
+      "status": "active"
     },
     {
-      "name": "remix",
-      "title": "Remix"
+      "id": "backend/nodejs/remix",
+      "name": "Remix",
+      "file": "skills/backend/nodejs/remix.md",
+      "status": "active"
     },
     {
-      "name": "sveltekit",
-      "title": "SvelteKit"
+      "id": "backend/nodejs/sveltekit",
+      "name": "SvelteKit",
+      "file": "skills/backend/nodejs/sveltekit.md",
+      "status": "active"
     },
     {
-      "name": "deno",
-      "title": "Deno 2"
+      "id": "backend/other/deno",
+      "name": "Deno 2",
+      "file": "skills/backend/other/deno.md",
+      "status": "active"
     },
     {
-      "name": "modal",
-      "title": "Modal"
+      "id": "ai-engineering/modal",
+      "name": "Modal",
+      "file": "skills/ai-engineering/modal.md",
+      "status": "active"
     },
     {
-      "name": "vector-databases",
-      "title": "Vector Databases"
+      "id": "database/vector-databases",
+      "name": "Vector Databases",
+      "file": "skills/database/vector-databases.md",
+      "status": "active"
     }
   ],
   "agents": [

@@ -168,36 +168,36 @@ Cambios disruptivos vs. no disruptivos:
 - No disruptivo (implementar libremente): agregar campos opcionales, agregar puntos finales, flexibilizar validación
 - Disruptivo (requiere cambio de versión): eliminar campos, cambiar tipos de campo, cambiar requerido → opcional, cambiar formato de respuesta de error
 
-## Ejemplo de uso
+## Caso de uso de ejemplo
 
-**Escenario:** Diseña una API REST para una herramienta de gestión de proyectos. Usuarios, proyectos, tareas, comentarios.
+**Escenario:** Diseñar una API REST para una herramienta de gestión de proyectos. Usuarios, proyectos, tareas, comentarios.
 
 **Salida del agente:**
 
 ```
 Recursos principales:
-GET    /users                     List users
-POST   /users                     Create user
-GET    /users/:id                  Get user
-PATCH  /users/:id                  Update user
+GET    /users                     Listar usuarios
+POST   /users                     Crear usuario
+GET    /users/:id                  Obtener usuario
+PATCH  /users/:id                  Actualizar usuario
 
-GET    /projects                   List user's projects
-POST   /projects                   Create project
-GET    /projects/:id               Get project
-PATCH  /projects/:id               Update project
-DELETE /projects/:id               Delete project
+GET    /projects                   Listar proyectos del usuario
+POST   /projects                   Crear proyecto
+GET    /projects/:id               Obtener proyecto
+PATCH  /projects/:id               Actualizar proyecto
+DELETE /projects/:id               Eliminar proyecto
 
-GET    /projects/:id/tasks         List project tasks
-POST   /projects/:id/tasks         Create task
-GET    /projects/:id/tasks/:taskId Get task
-PATCH  /projects/:id/tasks/:taskId Update task
-POST   /projects/:id/tasks/:taskId/complete  Complete task (action)
+GET    /projects/:id/tasks         Listar tareas del proyecto
+POST   /projects/:id/tasks         Crear tarea
+GET    /projects/:id/tasks/:taskId Obtener tarea
+PATCH  /projects/:id/tasks/:taskId Actualizar tarea
+POST   /projects/:id/tasks/:taskId/complete  Completar tarea (acción)
 
-GET    /projects/:id/tasks/:taskId/comments  List comments
-POST   /projects/:id/tasks/:taskId/comments  Add comment
+GET    /projects/:id/tasks/:taskId/comments  Listar comentarios
+POST   /projects/:id/tasks/:taskId/comments  Agregar comentario
 
-Paginación: basada en cursor en todos los endpoints de lista
-Autenticación: Bearer token en todos los endpoints
+Paginación: basada en cursor en todos los puntos finales de lista
+Autenticación: token Bearer en todos los puntos finales
 Formato de error: { error: { code, message, details } }
 ```
 

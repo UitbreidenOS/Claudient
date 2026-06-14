@@ -448,18 +448,18 @@ export class ZonelessComponent {
 }
 ```
 
-## Exemple d'utilisation
+## Example use case
 
-**Input:** Architect an Angular 17 enterprise app with standalone components, NgRx feature store, lazy-loaded routes, and OnPush change detection throughout.
+**Input:** Architecturer une application Angular 17 d'entreprise avec composants autonomes, feature store NgRx, routes chargées paresseusement et OnPush change detection partout.
 
-**What this agent produces:**
+**Ce que cet agent produit:**
 
-Bootstrap: `bootstrapApplication` with `provideRouter`, `provideHttpClient(withInterceptors([authInterceptor]))`, `provideStore()`, `provideEffects()`, `provideStoreDevtools()`.
+Bootstrap: `bootstrapApplication` avec `provideRouter`, `provideHttpClient(withInterceptors([authInterceptor]))`, `provideStore()`, `provideEffects()`, `provideStoreDevtools()`.
 
-Feature structure: one NgRx feature per domain (`products`, `cart`, `users`) using `createFeature` with `extraSelectors`. Effects use `exhaustMap` for mutations, `switchMap` for queries. All state reads via `store.selectSignal()` — no `.subscribe()` in components.
+Structure de fonctionnalités: une feature NgRx par domaine (`products`, `cart`, `users`) utilisant `createFeature` avec `extraSelectors`. Les Effects utilisent `exhaustMap` pour les mutations, `switchMap` pour les requêtes. Toutes les lectures d'état via `store.selectSignal()` — pas de `.subscribe()` dans les composants.
 
-Routing: all feature routes use `loadChildren` pointing to `*.routes.ts` files. Auth guard is a functional guard (`canActivate: [authGuard]`). Shell uses `ShellRoute` pattern for persistent navigation chrome.
+Routing: toutes les routes de fonctionnalités utilisent `loadChildren` pointant vers des fichiers `*.routes.ts`. Le guard d'authentification est un guard fonctionnel (`canActivate: [authGuard]`). Le shell utilise le pattern `ShellRoute` pour la navigation persistante.
 
-Change detection: every component annotated with `ChangeDetectionStrategy.OnPush`. Template control flow uses `@for` with `track` and `@if`. All array/object mutations create new references. Signals used for local component state.
+Change detection: chaque composant annoté avec `ChangeDetectionStrategy.OnPush`. Le flux de contrôle du template utilise `@for` avec `track` et `@if`. Toutes les mutations array/object créent de nouvelles références. Les Signals utilisés pour l'état du composant local.
 
 ---

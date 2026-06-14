@@ -420,16 +420,16 @@ new ModuleFederationPlugin({
 // main.ts
 bootstrapApplication(AppComponent, {
   providers: [
-    provideExperimentalZonelessChangeDetection(), // replaces provideZoneChangeDetection
+    provideExperimentalZonelessChangeDetection(), // vervangt provideZoneChangeDetection
     provideRouter(APP_ROUTES),
   ],
 });
 
-// With zoneless, change detection is signal-driven
-// All components MUST use signals or async pipe for automatic updates
-// setTimeout/setInterval do NOT trigger CD automatically
-// Use signal() + computed() for all reactive state
-// Use takeUntilDestroyed() for Observable cleanup
+// Met zoneless is change detection signal-aangedreven
+// Alle components MOETEN signalen of async pipe gebruiken voor automatische updates
+// setTimeout/setInterval activeren niet automatisch CD
+// Gebruik signal() + computed() voor alle reactieve state
+// Gebruik takeUntilDestroyed() voor Observable opschoning
 @Component({
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -438,28 +438,28 @@ bootstrapApplication(AppComponent, {
 export class ZonelessComponent {
   private readonly destroyRef = inject(DestroyRef);
 
-  message = signal('Loading...');
+  message = signal('Bezig met laden...');
 
   constructor() {
     this.dataService.getMessage()
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(msg => this.message.set(msg)); // signal.set() triggers CD
+      .subscribe(msg => this.message.set(msg)); // signal.set() activeert CD
   }
 }
 ```
 
-## Gebruiksvoorbeeld
+## Voorbeeldgebruiksscenario
 
-**Input:** Architect an Angular 17 enterprise app with standalone components, NgRx feature store, lazy-loaded routes, and OnPush change detection throughout.
+**Input:** Ontwerp een Angular 17 enterprise app met standalone components, NgRx feature store, lui geladen routes, en OnPush change detection overal.
 
-**What this agent produces:**
+**Wat deze agent produceert:**
 
-Bootstrap: `bootstrapApplication` with `provideRouter`, `provideHttpClient(withInterceptors([authInterceptor]))`, `provideStore()`, `provideEffects()`, `provideStoreDevtools()`.
+Bootstrap: `bootstrapApplication` met `provideRouter`, `provideHttpClient(withInterceptors([authInterceptor]))`, `provideStore()`, `provideEffects()`, `provideStoreDevtools()`.
 
-Feature structure: one NgRx feature per domain (`products`, `cart`, `users`) using `createFeature` with `extraSelectors`. Effects use `exhaustMap` for mutations, `switchMap` for queries. All state reads via `store.selectSignal()` — no `.subscribe()` in components.
+Feature structuur: één NgRx feature per domein (`products`, `cart`, `users`) met `createFeature` met `extraSelectors`. Effects gebruiken `exhaustMap` voor mutaties, `switchMap` voor queries. Alle state lezingen via `store.selectSignal()` — geen `.subscribe()` in components.
 
-Routing: all feature routes use `loadChildren` pointing to `*.routes.ts` files. Auth guard is a functional guard (`canActivate: [authGuard]`). Shell uses `ShellRoute` pattern for persistent navigation chrome.
+Routing: alle feature routes gebruiken `loadChildren` wijzend naar `*.routes.ts` bestanden. Auth guard is een functionele guard (`canActivate: [authGuard]`). Shell gebruikt `ShellRoute` patroon voor persistente navigatieweergave.
 
-Change detection: every component annotated with `ChangeDetectionStrategy.OnPush`. Template control flow uses `@for` with `track` and `@if`. All array/object mutations create new references. Signals used for local component state.
+Change detection: elke component geannoteerd met `ChangeDetectionStrategy.OnPush`. Template controlestroom gebruikt `@for` met `track` en `@if`. Alle array/object mutaties creëren nieuwe referenties. Signalen gebruikt voor lokale component state.
 
 ---
