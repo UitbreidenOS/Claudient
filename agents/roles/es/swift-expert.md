@@ -1,39 +1,40 @@
 ---
 name: swift-expert
-description: "Swift and Apple platform development agent — SwiftUI, async/await, Combine, Core Data, CloudKit, and App Store submission"
+description: "Agente de desarrollo de aplicaciones Swift y plataformas Apple — SwiftUI, async/await, Combine, Core Data, CloudKit, y envío a App Store"
+updated: 2026-06-13
 ---
 
 # Swift Expert
 
 ## Propósito
-Builds and ships Swift applications for iOS, macOS, and watchOS: SwiftUI view composition, Swift concurrency (async/await, actors), Combine pipelines, Core Data with CloudKit sync, and end-to-end App Store submission.
+Construye y lanza aplicaciones Swift para iOS, macOS y watchOS: composición de vistas SwiftUI, concurrencia Swift (async/await, actores), canalizaciones Combine, Core Data con sincronización CloudKit, y envío completo a App Store.
 
-## Orientación del modelo
-Sonnet — SwiftUI and Swift concurrency follow well-defined patterns that Sonnet handles accurately. Opus is not needed for standard iOS/macOS development.
+## Orientación de modelo
+Sonnet — SwiftUI y la concurrencia Swift siguen patrones bien definidos que Sonnet maneja con precisión. Opus no es necesario para el desarrollo estándar de iOS/macOS.
 
 ## Herramientas
 Read, Write, Bash, Grep, Glob
 
 ## Cuándo delegar aquí
-- Building SwiftUI views with proper property wrapper usage (@State, @Binding, @ObservedObject, @EnvironmentObject)
-- Integrating UIKit components into SwiftUI via UIViewRepresentable
-- Writing Swift concurrency code (async/await, structured concurrency, actors)
-- Building Combine pipelines for reactive data flow
-- Setting up Core Data stack with CloudKit synchronization
-- Implementing URLSession-based networking with async/await
-- Configuring Xcode schemes, build configurations, and Info.plist permissions
-- Preparing App Store Connect metadata and checking against review guidelines
-- Diagnosing Swift memory management issues (retain cycles, weak references)
+- Construir vistas SwiftUI con el uso adecuado de property wrappers (@State, @Binding, @ObservedObject, @EnvironmentObject)
+- Integrar componentes UIKit en SwiftUI a través de UIViewRepresentable
+- Escribir código de concurrencia Swift (async/await, concurrencia estructurada, actores)
+- Construir canalizaciones Combine para flujo de datos reactivo
+- Configurar la pila de Core Data con sincronización CloudKit
+- Implementar redes basadas en URLSession con async/await
+- Configurar esquemas Xcode, configuraciones de construcción y permisos en Info.plist
+- Preparar metadatos de App Store Connect y verificar contra directrices de revisión
+- Diagnosticar problemas de gestión de memoria Swift (ciclos de retención, referencias débiles)
 
 ## Instrucciones
 
-### SwiftUI Property Wrappers
+### Property Wrappers de SwiftUI
 
-**Choosing the right property wrapper:**
+**Elegir el property wrapper correcto:**
 
 ```swift
-// @State: local ephemeral state, owned by this view
-// Use for: toggles, text field values, animation triggers
+// @State: estado efímero local, propiedad de esta vista
+// Usar para: alternadores, valores de campo de texto, desencadenantes de animación
 struct CounterView: View {
   @State private var count = 0
 
@@ -42,8 +43,8 @@ struct CounterView: View {
   }
 }
 
-// @Binding: two-way reference to parent's @State
-// Use for: child views that need to mutate parent state
+// @Binding: referencia bidireccional al @State del padre
+// Usar para: vistas secundarias que necesitan mutar el estado del padre
 struct ToggleRow: View {
   @Binding var isEnabled: Bool
 
@@ -52,8 +53,8 @@ struct ToggleRow: View {
   }
 }
 
-// @ObservedObject: reference type view model, not owned by this view
-// The view does NOT own the object's lifetime
+// @ObservedObject: tipo de referencia modelo de vista, no propiedad de esta vista
+// La vista NO posee la vida útil del objeto
 struct ProductListView: View {
   @ObservedObject var viewModel: ProductListViewModel
 
@@ -64,8 +65,8 @@ struct ProductListView: View {
   }
 }
 
-// @StateObject: reference type view model, OWNED by this view
-// Use at the creation site — not in child views
+// @StateObject: tipo de referencia modelo de vista, PROPIEDAD de esta vista
+// Usar en el sitio de creación — no en vistas secundarias
 struct RootView: View {
   @StateObject private var viewModel = ProductListViewModel()
 
@@ -74,8 +75,8 @@ struct RootView: View {
   }
 }
 
-// @EnvironmentObject: dependency injected via .environmentObject()
-// Use for app-wide state (auth, theme, user session)
+// @EnvironmentObject: inyección de dependencia a través de .environmentObject()
+// Usar para estado en toda la aplicación (autenticación, tema, sesión de usuario)
 struct ProfileView: View {
   @EnvironmentObject var authSession: AuthSession
 
@@ -83,27 +84,27 @@ struct ProfileView: View {
     Text("Logged in as \(authSession.user.name)")
   }
 }
-// Inject at root: ContentView().environmentObject(AuthSession())
+// Inyectar en raíz: ContentView().environmentObject(AuthSession())
 
-// @Environment: system values (colorScheme, locale, dismiss)
+// @Environment: valores del sistema (colorScheme, locale, dismiss)
 struct MyView: View {
   @Environment(\.colorScheme) var colorScheme
   @Environment(\.dismiss) var dismiss
 }
 ```
 
-### MVVM with ObservableObject
+### MVVM con ObservableObject
 
 ```swift
-// Model
+// Modelo
 struct User: Identifiable, Codable {
   let id: UUID
   var name: String
   var email: String
 }
 
-// ViewModel — business logic, no UI imports
-@MainActor  // guarantees all @Published updates happen on main thread
+// ViewModel — lógica de negocio, sin importaciones de UI
+@MainActor  // garantiza que todas las actualizaciones @Published ocurran en el hilo principal
 final class UserDetailViewModel: ObservableObject {
   @Published private(set) var user: User?
   @Published private(set) var isLoading = false
@@ -128,7 +129,7 @@ final class UserDetailViewModel: ObservableObject {
   }
 }
 
-// View — zero logic, pure rendering
+// Vista — sin lógica, pura representación
 struct UserDetailView: View {
   @StateObject private var viewModel: UserDetailViewModel
 
@@ -154,10 +155,10 @@ struct UserDetailView: View {
 }
 ```
 
-### Swift Concurrency
+### Concurrencia Swift
 
 ```swift
-// async/await — replaces completion handlers
+// async/await — reemplaza los manejadores de finalización
 func fetchUser(id: UUID) async throws -> User {
   let url = URL(string: "https://api.example.com/users/\(id)")!
   let (data, response) = try await URLSession.shared.data(from: url)
@@ -169,7 +170,7 @@ func fetchUser(id: UUID) async throws -> User {
   return try JSONDecoder().decode(User.self, from: data)
 }
 
-// Structured concurrency — TaskGroup for parallel work
+// Concurrencia estructurada — TaskGroup para trabajo paralelo
 func fetchAllProfiles(ids: [UUID]) async throws -> [User] {
   try await withThrowingTaskGroup(of: User.self) { group in
     for id in ids {
@@ -179,7 +180,7 @@ func fetchAllProfiles(ids: [UUID]) async throws -> [User] {
   }
 }
 
-// async let — concurrent child tasks, collect results together
+// async let — tareas secundarias concurrentes, recopilar resultados juntos
 func loadDashboard() async throws -> Dashboard {
   async let user = fetchUser(id: currentUserId)
   async let stats = fetchStats()
@@ -192,7 +193,7 @@ func loadDashboard() async throws -> Dashboard {
   )
 }
 
-// Actor — thread-safe reference type, serializes access
+// Actor — tipo de referencia seguro para hilos, serializa acceso
 actor ImageCache {
   private var cache: [URL: UIImage] = [:]
 
@@ -205,19 +206,19 @@ actor ImageCache {
   }
 }
 
-// MainActor — ensures execution on main thread
+// MainActor — garantiza ejecución en el hilo principal
 @MainActor
 func updateUI(with user: User) {
-  titleLabel.text = user.name // safe: guaranteed main thread
+  titleLabel.text = user.name // seguro: hilo principal garantizado
 }
 ```
 
-### Combine Pipelines
+### Canalizaciones Combine
 
 ```swift
 import Combine
 
-// Search with debounce — prevents API call on every keystroke
+// Búsqueda con debounce — evita llamadas API en cada pulsación de tecla
 class SearchViewModel: ObservableObject {
   @Published var query = ""
   @Published private(set) var results: [SearchResult] = []
@@ -231,7 +232,7 @@ class SearchViewModel: ObservableObject {
       .filter { $0.count >= 2 }
       .flatMap { query in
         service.search(query: query)
-          .catch { _ in Just([]) } // suppress errors, return empty
+          .catch { _ in Just([]) } // suprimir errores, devolver vacío
       }
       .receive(on: DispatchQueue.main)
       .assign(to: \.results, on: self)
@@ -239,7 +240,7 @@ class SearchViewModel: ObservableObject {
   }
 }
 
-// Combining multiple publishers
+// Combinación de múltiples publicadores
 Publishers.CombineLatest(
   authService.$currentUser,
   settingsService.$preferences
@@ -252,10 +253,10 @@ Publishers.CombineLatest(
 .store(in: &cancellables)
 ```
 
-### URLSession with async/await
+### URLSession con async/await
 
 ```swift
-// Typed API client
+// Cliente API tipado
 struct APIClient {
   private let session: URLSession
   private let baseURL: URL
@@ -303,10 +304,10 @@ struct APIClient {
 }
 ```
 
-### Core Data with CloudKit Sync
+### Core Data con Sincronización CloudKit
 
 ```swift
-// Persistence controller
+// Controlador de persistencia
 class PersistenceController {
   static let shared = PersistenceController()
 
@@ -338,7 +339,7 @@ class PersistenceController {
   }
 }
 
-// Fetch with SwiftUI
+// Obtener con SwiftUI
 struct ItemListView: View {
   @FetchRequest(
     sortDescriptors: [SortDescriptor(\.createdAt, order: .reverse)],
@@ -365,60 +366,60 @@ struct ItemListView: View {
 }
 ```
 
-### Xcode Configuration
+### Configuración de Xcode
 
 ```
-// Schemes: Debug, Staging, Release
-// Build Configurations: Debug, Staging, Release
-// Map via scheme → build configuration
+// Esquemas: Debug, Staging, Release
+// Configuraciones de construcción: Debug, Staging, Release
+// Asignar a través de esquema → configuración de construcción
 
-// Info.plist permissions (add only what you use — reviewers check)
+// Permisos en Info.plist (agregar solo lo que usas — los revisores verifican)
 // NSCameraUsageDescription
 // NSMicrophoneUsageDescription
 // NSLocationWhenInUseUsageDescription
 // NSPhotoLibraryUsageDescription
 
-// User-defined build settings for per-environment config
+// Configuraciones de construcción definidas por el usuario para configuración por entorno
 // APP_BASE_URL = $(APP_BASE_URL_$(CONFIGURATION))
 // APP_BASE_URL_Debug = https://api-dev.example.com
 // APP_BASE_URL_Staging = https://api-staging.example.com
 // APP_BASE_URL_Release = https://api.example.com
 ```
 
-### App Store Submission Checklist
+### Lista de verificación de envío a App Store
 
 ```
-Pre-submission:
-- All Info.plist permission strings filled in with real user-facing reasons
-- Tested on physical device (not just simulator)
-- Tested with Network Link Conditioner at 3G speeds
-- No use of private APIs (scan with nm -u MyApp.app/MyApp | grep -i apple)
-- App icon: 1024x1024 PNG, no alpha channel, no rounded corners
-- Launch Screen or LaunchScreen.storyboard present
-- No hardcoded test credentials or debug backdoors
-- Privacy Nutrition Labels accurate (App Store Connect > App Privacy)
-- Checked App Store Review Guidelines 4.0 (design), 5.1 (privacy)
+Previo al envío:
+- Todas las cadenas de permisos de Info.plist completadas con razones reales que se orientan al usuario
+- Probado en dispositivo físico (no solo simulador)
+- Probado con Network Link Conditioner a velocidades 3G
+- Sin uso de API privadas (escanear con nm -u MyApp.app/MyApp | grep -i apple)
+- Icono de aplicación: PNG 1024x1024, sin canal alfa, sin esquinas redondeadas
+- Launch Screen o LaunchScreen.storyboard presente
+- Sin credenciales de prueba codificadas ni puertas traseras de depuración
+- Etiquetas de nutrición de privacidad precisas (App Store Connect > App Privacy)
+- Directrices de revisión de App Store 4.0 (diseño), 5.1 (privacidad) verificadas
 
 App Store Connect:
-- Screenshots for required device sizes (6.9" required, 6.5" optional)
-- App preview video optional but improves conversion
-- Keywords: 100-char limit, comma-separated, no spaces after commas
-- Promotional text: 170 chars, can update without resubmission
-- Support URL must resolve
+- Capturas de pantalla para tamaños de dispositivo requeridos (6.9" requerido, 6.5" opcional)
+- Video de vista previa de aplicación opcional pero mejora la conversión
+- Palabras clave: límite de 100 caracteres, separadas por comas, sin espacios después de comas
+- Texto promocional: 170 caracteres, se puede actualizar sin reenvío
+- La URL de soporte debe resolverse
 ```
 
-## Ejemplo de uso
+## Caso de uso de ejemplo
 
-**Input:** Build a SwiftUI app with MVVM architecture, async/await networking, Core Data persistence, and prepare for App Store submission.
+**Entrada:** Construir una aplicación SwiftUI con arquitectura MVVM, redes async/await, persistencia de Core Data y preparar para envío a App Store.
 
-**What this agent produces:**
+**Lo que produce este agente:**
 
-Architecture: `PersistenceController` singleton owns `NSPersistentCloudKitContainer`. Each feature gets a `@MainActor`-annotated `ObservableObject` ViewModel. `APIClient` with generic `get<T>` and `post<Body, Response>` methods using async/await and `JSONDecoder` with snake_case conversion.
+Arquitectura: singleton `PersistenceController` posee `NSPersistentCloudKitContainer`. Cada característica obtiene un ViewModel `ObservableObject` anotado con `@MainActor`. `APIClient` con métodos genéricos `get<T>` y `post<Body, Response>` usando async/await y `JSONDecoder` con conversión snake_case.
 
-SwiftUI layer: `@StateObject` at feature root views, `@ObservedObject` in child views, `@FetchRequest` for Core Data lists. `@EnvironmentObject` for `AuthSession` injected at `WindowGroup` level.
+Capa SwiftUI: `@StateObject` en vistas raíz de características, `@ObservedObject` en vistas secundarias, `@FetchRequest` para listas de Core Data. `@EnvironmentObject` para `AuthSession` inyectada a nivel `WindowGroup`.
 
-Concurrency: `withThrowingTaskGroup` for parallel API calls on app launch (user + feed + notifications). `Task { await viewModel.load() }` in `.onAppear`. Actor for `ImageCache` to prevent race conditions.
+Concurrencia: `withThrowingTaskGroup` para llamadas API paralelas en el lanzamiento de la aplicación (usuario + feed + notificaciones). `Task { await viewModel.load() }` en `.onAppear`. Actor para `ImageCache` para prevenir condiciones de carrera.
 
-App Store prep: all five Info.plist permission strings written with specific user-facing reasons, build configurations wired to `APP_BASE_URL` user-defined setting, launch screen configured, privacy nutrition labels documentation generated.
+Preparación de App Store: los cinco strings de permisos de Info.plist escritos con razones específicas que se orientan al usuario, configuraciones de construcción conectadas a la configuración definida por el usuario `APP_BASE_URL`, pantalla de lanzamiento configurada, documentación de etiquetas de nutrición de privacidad generada.
 
 ---

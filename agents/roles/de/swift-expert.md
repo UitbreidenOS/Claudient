@@ -371,15 +371,15 @@ struct ItemListView: View {
 ```
 // Schemes: Debug, Staging, Release
 // Build Configurations: Debug, Staging, Release
-// Map via scheme → build configuration
+// Map via Scheme → Build Configuration
 
-// Info.plist permissions (add only what you use — reviewers check)
+// Info.plist Berechtigungen: nur das hinzufügen, was du verwendest — Reviewer prüfen
 // NSCameraUsageDescription
 // NSMicrophoneUsageDescription
 // NSLocationWhenInUseUsageDescription
 // NSPhotoLibraryUsageDescription
 
-// User-defined build settings for per-environment config
+// User-Defined Build Settings für Per-Umgebungs-Konfiguration
 // APP_BASE_URL = $(APP_BASE_URL_$(CONFIGURATION))
 // APP_BASE_URL_Debug = https://api-dev.example.com
 // APP_BASE_URL_Staging = https://api-staging.example.com
@@ -389,37 +389,37 @@ struct ItemListView: View {
 ### App Store Submission Checklist
 
 ```
-Pre-submission:
-- All Info.plist permission strings filled in with real user-facing reasons
-- Tested on physical device (not just simulator)
-- Tested with Network Link Conditioner at 3G speeds
-- No use of private APIs (scan with nm -u MyApp.app/MyApp | grep -i apple)
-- App icon: 1024x1024 PNG, no alpha channel, no rounded corners
-- Launch Screen or LaunchScreen.storyboard present
-- No hardcoded test credentials or debug backdoors
-- Privacy Nutrition Labels accurate (App Store Connect > App Privacy)
-- Checked App Store Review Guidelines 4.0 (design), 5.1 (privacy)
+Vor Submission:
+- Alle Info.plist-Berechtigungszeichenfolgen mit echten benutzerorientierten Gründen ausgefüllt
+- Auf physischem Gerät getestet (nicht nur Simulator)
+- Mit Network Link Conditioner bei 3G-Geschwindigkeiten getestet
+- Keine Verwendung privater APIs (scannen mit nm -u MyApp.app/MyApp | grep -i apple)
+- App-Symbol: 1024x1024 PNG, kein Alpha-Kanal, keine abgerundeten Ecken
+- Launch Screen oder LaunchScreen.storyboard vorhanden
+- Keine hardcodierten Test-Anmeldedaten oder Debug-Hintertüren
+- Privacy Nutrition Labels korrekt (App Store Connect > App Privacy)
+- App Store Review Guidelines 4.0 (Design), 5.1 (Datenschutz) überprüft
 
 App Store Connect:
-- Screenshots for required device sizes (6.9" required, 6.5" optional)
-- App preview video optional but improves conversion
-- Keywords: 100-char limit, comma-separated, no spaces after commas
-- Promotional text: 170 chars, can update without resubmission
-- Support URL must resolve
+- Screenshots für erforderliche Geräteformate (6.9" erforderlich, 6.5" optional)
+- App Preview Video optional, verbessert aber die Conversion
+- Keywords: 100-Zeichen-Limit, kommagetrennt, keine Leerzeichen nach Kommas
+- Fördertext: 170 Zeichen, können ohne erneute Submission aktualisiert werden
+- Support URL muss funktionieren
 ```
 
-## Anwendungsbeispiel
+## Example use case
 
-**Input:** Build a SwiftUI app with MVVM architecture, async/await networking, Core Data persistence, and prepare for App Store submission.
+**Input:** Erstelle eine SwiftUI-App mit MVVM-Architektur, async/await Networking, Core Data Persistierung und bereite diese für App Store Submission vor.
 
-**What this agent produces:**
+**Was dieser Agent produziert:**
 
-Architecture: `PersistenceController` singleton owns `NSPersistentCloudKitContainer`. Each feature gets a `@MainActor`-annotated `ObservableObject` ViewModel. `APIClient` with generic `get<T>` and `post<Body, Response>` methods using async/await and `JSONDecoder` with snake_case conversion.
+Architecture: `PersistenceController` Singleton besitzt `NSPersistentCloudKitContainer`. Jedes Feature erhält ein `@MainActor`-annotiertes `ObservableObject` ViewModel. `APIClient` mit generischen `get<T>` und `post<Body, Response>` Methoden mit async/await und `JSONDecoder` mit Snake_Case-Konvertierung.
 
-SwiftUI layer: `@StateObject` at feature root views, `@ObservedObject` in child views, `@FetchRequest` for Core Data lists. `@EnvironmentObject` for `AuthSession` injected at `WindowGroup` level.
+SwiftUI-Schicht: `@StateObject` in Feature Root Views, `@ObservedObject` in Child Views, `@FetchRequest` für Core Data Listen. `@EnvironmentObject` für `AuthSession` eingespeizt auf `WindowGroup` Ebene.
 
-Concurrency: `withThrowingTaskGroup` for parallel API calls on app launch (user + feed + notifications). `Task { await viewModel.load() }` in `.onAppear`. Actor for `ImageCache` to prevent race conditions.
+Concurrency: `withThrowingTaskGroup` für parallele API-Aufrufe beim App-Start (User + Feed + Notifications). `Task { await viewModel.load() }` in `.onAppear`. Actor für `ImageCache` um Race Conditions zu verhindern.
 
-App Store prep: all five Info.plist permission strings written with specific user-facing reasons, build configurations wired to `APP_BASE_URL` user-defined setting, launch screen configured, privacy nutrition labels documentation generated.
+App Store Vorbereitung: alle fünf Info.plist-Berechtigungszeichenfolgen mit spezifischen benutzerorientierten Gründen geschrieben, Build-Konfigurationen mit `APP_BASE_URL` User-Defined Setting verdrahtet, Launch Screen konfiguriert, Privacy Nutrition Labels Dokumentation generiert.
 
 ---

@@ -304,10 +304,10 @@ struct APIClient {
 }
 ```
 
-### Core Data with CloudKit Sync
+### Core Data avec synchronisation CloudKit
 
 ```swift
-// Persistence controller
+// Contrôleur de persistance
 class PersistenceController {
   static let shared = PersistenceController()
 
@@ -339,7 +339,7 @@ class PersistenceController {
   }
 }
 
-// Fetch with SwiftUI
+// Récupérer avec SwiftUI
 struct ItemListView: View {
   @FetchRequest(
     sortDescriptors: [SortDescriptor(\.createdAt, order: .reverse)],
@@ -366,60 +366,60 @@ struct ItemListView: View {
 }
 ```
 
-### Xcode Configuration
+### Configuration Xcode
 
 ```
-// Schemes: Debug, Staging, Release
-// Build Configurations: Debug, Staging, Release
-// Map via scheme → build configuration
+// Schémas : Debug, Staging, Release
+// Configurations de construction : Debug, Staging, Release
+// Mapper via schéma → configuration de construction
 
-// Info.plist permissions (add only what you use — reviewers check)
+// Permissions Info.plist (ajouter uniquement ce que vous utilisez — les relecteurs vérifient)
 // NSCameraUsageDescription
 // NSMicrophoneUsageDescription
 // NSLocationWhenInUseUsageDescription
 // NSPhotoLibraryUsageDescription
 
-// User-defined build settings for per-environment config
+// Paramètres de construction définis par l'utilisateur pour la configuration par environnement
 // APP_BASE_URL = $(APP_BASE_URL_$(CONFIGURATION))
 // APP_BASE_URL_Debug = https://api-dev.example.com
 // APP_BASE_URL_Staging = https://api-staging.example.com
 // APP_BASE_URL_Release = https://api.example.com
 ```
 
-### App Store Submission Checklist
+### Liste de contrôle de soumission App Store
 
 ```
-Pre-submission:
-- All Info.plist permission strings filled in with real user-facing reasons
-- Tested on physical device (not just simulator)
-- Tested with Network Link Conditioner at 3G speeds
-- No use of private APIs (scan with nm -u MyApp.app/MyApp | grep -i apple)
-- App icon: 1024x1024 PNG, no alpha channel, no rounded corners
-- Launch Screen or LaunchScreen.storyboard present
-- No hardcoded test credentials or debug backdoors
-- Privacy Nutrition Labels accurate (App Store Connect > App Privacy)
-- Checked App Store Review Guidelines 4.0 (design), 5.1 (privacy)
+Avant la soumission :
+- Toutes les chaînes de permission Info.plist remplies avec des raisons réelles destinées à l'utilisateur
+- Testé sur un appareil physique (pas seulement le simulateur)
+- Testé avec Network Link Conditioner à des vitesses 3G
+- Aucune utilisation d'API privées (scanner avec nm -u MyApp.app/MyApp | grep -i apple)
+- Icône d'application : PNG 1024x1024, sans canal alpha, pas de coins arrondis
+- LaunchScreen ou LaunchScreen.storyboard présent
+- Aucune donnée d'identification de test codée en dur ou porte dérobée de débogage
+- Étiquettes de nutrition de la confidentialité exactes (App Store Connect > App Privacy)
+- Vérification des directives de révision App Store 4.0 (conception), 5.1 (confidentialité)
 
-App Store Connect:
-- Screenshots for required device sizes (6.9" required, 6.5" optional)
-- App preview video optional but improves conversion
-- Keywords: 100-char limit, comma-separated, no spaces after commas
-- Promotional text: 170 chars, can update without resubmission
-- Support URL must resolve
+App Store Connect :
+- Captures d'écran pour les tailles d'appareils requises (6.9" requis, 6.5" optionnel)
+- Vidéo d'aperçu d'application optionnelle mais améliore la conversion
+- Mots-clés : limite de 100 caractères, séparés par des virgules, pas d'espaces après les virgules
+- Texte promotionnel : 170 caractères, peut être mis à jour sans soumission
+- L'URL d'assistance doit être résolue
 ```
 
-## Exemple d'utilisation
+## Cas d'usage exemple
 
-**Input:** Build a SwiftUI app with MVVM architecture, async/await networking, Core Data persistence, and prepare for App Store submission.
+**Entrée :** Construire une application SwiftUI avec architecture MVVM, mise en réseau async/await, persistance Core Data, et préparer pour la soumission App Store.
 
-**What this agent produces:**
+**Ce que cet agent produit :**
 
-Architecture: `PersistenceController` singleton owns `NSPersistentCloudKitContainer`. Each feature gets a `@MainActor`-annotated `ObservableObject` ViewModel. `APIClient` with generic `get<T>` and `post<Body, Response>` methods using async/await and `JSONDecoder` with snake_case conversion.
+Architecture : singleton `PersistenceController` possède `NSPersistentCloudKitContainer`. Chaque fonctionnalité obtient un ViewModel `ObservableObject` annoté avec `@MainActor`. `APIClient` avec des méthodes génériques `get<T>` et `post<Body, Response>` utilisant async/await et `JSONDecoder` avec conversion snake_case.
 
-SwiftUI layer: `@StateObject` at feature root views, `@ObservedObject` in child views, `@FetchRequest` for Core Data lists. `@EnvironmentObject` for `AuthSession` injected at `WindowGroup` level.
+Couche SwiftUI : `@StateObject` aux vues racine des fonctionnalités, `@ObservedObject` dans les vues enfants, `@FetchRequest` pour les listes Core Data. `@EnvironmentObject` pour `AuthSession` injecté au niveau `WindowGroup`.
 
-Concurrency: `withThrowingTaskGroup` for parallel API calls on app launch (user + feed + notifications). `Task { await viewModel.load() }` in `.onAppear`. Actor for `ImageCache` to prevent race conditions.
+Concurrence : `withThrowingTaskGroup` pour les appels API parallèles au lancement de l'application (utilisateur + feed + notifications). `Task { await viewModel.load() }` dans `.onAppear`. Acteur pour `ImageCache` pour prévenir les conditions de concurrence.
 
-App Store prep: all five Info.plist permission strings written with specific user-facing reasons, build configurations wired to `APP_BASE_URL` user-defined setting, launch screen configured, privacy nutrition labels documentation generated.
+Préparation App Store : les cinq chaînes de permission Info.plist écrites avec des raisons spécifiques destinées à l'utilisateur, configurations de construction câblées au paramètre de construction défini par l'utilisateur `APP_BASE_URL`, écran de lancement configuré, documentation des étiquettes de nutrition de la confidentialité générée.
 
 ---
