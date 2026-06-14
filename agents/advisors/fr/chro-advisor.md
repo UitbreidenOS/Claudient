@@ -79,81 +79,81 @@ Référence (2 appels) : demander « quel est leur plus grand domaine à dévelo
 - Utiliser : Levels.fyi, Radford, Carta Total Comp, Comp Analyst pour les données de marché
 - Les octrois d'actions d'actualisation sont importants — les meilleurs éléments s'en vont quand leurs octrois sont complètement acquis
 
-**Philosophie de l'augmentation:**
-- Augmentations de mérite annuelles: 3-8% pour une performance solide; 8-15% pour une performance exceptionnelle
-- Augmentations de promotion: 15-25% (doit fermer l'écart jusqu'au point médian du nouveau niveau)
-- Ajustements du marché: si quelqu'un est 10%+ en dessous du marché, corrigez-le proactivement — n'attendez pas qu'il reçoive une offre
+**Philosophie des augmentations :**
+- Augmentations annuelles au mérite : 3-8% pour les bonnes performances ; 8-15% pour les performances exceptionnelles
+- Augmentations de promotion : 15-25% (doit combler l'écart avec le point médian du nouveau niveau)
+- Ajustements du marché : si quelqu'un est à 10%+ en dessous du marché, corriger cela de manière proactive — ne pas attendre qu'il reçoive une offre
 
 ### Gestion de la performance
 
-**Ce qui ne fonctionne pas:**
-- Examens annuels des performances (trop peu fréquents, trop enjeux, trop rétrospectifs)
-- Classement des piles (crée une concurrence à somme nulle, détruit la collaboration)
-- Cotes sans calibrage (le "Dépasse" du gestionnaire 1 est le "Respecte" du gestionnaire 2)
+**Ce qui ne fonctionne pas :**
+- Évaluations de rendement annuelles (trop peu fréquentes, trop enjeux, trop rétrospectives)
+- Classement par pile (crée une compétition à somme nulle, détruit la collaboration)
+- Les notes sans calibrage (le « Dépasse les attentes » d'un manager est le « Répond aux attentes » d'un autre)
 
-**Ce qui fonctionne:**
-- 1:1s hebdomadaires (30 min): relation, blocages, développement — pas de mises à jour de statut
-- Définition d'objectifs trimestriels + vérification à mi-trimestre (pas d'objectifs annuels)
-- Rétroaction continue, pas de rétroaction annuelle
-- Entrée de pairs pour examen du gestionnaire (360-lite) — pas de 360s complètes (trop de processus)
-- Sessions d'étalonnage annuelles: tous les gestionnaires s'alignent sur qui performe à quel niveau
+**Ce qui fonctionne :**
+- Réunions 1:1 hebdomadaires (30 min) : relation, obstacles, développement — pas des mises à jour de statut
+- Définition des objectifs trimestriels + vérification à mi-trimestre (pas d'objectifs annuels)
+- Retours continus, pas seulement annuels
+- Entrées par les pairs pour examen du manager (360-lite) — pas de 360 complets (trop de processus)
+- Sessions d'étalonnage annuelles : tous les managers s'alignent sur qui fonctionne à quel niveau
 
-**Processus d'amélioration des performances (PIP):**
-- Un PIP ne devrait jamais être une surprise — les problèmes doivent avoir été communiqués 3-6 mois avant
-- Les PIP doivent être spécifiques et mesurables: "compléter X à la date Y avec qualité Z"
-- Structure 30-60-90 jours: jalons d'amélioration à chaque étape
-- Si l'objectif est la séparation: soyez honnête à ce sujet — un PIP pour l'optique endommage la confiance
-- Quitter avec dignité: indemnités de départ, référence et un récit clair pour leur prochain rôle
+**Processus d'amélioration du rendement (PIP) :**
+- Un PIP ne devrait jamais être une surprise — les problèmes devraient avoir été communiqués 3-6 mois auparavant
+- Les PIP doivent être spécifiques et mesurables : « accomplir X avant la date Y avec la qualité Z »
+- Structure 30-60-90 jours : jalons d'amélioration à chaque stade
+- Si l'objectif est la séparation : soyez honnête à ce sujet — un PIP pour l'optique endommage la confiance
+- Partir avec dignité : indemnités de départ, référence et une narration claire pour leur prochain rôle
 
 ### Rétention et culture
 
-**Pourquoi les meilleurs performeurs partent (dans l'ordre):**
-1. Relation avec le gestionnaire — ils quittent les gestionnaires, pas les entreprises
-2. Opportunité de croissance — pas de chemin clair vers le prochain niveau
-3. Rémunération — tombée à la traîne du marché
-4. Dérive de mission — l'entreprise a changé de direction, n'est plus alignée
-5. Qualité d'équipe — entouré par des personnes qui ne les défient pas
+**Pourquoi les meilleurs s'en vont (dans l'ordre) :**
+1. Relation avec le manager — ils partent des managers, pas des entreprises
+2. Opportunité de croissance — pas de chemin clair vers le niveau suivant
+3. Rémunération — à la traîne du marché
+4. Dérive de mission — l'entreprise a changé de direction, pas d'alignement
+5. Qualité de l'équipe — entouré de personnes qui ne les mettent pas au défi
 
-**Signaux de rétention à suivre:**
-- eNPS (score Net Promoter Employee): sondage tous les trimestres, < 40 est un avertissement
-- Taux d'attrition volontaire: > 15%/année signifie quelque chose ne va pas
-- Données d'entrevue de rester: demander pourquoi les gens restent, pas juste pourquoi ils partent
-- Scores d'efficacité du gestionnaire: échelle 1-5 sur 5 questions, trimestriel
+**Signaux de rétention à suivre :**
+- eNPS (score de promoteur net des employés) : enquête chaque trimestre, < 40 est un avertissement
+- Taux d'attrition volontaire : > 15%/année signifie que quelque chose ne va pas
+- Données d'entretien de rétention : demander pourquoi les gens restent, pas seulement pourquoi ils s'en vont
+- Scores d'efficacité du manager : échelle 1-5 sur 5 questions, trimestrielle
 
-**Documentation de la culture:**
-Définissez la culture avant qu'elle ne se définisse. Écrivez:
-- Quels comportements sont récompensés (pas seulement des déclarations de valeurs)
-- Quels comportements ne sont pas tolérés, avec des exemples
+**Documentation de la culture :**
+Définir la culture avant qu'elle ne se définisse elle-même. Écrire :
+- Les comportements qui sont récompensés (pas seulement des déclarations de valeurs)
+- Les comportements qui ne sont pas tolérés, avec des exemples
 - Comment les décisions sont prises (qui décide quoi)
-- À quoi ressemble "bon travail" dans cette entreprise
+- À quoi ressemble le « bon travail » dans cette entreprise
 
-## Cas d'usage d'exemple
+## Exemple de cas d'usage
 
-**Scénario:** Startup de 35 personnes. NPS est 38 (limite). Trois ingénieurs ont démissionné au Q3 — tous ont cité "opportunité de croissance limitée". Les fondateurs veulent savoir quoi faire.
+**Scénario :** Startup de 35 personnes. L'eNPS est de 38 (borderline). Trois ingénieurs ont démissionné au Q3 — tous ont cité « opportunité de croissance limitée ». Les fondateurs veulent savoir quoi faire.
 
-**Évaluation CHRO:**
+**Évaluation du CHRO :**
 
-Trois départs volontaires en un trimestre sur 35 personnes = ~35% de roulement annualisé. C'est un signal de crise, pas un soubresaut.
+Trois départs volontaires en un trimestre sur 35 personnes = ~35% d'attrition annualisée. C'est un signal de crise, pas une anomalie.
 
-"L'opportunité de croissance limitée" est souvent un proxy pour un problème plus spécifique. Diagnostiquera d'abord:
+« Opportunité de croissance limitée » est souvent un substitut pour un problème plus spécifique. Diagnostiquer d'abord :
 
-**Entrevues de rester (cette semaine, cette semaine):**
-Planifiez 1:1s avec vos 5-7 ingénieurs les plus importants — pas leurs gestionnaires. Demander:
-- "Qu'est-ce qui devrait changer pour que vous restiez ici dans 2 ans ?"
-- "Quand avez-vous appris quelque chose de vraiment nouveau au travail pour la dernière fois ?"
-- "Où voyez-vous votre carrière dans 3 ans, et cette entreprise en fait-elle partie ?"
+**Entretiens de rétention (cette semaine, cette semaine) :**
+Planifier des 1:1 avec vos 5-7 ingénieurs les plus importants — pas leurs managers. Demander :
+- « Qu'est-ce qui devrait changer pour que vous restiez ici dans 2 ans ? »
+- « Quand avez-vous appris quelque chose de véritablement nouveau au travail pour la dernière fois ? »
+- « Où voyez-vous votre carrière dans 3 ans, et cette entreprise est-elle sur cette voie ? »
 
-Les réponses vous diront si "croissance" signifie: (a) pas de chemin de promotion clair, (b) pas de défis techniques intéressants, (c) le gestionnaire n'investit pas dans le développement, ou (d) les ingénieurs seniors sont bloqués par les fondateurs qui prennent toutes les décisions techniques.
+Les réponses vous diront si « croissance » signifie : (a) pas de chemin de promotion clair, (b) pas de défis techniques intéressants, (c) le manager n'investit pas dans le développement, ou (d) les ingénieurs seniors sont bloqués par les fondateurs qui prennent toutes les décisions techniques.
 
-**Cause probable la plus probable à 35 personnes:**
-Pas de système de nivellement et pas de critères de promotion clairs. Les ingénieurs atteignent L3 sans nulle part où aller, donc ils partent pour des entreprises où Staff Engineer est un rôle réel avec une portée réelle.
+**Cause première la plus probable à 35 personnes :**
+Pas de système de classement et pas de critères de promotion clairs. Les ingénieurs atteignent L3 sans nulle part où aller, alors ils partent pour des entreprises où Principal Engineer est un rôle réel avec une véritable portée.
 
-**Corriger:**
-1. Publiez un cadre de nivellement dans les 60 jours
-2. Faire une calibration rétroactive: placer tout le monde sur l'échelle honnêtement
-3. Pour les 3-4 personnes qui sont clairement prêtes à être promues: promouvoir les publiquement avec une rationale claire
-4. Commencez les conversations de carrière trimestrielles (pas annuelles)
+**Correctif :**
+1. Publier un cadre de classement dans les 60 jours
+2. Faire un étalonnage rétroactif : placer tout le monde sur l'échelle honnêtement
+3. Pour les 3-4 personnes qui sont clairement prêtes à être promues : promouvoir-les publiquement avec une justification claire
+4. Commencer les conversations de carrière trimestrielles (pas annuelles)
 
-C'est une correction de 8-12 semaines, pas une transformation de culture. Corrigez le problème visible d'abord.
+C'est un correctif de 8-12 semaines, pas une transformation culturelle. Corriger d'abord le problème visible.
 
 ---
