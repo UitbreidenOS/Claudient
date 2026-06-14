@@ -47,42 +47,42 @@ Read, Edit, Write, Bash (sbt, scala, scalafmt), mcp__ide__getDiagnostics
 - Test met `munit-cats-effect`; `TestControl` voor tijd-gecontroleerde IO-testen.
 
 ### http4s
-- `HttpRoutes.of` met patroonkoppelingen op `Method / path` voor routedefinities.
-- Codeer/decodeer aanvraag- en antwoordteksten met `circe` en `EntityDecoder`/`EntityEncoder`.
-- Middleware (`Logger`, `ErrorHandling`, `AutoSlash`) toegepast op de serverlaag.
+- `HttpRoutes.of` met patroonmatching op `Method / path` voor routedefinities.
+- Codeer/decodeer verzoek- en antwoordlichamen met `circe` en `EntityDecoder`/`EntityEncoder`.
+- Middleware (`Logger`, `ErrorHandling`, `AutoSlash`) toegepast op serverlayer.
 - `EmberServerBuilder` voor productieservers; `Client` van `EmberClientBuilder` voor uitgaande oproepen.
 
 ### Doobie
-- `Transactor` wikkelt een verbindingspool in (`HikariCP`) — definieer eenmaal, injecteer overal.
+- `Transactor` verpakt een verbindingpool (`HikariCP`) — eenmaal definiëren, overal injecteren.
 - `sql` interpolator voor query's; `fr` fragmenten voor dynamische SQL-samenstelling.
-- Leid `Read` / `Write` instances automatisch af; definieer aangepaste `Meta` voor domeintypen.
-- Alle query's geven `ConnectionIO` terug; commit met `transact(xa)` op de servicegrens.
+- Leid `Read` / `Write`-instanties automatisch af; definieer aangepaste `Meta` voor domeintypen.
+- Alle query's retourneren `ConnectionIO`; commit met `transact(xa)` op de servicegrens.
 
 ### Akka / Apache Pekko
-- Verkies getypte actoren (`ActorSystem[_]`, `Behaviors`) — classic API alleen voor legacy-migratie.
-- Definieer gedrag als een pure functie die `Behavior[T]` retourneert; neveneffecten alleen in `setup` of message handlers.
-- Akka Streams voor backpressured pijplijnen; `Source`, `Flow`, `Sink` met expliciete materialisatie.
-- Cluster Sharding voor gedistribueerde stateful entities; persistentie via Event Sourcing.
+- Verkies getypeerde actoren (`ActorSystem[_]`, `Behaviors`) — klassieke API alleen voor legacy-migratie.
+- Definieer gedrag als een zuivere functie die `Behavior[T]` retourneert; zij-effecten alleen in `setup` of berichthandlers.
+- Akka Streams voor teruggekoppelde pijplijnen; `Source`, `Flow`, `Sink` met expliciete materialisatie.
+- Cluster Sharding voor gedistribueerde stateful entiteiten; persistentie via Event Sourcing.
 
 ### Apache Spark
-- Gebruik de Dataset API met case class-coders — vermijd RDDs in nieuwe code.
-- Broadcast kleine lookup-tabellen expliciet; vermijd shuffle-intensieve joins op grote datasets.
-- Partitioneer op de kolom die het meest gebruikt wordt in filters/joins.
-- Unit-test transformaties met `spark-testing-base` of `Frameless` getypte tests.
+- Gebruik de Dataset API met case class-encoders — vermijd RDDs in nieuwe code.
+- Zend kleine opzoektabellen expliciet uit; vermijd shuffle-zware joins op grote datasets.
+- Verdeel op de kolom die het meest gebruikt wordt in filters/joins.
+- Unit-test transformaties met `spark-testing-base` of `Frameless` getypeerde tests.
 
 ### SBT
-- Multi-project builds met een root `build.sbt`; gedeelde instellingen in `project/Settings.scala`.
+- Multi-project bouwwerk met een hoofd-`build.sbt`; gedeelde instellingen in `project/Settings.scala`.
 - `ThisBuild / scalaVersion` om de versie eenmaal in te stellen.
-- `scalafmtOnCompile := true` in alle subprojecten; `scalafmt`-configuratie in `.scalafmt.conf`.
-- `wartremover` of `scalafix` voor linting; regels gecommitteerd naar `scalafix.conf`.
+- `scalafmtOnCompile := true` in alle subprojecten; `scalafmt` config in `.scalafmt.conf`.
+- `wartremover` of `scalafix` voor linting; regels vastgelegd in `scalafix.conf`.
 
-## Voorbeeld gebruik
+## Voorbeeld gebruiksgeval
 
-**Invoer:** "Maak een http4s-endpoint dat een inkomende JSON-payload valideert, een record naar PostgreSQL schrijft via Doobie, en de gemaakte entiteit retourneert — alles in Cats Effect IO."
+**Invoer:** "Maak een http4s-eindpunt dat een inkomende JSON-payload valideert, een record naar PostgreSQL via Doobie schrijft en de gemaakte entiteit retourneert — allemaal in Cats Effect IO."
 
-**Uitvoer:** Een `UserRoutes` `HttpRoutes[IO]` met circe `EntityDecoder`, een `UserRepository` met een Doobie `sql` insert die de gegenereerde ID retourneert, een `Resource`-beheerde `Transactor`, domein `UserError` sealed enum gemapped naar HTTP-antwoorden, en `munit-cats-effect` tests met `TestControl`.
+**Uitvoer:** Een `UserRoutes` `HttpRoutes[IO]` met circe `EntityDecoder`, een `UserRepository` met een Doobie `sql`-invoeging die de gegenereerde ID retourneert, `Resource`-beheerde `Transactor`, domein `UserError` verzegelde enum toegewezen aan HTTP-antwoorden en `munit-cats-effect`-testen met `TestControl`.
 
 ---
 
 
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
+📺 **[Abonneer je op ons YouTube-kanaal voor meer diepgaande verdiepingen](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
