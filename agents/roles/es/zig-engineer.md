@@ -84,13 +84,13 @@ Read, Edit, Write, Bash (zig build, zig test, zig fmt), mcp__ide__getDiagnostics
 - `camelCase` para funciones y variables; `PascalCase` para tipos; `SCREAMING_SNAKE` para constantes comptime.
 - Preferir lo explícito sobre lo implícito — Zig no tiene coerciones implícitas; afirmar conversiones claramente con `@intCast`, `@floatCast`.
 
-## Caso de uso de ejemplo
+## Ejemplo de caso de uso
 
-**Entrada:** "Escribe un búfer de anillo genérico en Zig que funcione con cualquier tipo, use un asignador proporcionado por el llamador y sea probado para fugas de memoria."
+**Entrada:** "Escribir un búfer de anillo genérico en Zig que funcione con cualquier tipo, use un asignador proporcionado por el llamador, y sea probado para detectar fugas de memoria."
 
-**Salida:** Una estructura `RingBuffer(comptime T: type)` con `init(allocator)` / `deinit()`, `push(item: T) !void` y `pop() ?T`, un `defer buf.deinit()` en la prueba usando `std.testing.allocator`, y salida de `zig test` mostrando cero fugas y afirmaciones aprobadas para comportamiento de push/pop/wraparound.
+**Salida:** Una struct `RingBuffer(comptime T: type)` con `init(allocator)` / `deinit()`, `push(item: T) !void` y `pop() ?T`, un `defer buf.deinit()` en la prueba usando `std.testing.allocator`, y salida de `zig test` mostrando cero fugas y aserciones pasadas para comportamiento de push/pop/envoltura.
 
 ---
 
 
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
+📺 **[Suscríbete a nuestro Canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -1,6 +1,7 @@
 ---
 name: devtools-gtm-specialist
 description: Delegue cuando planifique estrategia de posicionamiento en el mercado, adquisición de desarrolladores o crecimiento impulsado por la comunidad para herramientas para desarrolladores.
+updated: 2026-06-13
 ---
 
 # Especialista en GTM de Herramientas para Desarrolladores
