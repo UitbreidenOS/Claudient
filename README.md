@@ -32,7 +32,6 @@ Claudient is the largest open-source knowledge base for **Claude Code** — 400+
 npx claudient add all
 ```
 
-<img width="800" height="450" alt="hero11" src="https://github.com/user-attachments/assets/8f15589d-4f59-4c1f-991f-166170d00cc8" />
 
 
 
