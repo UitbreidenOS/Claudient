@@ -1,0 +1,30 @@
+{
+  "name": "stack-template",
+  "displayName": "Stack Template",
+  "description": "A template showing the structure and fields required for community stack submissions to Claudient. Replace all [EDIT ME] fields with your actual stack information.",
+  "category": "Other",
+  "tags": [
+    "template",
+    "example",
+    "community"
+  ],
+  "author": {
+    "name": "[EDIT ME: Your Full Name]",
+    "email": "[EDIT ME: your-email@example.com]",
+    "github": "[EDIT ME: your-github-handle]"
+  },
+  "license": "MIT",
+  "repository": "[EDIT ME: https://github.com/username/stack-name or 'private']",
+  "version": "1.0.0",
+  "minimumClaudeVersion": "2026-01",
+  "keywords": [
+    "[EDIT ME: keyword1]",
+    "[EDIT ME: keyword2]",
+    "[EDIT ME: keyword3]"
+  ],
+  "skills": [
+    "[EDIT ME: skill-name-1]",
+    "[EDIT ME: skill-name-2]",
+    "[EDIT ME: skill-name-3]"
+  ]
+}

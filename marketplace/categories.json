@@ -1,0 +1,101 @@
+{
+  "$schema": "https://code.claude.com/schema/categories.json",
+  "version": "1.0.0",
+  "categories": [
+    {
+      "id": "ai-engineering",
+      "name": "AI Engineering",
+      "description": "Agent design, agentic AI systems, multi-agent orchestration, autonomous reasoning, and production AI applications"
+    },
+    {
+      "id": "backend",
+      "name": "Backend & Fullstack",
+      "description": "Server-side development, API design, microservices, and full-stack web applications"
+    },
+    {
+      "id": "compliance",
+      "name": "Compliance & Governance",
+      "description": "Risk management, compliance auditing, regulatory frameworks, ethics, and governance"
+    },
+    {
+      "id": "consulting",
+      "name": "Consulting & Strategy",
+      "description": "Strategic advising, consulting workflows, solutions architecture, and business consulting"
+    },
+    {
+      "id": "data-ml",
+      "name": "Data & Machine Learning",
+      "description": "Data engineering, analytics, ML pipelines, MLOps, and AI model development"
+    },
+    {
+      "id": "database",
+      "name": "Databases",
+      "description": "Database design, SQL/NoSQL, data modeling, and database administration"
+    },
+    {
+      "id": "devops",
+      "name": "DevOps & Infrastructure",
+      "description": "Cloud infrastructure, CI/CD, container orchestration, platform engineering, and SRE"
+    },
+    {
+      "id": "finance",
+      "name": "Finance & Investment",
+      "description": "Financial modeling, investment analysis, venture capital, and CFO operations"
+    },
+    {
+      "id": "frontend",
+      "name": "Frontend & Mobile",
+      "description": "Web UI/UX, React, mobile apps, iOS/Android, and client-side development"
+    },
+    {
+      "id": "hr",
+      "name": "Human Resources",
+      "description": "Talent acquisition, recruitment, people operations, and HR management"
+    },
+    {
+      "id": "legal",
+      "name": "Legal & Operations",
+      "description": "Contract review, legal research, compliance, and legal operations"
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing & Growth",
+      "description": "Content marketing, SEO, growth engineering, brand management, and demand generation"
+    },
+    {
+      "id": "operations",
+      "name": "Business Operations",
+      "description": "Operations management, business processes, workflow automation, and admin workflows"
+    },
+    {
+      "id": "product",
+      "name": "Product Management",
+      "description": "Product strategy, PRD writing, roadmapping, UX research, and product analytics"
+    },
+    {
+      "id": "qa",
+      "name": "QA & Testing",
+      "description": "Test automation, quality assurance, test strategy, and testing frameworks"
+    },
+    {
+      "id": "sales",
+      "name": "Sales & Revenue",
+      "description": "Sales operations, deal management, revenue operations, SDR workflows, and customer success"
+    },
+    {
+      "id": "security",
+      "name": "Security Engineering",
+      "description": "Application security, infrastructure security, threat modeling, and security auditing"
+    },
+    {
+      "id": "specialized",
+      "name": "Specialized Domains",
+      "description": "Healthcare, biotech, gaming, IoT, embedded systems, and other specialized domains"
+    },
+    {
+      "id": "web3",
+      "name": "Web3 & Blockchain",
+      "description": "Smart contracts, blockchain development, DeFi, and Web3 architecture"
+    }
+  ]
+}

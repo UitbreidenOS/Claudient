@@ -1,0 +1,122 @@
+[
+  {
+    "id": "agentic-ai-engineer-stack",
+    "name": "Agentic AI Engineer Stack",
+    "reason": "new",
+    "description": "Agent design, multi-agent orchestration, observability for production AI systems",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "ai-compliance-risk-stack",
+    "name": "AI Compliance & Risk Stack",
+    "reason": "new",
+    "description": "Regulatory frameworks, audit trails, risk assessment for AI/ML systems",
+    "category": "operations",
+    "certified": true
+  },
+  {
+    "id": "ai-ethics-governance-stack",
+    "name": "AI Ethics & Governance Stack",
+    "reason": "new",
+    "description": "Ethical AI frameworks, bias detection, governance models",
+    "category": "specialized",
+    "certified": true
+  },
+  {
+    "id": "ai-product-manager-stack",
+    "name": "AI Product Manager Stack",
+    "reason": "new",
+    "description": "AI-native product strategy, go-to-market, feature prioritization",
+    "category": "product",
+    "certified": true
+  },
+  {
+    "id": "cloud-architect-stack",
+    "name": "Cloud Architect Stack",
+    "reason": "new",
+    "description": "AWS, GCP, Azure architecture design, scalability, security",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "distributed-systems-engineer-stack",
+    "name": "Distributed Systems Engineer Stack",
+    "reason": "new",
+    "description": "Consensus algorithms, fault tolerance, distributed databases, scalability",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "infrastructure-as-code-stack",
+    "name": "Infrastructure as Code Stack",
+    "reason": "new",
+    "description": "Terraform, CloudFormation, Ansible, IaC patterns and practices",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "platform-engineer-stack",
+    "name": "Platform Engineer Stack",
+    "reason": "new",
+    "description": "Internal developer platforms, infrastructure, CI/CD, Kubernetes",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "senior-backend-engineer-stack",
+    "name": "Senior Backend Engineer Stack",
+    "reason": "popular",
+    "description": "Architecture, databases, APIs, performance optimization, system design",
+    "category": "engineering",
+    "certified": true
+  },
+  {
+    "id": "product-manager-stack",
+    "name": "Product Manager Stack",
+    "reason": "popular",
+    "description": "Roadmaps, requirements, go-to-market, user research, metrics",
+    "category": "product",
+    "certified": true
+  },
+  {
+    "id": "data-engineer-stack",
+    "name": "Data Engineer Stack",
+    "reason": "popular",
+    "description": "Pipelines, warehousing, real-time processing, data quality",
+    "category": "data",
+    "certified": true
+  },
+  {
+    "id": "security-engineer-stack",
+    "name": "Security Engineer Stack",
+    "reason": "high-quality",
+    "description": "Threat modeling, incident response, secure architecture, compliance",
+    "category": "specialized",
+    "certified": true
+  },
+  {
+    "id": "sales-operations-stack",
+    "name": "Sales Operations Stack",
+    "reason": "high-quality",
+    "description": "Process optimization, forecasting, CRM, enablement, analytics",
+    "category": "business",
+    "certified": true
+  },
+  {
+    "id": "technical-writer-stack",
+    "name": "Technical Writer Stack",
+    "reason": "trending",
+    "description": "Documentation systems, API docs, knowledge bases, content management",
+    "category": "content-creator",
+    "certified": true
+  },
+  {
+    "id": "b2b-consultant-stack",
+    "name": "B2B Consultant Stack",
+    "reason": "high-quality",
+    "description": "Strategy, operations, GTM, business development, RFP response",
+    "category": "business",
+    "certified": true
+  }
+]
