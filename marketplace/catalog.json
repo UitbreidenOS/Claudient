@@ -3,6 +3,26 @@
   "version": "1.0.0",
   "timestamp": "2026-06-15T10:10:29.194Z",
   "total": 50,
+  "schema": {
+    "entries": {
+      "id": "string (unique identifier)",
+      "name": "string",
+      "description": "string",
+      "category": "string",
+      "path": "string",
+      "version": "string",
+      "author": "object { name, type }",
+      "status": "string (official|community)",
+      "certified": "boolean",
+      "certificationTier": "string (bronze|silver|gold) - optional if certified=false",
+      "certifiedDate": "string (YYYY-MM-DD format) - optional, date certification was granted",
+      "certificationExpiresDate": "string (YYYY-MM-DD format) - optional, date certification expires",
+      "icon": "string (emoji)",
+      "languages": "array of language codes",
+      "assets": "object { skills, commands, hooks, mcp }",
+      "install": "string (npm package or install command)"
+    }
+  },
   "entries": [
     {
       "id": "agentic_ai_engineer",

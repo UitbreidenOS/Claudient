@@ -212,6 +212,34 @@ If a stack is rejected or a review decision is disputed:
 3. Escalation is reviewed by 2 core team members (5 business days)
 4. Decision is final; no further appeals accepted
 
+## Certification
+
+Once a stack is published in the marketplace, it becomes eligible for certification. Certification is a **distinct recognition** from the initial marketplace review and indicates ongoing quality and maintenance commitment.
+
+### About Certification
+
+Certification has three tiers:
+
+- **Bronze:** Stack passes validation and human review; author commits to maintenance SLA
+- **Silver:** Stack has 50+ installs, 4.0+ rating, and meets additional quality criteria
+- **Gold:** Stack has 200+ installs, 4.5+ rating, and is endorsed by official maintainers
+
+Certification is **optional** — stacks can remain published without certification. However, certified stacks receive special badging and prominence in the marketplace.
+
+### Certification Process
+
+See [CERTIFICATION.md](./CERTIFICATION.md) for certification tier details and requirements.
+
+For step-by-step certification instructions, see [guides/marketplace/becoming-certified.md](../guides/marketplace/becoming-certified.md).
+
+For detailed quality criteria and measurement methodology, see [guides/marketplace/certification-criteria.md](../guides/marketplace/certification-criteria.md).
+
+### Current Certified Stacks
+
+See [marketplace/certified/README.md](./certified/README.md) for the index of all certified stacks by tier.
+
+---
+
 ## Dispute Resolution
 
 If issues arise post-publication:
