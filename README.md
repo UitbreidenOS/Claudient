@@ -1,6 +1,6 @@
 # Claude Code Skills, Agents & Plugins — Claudient
 
-**Claudient** is the largest open-source knowledge base for **Claude Code** — Anthropic's AI coding CLI. It ships 400+ domain skills, 182+ specialist agents, 42 pre-wired workspace stacks, 40 MCP configs, 100+ slash commands, hooks, and workflows, all installable in 30 seconds. No stack re-explaining. Claude already knows your domain.
+**Claudient** is the largest open-source knowledge base for **Claude Code** — Anthropic's AI coding CLI. It ships 400+ domain skills, 182+ specialist agents, 42 pre-wired workspace stacks, 41 MCP configs, 100+ slash commands, hooks, and workflows, all installable in 30 seconds. No stack re-explaining. Claude already knows your domain.
 
 **New to Claude Code?** Claude Code is Anthropic's official command-line AI assistant for software development — it reads your codebase, runs commands, edits files, and completes tasks autonomously inside your terminal or IDE. Claudient is the open-source community library that extends it with expert-level skills across every stack and domain.
 
@@ -14,14 +14,14 @@
 [![Commands](https://img.shields.io/badge/commands-100+-a855f7)](#slash-commands)
 [![Plugins](https://img.shields.io/badge/plugin_marketplace-19_plugins-22c55e)](#install-as-a-claude-code-plugin)
 [![Claude for Small Business](https://img.shields.io/badge/small_business-30+_skills-06b6d4)](#claude-for-small-business)
-[![MCP](https://img.shields.io/badge/MCP_configs-40-8b5cf6)](#top-100-mcp-servers)
+[![MCP](https://img.shields.io/badge/MCP_configs-41-8b5cf6)](#top-100-mcp-servers)
 [![Languages](https://img.shields.io/badge/languages-EN%20FR%20DE%20NL%20ES-3b82f6)](#translations)
 [![Reddit](https://img.shields.io/badge/Reddit-r%2Fuitbreiden-FF4500?logo=reddit&logoColor=white)](https://www.reddit.com/r/uitbreiden/)
 [![YouTube](https://img.shields.io/badge/YouTube-%40UITBREIDEN-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/@UITBREIDEN)
 
 **Stop explaining your stack to Claude every session.**
 
-Claudient is the largest open-source knowledge base for **Claude Code** — 400+ skills, 182+ specialist agents, 100+ slash commands, 100+ guides, 40 hooks, 45 workflows, 83 project structures, 42 workspace stacks, 10 personas, 32 rules, 40 MCP server configs, 10 automation routines, 20 annotated CLAUDE.md examples, cross-harness adapters (Cursor/Windsurf/Codex/Gemini/Copilot), plus output styles, themes, statuslines, keybindings, settings templates, and an Agent SDK pack — all installable in 30 seconds.
+Claudient is the largest open-source knowledge base for **Claude Code** — 400+ skills, 182+ specialist agents, 100+ slash commands, 100+ guides, 40 hooks, 45 workflows, 83 project structures, 42 workspace stacks, 10 personas, 32 rules, 41 MCP server configs, 10 automation routines, 20 annotated CLAUDE.md examples, cross-harness adapters (Cursor/Windsurf/Codex/Gemini/Copilot), plus output styles, themes, statuslines, keybindings, settings templates, and an Agent SDK pack — all installable in 30 seconds.
 
 ```bash
 # Install as a Claude Code plugin marketplace (recommended)
@@ -125,7 +125,7 @@ Install: `/plugin install claudient-commands@claudient` or copy [`commands/`](co
 |---|---|---|
 | **Domain context** | Re-explain your stack every session | Skills activate automatically |
 | **Specialist tasks** | Claude guesses at best practices | 182+ expert agents with scoped tools |
-| **Tool integrations** | Manual copy-paste between tools | 40 MCP server configs ready to install |
+| **Tool integrations** | Manual copy-paste between tools | 41 MCP server configs ready to install |
 | **Event automation** | Manual triggers, forgotten steps | 40 hooks that fire on the right events |
 | **Team / language** | English only, one-size config | 5 languages, composable per project |
 | **Small business** | Generic AI advice | 30+ vertical skills for real workflows |
@@ -397,7 +397,7 @@ Claudient/
 ├── rules/                    # 32 always-follow guideline files
 │   ├── common/               # Language-agnostic coding and workflow principles
 │   └── language-specific/    # Per-language style rules
-├── mcp/                      # 40 MCP server config guides
+├── mcp/                      # 41 MCP server config guides
 │   └── configs/              # Ready-to-use JSON configs (GitHub, Postgres, Redis, Kafka, Docker, and more)
 ├── personas/                 # 10 operating profiles
 ├── output-styles/            # 8 output style definitions
