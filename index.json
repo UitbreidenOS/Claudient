@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-16T21:39:33.911Z",
+  "generated": "2026-06-16T21:54:32.244Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -12307,6 +12307,14 @@
       "file": "skills/productivity/spec-driven-workflow.md"
     },
     {
+      "id": "productivity/specify-wizard",
+      "category": "productivity",
+      "lang": "en",
+      "title": "Specify Wizard (Spec Kit Automation)",
+      "description": "",
+      "file": "skills/productivity/specify-wizard.md"
+    },
+    {
       "id": "productivity/stakeholder-comms",
       "category": "productivity",
       "lang": "en",
@@ -20069,6 +20077,12 @@
       "file": "agents/roles/solutions-architect.md"
     },
     {
+      "id": "roles/spec-auditor",
+      "lang": "en",
+      "title": "Spec Auditor Agent",
+      "file": "agents/roles/spec-auditor.md"
+    },
+    {
       "id": "roles/sre-engineer",
       "lang": "en",
       "title": "Sre Engineer",
@@ -20969,6 +20983,12 @@
       "category": "pre-tool-use",
       "title": "Hook: Block Dangerous Commands",
       "file": "hooks/pre-tool-use/block-dangerous.md"
+    },
+    {
+      "id": "pre-tool-use/constitution-guard",
+      "category": "pre-tool-use",
+      "title": "Constitution Guardrail Hook",
+      "file": "hooks/pre-tool-use/constitution-guard.md"
     },
     {
       "id": "pre-tool-use/git-push-confirm",
@@ -27706,6 +27726,10 @@
       "file": "statuslines/minimal.sh"
     },
     {
+      "id": "pulse",
+      "file": "statuslines/pulse.sh"
+    },
+    {
       "id": "rate-limit",
       "file": "statuslines/rate-limit.sh"
     }
@@ -27722,9 +27746,19 @@
       "file": "themes/claudient-brand.json"
     },
     {
+      "id": "claudient-neon",
+      "title": "Claudient Neon",
+      "file": "themes/claudient-neon.json"
+    },
+    {
       "id": "dracula",
       "title": "Dracula",
       "file": "themes/dracula.json"
+    },
+    {
+      "id": "ghost-shell",
+      "title": "Ghost in the Shell",
+      "file": "themes/ghost-shell.json"
     },
     {
       "id": "gruvbox",
@@ -27908,7 +27942,7 @@
       "displayName": "Claudient — DevOps & Infrastructure",
       "description": "36 skills covering AWS, Azure, GCP, Kubernetes, Helm, Terraform, Pulumi, ArgoCD, Docker, CI/CD, GitHub Actions, secrets management, observability, SLOs, and platform engineering.",
       "version": "1.0.0",
-      "skills": 40,
+      "skills": 42,
       "file": "plugins/claudient-devops-infra/.claude-plugin/plugin.json"
     },
     {
@@ -27988,7 +28022,7 @@
       "displayName": "Claudient — Productivity & Engineering",
       "description": "66 skills for daily engineering work: debugging, refactoring, code review, PR automation, test generation, ADR writing, security auditing, context engineering, MCP clients, and dozens more.",
       "version": "1.0.0",
-      "skills": 84,
+      "skills": 87,
       "file": "plugins/claudient-productivity/.claude-plugin/plugin.json"
     },
     {
@@ -28773,17 +28807,17 @@
     }
   ],
   "summary": {
-    "skills": 429,
-    "agents": 205,
-    "hooks": 52,
+    "skills": 430,
+    "agents": 206,
+    "hooks": 53,
     "rules": 32,
     "workflows": 55,
     "prompts": 31,
     "guides": 117,
     "structures": 82,
     "outputStyles": 8,
-    "statuslines": 6,
-    "themes": 10,
+    "statuslines": 7,
+    "themes": 12,
     "keybindings": 4,
     "settingsTemplates": 5,
     "routines": 10,

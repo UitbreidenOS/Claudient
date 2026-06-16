@@ -195,6 +195,7 @@
     "./agents/soc-analyst.md",
     "./agents/solidjs-engineer.md",
     "./agents/solutions-architect.md",
+    "./agents/spec-auditor.md",
     "./agents/sre-engineer.md",
     "./agents/streaming-data-engineer.md",
     "./agents/supply-chain-security.md",
