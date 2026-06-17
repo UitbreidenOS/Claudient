@@ -56,12 +56,12 @@ export function RulesApp() {
             </button>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-ink text-[11px] text-[#e6e6e6] p-3 font-mono leading-relaxed">
+        <div className="mt-4 rounded-lg bg-code-bg text-[11px] text-code-text p-3 font-mono leading-relaxed">
           <div className="text-brand-yellow">.claude/rules.md</div>
           <div className="mt-1 text-mute"># Rules</div>
-          <div className="text-[#e6e6e6]">- Always write tests</div>
-          <div className="text-[#e6e6e6]">- Prefer immutability</div>
-          <div className="text-[#e6e6e6]">- No console.log in prod</div>
+          <div>- Always write tests</div>
+          <div>- Prefer immutability</div>
+          <div>- No console.log in prod</div>
         </div>
       </div>
       <div className="flex-1 p-4 overflow-y-auto">

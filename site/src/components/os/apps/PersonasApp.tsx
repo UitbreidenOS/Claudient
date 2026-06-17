@@ -72,11 +72,11 @@ export function PersonasApp() {
             ))}
           </div>
         </div>
-        <div className="rounded-lg bg-ink text-[11px] text-[#e6e6e6] p-3 font-mono leading-relaxed">
+        <div className="rounded-lg bg-code-bg text-[11px] text-code-text p-3 font-mono leading-relaxed">
           <div className="text-brand-yellow">~/.claude/CLAUDE.md</div>
           <div className="mt-1 text-mute"># Persona: {selected.name}</div>
-          <div className="text-[#e6e6e6]">Optimized for: {selected.tagline}</div>
-          <div className="text-[#e6e6e6]">Priorities: speed, quality, revenue</div>
+          <div>Optimized for: {selected.tagline}</div>
+          <div>Priorities: speed, quality, revenue</div>
         </div>
       </div>
     </div>

@@ -101,7 +101,7 @@ export function HooksApp() {
             </button>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-ink text-[11px] text-[#e6e6e6] p-3 font-mono leading-relaxed">
+        <div className="mt-4 rounded-lg bg-code-bg text-[11px] text-code-text p-3 font-mono leading-relaxed">
           <div className="text-brand-yellow">~/.claude/settings.json</div>
           <div className="mt-1 text-mute">{"{"}</div>
           <div className="pl-2">"hooks": {"{"}</div>

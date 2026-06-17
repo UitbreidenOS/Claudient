@@ -47,10 +47,10 @@ export function PluginsApp() {
             </button>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-ink text-[11px] text-[#e6e6e6] p-3 font-mono leading-relaxed">
+        <div className="mt-4 rounded-lg bg-code-bg text-[11px] text-code-text p-3 font-mono leading-relaxed">
           <div className="text-brand-yellow">Install plugin:</div>
           <div className="mt-1 text-[#3fb950]">$ /plugin marketplace add</div>
-          <div className="pl-2 text-[#e6e6e6]">Claudient/claudient-everything</div>
+          <div className="pl-2">Claudient/claudient-everything</div>
         </div>
       </div>
       <div className="flex-1 p-4 overflow-y-auto">
