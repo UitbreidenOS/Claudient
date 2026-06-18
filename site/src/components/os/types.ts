@@ -21,7 +21,6 @@ export type AppId =
   | "showcase"
   | "pricing"
   | "compare"
-  | "enterprise"
   | "marketplace"
   | "examples"
   | "swarm";

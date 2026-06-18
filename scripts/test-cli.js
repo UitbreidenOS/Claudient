@@ -195,6 +195,8 @@ run('documentation sync reference', 'documentation', { expectContains: 'THE HIST
 if (process.env.CLAUDIENT_CHAOS_ACTIVE !== 'true') {
   run('chaos monkey runner', 'chaos', { expectContains: 'CHAOS MONKEY' });
 }
+run('prophet risk analyzer', 'prophet', { expectContains: 'THE PROPHET' });
+run('ci pipeline generator', 'ci', { expectContains: 'SELF-HEALING CI PIPELINE' });
 
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

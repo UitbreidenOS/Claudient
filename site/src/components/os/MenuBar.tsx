@@ -79,12 +79,6 @@ export function MenuBar({ wm }: { wm: WindowManager }) {
         >
           ⚖️ Compare
         </button>
-        <button
-          onClick={() => wm.open("enterprise")}
-          className="hidden sm:flex items-center gap-1.5 text-[12.5px] font-semibold text-ink hover:text-body hover:bg-white/70 rounded-md px-2 py-1 transition"
-        >
-          🏢 Enterprise
-        </button>
         <a
           href="https://github.com/Claudient/Claudient"
           target="_blank"

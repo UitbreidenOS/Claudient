@@ -23,7 +23,6 @@ import { ShowcaseApp } from "./apps/ShowcaseApp";
 import { PricingApp } from "./apps/PricingApp";
 import { CompareApp } from "./apps/CompareApp";
 import { SwarmApp } from "./apps/SwarmApp";
-import { EnterpriseApp } from "./apps/EnterpriseApp";
 import { MarketplaceApp } from "./apps/MarketplaceApp";
 import { ExamplesApp } from "./apps/ExamplesApp";
 
@@ -75,8 +74,7 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <CompareApp />;
     case "swarm":
       return <SwarmApp />;
-    case "enterprise":
-      return <EnterpriseApp />;
+    
     case "marketplace":
       return <MarketplaceApp />;
     case "examples":

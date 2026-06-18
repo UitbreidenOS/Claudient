@@ -16,7 +16,7 @@ const features = [
   { icon: "🎭", name: "10 Personas", desc: "Role-optimized AI behavior profiles.", color: "#b62ad9", app: "personas" as const },
   { icon: "⌨️", name: "36 CLI Scripts", desc: "Power tools: nightshift, tribunal, oracle...", color: "#f54e00", app: "cli" as const },
   { icon: "🏗️", name: "410 Structures", desc: "Workspace blueprints for every project type.", color: "#3fb950", app: "examples" as const },
-  { icon: "🏢", name: "3 Compliance Stacks", desc: "SOC2, GDPR, EU AI Act frameworks.", color: "#1d4aff", app: "enterprise" as const },
+  { icon: "🏢", name: "3 Compliance Stacks", desc: "SOC2, GDPR, EU AI Act frameworks.", color: "#1d4aff", app: "pricing" as const },
   { icon: "🏪", name: "Marketplace", desc: "Publisher program with certification.", color: "#f5b800", app: "marketplace" as const },
 ];
 

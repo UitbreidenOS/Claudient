@@ -143,10 +143,10 @@ export const APPS: Record<AppId, AppMeta> = {
   },
   pricing: {
     id: "pricing",
-    title: "Pricing",
+    title: "Pricing & Enterprise",
     icon: "💰",
     accent: "#f54e00",
-    defaultSize: { width: 860, height: 620 },
+    defaultSize: { width: 900, height: 660 },
   },
   compare: {
     id: "compare",
@@ -160,13 +160,6 @@ export const APPS: Record<AppId, AppMeta> = {
     title: "Swarm Sandbox",
     icon: "🤝",
     accent: "#f54e00",
-    defaultSize: { width: 880, height: 600 },
-  },
-  enterprise: {
-    id: "enterprise",
-    title: "Enterprise Governance",
-    icon: "🏢",
-    accent: "#1d4aff",
     defaultSize: { width: 880, height: 600 },
   },
   marketplace: {
@@ -199,7 +192,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "showcase",
   "pricing",
   "compare",
-  "enterprise",
   "marketplace",
   "examples",
   "hooks",
