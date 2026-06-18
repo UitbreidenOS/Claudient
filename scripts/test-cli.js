@@ -153,6 +153,12 @@ try {
   }
 }
 
+// 7. Phase 20 Commands Smoke Tests
+run('tribunal PR adversarial review', 'tribunal', { expectContains: 'TRIBUNAL ADVERSARIAL PR REVIEW' });
+run('bisect regression finder', 'bisect --good HEAD~1 --bad HEAD --test "node -e \'process.exit(0)\'"', { expectContains: 'REGRESSION COMMIT IDENTIFIED' });
+run('oracle impact analysis', 'oracle', { expectContains: 'THE ORACLE' });
+run('nightshift daemon', 'nightshift', { expectContains: 'NIGHT SHIFT' });
+
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);
 

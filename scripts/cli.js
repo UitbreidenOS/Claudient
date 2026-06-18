@@ -58,6 +58,10 @@ Usage:
   npx claudient map                           Generate interactive codebase dependency graph
   npx claudient spec                          Run interactive Specify Wizard for Spec Kit
   npx claudient repair                        Run tests and capture errors for self-healing
+  npx claudient tribunal                      Run PR adversarial review swarm on active changes
+  npx claudient bisect                        Run autonomous git bisect debugger for regressions
+  npx claudient oracle                        Trace downstream blast radius & audit concurrency
+  npx claudient nightshift                    Run daemon for autonomous batch refactoring
   npx claudient learn                         Scan project and generate custom rules
   npx claudient checkpoint "<task>"          Create workspace state checkpoint
   npx claudient restore                       Restore from latest checkpoint
@@ -2576,6 +2580,30 @@ switch (command) {
     } catch {
       process.exit(1)
     }
+    break
+  }
+  case 'tribunal': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'tribunal.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'bisect': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'bisect.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'oracle': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'oracle.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'nightshift': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'nightshift.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
     break
   }
   case 'gui':
