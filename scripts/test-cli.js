@@ -190,6 +190,11 @@ run('permissions list rules', 'permissions list', { expectContains: 'Allowed Per
 run('handoff design build loop', 'handoff --task "test task"', { expectContains: 'SUCCESS! Handoff loop completed' });
 run('tdd stunt double runner', 'tdd', { expectContains: 'TDD Loop completed successfully' });
 run('enforce spec first compliance', 'enforce', { expectContains: 'SPEC-FIRST COMPLIANCE ENFORCER' });
+run('sweep codebase audit', 'sweep', { expectContains: 'CODEBASE SWEEPER' });
+run('documentation sync reference', 'documentation', { expectContains: 'THE HISTORIAN' });
+if (process.env.CLAUDIENT_CHAOS_ACTIVE !== 'true') {
+  run('chaos monkey runner', 'chaos', { expectContains: 'CHAOS MONKEY' });
+}
 
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

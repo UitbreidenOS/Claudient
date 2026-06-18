@@ -69,6 +69,9 @@ Usage:
   npx claudient handoff [--task "<task>"]    Orchestrate Architect/Mason design-to-code loop
   npx claudient tdd [--file <f>] [--test <t>] Automate Red-Green-Refactor test loops
   npx claudient enforce                       Audit changes against SPEC.md guidelines
+  npx claudient sweep                         Scan project for dead code, unused imports/vars
+  npx claudient documentation                 Synthesize zero-drift reference documentation
+  npx claudient chaos                         Execute test suites under boundary latency injection
   npx claudient learn                         Scan project and generate custom rules
   npx claudient checkpoint "<task>"          Create workspace state checkpoint
   npx claudient restore                       Restore from latest checkpoint
@@ -2654,6 +2657,25 @@ switch (command) {
   case 'enforce': {
     const { spawnSync } = require('child_process')
     const res = spawnSync('node', [path.join(__dirname, 'enforce.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'sweep': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'sweep.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'docs':
+  case 'documentation': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'documentation.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'chaos': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'chaos.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
     if (res.status !== 0) process.exit(res.status || 1)
     break
   }
