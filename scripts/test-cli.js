@@ -12,6 +12,8 @@ const os = require('os');
 const CLI = path.join(__dirname, 'cli.js');
 const ROOT = path.resolve(__dirname, '..');
 
+process.env.CLAUDIENT_TEST_SUITE = 'true';
+
 let passed = 0;
 let failed = 0;
 const failures = [];
@@ -158,6 +160,33 @@ run('tribunal PR adversarial review', 'tribunal', { expectContains: 'TRIBUNAL AD
 run('bisect regression finder', 'bisect --good HEAD~1 --bad HEAD --test "node -e \'process.exit(0)\'"', { expectContains: 'REGRESSION COMMIT IDENTIFIED' });
 run('oracle impact analysis', 'oracle', { expectContains: 'THE ORACLE' });
 run('nightshift daemon', 'nightshift', { expectContains: 'NIGHT SHIFT' });
+
+// 8. Phase 21 Commands Smoke Tests
+run('caveman token optimizer', 'caveman enable', { expectContains: 'CAVEMAN MODE' });
+run('jit context compiler', 'jit scripts/cli.js', { expectContains: 'JIT CONTEXT INJECTOR' });
+
+try {
+  execSync(`node ${CLI} commit -m "test smoke commit"`, {
+    cwd: ROOT,
+    encoding: 'utf-8',
+    timeout: 30000,
+    stdio: ['pipe', 'pipe', 'pipe'],
+  });
+  passed++;
+  console.log('  ✓ commit pre-commit validations (clean check)');
+} catch (err) {
+  const msg = (err.stdout || '') + '\n' + (err.stderr || '');
+  if (msg.includes('nothing to commit') || msg.includes('nothing added to commit') || msg.includes('no changes added to commit') || msg.includes('Git commit succeeded')) {
+    passed++;
+    console.log('  ✓ commit pre-commit validations (passed checks)');
+  } else {
+    failed++;
+    failures.push({ label: 'commit pre-commit validations', error: msg.substring(0, 200) });
+    console.log(`  ✗ commit pre-commit validations: ${msg.substring(0, 100)}`);
+  }
+}
+
+run('permissions list rules', 'permissions list', { expectContains: 'Allowed Permission Rules' });
 
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

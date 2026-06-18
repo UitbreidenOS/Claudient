@@ -2,18 +2,22 @@ import type { WindowManager } from "../useWindows";
 import { Eyebrow, YellowButton, GhostButton, Tag } from "./ui";
 
 const features = [
-  { icon: "⚡", name: "400+ Skills", desc: "Domain knowledge that activates automatically.", color: "#1d4aff", app: "skills" as const },
-  { icon: "🤖", name: "182+ Agents", desc: "Specialist agents with scoped tools.", color: "#b62ad9", app: "agents" as const },
+  { icon: "⚡", name: "447 Skills", desc: "Domain knowledge that activates automatically.", color: "#1d4aff", app: "skills" as const },
+  { icon: "🤖", name: "206 Agents", desc: "Specialist agents with scoped tools.", color: "#b62ad9", app: "agents" as const },
   { icon: "📦", name: "50 Stacks", desc: "Pre-wired workspaces for every role.", color: "#3fb950", app: "stacks" as const },
   { icon: "🔌", name: "41 MCP Configs", desc: "Ready-to-install server configs.", color: "#1078a3", app: "mcp" as const },
-  { icon: "📚", name: "100+ Guides", desc: "In-depth docs for every feature.", color: "#f54e00", app: "guides" as const },
+  { icon: "📚", name: "117 Guides", desc: "In-depth docs for every feature.", color: "#f54e00", app: "guides" as const },
   { icon: "🌍", name: "5 Languages", desc: "EN, FR, DE, NL, ES localization.", color: "#f97316", app: "about" as const },
   { icon: "🪝", name: "48 Hooks", desc: "Event-driven automation for Claude Code.", color: "#1078a3", app: "hooks" as const },
   { icon: "📜", name: "32 Rules", desc: "Behavioral rules for consistent output.", color: "#b62ad9", app: "rules" as const },
   { icon: "⚡", name: "100 Commands", desc: "Slash commands for every workflow.", color: "#1d4aff", app: "commands" as const },
   { icon: "🔄", name: "55 Workflows", desc: "Multi-step processes across domains.", color: "#3fb950", app: "workflows" as const },
-  { icon: "🧩", name: "22 Plugins", desc: "Bundle, domain & business extensions.", color: "#f5b800", app: "plugins" as const },
+  { icon: "🧩", name: "19 Plugins", desc: "Bundle, domain & business extensions.", color: "#f5b800", app: "plugins" as const },
   { icon: "🎭", name: "10 Personas", desc: "Role-optimized AI behavior profiles.", color: "#b62ad9", app: "personas" as const },
+  { icon: "⌨️", name: "36 CLI Scripts", desc: "Power tools: nightshift, tribunal, oracle...", color: "#f54e00", app: "cli" as const },
+  { icon: "🏗️", name: "410 Structures", desc: "Workspace blueprints for every project type.", color: "#3fb950", app: "examples" as const },
+  { icon: "🏢", name: "3 Compliance Stacks", desc: "SOC2, GDPR, EU AI Act frameworks.", color: "#1d4aff", app: "enterprise" as const },
+  { icon: "🏪", name: "Marketplace", desc: "Publisher program with certification.", color: "#f5b800", app: "marketplace" as const },
 ];
 
 const highlights = [
@@ -108,7 +112,7 @@ export function HomeApp({ wm }: { wm: WindowManager }) {
       </h1>
       <p className="mt-4 text-[15px] text-body leading-relaxed">
         Claudient is the largest open-source knowledge base for Claude Code.
-        400+ skills, 182+ agents, 50 workspace stacks — all installable in 30 seconds.
+        447 skills, 206 agents, 50 workspace stacks, 36 CLI scripts — all installable in 30 seconds.
         Open any window below to explore. 🧠
       </p>
 
@@ -180,7 +184,7 @@ export function HomeApp({ wm }: { wm: WindowManager }) {
 
       {/* CLI Tools */}
       <h2 className="mt-9 text-lg font-bold text-ink">9 Powerful CLI Tools</h2>
-      <p className="mt-1 text-[12.5px] text-mute">Run these today — no configuration needed.</p>
+      <p className="mt-1 text-[12.5px] text-mute">Run these today — 36 scripts total, no configuration needed.</p>
       <div className="mt-4 grid sm:grid-cols-3 gap-3">
         {[
           { cmd: "claudient doctor", desc: "Health check: 5 diagnostics in seconds", icon: "🩺" },

@@ -355,6 +355,329 @@ Saved instructions file to: /Users/tushar/Desktop/Claudient/COUNCIL_INSTRUCTIONS
 To run the swarm, start your Claude Code session and instruct it:
   "Read COUNCIL_INSTRUCTIONS.md and execute the swarm workflow steps to achieve the objective."`,
   },
+  {
+    id: "nightshift",
+    name: "claudient nightshift",
+    icon: "🌙",
+    desc: "Autonomous batch processor — queues hundreds of files, manages its own API rate limits, designed for 3+ hour unsupervised sessions.",
+    usage: "node scripts/nightshift.js",
+    tier: "free",
+    output: `claudient nightshift — Batch Queue
+────────────────────────────────────────────
+Queue: BATCH_QUEUE.md (50 files)
+Mode: autonomous | Rate limit: auto-managed
+
+1/50: auth.js → auth.ts ✓
+2/50: utils.js → utils.ts ✓
+3/50: api/payments.js → payments.ts ✓
+...
+Rate limit hit. Sleeping 60s...
+4/50: components/header.js → header.tsx ✓
+────────────────────────────────────────────
+Processed: 50/50 | Errors: 2 | Time: 3h 12m`,
+  },
+  {
+    id: "tribunal",
+    name: "claudient tribunal",
+    icon: "⚖️",
+    desc: "3-agent adversarial PR review — spawns Hacker, Performance Junkie, and Senior Pedant to audit a PR from every angle.",
+    usage: "node scripts/tribunal.js <file>",
+    tier: "free",
+    output: `claudient tribunal — Adversarial Review
+────────────────────────────────────────────
+File: src/auth/handler.ts
+
+🛡️ Hacker Agent:
+  ✗ Timing attack vulnerability L42
+  ✗ SQL injection via unsanitized query L67
+
+⚡ Performance Agent:
+  ✗ N+1 query in user lookup (L31)
+  ✗ Missing index on orders.user_id
+
+📐 Pedant Agent:
+  ✗ console.log on L88 (remove for prod)
+  ✗ Missing JSDoc on exported functions
+
+────────────────────────────────────────────
+Verdict: 6 issues found | 3 critical, 3 minor`,
+  },
+  {
+    id: "oracle",
+    name: "claudient oracle",
+    icon: "🎱",
+    desc: "Pre-mortem prediction — simulates edge cases against a PR to predict specific production failure modes before merge.",
+    usage: "node scripts/oracle.js <file>",
+    tier: "free",
+    output: `claudient oracle — Pre-Mortem Analysis
+────────────────────────────────────────────
+PR: #128 "Add payment retry logic"
+
+Simulating 15 edge cases...
+🔴 FAIL: 10K concurrent users → deadlock in retry.ts L45
+🔴 FAIL: Stripe webhook timeout → orphaned transaction
+🟡 WARN: null response from payment API (no fallback)
+🟡 WARN: race condition in idempotency key generation
+✅ PASS: 11/15 scenarios
+
+Recommendation: Fix 2 critical issues before merge`,
+  },
+  {
+    id: "learn",
+    name: "claudient learn",
+    icon: "📖",
+    desc: "Scans your project and generates custom CLAUDE.md guidelines and rules based on your actual codebase patterns.",
+    usage: "node scripts/learn.js",
+    tier: "free",
+    output: `claudient learn — Codebase Analysis
+────────────────────────────────────────────
+Scanning project structure...
+✓ Detected: Next.js 15 + TypeScript + Prisma
+✓ Found 47 TypeScript files, 12 React components
+✓ Analyzed import patterns and conventions
+
+Generating custom guidelines:
+  → Naming: camelCase for vars, PascalCase for components
+  → Testing: vitest + React Testing Library
+  → State: Zustand (no Redux patterns found)
+  → API: tRPC with Zod validation
+
+✓ Generated: CLAUDE.md (42 lines)
+✓ Generated: rules/code-style.md
+✓ Generated: rules/testing-conventions.md`,
+  },
+  {
+    id: "chart",
+    name: "claudient chart",
+    icon: "🗺️",
+    desc: "Codebase cartographer — AST/signature extraction for massive repos. Gives Claude an exact map of all APIs and types.",
+    usage: "node scripts/chart.js",
+    tier: "free",
+    output: `claudient chart — Codebase Map
+────────────────────────────────────────────
+Scanning 2,400 files...
+
+Indexed:
+  340 public APIs
+  180 type definitions
+   90 interfaces
+  1,200 functions
+   65 modules
+
+Output: .claudient/map.json
+Density: 84% | Coverage: 92%
+
+Claude now has full repo vision.
+→ Query: "Show me all handlers that touch User"
+→ Result: 8 handlers across 4 modules`,
+  },
+  {
+    id: "spec",
+    name: "claudient spec",
+    icon: "📐",
+    desc: "Spec-first enforcement wizard — reads SPEC.md and blocks Claude from violating approved architecture.",
+    usage: "node scripts/spec.js",
+    tier: "free",
+    output: `claudient spec — Architecture Enforcement
+────────────────────────────────────────────
+Loading: SPEC.md (127 lines, 8 sections)
+
+Active enforcements:
+  ✓ API routes must use Zod validation
+  ✓ Database access only via repositories/
+  ✓ No direct ORM calls in controllers
+  ✓ All mutations require audit logging
+
+Intercepting code writes...
+  ✗ BLOCKED: ALTER TABLE users DROP email
+    → SPEC.md §4.2: email field is immutable
+  ✓ ALLOWED: Adding new migration for orders
+
+Session: 14 writes checked | 2 blocked`,
+  },
+  {
+    id: "bisect",
+    name: "claudient bisect",
+    icon: "🔬",
+    desc: "Time-travel debugger — writes a test script and jumps through Git history to find the exact commit that broke the code.",
+    usage: "node scripts/bisect.js",
+    tier: "free",
+    output: `claudient bisect — Bug Finder
+────────────────────────────────────────────
+Issue: "Login returns 500 for expired tokens"
+
+Writing deterministic test: test_login_500.sh
+✓ Test reproduces the issue
+
+Running git bisect through 47 commits...
+  good: a1b2c3d (2026-05-01)
+  bad:  f9e8d7c (2026-06-12)
+  ...
+────────────────────────────────────────────
+Found! Commit f9e8d7c: "Optimize token validation"
+  → Removed 'await' before DB call on L34
+  → Fix: Restore async/await pattern
+
+Applying fix...`,
+  },
+  {
+    id: "checkpoint",
+    name: "claudient checkpoint",
+    icon: "💾",
+    desc: "Session checkpointing — saves current state (decisions, edits, context) so you can resume without losing progress.",
+    usage: "node scripts/checkpoint.js",
+    tier: "free",
+    output: `claudient checkpoint — Session Save
+────────────────────────────────────────────
+Saving session state...
+
+✓ Decisions: 8 architectural choices saved
+✓ Edits: 23 files modified this session
+✓ Context: compressed to CLAUDE_STATE.md
+✓ Tasks: 4/7 completed, 3 remaining
+
+Checkpoint: .claudient/checkpoint-2026-06-15.md
+
+To resume:
+  Add @CLAUDE_STATE.md to your next session
+  Run: claudient doctor to verify state`,
+  },
+  {
+    id: "repair",
+    name: "claudient repair",
+    icon: "🩹",
+    desc: "Auto-repair — reads failing test output, patches the code, and re-runs tests until all pass.",
+    usage: "node scripts/repair.js",
+    tier: "free",
+    output: `claudient repair — Auto-Fix
+────────────────────────────────────────────
+Running test suite... 3 failing
+
+1/3: test_auth.py — AssertionError
+  → Expected: 200, Got: 401
+  → Fix: Updated token expiry check (L42)
+  → ✓ PASS
+
+2/3: test_api.py — TypeError
+  → Missing null check on user param
+  → Fix: Added optional chaining (L67)
+  → ✓ PASS
+
+3/3: test_db.py — IntegrityError
+  → Duplicate key on insert
+  → Fix: Added upsert pattern (L23)
+  → ✓ PASS
+────────────────────────────────────────────
+Repaired: 3/3 | All tests passing`,
+  },
+  {
+    id: "dependency-graph",
+    name: "claudient dependency-graph",
+    icon: "🕸️",
+    desc: "AST dependency analysis — analyzes skill and agent files for cross-references, generates dependency maps.",
+    usage: "node scripts/dependency-graph.js",
+    tier: "free",
+    output: `claudient dependency-graph — Analysis
+────────────────────────────────────────────
+Scanning 447 skills + 206 agents...
+
+Graph generated:
+  Nodes: 653 (skills + agents)
+  Edges: 1,847 (cross-references)
+  Clusters: 28 (domain groups)
+
+Top connected:
+  1. backend/fastapi-expert (12 references)
+  2. devops-infra/terraform-modules (9)
+  3. productivity/testing-suite (8)
+
+Output: .claudient/dependency-graph.json
+→ Visualize: node scripts/visualize-graph.js`,
+  },
+  {
+    id: "translate",
+    name: "claudient translate",
+    icon: "🌍",
+    desc: "Auto-translation — translates skills, agents, and guides into DE, FR, NL, ES using structured templates.",
+    usage: "node scripts/translate-assets.js",
+    tier: "free",
+    output: `claudient translate — Asset Localization
+────────────────────────────────────────────
+Source: English (en)
+Targets: de, fr, nl, es
+
+Translating 447 skills...
+  ✓ de/ — 6 files (initial batch)
+  ✓ es/ — 3 files (initial batch)
+  ○ fr/ — pending
+  ○ nl/ — pending
+
+Translating 117 guides...
+  ✓ guides/de/ — 92 files
+  ✓ guides/es/ — 92 files
+  ✓ guides/fr/ — 92 files
+  ✓ guides/nl/ — 92 files
+────────────────────────────────────────────
+Translated: 383 files across 4 languages`,
+  },
+  {
+    id: "validate-all",
+    name: "claudient validate",
+    icon: "✅",
+    desc: "Suite of 5 validators — catalog, frontmatter, manifests, stacks, and certification checks.",
+    usage: "node scripts/validate-catalog.js && node scripts/validate-frontmatter.js && node scripts/validate-stacks.js",
+    tier: "free",
+    output: `claudient validate — Full Suite
+────────────────────────────────────────────
+1/5: Catalog Validation
+  ✓ 50 stacks indexed
+  ✓ All required fields present
+  ✓ Category mapping valid
+
+2/5: Frontmatter Validation
+  ✓ 447 skills checked
+  ✓ All have title, description, tags
+  ⚠ 3 skills missing 'date' field
+
+3/5: Manifest Validation
+  ✓ 19 plugins verified
+  ✓ All plugin.json schemas valid
+
+4/5: Stack Validation
+  ✓ 50 stacks passed
+  ✓ All CLAUDE.md files present
+
+5/5: Certification Check
+  ✓ 5 certified stacks verified
+────────────────────────────────────────────
+Result: PASS | 0 errors, 3 warnings`,
+  },
+  {
+    id: "generate-changelog",
+    name: "claudient changelog",
+    icon: "📝",
+    desc: "Generates structured changelog from git history with categorized entries and version tagging.",
+    usage: "node scripts/generate-changelog.js",
+    tier: "free",
+    output: `claudient changelog — Release Notes
+────────────────────────────────────────────
+Analyzing git history: v1.9.0 → v1.10.1
+
+🚀 Features (12):
+  • Added 5 new enterprise compliance stacks
+  • Expanded CLI from 9 to 11 commands
+  • New MarketplaceApp window
+  
+🔧 Improvements (8):
+  • ShowcaseApp: 49 features across 10 categories
+  • ToolkitApp: added Playground + Harness tabs
+
+🐛 Fixes (5):
+  • Fixed duplicate code in ShowcaseApp
+  • Resolved Vercel deployment rootDirectory issue
+────────────────────────────────────────────
+Output: CHANGELOG.md (v1.10.1)`,
+  },
 ];
 
 export function CliApp() {
@@ -380,7 +703,7 @@ export function CliApp() {
       <aside className="sm:w-56 shrink-0 border-r border-hairline bg-cream flex flex-col overflow-hidden">
         <div className="p-3">
           <Eyebrow color="#f54e00">CLI Commands</Eyebrow>
-          <div className="mt-1 text-[11px] text-mute">11 commands — 8 free, 3 enterprise</div>
+          <div className="mt-1 text-[11px] text-mute">25 commands — 22 free, 3 enterprise</div>
         </div>
         <div className="flex-1 overflow-auto px-2 pb-2 space-y-0.5">
           {commands.map((c) => (
@@ -400,7 +723,7 @@ export function CliApp() {
           ))}
         </div>
         <div className="px-3 py-2 border-t border-hairline text-[10px] text-mute">
-          Free tier: doctor, consult, share, import, benchmark, score, init, dashboard, council
+          Free tier: doctor, consult, share, import, benchmark, score, init, dashboard, council, nightshift, tribunal, oracle, learn, chart, spec, bisect, checkpoint, repair, dependency-graph, translate, validate, changelog
         </div>
       </aside>
 

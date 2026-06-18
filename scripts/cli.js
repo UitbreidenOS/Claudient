@@ -62,6 +62,10 @@ Usage:
   npx claudient bisect                        Run autonomous git bisect debugger for regressions
   npx claudient oracle                        Trace downstream blast radius & audit concurrency
   npx claudient nightshift                    Run daemon for autonomous batch refactoring
+  npx claudient caveman [--enable|--disable]  Toggle ultra-dense token optimization rules
+  npx claudient jit <file>                    Compile JIT import dependencies context payload
+  npx claudient commit -m "<msg>"             Verify validations and tests before git commit
+  npx claudient permissions [list|add|remove] Edit and track model tool auto-permissions
   npx claudient learn                         Scan project and generate custom rules
   npx claudient checkpoint "<task>"          Create workspace state checkpoint
   npx claudient restore                       Restore from latest checkpoint
@@ -2603,6 +2607,32 @@ switch (command) {
   case 'nightshift': {
     const { spawnSync } = require('child_process')
     const res = spawnSync('node', [path.join(__dirname, 'nightshift.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'caveman': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'caveman.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'jit': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'jit.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'commit':
+  case 'safecommit': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'commit.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'permit':
+  case 'permissions': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'permissions.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
     if (res.status !== 0) process.exit(res.status || 1)
     break
   }

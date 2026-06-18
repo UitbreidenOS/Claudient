@@ -162,6 +162,27 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#f54e00",
     defaultSize: { width: 880, height: 600 },
   },
+  enterprise: {
+    id: "enterprise",
+    title: "Enterprise Governance",
+    icon: "🏢",
+    accent: "#1d4aff",
+    defaultSize: { width: 880, height: 600 },
+  },
+  marketplace: {
+    id: "marketplace",
+    title: "Marketplace",
+    icon: "🏪",
+    accent: "#f5b800",
+    defaultSize: { width: 880, height: 600 },
+  },
+  examples: {
+    id: "examples",
+    title: "Examples & Starters",
+    icon: "🚀",
+    accent: "#3fb950",
+    defaultSize: { width: 880, height: 600 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -178,6 +199,9 @@ export const DESKTOP_ICONS: AppId[] = [
   "showcase",
   "pricing",
   "compare",
+  "enterprise",
+  "marketplace",
+  "examples",
   "hooks",
   "rules",
   "commands",

@@ -2,14 +2,18 @@ import type { WindowManager } from "../useWindows";
 import { Eyebrow, YellowButton } from "./ui";
 
 const stats = [
-  { v: "400+", l: "Skills" },
-  { v: "182+", l: "Agents" },
-  { v: "42", l: "Stacks" },
+  { v: "447", l: "Skills" },
+  { v: "206", l: "Agents" },
+  { v: "50", l: "Stacks" },
   { v: "41", l: "MCP Configs" },
-  { v: "100+", l: "Guides" },
+  { v: "117", l: "Guides" },
   { v: "5", l: "Languages" },
-  { v: "100+", l: "Commands" },
+  { v: "100", l: "Commands" },
   { v: "19", l: "Plugins" },
+  { v: "36", l: "CLI Scripts" },
+  { v: "410", l: "Structures" },
+  { v: "48", l: "Hooks" },
+  { v: "3", l: "Compliance Stacks" },
 ];
 
 export function AboutApp({ wm }: { wm: WindowManager }) {

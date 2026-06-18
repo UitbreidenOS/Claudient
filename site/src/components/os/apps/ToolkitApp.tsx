@@ -14,6 +14,8 @@ const THEMES = [
   { name: "Solarized Dark", id: "solarized-dark", colors: ["#268bd2", "#b58900", "#dc322f"] },
   { name: "Solarized Light", id: "solarized-light", colors: ["#268bd2", "#b58900", "#2aa198"] },
   { name: "Tokyo Night", id: "tokyo-night", colors: ["#7aa2f7", "#bb9af7", "#9ece6a"] },
+  { name: "Ghost Shell", id: "ghost-shell", colors: ["#c0c0c0", "#4a4a4a", "#00ff41"] },
+  { name: "Claudient Neon", id: "claudient-neon", colors: ["#00ff41", "#ff00ff", "#00ffff"] },
 ];
 
 const STATUSLINES = [
@@ -54,6 +56,9 @@ const ROUTINES = [
   { name: "Security Scan", id: "security-scan", desc: "Scheduled security scan with alerts." },
   { name: "Cost Audit", id: "cost-audit", desc: "Review token usage and cost optimization." },
   { name: "Incident Watch", id: "incident-watch", desc: "Monitor for recurring incident patterns." },
+  { name: "Shadow PR", id: "shadow-pr", desc: "Generate shadow refactored branch for continuous quality." },
+  { name: "Code Review Rotation", id: "code-review-rotation", desc: "Auto-rotate reviewers across PRs to distribute load." },
+  { name: "Changelog Generator", id: "changelog-generator", desc: "Auto-generate structured changelogs from git history." },
 ];
 
 const SETTINGS = [
