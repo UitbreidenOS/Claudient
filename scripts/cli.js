@@ -74,6 +74,7 @@ Usage:
   npx claudient chaos                         Execute test suites under boundary latency injection
   npx claudient prophet                       Calculate change churn to predict outage risk
   npx claudient ci                            Scaffold self-healing GitHub Actions CI pipeline
+  npx claudient incident [--alert "<alert>"]  Triage production alerts, audit commits, and revert
   npx claudient learn                         Scan project and generate custom rules
   npx claudient checkpoint "<task>"          Create workspace state checkpoint
   npx claudient restore                       Restore from latest checkpoint
@@ -2690,6 +2691,13 @@ switch (command) {
   case 'ci': {
     const { spawnSync } = require('child_process')
     const res = spawnSync('node', [path.join(__dirname, 'ci.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
+    if (res.status !== 0) process.exit(res.status || 1)
+    break
+  }
+  case 'commander':
+  case 'incident': {
+    const { spawnSync } = require('child_process')
+    const res = spawnSync('node', [path.join(__dirname, 'incident.js'), ...process.argv.slice(3)], { stdio: 'inherit' })
     if (res.status !== 0) process.exit(res.status || 1)
     break
   }

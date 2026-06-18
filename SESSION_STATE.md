@@ -33,7 +33,9 @@
 - **Phase 24 Complete:**
   - Implemented The Prophet Predictive Tech Debt Analyzer (`npx claudient prophet`) calculating risk scores for high-churn files.
   - Implemented Self-Healing CI Pipeline (`npx claudient ci`) configuring automated GitHub Actions validations and diagnostic runs.
+- **Phase 25 Complete:**
+  - Implemented The Incident Commander (`npx claudient incident` / `claudient commander`) responding to simulated production alerts, auditing recent commits for risk heuristics, and drafting markdown post-mortems in `.claude/post-mortem.md`.
 - **Repository Author:** tushar2704 <tushar.inseec@gmail.com>
 
 ## Next Steps
-1. Align with the user on the requirements and architecture for Phase 25.
+1. Monitor for further instructions or CLI enhancements.

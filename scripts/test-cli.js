@@ -197,6 +197,7 @@ if (process.env.CLAUDIENT_CHAOS_ACTIVE !== 'true') {
 }
 run('prophet risk analyzer', 'prophet', { expectContains: 'THE PROPHET' });
 run('ci pipeline generator', 'ci', { expectContains: 'SELF-HEALING CI PIPELINE' });
+run('incident commander alert triage', 'incident', { expectContains: 'THE INCIDENT COMMANDER' });
 
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);
