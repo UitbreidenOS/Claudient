@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-19T08:21:41.524Z",
+  "generated": "2026-06-19T08:42:39.194Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -20971,6 +20971,12 @@
       "file": "hooks/post-tool-use/auto-tdd.md"
     },
     {
+      "id": "post-tool-use/fail-fast",
+      "category": "post-tool-use",
+      "title": "Hook: Fail-Fast Enforcer",
+      "file": "hooks/post-tool-use/fail-fast.md"
+    },
+    {
       "id": "post-tool-use/historian",
       "category": "post-tool-use",
       "title": "The Historian Hook (Zero-Drift Docs)",
@@ -21225,6 +21231,12 @@
       "file": "rules/common/de/documentation.md"
     },
     {
+      "id": "common/fail-fast",
+      "lang": "de",
+      "title": "Fail-Fast-Regeln",
+      "file": "rules/common/de/fail-fast.md"
+    },
+    {
       "id": "common/frontend-performance",
       "lang": "de",
       "title": "Frontend-Performance-Regeln",
@@ -21387,6 +21399,12 @@
       "file": "rules/common/es/documentation.md"
     },
     {
+      "id": "common/fail-fast",
+      "lang": "es",
+      "title": "Reglas de Detención Inmediata (Fail-Fast)",
+      "file": "rules/common/es/fail-fast.md"
+    },
+    {
       "id": "common/frontend-performance",
       "lang": "es",
       "title": "Reglas de Rendimiento Frontend",
@@ -21465,6 +21483,12 @@
       "file": "rules/common/es/testing.md"
     },
     {
+      "id": "common/fail-fast",
+      "lang": "en",
+      "title": "Fail-Fast Rules",
+      "file": "rules/common/fail-fast.md"
+    },
+    {
       "id": "common/accessibility",
       "lang": "fr",
       "title": "Règles d'Accessibilité",
@@ -21523,6 +21547,12 @@
       "lang": "fr",
       "title": "Règles de Documentation",
       "file": "rules/common/fr/documentation.md"
+    },
+    {
+      "id": "common/fail-fast",
+      "lang": "fr",
+      "title": "Règles d'arrêt immédiat (Fail-Fast)",
+      "file": "rules/common/fr/fail-fast.md"
     },
     {
       "id": "common/frontend-performance",
@@ -21691,6 +21721,12 @@
       "lang": "nl",
       "title": "Documentatieregels",
       "file": "rules/common/nl/documentation.md"
+    },
+    {
+      "id": "common/fail-fast",
+      "lang": "nl",
+      "title": "Fail-Fast Regels",
+      "file": "rules/common/nl/fail-fast.md"
     },
     {
       "id": "common/frontend-performance",
@@ -28860,8 +28896,8 @@
   "summary": {
     "skills": 435,
     "agents": 206,
-    "hooks": 54,
-    "rules": 32,
+    "hooks": 55,
+    "rules": 33,
     "workflows": 55,
     "prompts": 31,
     "guides": 117,
