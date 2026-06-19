@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-19T08:42:39.194Z",
+  "generated": "2026-06-19T08:49:13.477Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -21067,6 +21067,12 @@
       "file": "hooks/pre-tool-use/lint-check.md"
     },
     {
+      "id": "pre-tool-use/measure-twice",
+      "category": "pre-tool-use",
+      "title": "Hook: Measure Twice (Plan-First)",
+      "file": "hooks/pre-tool-use/measure-twice.md"
+    },
+    {
       "id": "pre-tool-use/memory-injector",
       "category": "pre-tool-use",
       "title": "Memory Injector Hook",
@@ -21267,6 +21273,12 @@
       "file": "rules/common/de/logging.md"
     },
     {
+      "id": "common/measure-twice",
+      "lang": "de",
+      "title": "Plan-First-Regeln (Measure Twice)",
+      "file": "rules/common/de/measure-twice.md"
+    },
+    {
       "id": "common/observability",
       "lang": "de",
       "title": "Observability-Regeln",
@@ -21435,6 +21447,12 @@
       "file": "rules/common/es/logging.md"
     },
     {
+      "id": "common/measure-twice",
+      "lang": "es",
+      "title": "Reglas de Planificación Previa (Measure Twice)",
+      "file": "rules/common/es/measure-twice.md"
+    },
+    {
       "id": "common/observability",
       "lang": "es",
       "title": "Reglas de Observabilidad",
@@ -21585,6 +21603,12 @@
       "file": "rules/common/fr/logging.md"
     },
     {
+      "id": "common/measure-twice",
+      "lang": "fr",
+      "title": "Règle de Planification Préalable (Measure Twice)",
+      "file": "rules/common/fr/measure-twice.md"
+    },
+    {
       "id": "common/observability",
       "lang": "fr",
       "title": "Règles d'Observabilité",
@@ -21661,6 +21685,12 @@
       "lang": "en",
       "title": "Logging Rules",
       "file": "rules/common/logging.md"
+    },
+    {
+      "id": "common/measure-twice",
+      "lang": "en",
+      "title": "Measure Twice (Plan-First) Rules",
+      "file": "rules/common/measure-twice.md"
     },
     {
       "id": "common/accessibility",
@@ -21757,6 +21787,12 @@
       "lang": "nl",
       "title": "Logging-regels",
       "file": "rules/common/nl/logging.md"
+    },
+    {
+      "id": "common/measure-twice",
+      "lang": "nl",
+      "title": "Plan-First Regels (Measure Twice)",
+      "file": "rules/common/nl/measure-twice.md"
     },
     {
       "id": "common/observability",
@@ -28896,8 +28932,8 @@
   "summary": {
     "skills": 435,
     "agents": 206,
-    "hooks": 55,
-    "rules": 33,
+    "hooks": 56,
+    "rules": 34,
     "workflows": 55,
     "prompts": 31,
     "guides": 117,
