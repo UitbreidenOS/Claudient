@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-19T08:50:04.243Z",
+  "generated": "2026-06-19T08:54:16.108Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -28185,7 +28185,7 @@
       "displayName": "Claudient — Productivity & Engineering",
       "description": "66 skills for daily engineering work: debugging, refactoring, code review, PR automation, test generation, ADR writing, security auditing, context engineering, MCP clients, and dozens more.",
       "version": "1.10.1",
-      "skills": 90,
+      "skills": 91,
       "file": "plugins/claudient-productivity/.claude-plugin/plugin.json"
     },
     {

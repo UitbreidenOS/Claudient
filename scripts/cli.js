@@ -6,6 +6,7 @@ const os = require('os')
 const { execSync } = require('child_process')
 const { recommend } = require('./recommend')
 const { learnCodebase } = require('./learn')
+const { runSentinel } = require('./sentinel')
 const { createCheckpoint, restoreCheckpoint } = require('./checkpoint')
 
 const REPO_ROOT = path.resolve(__dirname, '..')
@@ -76,6 +77,7 @@ Usage:
   npx claudient ci                            Scaffold self-healing GitHub Actions CI pipeline
   npx claudient incident [--alert "<alert>"]  Triage production alerts, audit commits, and revert
   npx claudient learn                         Scan project and generate custom rules
+  npx claudient sentinel                      Auto-generate anti-hallucination project rules
   npx claudient checkpoint "<task>"          Create workspace state checkpoint
   npx claudient restore                       Restore from latest checkpoint
   npx claudient search <query>               Search skills, agents, structures
@@ -2719,6 +2721,9 @@ switch (command) {
   }
   case 'learn':
     learnCodebase(positional[0] || '.')
+    break
+  case 'sentinel':
+    runSentinel(positional[0] || '.')
     break
   case 'checkpoint': {
     const taskSummary = positional.join(' ')

@@ -199,6 +199,21 @@ run('prophet risk analyzer', 'prophet', { expectContains: 'THE PROPHET' });
 run('ci pipeline generator', 'ci', { expectContains: 'SELF-HEALING CI PIPELINE' });
 run('incident commander alert triage', 'incident', { expectContains: 'THE INCIDENT COMMANDER' });
 
+// 9. Sentinel Command
+const tmpSentinelDir = fs.mkdtempSync(path.join(os.tmpdir(), 'claudient-sentinel-'));
+fs.writeFileSync(
+  path.join(tmpSentinelDir, 'package.json'),
+  JSON.stringify({
+    name: 'test-sentinel-project',
+    dependencies: {
+      next: '^14.0.0',
+      typescript: '^5.0.0',
+    },
+  })
+);
+run('sentinel anti-hallucination rules generator', `sentinel ${tmpSentinelDir}`, { expectContains: 'Sentinel successfully activated' });
+fs.rmSync(tmpSentinelDir, { recursive: true, force: true });
+
 // Summary
 console.log(`\nResults: ${passed} passed, ${failed} failed`);
 
