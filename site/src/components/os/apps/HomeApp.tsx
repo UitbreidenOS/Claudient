@@ -151,7 +151,7 @@ export function HomeApp({ wm }: { wm: WindowManager }) {
 
       {/* 5 Feature Highlight Categories */}
       <h2 className="mt-9 text-lg font-bold text-ink">Tier-1 Enterprise AI Orchestrator</h2>
-      <p className="mt-1 text-[12.5px] text-mute">49 advanced features across 10 categories — from cost optimization to multi-agent federation.</p>
+      <p className="mt-1 text-[12.5px] text-mute">61 advanced features across 10 categories — from cost optimization to multi-agent federation.</p>
       <div className="mt-4 space-y-3">
         {highlights.map((h) => (
           <button
