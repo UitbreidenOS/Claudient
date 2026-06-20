@@ -121,8 +121,3 @@ pnpm linkcheck     # Verify no broken internal links
 - Do not use screenshots for code — use fenced code blocks
 - Do not leave `TODO:` comments in published docs — they undermine credibility
 - Do not mix content types on one page (guide + reference on same page)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

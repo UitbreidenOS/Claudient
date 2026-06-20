@@ -424,8 +424,3 @@ npx claudient add skills marketing
 - [Email marketer gids](../guides/for-email-marketer.md)
 - [Lifecycle sequence workflow](../workflows/lifecycle-sequence-build.md)
 - [Deliverability incident workflow](../workflows/deliverability-incident-response.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

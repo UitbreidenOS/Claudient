@@ -36,8 +36,3 @@
 **Configuration Files**
 ⚙️ `qdrant-schema.json`           # Defines the exact payload structure, ensuring `tenant_id` is a required index
 📦 `package.json`                 # Node/TypeScript dependencies (LangChain, vector DB SDKs, JWT utilities)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -523,9 +523,3 @@ bash compatibility/install-cursor.sh .
 - [Claudient Repository](https://github.com/tushar2704/Claudient) — Full source of skills, agents, and rules
 - [Cursor Documentation](https://docs.cursor.com) — Official Cursor rules and customization guide
 - [Claude Code Documentation](https://claude.com/claude-code) — Original Claude Code features that inspire these patterns
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

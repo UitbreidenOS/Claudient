@@ -36,8 +36,3 @@
 **Fichiers de Configuration**
 ⚙️ `Makefile`              # `make run-overnight` (déclenche la création du sandbox et le démarrage de l'agent)
 📦 `agent-config.toml`     # Routage LLM et configurations de limite de tokens
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

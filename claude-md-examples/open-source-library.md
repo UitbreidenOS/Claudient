@@ -110,8 +110,3 @@ pnpm release            # Publishes to NPM + PyPI
 - Do not add a runtime dependency without evaluating bundle size impact
 - Do not use default exports — they break tree-shaking and named re-exports
 - Do not publish without updating `CHANGELOG.md`
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

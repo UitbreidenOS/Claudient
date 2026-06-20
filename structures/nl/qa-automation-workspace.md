@@ -36,8 +36,3 @@
 **Configuratiebestanden**
 ⚙️ `orbit-workspace.yaml`        # API-configuratie voor het aantrekken van GitHub-, Twitter- en Discord-activiteiten in een uniforme community CRM
 📦 `cross-post-webhooks.json`    # Integraties voor automatisch publiceren van goedgekeurde content rechtstreeks naar ontwikkelaarsplatforms
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

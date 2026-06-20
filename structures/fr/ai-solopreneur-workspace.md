@@ -35,8 +35,3 @@
 **Fichiers de configuration**
 ⚙️ `stripe-rapid-checkout.json`    # Configurations de webhook conçues pour capturer les paiements avec un frottement utilisateur minimal
 📦 `multi-agent-orchestrator.yaml` # La machine d'état acheminant les tâches entre différentes personas d'agent IA spécialisées
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -590,8 +590,3 @@ npx claudient add skill productivity/stakeholder-comms
 - [Workflow de Informe a Stakeholders](../workflows/stakeholder-reporting.md)
 - [Estructura de Infraestructura como Código](./infrastructure-as-code.md)
 - [Estructura de Pipeline de Datos](./data-pipeline.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

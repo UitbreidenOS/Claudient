@@ -36,8 +36,3 @@
 **Konfigurationsdateien**
 ⚙️ `qdrant-schema.json`           # Definiert die genaue Nutzlast-Struktur und stellt sicher, dass `tenant_id` ein erforderlicher Index ist
 📦 `package.json`                 # Node/TypeScript-Abhängigkeiten (LangChain, Vector-DB-SDKs, JWT-Utilities)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

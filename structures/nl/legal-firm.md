@@ -415,8 +415,3 @@ npx claudient add skill productivity/engineering-strategy
 - [Legal & Compliance Workspace guide](../structures/legal-compliance-workspace.md)
 - [Operations Manager Workspace](../structures/operations-manager-workspace.md)
 - [Finance Analyst Workspace](../structures/finance-analyst-workspace.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

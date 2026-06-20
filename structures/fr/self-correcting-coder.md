@@ -31,8 +31,3 @@
 **Fichiers de Configuration**
 ⚙️ `tox.ini`                    # Configurations d'environnement de test standardisées
 📦 `pyproject.toml`             # Dépendances de projet principales et exigences du système de compilation
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

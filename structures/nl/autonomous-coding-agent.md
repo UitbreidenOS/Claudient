@@ -35,8 +35,3 @@
 **Configuratiebestanden**
 ⚙️ `agent-permissions.json`      # In whitelist opgenomen CLI-commando's (bijv. `npm run build`, `git commit`) die de agent juridisch mag uitvoeren
 📦 `bedrock-models.yaml`         # Versiepinning voor specifieke AWS Bedrock-foundationmodellen om promptdrift te voorkomen
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

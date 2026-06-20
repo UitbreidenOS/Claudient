@@ -102,8 +102,3 @@ eas update --branch production --message "Fix login bug"
 - Do not store sensitive data in `AsyncStorage` — use `expo-secure-store`
 - Do not hardcode API URLs — use `EXPO_PUBLIC_API_URL`
 - Do not use `expo build` — use `eas build`
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

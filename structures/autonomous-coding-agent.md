@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `agent-permissions.json`      # Whitelisted CLI commands (e.g., `npm run build`, `git commit`) the agent is legally allowed to execute
 📦 `bedrock-models.yaml`         # Version pinning for specific AWS Bedrock foundation models to prevent prompt drift
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

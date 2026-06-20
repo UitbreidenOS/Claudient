@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `next.config.mjs` / `vite.config.ts` # Core bundler configurations, strict mode enforcement, and image domain whitelists
 📦 `tailwind.config.ts`                 # Utility class definitions mapping directly to Figma design tokens
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

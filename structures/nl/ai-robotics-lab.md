@@ -35,8 +35,3 @@
 **Configuratiebestanden**
 ⚙️ `rapid-monetization-webhooks.json` # Stripe-configuraties die zijn gekoppeld aan dynamische prijsstelling voor virtuele AI-arbeidertaken
 📦 `slicer-clearance-profiles.yaml`   # Geautomatiseerde tolerantiecontroles van 0,2 mm om ervoor te zorgen dat aangepaste behuizingen naadloos worden samengevoegd
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

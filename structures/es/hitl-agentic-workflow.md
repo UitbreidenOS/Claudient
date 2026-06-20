@@ -35,8 +35,3 @@
 **Archivos de Configuración**
 ⚙️ `temporal-config.yaml`     # Configuración para Temporal.io o motores de flujo de trabajo con estado similar
 📦 `package.json`             # Oyentes de webhook y dependencias de Slack SDK
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

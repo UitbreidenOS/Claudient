@@ -308,8 +308,3 @@ npx claudient add skill gtm/hubspot
 
 - [SDR guide — vollständige Workflow-Dokumentation](../guides/for-sdr.md)
 - [SDR täglicher Workflow — End-to-End-Prozess](../workflows/sdr-daily.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

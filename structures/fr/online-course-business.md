@@ -427,8 +427,3 @@ npx claudient add skill data-ml/stakeholder-report
 
 - [Guide du créateur de cours](../guides/for-course-creator.md)
 - [Workflow de lancement de cours](../workflows/course-launch.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

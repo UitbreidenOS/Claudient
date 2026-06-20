@@ -37,8 +37,3 @@
 **Configuration Files**
 ⚙️ `docker-compose.yml`          # Local Neo4j APOC instance and worker node deployments
 📦 `requirements.txt`            # Neo4j driver, LangChain Graph, and Anthropic SDK dependencies
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

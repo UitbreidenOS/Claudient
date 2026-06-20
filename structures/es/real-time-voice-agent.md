@@ -32,8 +32,3 @@
 **Archivos de Configuración**
 ⚙️ `docker-compose.yml`      # Mapeo de implementación local de SFU y worker
 📦 `requirements.txt`        # SDK de LiveKit Agents, Pipecat y dependencias de VAD
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

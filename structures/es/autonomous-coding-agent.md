@@ -35,8 +35,3 @@
 **Archivos de Configuración**
 ⚙️ `agent-permissions.json`      # Comandos CLI incluidos en la lista blanca (por ejemplo, `npm run build`, `git commit`) que el agente puede ejecutar legalmente
 📦 `bedrock-models.yaml`         # Fijación de versiones para modelos de fundación específicos de AWS Bedrock para evitar cambios de indicación
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

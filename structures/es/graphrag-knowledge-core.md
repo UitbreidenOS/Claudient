@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `docker-compose.yml`          # Instancia local de Neo4j APOC e implementaciones de nodos de trabajadores
 📦 `requirements.txt`            # Controlador Neo4j, LangChain Graph y dependencias del SDK de Anthropic
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

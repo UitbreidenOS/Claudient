@@ -424,8 +424,3 @@ npx claudient add skills small-business
 - [Freelancer guide](../guides/for-freelancer.md)
 - [Client onboarding workflow](../workflows/client-onboarding.md)
 - [Proposal-to-contract workflow](../workflows/proposal-to-contract.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

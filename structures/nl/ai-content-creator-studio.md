@@ -31,8 +31,3 @@
 **Configuratiebestanden**
 ⚙️ `ffmpeg-render-presets.json`# Opdrachtregeldconfiguraties voor batchrendering van sociale-mediaclips naar exacte optimale bitsnelheden
 📦 `obs-scene-collections.json` # Vooraf geconfigureerde OBS studio setups voor foutloze live-streaming en schermopname
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -344,8 +344,3 @@ npx claudient add skill devops-infra/capacity-planner
 - [Workflow: CTO Weekly](../workflows/cto-weekly.md)
 - [Workflow: Respuesta a Incidentes](../workflows/incident-response.md)
 - [Workflow: Pipeline de Reclutamiento](../workflows/recruiting-pipeline.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

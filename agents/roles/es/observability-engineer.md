@@ -184,8 +184,3 @@ Observabilidad para un microservicio de pagos:
 - Loki agrega logs estructurados; consulta LogQL `{service="payments"} | json | level="ERROR"` usada en alerta de Grafana
 - Exemplars de traza en el histograma de latencia vinculan outliers p99 directamente a IDs de traza de Tempo
 - Alerta de burn-rate pagina on-call cuando se consume 2% del presupuesto de error en 1 hora; dashboard SLO de Grafana muestra presupuesto restante
-
----
-
-🔗 **[Uitbreiden — construyendo productos AI y herramientas B2B con comunidades de desarrolladores.](https://uitbreiden.com/)**
-📺 **[Suscríbete a nuestro Canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

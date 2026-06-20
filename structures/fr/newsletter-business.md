@@ -361,8 +361,3 @@ npx claudient add skill productivity/founder-weekly-review
 
 - [Guide : Claude pour les créateurs de contenu](../guides/for-content-creator.md)
 - [Workflow : Production d'un numéro de bout en bout](../workflows/newsletter-issue-production.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

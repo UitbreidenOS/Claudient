@@ -398,8 +398,3 @@ npx claudient add skill small-business/hiring-pipeline
 - [Flujo de trabajo: Pipeline de Recaudación de Fondos](../workflows/fundraising-pipeline.md)
 - [Flujo de trabajo: Preparación de Reunión de Junta Directiva](../workflows/board-meeting-prep.md)
 - [Flujo de trabajo: Revisión Semanal del CEO](../workflows/founder-weekly-review.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -139,8 +139,3 @@ MCP_CONFIG_PATH          # Path to mcp/config.json (default: ./mcp/config.json)
 - Use `FakeAnthropic` (test double in `tests/fakes.py`) to stub LLM responses — never hit the real API in CI
 - Test the full orchestrator → subagent → ledger → result cycle in at least one integration test per agent
 - Run integration tests against a throwaway Postgres database seeded with fixtures — never the dev or staging DB
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

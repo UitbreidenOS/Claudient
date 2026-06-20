@@ -390,8 +390,3 @@ npx claudient add skill devops-infra/aws-architect
 
 - [Gids voor DevOps / SRE-engineers](../guides/for-devops-engineer.md)
 - [Incidentrespons-workflow](../workflows/devops-incident.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

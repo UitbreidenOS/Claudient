@@ -314,8 +314,3 @@ npx claudient add skill gtm/churn-prevention
 
 - [Guide Customer Success](../guides/for-customer-success.md)
 - [Workflow de livraison QBR](../workflows/qbr-delivery.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

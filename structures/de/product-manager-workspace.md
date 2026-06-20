@@ -420,8 +420,3 @@ npx claudient add skill product/product-strategist
 - [Workflow: PRD-Schreiben](../workflows/prd-writing.md)
 - [Workflow: Launch-Koordination](../workflows/launch-coordination.md)
 - [Workflow: Benutzerforschungs-Synthese](../workflows/user-research-synthesis.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

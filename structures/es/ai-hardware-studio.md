@@ -35,8 +35,3 @@
 **Archivos de Configuración**
 ⚙️ `multi-agent-orchestrator.json`# El gráfico de estado que define cómo los empleados de IA virtuales transfieren tareas
 📦 `slicer-profiles.yaml`         # Configuraciones unificadas de rebanadora de impresoras 3D optimizadas para diferentes resistencias a la tracción de materiales
-
----
-
-🔗 **[Uitbreiden — construyendo productos de IA y herramientas B2B con comunidades de desarrolladores.](https://uitbreiden.com/)**
-📺 **[Suscríbete a nuestro canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

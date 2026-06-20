@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `multi-agent-orchestrator.json`# The state graph defining how virtual AI employees hand off tasks
 📦 `slicer-profiles.yaml`         # Unified 3D printer slicer settings optimized for different material tensile strengths
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

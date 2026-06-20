@@ -545,8 +545,3 @@ kubectl rollout status deployment/inference-api -n default
 **infra/kubernetes/overlays/production/kustomization.yaml** — Configuración específica de prod: conteos de réplica, límites de recursos, configuración de ingreso.
 
 **infra/terraform/environments/production/main.tf** — EKS multi-AZ, réplicas de lectura RDS, clúster Redis, ALB con WAF.
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

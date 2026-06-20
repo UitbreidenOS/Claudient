@@ -402,8 +402,3 @@ npx claudient add skill data-ml/synthetic-data
 
 - [Guide : Claude pour les analystes de données](../guides/for-data-analyst.md)
 - [Workflow : Reporting de données](../workflows/data-reporting.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

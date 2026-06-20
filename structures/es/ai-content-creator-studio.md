@@ -31,8 +31,3 @@
 **Archivos de Configuración**
 ⚙️ `ffmpeg-render-presets.json`# Configuraciones de línea de comandos para renderizado por lotes de clips de redes sociales a velocidades de bits óptimas exactas
 📦 `obs-scene-collections.json` # Configuraciones de estudio OBS preconfiguradas para transmisión en vivo sin problemas y grabación de pantalla
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -80,8 +80,3 @@ When asked to research a legal question:
 - Do not use ambiguous defined terms or pronouns in contracts
 - Do not suggest storing privileged content outside firm-approved systems
 - Do not cite a regulation without flagging that the user should verify it is current
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

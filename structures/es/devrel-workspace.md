@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `devrel-config.json`     # Configuración del workspace: URLs de dashboard, endpoints de webhook de Slack, integraciones de calendario de eventos
 📦 `content-vault.md`       # Índice centralizado de todo el contenido publicado, muestras de código y enlaces de recursos con seguimiento de versiones
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

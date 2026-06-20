@@ -39,8 +39,3 @@
 ⚙️ `edge-agent-manifest.json`       # Liste des agents déployés, cœurs CPU alloués par agent, réservations de mémoire et affectations de modèles d'inférence par service
 ⚙️ `manufacturing-bill-of-materials.yaml` # Coûts des pièces, délais de livraison, fournisseurs et déclencheurs de réapprovisionnement pour filament et consommables matériel
 📦 `requirements.txt`               # Dépendances Python (chargeurs GGUF, bibliothèques de quantification, SDK de surveillance, cadres d'inférence pour déploiement edge)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

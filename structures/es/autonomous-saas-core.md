@@ -40,8 +40,3 @@
 **Archivos de Configuración**
 ⚙️ `config.yaml`          # Variables de entorno globales y puntos finales de modelos
 📦 `pyproject.toml`       # Dependencias de Python (LangGraph, Boto3, etc.)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

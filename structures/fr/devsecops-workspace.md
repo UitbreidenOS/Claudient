@@ -36,8 +36,3 @@
 **Fichiers de Configuration**
 ⚙️ `semgrep-rules.yaml`        # Règles d'analyse statique personnalisées spécifiquement adaptées à la pile technologique de l'entreprise
 📦 `opa-policies.rego`         # Règles Open Policy Agent appliquant la conformité de l'infrastructure au niveau Kubernetes/Terraform
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

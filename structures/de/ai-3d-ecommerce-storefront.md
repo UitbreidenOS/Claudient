@@ -37,8 +37,3 @@
 **Konfigurationsdateien**
 ⚙️ `openapi-schema.yaml`           # Die alleinige Quelle der Wahrheit für Health-API-Verträge, um sicherzustellen, dass das Frontend nie bricht
 📦 `celery-worker.conf`            # Konfiguration für die asynchrone Aufgabenwarteschlangen, die nächtliche Agent-Jobs verwalten
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

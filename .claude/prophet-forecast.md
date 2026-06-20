@@ -1,6 +1,6 @@
 # The Prophet: Predictive Outage & Tech Debt Report
 
-Generated: 2026-06-19T08:21:48.295Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
+Generated: 2026-06-20T12:34:30.567Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
 
 This report ranks codebase files by **Outage Risk Score**, which is calculated as:
 $$\text{Risk Score} = \text{Git Churn (last 100 commits)} \times \frac{\text{Line Count}}{100}$$
@@ -9,13 +9,13 @@ $$\text{Risk Score} = \text{Git Churn (last 100 commits)} \times \frac{\text{Lin
 
 | Rank | File Path | Churn (Edits) | Line Count | Outage Risk Score |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | `scripts/cli.js` | 14 | 2751 | **385.14** |
-| 2 | `site/src/components/os/apps/CliApp.tsx` | 5 | 1137 | **56.85** |
-| 3 | `site/src/components/os/apps/StacksApp.tsx` | 4 | 702 | **28.08** |
-| 4 | `site/src/components/os/apps/ToolkitApp.tsx` | 5 | 559 | **27.95** |
-| 5 | `site/src/components/os/apps/HomeApp.tsx` | 8 | 342 | **27.36** |
-| 6 | `site/src/components/os/apps/ShowcaseApp.tsx` | 4 | 461 | **18.44** |
-| 7 | `scripts/test-cli.js` | 7 | 211 | **14.77** |
+| 1 | `scripts/cli.js` | 15 | 2828 | **424.2** |
+| 2 | `site/src/components/os/apps/CliApp.tsx` | 6 | 1137 | **68.22** |
+| 3 | `site/src/components/os/apps/HomeApp.tsx` | 10 | 342 | **34.2** |
+| 4 | `site/src/components/os/apps/ToolkitApp.tsx` | 6 | 559 | **33.54** |
+| 5 | `site/src/components/os/apps/ShowcaseApp.tsx` | 6 | 521 | **31.26** |
+| 6 | `site/src/components/os/apps/StacksApp.tsx` | 4 | 702 | **28.08** |
+| 7 | `scripts/test-cli.js` | 8 | 226 | **18.08** |
 | 8 | `site/src/components/os/apps.ts` | 7 | 208 | **14.56** |
 | 9 | `site/src/components/os/apps/InstallApp.tsx` | 5 | 231 | **11.55** |
 | 10 | `site/src/components/os/apps/McpApp.tsx` | 3 | 320 | **9.6** |
@@ -58,17 +58,17 @@ $$\text{Risk Score} = \text{Git Churn (last 100 commits)} \times \frac{\text{Lin
 | 47 | `scripts/validate-stacks.js` | 1 | 156 | **1.56** |
 | 48 | `scripts/enforce.js` | 1 | 148 | **1.48** |
 | 49 | `site/src/components/os/ClaudientOS.tsx` | 2 | 73 | **1.46** |
-| 50 | `scripts/prophet.js` | 1 | 144 | **1.44** |
-| 51 | `scripts/jit.js` | 1 | 143 | **1.43** |
-| 52 | `scripts/handoff.js` | 1 | 140 | **1.4** |
-| 53 | `scripts/generate-benchmarks.js` | 1 | 140 | **1.4** |
-| 54 | `scripts/tdd.js` | 1 | 138 | **1.38** |
-| 55 | `site/src/components/os/apps/AboutApp.tsx` | 2 | 69 | **1.38** |
-| 56 | `site/src/components/os/Window.tsx` | 1 | 132 | **1.32** |
-| 57 | `site/src/components/os/apps/CompareApp.tsx` | 1 | 126 | **1.26** |
-| 58 | `scripts/spec.js` | 1 | 124 | **1.24** |
-| 59 | `site/src/components/os/apps/WorkflowsApp.tsx` | 1 | 117 | **1.17** |
-| 60 | `scripts/add-descriptions.js` | 1 | 117 | **1.17** |
+| 50 | `scripts/sentinel.js` | 1 | 145 | **1.45** |
+| 51 | `scripts/prophet.js` | 1 | 144 | **1.44** |
+| 52 | `scripts/jit.js` | 1 | 143 | **1.43** |
+| 53 | `scripts/handoff.js` | 1 | 140 | **1.4** |
+| 54 | `scripts/generate-benchmarks.js` | 1 | 140 | **1.4** |
+| 55 | `scripts/tdd.js` | 1 | 138 | **1.38** |
+| 56 | `site/src/components/os/apps/AboutApp.tsx` | 2 | 69 | **1.38** |
+| 57 | `site/src/components/os/Window.tsx` | 1 | 132 | **1.32** |
+| 58 | `site/src/components/os/apps/CompareApp.tsx` | 1 | 126 | **1.26** |
+| 59 | `scripts/spec.js` | 1 | 124 | **1.24** |
+| 60 | `site/src/components/os/apps/WorkflowsApp.tsx` | 1 | 117 | **1.17** |
 | 61 | `site/src/components/os/useWindows.ts` | 1 | 116 | **1.16** |
 | 62 | `scripts/repair.js` | 1 | 111 | **1.11** |
 | 63 | `scripts/commit.js` | 1 | 100 | **1** |

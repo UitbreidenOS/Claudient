@@ -35,8 +35,3 @@
 **Configuratiebestanden**
 ⚙️ `stripe-rapid-checkout.json`    # Webhook configuraties ontworpen om betalingen vast te leggen met minimale gebruiker friction
 📦 `multi-agent-orchestrator.yaml` # De state machine routing taken tussen verschillende gespecialiseerde AI agent personas
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

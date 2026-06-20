@@ -547,8 +547,3 @@ npx claudient add skills finance
 - [Flujo de transacciones](../workflows/deal-flow.md)
 - [Flujo del proceso de memorando de IC](../workflows/ic-memo-process.md)
 - [Informe de LP](../workflows/lp-reporting.md)
-
----
-
-🔗 **[Uitbreiden — construyendo productos de IA y herramientas B2B con comunidades de desarrolladores.](https://uitbreiden.com/)**
-📺 **[Suscríbase a nuestro canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

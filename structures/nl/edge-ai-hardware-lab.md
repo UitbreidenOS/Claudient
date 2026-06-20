@@ -39,8 +39,3 @@
 ⚙️ `edge-agent-manifest.json`       # Geïmplementeerde agentlijst, toegewezen CPU-kernen per agent, geheugenreserveringen, en inferentiemodeltowijzingen per service
 ⚙️ `manufacturing-bill-of-materials.yaml` # Onderdeelkosten, levertijden, leveranciers, en herbestellingstriggers voor filament en hardwareconsumables
 📦 `requirements.txt`               # Python-afhankelijkheden (GGUF-loaders, kwantiseringsbibliotheken, monitoring-SDK's, inferenceraamwerken voor edge-implementatie)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

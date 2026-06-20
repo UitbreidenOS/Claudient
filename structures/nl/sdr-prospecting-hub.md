@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `apollo-filters.json`       # Saved boolean search strings for automated list building
 📦 `sequence-timeline.yaml`    # The exact day-by-day cadence map (Email -> Call -> LinkedIn)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

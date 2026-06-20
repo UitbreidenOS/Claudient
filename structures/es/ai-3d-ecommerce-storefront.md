@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `openapi-schema.yaml`           # La única fuente de verdad para los contratos health-api, asegurando que la interfaz principal nunca se rompa
 📦 `celery-worker.conf`            # Configuración para colas de tareas asincrónicas que gestionan trabajos de agentes nocturnos
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

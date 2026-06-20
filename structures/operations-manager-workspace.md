@@ -425,8 +425,3 @@ npx claudient add skill productivity/engineering-strategy
 
 - [Operations Manager guide](../guides/for-operations-manager.md)
 - [Weekly ops workflow](../workflows/weekly-ops-review.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

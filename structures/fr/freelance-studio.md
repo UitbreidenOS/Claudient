@@ -496,8 +496,3 @@ npx claudient add skills small-business
 - [Processus d'intégration client](../workflows/client-onboarding.md)
 - [Processus proposition-contrat](../workflows/proposal-to-contract.md)
 - [Processus de facturation](../workflows/invoice-and-billing.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

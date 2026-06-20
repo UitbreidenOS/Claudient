@@ -91,8 +91,3 @@ Before any PR touching payments, auth, or PII handling:
 - Do not bypass RBAC checks for "convenience" in admin tools
 - Do not commit secrets or hardcoded credentials — even test/dummy values normalize bad habits
 - Do not implement custom crypto — use the functions in `internal/crypto/`
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

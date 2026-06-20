@@ -350,8 +350,3 @@ npx claudient add skills gtm
 - [Guía para Account Executive](../guides/for-account-executive.md)
 - [Workflow del ciclo de deals AE](../workflows/ae-deal-cycle.md)
 - [Workflow de screening de deals](../workflows/deal-screening.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

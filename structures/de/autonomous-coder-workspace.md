@@ -36,8 +36,3 @@
 **Konfigurationsdateien**
 ⚙️ `Makefile`              # `make run-overnight` (triggert Sandbox-Build und Agent-Kickoff)
 📦 `agent-config.toml`     # LLM-Routing und Token-Limit-Konfigurationen
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

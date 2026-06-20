@@ -423,8 +423,3 @@ npx claudient add skill productivity/lit-review
 
 - [Guía de Escritor Técnico](../guides/for-technical-writer.md)
 - [Flujo de Trabajo de Escritura de Changelog](../workflows/changelog-writing.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

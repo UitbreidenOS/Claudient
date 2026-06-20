@@ -101,8 +101,3 @@ Load unpacked: `chrome://extensions/` → Developer mode → Load unpacked → s
 - Do not request `<all_urls>` when specific origins suffice
 - Do not use `eval()` or inline scripts — CSP in MV3 disallows them
 - Do not ship the `dist/` folder to source control — it is built output
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

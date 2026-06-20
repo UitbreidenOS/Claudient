@@ -452,8 +452,3 @@ npx claudient add skill product/competitive-teardown
 
 - [Guide : Claude pour les designers UX](../guides/for-ux-designer.md)
 - [Workflow : De la recherche au transfert](../workflows/research-to-handoff.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

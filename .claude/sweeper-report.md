@@ -1,6 +1,6 @@
 # Codebase Sweeper Quality Report
 
-Generated: 2026-06-19T08:21:45.759Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
+Generated: 2026-06-20T12:34:29.355Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
 Total issues detected: **19**
 
 ### 📁 `scripts/audit-certified.js`

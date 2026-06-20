@@ -85,9 +85,17 @@
     "benchmark": "node scripts/generate-benchmarks.js",
     "test": "node scripts/test-cli.js",
     "add-descriptions": "node scripts/add-descriptions.js",
-    "translate": "node scripts/translate-assets.js"
+    "translate": "node scripts/translate-assets.js",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "sharp": "^0.35.1"
+  },
+  "lint-staged": {
+    "*.md": [
+      "npm run validate:frontmatter"
+    ]
   }
 }

@@ -404,8 +404,3 @@ npx claudient add skill marketing/pricing-strategy
 
 - [Guide: Claude for Growth Marketers](../guides/for-growth-marketer.md)
 - [Workflow: Experiment Design to Decision](../workflows/experiment-lifecycle.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

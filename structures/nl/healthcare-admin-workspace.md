@@ -434,8 +434,3 @@ npx claudient add skill productivity/exec-briefing
 - [Healthcare Administrator gids](../guides/for-healthcare-admin.md)
 - [Prior authorization werkstroom](../workflows/prior-auth-workflow.md)
 - [HIPAA compliance audit werkstroom](../workflows/hipaa-compliance-audit.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

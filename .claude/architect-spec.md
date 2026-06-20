@@ -1,7 +1,7 @@
 # Architect Implementation Specification
 
 > Generated for task: "test task"
-> Date: 2026-06-19T08:21:44.479Z
+> Date: 2026-06-20T12:34:28.869Z
 
 ## 🗺️ Architectural Constraints & Scope
 - Scope of edit: Create a clean standalone helper utility.

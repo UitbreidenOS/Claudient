@@ -455,8 +455,3 @@ npx claudient add skill productivity/weekly-review
 - [Guide agent immobilier](../guides/for-real-estate-agent.md)
 - [Workflow de lancement d'annonce](../workflows/listing-launch.md)
 - [Workflow de tournée acheteur](../workflows/buyer-tour-cycle.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

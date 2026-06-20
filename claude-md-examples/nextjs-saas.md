@@ -100,8 +100,3 @@ pnpm typecheck        # tsc --noEmit across all packages
 - Do not add a new shadcn component to `apps/web/` — it belongs in `packages/ui/`
 - Do not bypass TypeScript errors with `// @ts-ignore` — fix the type
 - Do not commit `.env.local` or any file containing secrets
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

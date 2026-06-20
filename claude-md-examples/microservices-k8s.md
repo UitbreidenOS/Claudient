@@ -102,8 +102,3 @@ kubectl logs -f deployment/auth  # Tail service logs
 - Do not add resource-unlimited containers (`resources: {}`)
 - Do not make cross-service database joins — each service owns its data
 - Do not bypass the API gateway for external-facing endpoints
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -348,8 +348,3 @@ npx claudient add skill marketing/seo-audit
 
 - [Leitfaden: Claude für Content-Marketer](../guides/for-content-marketer.md)
 - [Workflow: Content-Erstellung von Anfang bis Ende](../workflows/content-creation.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

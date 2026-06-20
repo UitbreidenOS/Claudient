@@ -95,8 +95,3 @@ Every structure file follows the same eight-section format so you always know wh
 
 - [Guides](../guides/) — in-depth documentation on Claude Code features, tools, and integrations
 - [Workflows](../workflows/) — end-to-end multi-step process documentation for recurring tasks
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

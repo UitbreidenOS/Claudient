@@ -35,8 +35,3 @@
 **Fichiers de Configuration**
 ⚙️ `multi-agent-orchestrator.json`# Le graphique d'état définissant comment les employés IA virtuels confient les tâches
 📦 `slicer-profiles.yaml`         # Paramètres de trancheur d'imprimante 3D unifiés optimisés pour différentes résistances à la traction des matériaux
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

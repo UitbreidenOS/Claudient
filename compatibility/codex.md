@@ -550,8 +550,3 @@ codex --prompt fastapi-users
 - **OpenAI API reference**: https://platform.openai.com/docs/api-reference
 - **Claudient repository**: https://github.com/uitbreiden/claudient
 - **AGENTS.md specification**: [See Codex documentation for agent format]
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

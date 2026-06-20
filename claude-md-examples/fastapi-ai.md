@@ -109,8 +109,3 @@ ENVIRONMENT          # development | staging | production
 - Do not call `chain.invoke()` in async code — use `ainvoke()`
 - Do not define Pydantic models with v1 syntax (`class Config`, `@validator`)
 - Do not run long tasks synchronously in route handlers — dispatch to Celery
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

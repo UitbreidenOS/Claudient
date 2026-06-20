@@ -36,8 +36,3 @@
 **Fichiers de Configuration**
 ⚙️ `envoy.yaml`                  # Configurations du proxy de périphérie pour router le trafic haut débit
 📦 `go.mod`                      # Dépendances Go pour la gestion concurrente des requêtes ultra-rapide
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

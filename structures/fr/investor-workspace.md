@@ -453,8 +453,3 @@ npx claudient add skills finance
 - [Guide investisseur](../guides/for-investor.md)
 - [Workflow de deal flow](../workflows/deal-flow.md)
 - [Workflow de mémo CI](../workflows/ic-memo-process.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -102,8 +102,3 @@ cppcheck --project=build/release/compile_commands.json --enable=all --error-exit
 - [ ] No new `malloc`/`new`/`delete` introduced in `src/`
 - [ ] Linker map size delta reviewed: Flash +/- change noted in PR description
 - [ ] If a peripheral driver was modified: timing diagrams in `docs/peripherals/` updated
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

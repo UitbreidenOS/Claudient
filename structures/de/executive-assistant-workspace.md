@@ -405,8 +405,3 @@ npx claudient add skill productivity/doc-site-builder
 - [Leitfaden: Claude für Executive Assistants](../guides/for-executive-assistant.md)
 - [Workflow: Board-Meeting-Zyklus](../workflows/board-meeting-cycle.md)
 - [Workflow: Executive Weekly](../workflows/executive-weekly.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

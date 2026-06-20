@@ -65,9 +65,7 @@ jobs:
             -not -path "guides/es/*" \
             -not -path "guides/nl/*" \
             | head -30 \
-            | xargs -I{} markdown-link-check -q -c .markdown-link-check.json {} || true
-        # Link check is advisory — external URLs may be temporarily down
-        continue-on-error: true
+            | xargs -I{} markdown-link-check -q -c .markdown-link-check.json {}
 
   manifest-consistency:
     name: Manifest Consistency

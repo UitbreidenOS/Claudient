@@ -36,8 +36,3 @@
 **Archivos de Configuración**
 ⚙️ `orbit-workspace.yaml`        # Configuración de API para extraer actividad de GitHub, Twitter y Discord en un CRM comunitario unificado
 📦 `cross-post-webhooks.json`    # Integraciones para auto-publicar contenido aprobado directamente en plataformas para desarrolladores
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

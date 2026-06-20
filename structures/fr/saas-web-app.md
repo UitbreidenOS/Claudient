@@ -431,8 +431,3 @@ npx claudient add skill devops-infra/vercel
 
 - [Guide Next.js Full-Stack](../guides/nextjs-app-router.md)
 - [Workflow d'intégration Stripe](../workflows/stripe-billing.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

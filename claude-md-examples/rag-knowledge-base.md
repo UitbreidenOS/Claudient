@@ -104,8 +104,3 @@ python -m evaluation.ragas_eval --golden-set evaluation/golden_set/
 - Do not modify the generation system prompt without evaluation
 - Do not generate answers when no relevant context was retrieved — return a "don't know" response
 - Do not add new document types without testing chunking quality on samples first
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

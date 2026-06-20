@@ -35,8 +35,3 @@
 **Fichiers de configuration**
 ⚙️ `agent-permissions.json`      # Commandes CLI autorisées (par exemple, `npm run build`, `git commit`) que l'agent est légalement autorisé à exécuter
 📦 `bedrock-models.yaml`         # Épinglage de version pour des modèles de fondation AWS Bedrock spécifiques pour éviter la dérive d'invite
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

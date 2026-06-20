@@ -69,6 +69,20 @@ function readTitle(filepath) {
   }
 }
 
+function getQualityTier(content) {
+  let score = 0;
+  if (/^description:\s*(.+)$/m.test(content)) score++;
+  if (/## when to activate/i.test(content)) score++;
+  if (/## when not to use/i.test(content)) score++;
+  if (/## instructions/i.test(content)) score++;
+  if (/## example/i.test(content)) score++;
+  const textOnly = content.replace(/^---\n[\s\S]*?\n---/, '').replace(/[#*_>]/g, '')
+  const wordCount = textOnly.split(/\s+/).filter(w => w.length > 0).length
+  if (score === 5 && wordCount >= 150) return 'Gold'
+  if (score >= 3 && wordCount >= 50) return 'Silver'
+  return 'Bronze'
+}
+
 const index = {
   version: require(path.join(ROOT, 'package.json')).version,
   generated: new Date().toISOString(),
@@ -99,12 +113,14 @@ for (const cat of SKILL_CATEGORIES) {
     const lang = getLang(rel)
     const slug = rel.replace(/^skills\//, '').replace(/\.md$/, '').replace(/\/(fr|de|nl|es)\//, '/')
     const fm = readFrontmatter(file)
+    const content = fs.readFileSync(file, 'utf-8')
     index.skills.push({
       id: slug,
       category: cat,
       lang,
       title: readTitle(file),
       description: fm.description || '',
+      tier: getQualityTier(content),
       file: rel,
     })
   }

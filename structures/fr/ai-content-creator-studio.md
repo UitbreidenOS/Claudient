@@ -31,8 +31,3 @@
 **Fichiers de Configuration**
 ⚙️ `ffmpeg-render-presets.json`# Configurations de ligne de commande pour le rendu par lots de clips de médias sociaux aux débits binaires optimaux exacts
 📦 `obs-scene-collections.json` # Configurations OBS studio préconfigurées pour une diffusion en direct et un enregistrement d'écran impeccables
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -1,6 +1,6 @@
 # AST Outage Prediction & Blast Radius Report
 
-Generated: 2026-06-19T08:21:41.190Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
+Generated: 2026-06-20T12:34:25.172Z | Target Workspace: `/Users/tushar/Desktop/Claudient`
 
 ## 🗺️ Downstream Blast Radius
 Total changed/analyzed files: **1**
@@ -12,6 +12,6 @@ Total downstream affected files: **0**
 ## ⚡ Concurrency, Lockup & Outage Audit
 
 ### 📁 `scripts/cli.js`
-- **[UNHANDLED_REJECTION]** Line 1028 — Promise instantiation without immediate error catch registration.
-- **[UNHANDLED_REJECTION]** Line 2358 — Promise instantiation without immediate error catch registration.
+- **[UNHANDLED_REJECTION]** Line 1061 — Promise instantiation without immediate error catch registration.
+- **[UNHANDLED_REJECTION]** Line 2429 — Promise instantiation without immediate error catch registration.
 

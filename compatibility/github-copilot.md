@@ -427,9 +427,3 @@ See `docs/copilot-instructions/` for additional patterns:
 - [Cursor adapter](cursor.md) — Similar approach for Cursor's `.cursorrules`
 - [Windsurf adapter](windsurf.md) — Cascade workflows for agent-like behavior
 - [Claudient skills library](../skills/) — 380+ skills to adapt
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

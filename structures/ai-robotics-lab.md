@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `rapid-monetization-webhooks.json` # Stripe configurations mapped to dynamically price virtual AI employee tasks
 📦 `slicer-clearance-profiles.yaml`   # Automated 0.2mm tolerance checks ensuring snap-fit enclosures assemble flawlessly
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -32,8 +32,3 @@
 **Configuration Files**
 ⚙️ `bedrock-agent-schema.json`      # Infrastructure-as-code defining the action groups and OpenAPI schemas for AWS Bedrock agents
 📦 `redis-memory-cache.yaml`        # Configuration for fast, short-term memory retrieval across the agent cluster
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

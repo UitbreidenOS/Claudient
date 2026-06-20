@@ -108,8 +108,3 @@ When scaffolding a new app in `apps/`:
 - Do not modify `packages/config/*` without checking that all apps still pass typecheck
 - Do not run `pnpm install` inside a specific app — always run from root
 - Do not commit changes to `pnpm-lock.yaml` alongside unrelated changes
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

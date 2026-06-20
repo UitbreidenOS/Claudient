@@ -184,8 +184,3 @@ Observability für einen Payment-Microservice:
 - Loki aggregiert strukturierte Logs; LogQL-Abfrage `{service="payments"} | json | level="ERROR"` wird in Grafana-Alert verwendet
 - Trace-Exemplare auf dem Latenz-Histogram verknüpfen p99-Ausreißer direkt mit Tempo-Trace-IDs
 - Burn-Rate-Alert alarmiert On-Call, wenn 2% des Error Budgets in 1 Stunde verbraucht ist; Grafana-SLO-Dashboard zeigt verbleibendes Budget
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

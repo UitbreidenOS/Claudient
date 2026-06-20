@@ -35,8 +35,3 @@
 **Configuratiebestanden**
 ⚙️ `multi-agent-orchestrator.json`# De statusgrafiek die bepaalt hoe virtuele AI-werknemers taken overdragen
 📦 `slicer-profiles.yaml`         # Geïntegreerde 3D-printer-slicer-instellingen geoptimaliseerd voor verschillende materiaaltreksterkten
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

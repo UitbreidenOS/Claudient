@@ -475,8 +475,3 @@ npx claudient add skill productivity/vendor-evaluator
 - [Workflow: New Product Launch](../workflows/new-product-launch.md)
 - [Workflow: Weekly Performance Review](../workflows/weekly-performance-review.md)
 - [Workflow: Inventory Reorder](../workflows/inventory-reorder.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

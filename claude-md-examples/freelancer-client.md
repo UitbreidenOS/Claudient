@@ -150,8 +150,3 @@ This is one of several client repositories on this machine. When working here:
 | Lint | `pnpm lint` |
 | Create migration | `pnpm migrate:create <name>` |
 | Apply migrations (local) | `pnpm migrate:up` |
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

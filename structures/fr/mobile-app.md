@@ -444,8 +444,3 @@ npx claudient add skill productivity/test-generator
 
 - [Guide de développement mobile](../guides/mobile-expo-react-native.md)
 - [Workflow EAS Build et Update](../workflows/eas-build-update.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

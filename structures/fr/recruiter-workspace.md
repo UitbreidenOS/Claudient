@@ -427,8 +427,3 @@ npx claudient add skill small-business/job-description
 
 - [Guide recruteur — documentation complète du workflow](../guides/for-recruiter.md)
 - [Workflow pipeline de recrutement — processus de bout en bout](../workflows/hiring-pipeline.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

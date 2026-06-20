@@ -31,8 +31,3 @@
 **Configuration Files**
 ⚙️ `ffmpeg-render-presets.json`# Command-line configurations for batch-rendering social media clips to exact optimal bitrates
 📦 `obs-scene-collections.json` # Pre-configured OBS studio setups for flawless live-streaming and screen recording
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

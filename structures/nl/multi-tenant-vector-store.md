@@ -36,8 +36,3 @@
 **Configuratiebestanden**
 ⚙️ `qdrant-schema.json`           # Definieert de exacte laadstructuur, zodat `tenant_id` een vereiste index is
 📦 `package.json`                 # Node/TypeScript-afhankelijkheden (LangChain, vector DB SDK's, JWT-hulpprogramma's)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

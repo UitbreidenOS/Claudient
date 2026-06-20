@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `dbt_project.yml`                # Define materializaciones de modelos (tabla vs. vista) y agrupaciones de etiquetas
 📦 `airflow.cfg`                    # Configuraciones principales del programador y límites de concurrencia del trabajador
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

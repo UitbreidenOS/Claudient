@@ -76,8 +76,3 @@ When writing product descriptions:
 - Do not suggest changes to Shopify theme code unless I specifically ask and you walk me through it
 - Do not suggest apps without checking if they have a free tier or trial
 - Do not make changes without confirming first — even small ones
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

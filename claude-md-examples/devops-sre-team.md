@@ -102,8 +102,3 @@ Every runbook must:
 - Never suggest changes to `prod/` without asking if staging has been tested first
 - Never write a runbook with ambiguous steps or untested commands
 - Never suggest storing secrets in Git — always use the secrets manager (Vault)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

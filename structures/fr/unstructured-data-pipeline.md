@@ -37,8 +37,3 @@
 **Fichiers de Configuration**
 ⚙️ `docker-compose.gpu.yml`         # Configuration pour les travailleurs de traitement locaux avec CUDA activé
 📦 `requirements.txt`               # FFmpeg-python, PyMuPDF, WhisperX et dépendances OpenCV
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

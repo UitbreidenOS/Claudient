@@ -35,8 +35,3 @@
 **Configuration Files**
 ⚙️ `docker-compose.yml`              # Local Kafka, Zookeeper, and Redis cluster setup
 📦 `go.mod`                          # Go dependencies (concurrency is critical for streaming throughput)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

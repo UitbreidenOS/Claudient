@@ -107,8 +107,3 @@ Run tests: `dbt test --select staging` before promoting to marts.
 - Do not add a model without a corresponding schema YAML file
 - Do not run full `dbt run` on the production warehouse during development
 - Do not use `VARIANT` columns in mart models — flatten before exposing to BI
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

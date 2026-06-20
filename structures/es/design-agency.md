@@ -461,8 +461,3 @@ npx claudient add skill data-ml/stakeholder-report
 - [Guía: Claude para diseñadores UX](../guides/for-ux-designer.md)
 - [Workflow: Del lanzamiento del proyecto cliente a la entrega](../workflows/design-project-lifecycle.md)
 - [Workflow: Ciclo de revisión de diseño](../workflows/design-review-cycle.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

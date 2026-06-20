@@ -64,8 +64,3 @@ system=[{"type": "text", "text": SYSTEM_PROMPT, "cache_control": {"type": "ephem
 # Append full content — never just the text — to preserve tool_use blocks
 messages.append({"role": "assistant", "content": response.content})
 ```
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

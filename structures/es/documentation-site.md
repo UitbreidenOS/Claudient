@@ -420,8 +420,3 @@ npx claudient add skill testing/playwright
 
 - [Guía de Escritura Técnica](../guides/technical-writing.md)
 - [Flujo de Trabajo de Documentación](../workflows/doc-publishing.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

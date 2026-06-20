@@ -435,8 +435,3 @@ npx claudient add skills legal
 - [Legal & Compliance guide](../guides/for-legal-compliance.md)
 - [Contract review workflow](../workflows/contract-review-cycle.md)
 - [GDPR compliance workflow](../workflows/gdpr-compliance.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

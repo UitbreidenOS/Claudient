@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `langgraph-config.yaml`    # Definición del estado del gráfico asignando los nodos (supervisor) y aristas (trabajadores)
 📦 `pyproject.toml`           # Dependencias de Python y requisitos de compilación
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

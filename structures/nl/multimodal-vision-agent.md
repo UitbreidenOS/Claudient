@@ -37,8 +37,3 @@
 **Configuratiebestanden**
 ⚙️ `docker-compose.yml`       # Worker nodes en Redis queue configuraties
 📦 `requirements.txt`         # Dependencies (PyMuPDF, OpenCV, Anthropic SDK)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

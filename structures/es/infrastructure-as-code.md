@@ -425,8 +425,3 @@ npx claudient add skill devops-infra/ecs-service-deploy
 
 - [Guía de Creación de Módulos de Terraform](../guides/terraform-modules.md)
 - [Flujo de Trabajo de Promoción de Entorno de AWS](../workflows/terraform-env-promotion.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -37,8 +37,3 @@
 **Archivos de Configuración**
 ⚙️ `docker-compose.yml`       # Configuraciones de nodos trabajadores y colas Redis
 📦 `requirements.txt`         # Dependencias (PyMuPDF, OpenCV, Anthropic SDK)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

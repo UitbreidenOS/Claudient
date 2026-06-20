@@ -828,8 +828,3 @@ npx claudient add skill devops-infra/de/oncall-runbook
 
 - [Data Engineering Guide](../guides/for-data-engineers.md)
 - [dbt Model Development Workflow](../workflows/dbt-model-development.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

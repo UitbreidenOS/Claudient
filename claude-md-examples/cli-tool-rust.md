@@ -96,8 +96,3 @@ Before `cargo publish`:
 - Do not bump MSRV without updating `Cargo.toml` and the README badge
 - Do not add `unsafe` code without a written safety comment explaining the invariant
 - Do not use `eprintln!` for errors — route through the error type and let `main` print it
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

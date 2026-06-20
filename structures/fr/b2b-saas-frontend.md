@@ -35,8 +35,3 @@
 **Fichiers de configuration**
 ⚙️ `next.config.mjs` / `vite.config.ts` # Configurations principales du bundler, application du mode strict, et listes blanches des domaines d'image
 📦 `tailwind.config.ts`                 # Définitions des classes utilitaires mappant directement aux jetons de conception Figma
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

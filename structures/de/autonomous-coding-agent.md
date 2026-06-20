@@ -35,8 +35,3 @@
 **Konfigurationsdateien**
 ⚙️ `agent-permissions.json`      # Whitelist-CLI-Befehle (z.B. `npm run build`, `git commit`), die der Agent rechtlich ausführen darf
 📦 `bedrock-models.yaml`         # Versions-Pinning für spezifische AWS Bedrock Foundation Models zur Vermeidung von Prompt-Drift
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

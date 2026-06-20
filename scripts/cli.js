@@ -1023,6 +1023,37 @@ function searchCommand(query) {
 
 // ── Init (interactive first-run setup) ───────────────────────────────────────
 
+function guardCommand(action, file) {
+  const BOLD  = '\x1b[1m'
+  const GREEN = '\x1b[32m'
+  const ORANGE = '\x1b[33m'
+  const RESET = '\x1b[0m'
+  
+  if (action === 'unlock') {
+    if (!file) {
+      console.error(`${ORANGE}Usage: npx claudient guard unlock <file>${RESET}`)
+      process.exit(1)
+    }
+    const unlockFile = path.join(process.cwd(), '.claudient-unlock')
+    let unlocked = []
+    if (fs.existsSync(unlockFile)) {
+      unlocked = fs.readFileSync(unlockFile, 'utf-8').split('\n').filter(Boolean)
+    }
+    const absPath = path.resolve(file)
+    if (!unlocked.includes(absPath)) {
+      unlocked.push(absPath)
+      fs.writeFileSync(unlockFile, unlocked.join('\n') + '\n')
+    }
+    console.log(`${GREEN}✓ Unlocked ${file} for AI modification.${RESET}`)
+    const DIM = '\x1b[2m'
+    console.log(`${DIM}Note: The Workspace Guardian hook will now allow edits to this file.${RESET}`)
+  } else {
+    console.log(`${BOLD}Workspace Guardian${RESET}`)
+    console.log(`Protects infrastructure files (package.json, .env, etc.) from AI overwrite.`)
+    console.log(`\nUsage: npx claudient guard unlock <file>`)
+  }
+}
+
 async function initCommand() {
   const readline = require('readline')
 
@@ -1050,6 +1081,44 @@ ${BOLD}╔═══════════════════════�
     process.exit(1)
   }
   console.log(`${GREEN}✓ Claude Code detected at ${CLAUDE_DIR}${RESET}\n`)
+
+  let detectedStacks = []
+  const cwd = process.cwd()
+  if (fs.existsSync(path.join(cwd, 'package.json'))) {
+    try {
+      const pkg = fs.readFileSync(path.join(cwd, 'package.json'), 'utf8')
+      if (pkg.includes('"next"')) detectedStacks.push('Next.js')
+      if (pkg.includes('"react"')) detectedStacks.push('React')
+      if (pkg.includes('"typescript"')) detectedStacks.push('TypeScript')
+      detectedStacks.push('Node.js')
+    } catch(e) {}
+  }
+  if (fs.existsSync(path.join(cwd, 'requirements.txt')) || fs.existsSync(path.join(cwd, 'pyproject.toml'))) {
+    detectedStacks.push('Python')
+  }
+  if (fs.existsSync(path.join(cwd, 'go.mod'))) {
+    detectedStacks.push('Go')
+  }
+  if (fs.existsSync(path.join(cwd, 'Cargo.toml'))) {
+    detectedStacks.push('Rust')
+  }
+
+  detectedStacks = [...new Set(detectedStacks)]
+
+  if (detectedStacks.length > 0) {
+    console.log(`${BOLD}✨ Magic Init Detected: ${detectedStacks.slice(0, 3).join(', ')}${RESET}`)
+    const magicInput = (await ask('  Run Magic Init to auto-configure best rules and hooks for this stack? [Y/n] ')).trim().toLowerCase()
+    if (magicInput !== 'n') {
+      console.log(`\n${GREEN}Running Magic Init...${RESET}\n`)
+      addHooks()
+      addRulesWrite()
+      addSkills(null, 'en')
+      addAgents()
+      console.log(`\n${GREEN}✓ Magic Init complete! Claudient is fully optimized for your stack.${RESET}\n`)
+      rl.close()
+      return
+    }
+  }
 
   const summary = { skills: [], agents: false, hooks: false, rules: false, lang: 'en', telemetry: true }
 
@@ -2724,6 +2793,9 @@ switch (command) {
     break
   case 'sentinel':
     runSentinel(positional[0] || '.')
+    break
+  case 'guard':
+    guardCommand(positional[0], positional[1])
     break
   case 'checkpoint': {
     const taskSummary = positional.join(' ')

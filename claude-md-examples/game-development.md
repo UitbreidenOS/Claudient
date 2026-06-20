@@ -118,8 +118,3 @@ Currently single-player. If adding multiplayer: this project targets **Unity Net
 WebGL builds: `unsafe` C# blocks are not allowed, `System.Threading.Thread` is not available, and all texture compression must be DXT/S3TC. Validate WebGL compatibility before suggesting any of those patterns.
 
 ---
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

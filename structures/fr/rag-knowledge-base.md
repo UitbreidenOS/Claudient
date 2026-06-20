@@ -625,8 +625,3 @@ npx claudient add skill git/pr-description
 - [Opérations sur la Base de Données Vectorielle](../guides/vector-db-ops.md)
 - [Workflow d'Ingestion de Documents](../workflows/document-ingestion.md)
 - [Workflow d'Évaluation RAGAS](../workflows/ragas-evaluation.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -36,8 +36,3 @@
 **Konfigurationsdateien**
 ⚙️ `social-auth-tokens.json`       # Sicher verschlüsselte OAuth-Token, die es den Agenten ermöglichen, direkt in Ihre Social-Channels zu veröffentlichen
 📦 `multi-agent-orchestrator.yaml` # Die State Machine, die definiert, wie der Copywriter-Agent Assets an den Distribution-Agent übergibt
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

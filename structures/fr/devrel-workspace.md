@@ -37,8 +37,3 @@
 **Fichiers de configuration**
 ⚙️ `devrel-config.json`     # Paramètres d'espace de travail : URL de tableau de bord, points de terminaison webhook Slack, intégrations de calendrier d'événements
 📦 `content-vault.md`       # Index centralisé de tout le contenu publié, les exemples de code et les liens de ressources avec suivi de version
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

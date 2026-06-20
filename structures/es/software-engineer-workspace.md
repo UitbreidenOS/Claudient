@@ -385,8 +385,3 @@ npx claudient add skill productivity/tech-debt-tracker
 
 - [Guía del Ingeniero de Software](../guides/for-software-engineer.md)
 - [Flujo de Trabajo de Desarrollo de Características](../workflows/feature-development.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

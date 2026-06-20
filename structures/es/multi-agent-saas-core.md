@@ -39,8 +39,3 @@
 ⚙️ `pnpm-workspace.yaml`       # Gestor de arquitectura monorepo (panel de Next.js + núcleo de agente FastAPI)
 ⚙️ `prisma.schema`              # Esquema de base de datos que refuerza relaciones estrictas de TenantId
 📦 `poetry.lock`                # Archivo de bloqueo de dependencias de Python rápido y determinista
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -463,8 +463,3 @@ npx claudient add skill productivity/investor-update
 - [Guide: Claude for Marketing Teams](../guides/for-content-marketer.md)
 - [Workflow: Campaign Launch end-to-end](../workflows/campaign-launch.md)
 - [Workflow: Monthly Client Reporting](../workflows/monthly-reporting.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

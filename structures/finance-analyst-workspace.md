@@ -390,8 +390,3 @@ npx claudient add skill data-ml/stakeholder-report
 - [Workflow: Month-End Close](../workflows/month-end-close.md)
 - [Workflow: Board Pack Preparation](../workflows/board-pack-prep.md)
 - [Workflow: Annual Budgeting](../workflows/annual-budgeting.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -35,8 +35,3 @@
 **Archivos de Configuración**
 ⚙️ `next.config.mjs` / `vite.config.ts` # Configuraciones centrales del empaquetador, aplicación de modo estricto y listas blancas de dominio de imagen
 📦 `tailwind.config.ts`                 # Definiciones de clases de utilidad asignadas directamente a tokens de diseño de Figma
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

@@ -35,8 +35,3 @@
 **Archivos de Configuración**
 ⚙️ `docker-compose.yml`              # Configuración local de clúster Kafka, Zookeeper y Redis
 📦 `go.mod`                          # Dependencias de Go (la concurrencia es crítica para el rendimiento de la transmisión)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

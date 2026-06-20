@@ -632,9 +632,3 @@ No explicit invocation needed—Cascade reads and applies rules automatically.
 - [Codeium memory system](https://codeium.com/docs/windsurf/memories)
 - [Claudient skills library](https://github.com/claudient/claudient)
 - [Claudient agents](https://github.com/claudient/claudient/tree/main/agents)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

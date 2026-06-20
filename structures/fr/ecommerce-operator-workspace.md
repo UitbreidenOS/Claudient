@@ -367,8 +367,3 @@ npx claudient add skill marketing/page-cro
 - [Guide : Claude pour les opérateurs e-commerce](../guides/for-ecommerce-operator.md)
 - [Workflow : Lancement de nouveau produit](../workflows/new-product-launch.md)
 - [Workflow : Revue de performance hebdomadaire](../workflows/weekly-performance-review.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

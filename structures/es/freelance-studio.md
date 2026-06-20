@@ -496,8 +496,3 @@ npx claudient add skills small-business
 - [Flujo de trabajo de incorporación de cliente](../workflows/client-onboarding.md)
 - [Flujo de trabajo propuesta a contrato](../workflows/proposal-to-contract.md)
 - [Flujo de trabajo de factura y facturación](../workflows/invoice-and-billing.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

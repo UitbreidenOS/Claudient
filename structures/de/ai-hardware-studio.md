@@ -35,8 +35,3 @@
 **Konfigurationsdateien**
 ⚙️ `multi-agent-orchestrator.json`# Der State-Graph, der definiert, wie virtuelle KI-Mitarbeiter Aufgaben weitergeben
 📦 `slicer-profiles.yaml`         # Einheitliche 3D-Drucker-Slicer-Einstellungen, optimiert für verschiedene Materialsäurezerreißfestigkeit
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

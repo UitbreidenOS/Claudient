@@ -36,8 +36,3 @@
 **Fichiers de configuration**
 ⚙️ `social-auth-tokens.json`       # Jetons OAuth chiffrés de manière sécurisée permettant aux agents de publier directement sur vos canaux sociaux
 📦 `multi-agent-orchestrator.yaml` # La machine à états définissant comment l'agent Copywriter remet les actifs à l'agent Distribution
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

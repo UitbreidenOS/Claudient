@@ -38,8 +38,3 @@
 **Fichiers de Configuration**
 ⚙️ `Modelfile`                # Instructions Ollama personnalisées et paramètres (température, top_k)
 ⚙️ `docker-compose.local.yml` # Pile locale autonome pour ChromaDB, UI et service de modèle
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

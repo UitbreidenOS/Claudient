@@ -410,8 +410,3 @@ npx claudient add skill small-business/content-repurposer
 
 - [Guide: Claude for Content Creators](../guides/for-content-marketer.md)
 - [Workflow: Content Creation end-to-end](../workflows/content-creation.md)
-
----
-
-🔗 **[Uitbreiden — building AI products and B2B tools with developer communities.](https://uitbreiden.com/)**
-📺 **[Subscribe to our YouTube Channel for more deep dives](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

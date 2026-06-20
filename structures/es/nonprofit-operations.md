@@ -538,8 +538,3 @@ npx claudient add skill productivity/interview-scorecard
 - [Flujo de trabajo de redacción de subvenciones](../workflows/grant-writing-workflow.md)
 - [Flujo de trabajo de administración de donantes](../workflows/donor-stewardship-workflow.md)
 - [Flujo de trabajo de preparación del IRS 990](../workflows/990-prep-workflow.md)
-
----
-
-🔗 **[Uitbreiden — construyendo productos de IA y herramientas B2B con comunidades de desarrolladores.](https://uitbreiden.com/)**
-📺 **[Suscríbase a nuestro canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**

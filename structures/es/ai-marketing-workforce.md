@@ -36,8 +36,3 @@
 **Archivos de Configuración**
 ⚙️ `social-auth-tokens.json`       # Tokens OAuth encriptados de forma segura que permiten a los agentes publicar directamente en tus canales sociales
 📦 `multi-agent-orchestrator.yaml` # La máquina de estado que define cómo el Agente de Redactor delega activos al Agente de Distribución
-
----
-
-🔗 **[Uitbreiden — construyendo productos de IA y herramientas B2B con comunidades de desarrolladores.](https://uitbreiden.com/)**
-📺 **[Suscríbete a nuestro canal de YouTube para más análisis profundos](https://www.youtube.com/channel/UCcvK8pHyqeR7Q_0lYkuHlUg)**
