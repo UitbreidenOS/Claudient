@@ -65,3 +65,12 @@ coverage/
 package-lock.json
 .vercel
 .env*
+
+# Internal reports, strategy, and confidential documents
+.internal/
+internal/
+**/AUDIT_*.md
+**/REPORT_*.md
+**/STRATEGY_*.md
+**/ROADMAP_INTERNAL.md
+**/*CONFIDENTIAL*.md

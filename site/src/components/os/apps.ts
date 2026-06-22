@@ -176,6 +176,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#3fb950",
     defaultSize: { width: 880, height: 600 },
   },
+  "feature-flags": {
+    id: "feature-flags",
+    title: "Feature Flags",
+    icon: "🚩",
+    accent: "#8b5cf6",
+    defaultSize: { width: 900, height: 620 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -194,6 +201,7 @@ export const DESKTOP_ICONS: AppId[] = [
   "compare",
   "marketplace",
   "examples",
+  "feature-flags",
   "hooks",
   "rules",
   "commands",

@@ -1,0 +1,539 @@
+SWARM SANDBOX STRESS TEST SUITE - MANIFEST
+==========================================
+
+Created: 2026-06-22
+Status: Production Ready
+Version: 1.0
+
+================================================================================
+DIRECTORY STRUCTURE
+================================================================================
+
+stress-tests/
+├── swarm-sandbox-stress.js          (32 KB, executable)
+│   Main stress test harness
+│   - 4 stress scenarios (init storm, exec pressure, cleanup, cascading)
+│   - 4 configurable stress levels (low/medium/high/extreme)
+│   - Failure injection (5-25%)
+│   - Memory exhaustion simulation
+│   - JSON/Markdown reporting
+│
+├── README.md                        (5.2 KB)
+│   Complete user guide
+│   - Overview and use cases
+│   - Stress levels and config matrix
+│   - Usage examples and command reference
+│   - Output format and metrics
+│   - Test scenario descriptions
+│   - Performance tuning guide
+│   - Development notes
+│
+├── QUICK-START.md                   (5.3 KB)
+│   Fast-track setup guide
+│   - 2-minute quick start
+│   - Stress level selection (3-15 min)
+│   - Report viewing and interpretation
+│   - Common commands and CI/CD examples
+│   - Troubleshooting section
+│   - Performance baseline table
+│
+├── SPECIFICATION.md                 (10 KB)
+│   Technical design document
+│   - Executive summary and requirements
+│   - Functional/Non-functional requirements
+│   - Architecture and data flow
+│   - Detailed scenario specifications
+│   - Metrics definitions and formulas
+│   - Configuration matrix
+│   - JSON report schema
+│   - Testing approach and phases
+│   - Success criteria by stress level
+│   - Troubleshooting guide
+│   - CI/CD integration patterns
+│   - Performance targets table
+│
+├── INDEX.md                         (11 KB)
+│   Navigation and reference guide
+│   - File organization and dependencies
+│   - Stress levels quick reference
+│   - Test scenarios at a glance
+│   - Metrics tracked table
+│   - Report structure explanation
+│   - Integration points
+│   - Performance targets by level
+│   - Common workflows
+│   - Troubleshooting reference
+│   - Extension points for customization
+│   - Quick command reference
+│
+└── MANIFEST.txt (this file)
+    File listing and documentation structure
+
+================================================================================
+FILE DETAILS
+================================================================================
+
+PRIMARY EXECUTABLE
+-------------------
+
+swarm-sandbox-stress.js (961 lines, 32 KB)
+
+Classes:
+  - StressSandbox(name, agentCount, stressConfig)
+    * initialize(): Create sandbox directories and agent configs
+    * execute(): Simulate workload with memory allocation
+    * cleanup(): Recursive directory deletion with timeout
+    * getStats(): Return lifecycle metrics
+
+  - StressTestScenario(name, stressLevel, stressConfig)
+    * recordMetric(name, value): Track measurement data
+    * recordError(error, context): Log failures
+    * getStats(): Calculate percentiles and rates
+
+Stress Test Functions:
+  1. testInitializationStorm(stressLevel, config)
+     - Rapid concurrent sandbox creation
+     - Tests init bottlenecks and throughput
+     - Measures creation time distribution
+
+  2. testExecutionPressure(stressLevel, config)
+     - Sustained workload with memory stress
+     - Tests degradation under load
+     - Detects cascading failures
+
+  3. testCleanupUnderPressure(stressLevel, config)
+     - Aggressive cleanup with tight timeouts
+     - Tests resource recovery
+     - Measures cleanup timeout rate
+
+  4. testCascadingFailure(stressLevel, config)
+     - Sequential creation with failure injection
+     - Stops when failure rate exceeds 30%
+     - Tests failure propagation
+
+Report Generation:
+  - generateReport(scenarios): Aggregate metrics
+  - saveReport(report, format): Write JSON/Markdown
+
+Utilities:
+  - generateId(): UUID generation
+  - log(msg, level): Colored logging
+  - getMemoryUsage(): Process memory stats
+  - shouldInjectFailure(rate): Random failure injection
+  - allocateMemory(sizeKb): Simulate memory pressure
+
+Configuration:
+  STRESS_LEVELS: {low, medium, high, extreme}
+    - Each level defines sandbox count, agent count, memory spikes,
+      failure rates, and cleanup timeouts
+
+  STRESS_ROOT: ~/.claude/stress-test-sandboxes
+    - Temporary sandbox directories
+    - Report output directory
+
+================================================================================
+CONFIGURATION MATRIX
+================================================================================
+
+Level    | Sandboxes | Agents | Memory Spike | Fail Rate | Cleanup Timeout
+---------|-----------|--------|------------|-----------|----------------
+Low      |    50     |   3    |   50 MB    |    5%     |     5000ms
+Medium   |   100     |   5    |  150 MB    |   10%     |     3000ms
+High     |   150     |   8    |  300 MB    |   15%     |     2000ms
+Extreme  |   200     |  10    |  500 MB    |   25%     |     1000ms
+
+================================================================================
+USAGE EXAMPLES
+================================================================================
+
+Basic Usage:
+  node swarm-sandbox-stress.js
+
+With Stress Level:
+  node swarm-sandbox-stress.js --stress-level=high
+
+Markdown Report:
+  node swarm-sandbox-stress.js --report=md
+
+Verbose Output:
+  node swarm-sandbox-stress.js --stress-level=high --verbose
+
+Combined:
+  node swarm-sandbox-stress.js --stress-level=extreme --report=md --verbose
+
+Output Location:
+  ~/.claude/stress-test-sandboxes/stress-test-results/stress-test-report-YYYY-MM-DD-XXXXX.json
+
+================================================================================
+TEST SCENARIOS SUMMARY
+================================================================================
+
+1. INITIALIZATION STORM
+   Purpose: Measure rapid sandbox creation throughput
+   Load: 50-200 concurrent init operations
+   Metrics: Init time, memory peak, failure count
+   Success Criterion: p99 < 1000ms, failure rate < 15%
+
+2. EXECUTION PRESSURE
+   Purpose: Test system stability under sustained workload
+   Load: Concurrent execution with memory allocation
+   Metrics: Exec time, cascading failures, memory degradation
+   Success Criterion: p99 < 8000ms, cascading failures < 10
+
+3. CLEANUP UNDER PRESSURE
+   Purpose: Test resource recovery and timeout resilience
+   Load: Aggressive cleanup batches with tight timeouts
+   Metrics: Cleanup time, timeout rate, memory recovery
+   Success Criterion: Timeout rate < 5%, memory recovery > 70%
+
+4. CASCADING FAILURE
+   Purpose: Detect failure propagation patterns
+   Load: Sequential creation with failure injection
+   Metrics: Sandboxes created before cascade, failure trajectory
+   Success Criterion: Creates > 60% of target, gradual failure growth
+
+================================================================================
+METRICS AND FORMULAS
+================================================================================
+
+Timing Metrics (ms):
+  - initializationTimes[]: Per-sandbox init duration
+  - executionTimes[]: Per-sandbox execution duration
+  - cleanupTimes[]: Per-sandbox cleanup duration
+  Computed: min, max, avg, p95, p99
+
+Memory Metrics (MB):
+  - memoryStart: Heap used at scenario start
+  - memoryPeak: Maximum heap during scenario
+  - memoryEnd: Heap used at completion
+
+Count Metrics:
+  - successCount: Sandboxes completed successfully
+  - failureCount: Sandboxes that failed
+  - timeoutCount: Cleanup operations that timed out
+  - cascadingFailures[]: Failed due to upstream failures
+
+Rate Metrics:
+  - failureRate = (failureCount / totalSandboxes) × 100
+  - successRate = (successCount / totalSandboxes) × 100
+  - timeoutRate = (timeoutCount / totalSandboxes) × 100
+
+Percentile Calculation:
+  For sorted array of N observations:
+  p95_index = ceil(N × 0.95) - 1
+  p99_index = ceil(N × 0.99) - 1
+  p95 = array[p95_index]
+  p99 = array[p99_index]
+
+================================================================================
+REPORT OUTPUT FORMAT
+================================================================================
+
+JSON Report Structure:
+{
+  "timestamp": "2026-06-22T04:13:31.708Z",
+  "stressTests": [
+    {
+      "name": "Scenario Name",
+      "stressLevel": "high",
+      "duration": milliseconds,
+      "metrics": {
+        "initializationTimes": [...],
+        "executionTimes": [...],
+        "cleanupTimes": [...],
+        "failureCount": number,
+        "successCount": number,
+        "timeoutCount": number,
+        "memoryPeak": MB,
+        "memoryStart": MB,
+        "memoryEnd": MB,
+        "cascadingFailures": [{sandbox, reason}, ...]
+      },
+      "errorCount": number
+    }
+  ],
+  "summary": {
+    "totalDuration": milliseconds,
+    "totalErrors": number,
+    "totalFailures": number,
+    "totalTimeouts": number,
+    "memoryPeak": MB
+  }
+}
+
+Markdown Report:
+  Human-readable summary with:
+  - Per-scenario metrics
+  - Performance comparison
+  - Failure details
+  - Memory usage graph
+
+================================================================================
+PERFORMANCE TARGETS
+================================================================================
+
+Metric              | Target    | Warning   | Critical
+--------------------|-----------|-----------|----------
+Init p99 (ms)      | < 300     | > 500     | > 1000
+Exec p99 (ms)      | < 3000    | > 5000    | > 8000
+Cleanup p99 (ms)   | < 1000    | > 2000    | > 3000
+Memory Peak (MB)   | < 1024    | > 1500    | > 2000
+Failure Rate (%)   | < 5       | > 10      | > 20
+Timeout Rate (%)   | < 2       | > 5       | > 10
+
+================================================================================
+INTEGRATION WITH LOAD TESTS
+================================================================================
+
+Complementary Testing Strategy:
+
+Load Tests (swarm-sandbox-load.js):
+  - Focus: Capacity, throughput, normal operation
+  - Failure Rate: 0-5% (natural failures)
+  - Cleanup: Standard batching
+  - Duration: Steady state
+
+Stress Tests (swarm-sandbox-stress.js):
+  - Focus: Failure modes, resource exhaustion, recovery
+  - Failure Rate: 5-25% (injected failures)
+  - Cleanup: Aggressive timeouts
+  - Duration: Peak conditions
+
+Together They Measure:
+  1. Load tests: What's the max throughput?
+  2. Stress tests: What happens at breaking point?
+  3. Combined: What's the safe operating envelope?
+
+================================================================================
+QUICK REFERENCE - COMMANDS
+================================================================================
+
+Run Tests:
+  node stress-tests/swarm-sandbox-stress.js                    # Medium (default)
+  node stress-tests/swarm-sandbox-stress.js --stress-level=low  # Quick (3 min)
+  node stress-tests/swarm-sandbox-stress.js --stress-level=high # Full (12 min)
+
+Reporting:
+  node stress-tests/swarm-sandbox-stress.js --report=md         # Markdown output
+  node stress-tests/swarm-sandbox-stress.js --verbose           # Detailed logging
+
+View Results:
+  ls -lrt ~/.claude/stress-test-sandboxes/stress-test-results/
+  cat ~/.claude/.../stress-test-report-*.json | jq '.summary'
+
+Clean Up:
+  rm -rf ~/.claude/stress-test-sandboxes/
+
+CI/CD Integration:
+  npm run test:stress -- --stress-level=medium --report=json
+
+Validation:
+  node scripts/validate-stress-metrics.js stress-test-results/latest.json
+
+================================================================================
+FILE SIZES AND LINE COUNTS
+================================================================================
+
+swarm-sandbox-stress.js    961 lines    32 KB   (executable)
+SPECIFICATION.md           393 lines    10 KB
+INDEX.md                   426 lines    11 KB
+README.md                  182 lines    5.2 KB
+QUICK-START.md             194 lines    5.3 KB
+MANIFEST.txt               (this file)
+
+Total Documentation: ~1400 lines
+Total Code: 961 lines
+Total: ~2400 lines
+
+================================================================================
+DEPENDENCIES
+================================================================================
+
+Runtime:
+  - Node.js 18+ (built-in modules only)
+  - No external npm packages required
+
+Built-in Modules Used:
+  - fs (file system operations)
+  - path (path manipulation)
+  - os (memory usage stats)
+  - perf_hooks (performance timing)
+
+System Requirements:
+  - Platform: macOS (Darwin) or Linux
+  - Disk: 500 MB for test artifacts
+  - Memory: 2+ GB for extreme stress level
+  - File Handles: 1000+ available
+
+================================================================================
+EXTENSION POINTS
+================================================================================
+
+Adding New Stress Level:
+  1. Edit STRESS_LEVELS object in swarm-sandbox-stress.js
+  2. Define config parameters (concurrentSandboxes, failureRate, etc.)
+  3. Reference in command line: --stress-level=custom
+
+Adding New Test Scenario:
+  1. Create async function testNewScenario(stressLevel, config)
+  2. Create StressTestScenario instance
+  3. Implement test logic
+  4. Return scenario object
+  5. Call in main() with conditional
+
+Custom Metrics:
+  1. Extend StressTestScenario class
+  2. Add recordCustomMetric(name, value) method
+  3. Store in results.metrics.custom
+  4. Include in getStats() calculations
+
+Custom Report Format:
+  1. Add condition in saveReport() function
+  2. Implement format-specific generation
+  3. Write to filepath
+
+================================================================================
+TROUBLESHOOTING GUIDE
+================================================================================
+
+Problem: High Cleanup Timeouts
+  Symptom: timeoutCount > 5% of sandboxes
+  Cause: Cleanup batch size too large, filesystem I/O bottleneck
+  Fix: Reduce cleanupBatchSize in stress config
+       Increase cleanupTimeoutMs
+       Check disk I/O usage
+
+Problem: Cascading Failures
+  Symptom: cascadingFailures[] array populated
+  Cause: Initialization failure rate too high, resource contention
+  Fix: Reduce failureInjectionRate
+       Implement file descriptor recycling
+       Check ulimit: ulimit -n
+
+Problem: Memory Not Recovering
+  Symptom: memoryEnd > 80% of memoryPeak
+  Cause: Buffers not freed, garbage collection not triggered
+  Fix: Verify buffer cleanup in StressSandbox.cleanup()
+       Add global.gc() call before cleanup
+       Check for file handle leaks
+
+Problem: Slow Initialization
+  Symptom: initTime.p99 > 1000ms
+  Cause: Filesystem I/O bottleneck, disk contention
+  Fix: Monitor disk I/O during test
+       Reduce concurrentSandboxes
+       Use faster storage
+
+Problem: Out of Memory
+  Symptom: Process crashes during memory allocation
+  Cause: Insufficient available memory for stress level
+  Fix: Close other applications
+       Reduce stress level (low/medium)
+       Increase system memory
+
+================================================================================
+PERFORMANCE BASELINES
+================================================================================
+
+Expected Results for Healthy System:
+
+Low Stress (50 sandboxes):
+  Init p99: ~50ms
+  Exec p99: ~500ms
+  Cleanup p99: ~100ms
+  Memory Peak: ~250MB
+  Failure Rate: 0-5%
+
+Medium Stress (100 sandboxes):
+  Init p99: ~100ms
+  Exec p99: ~1000ms
+  Cleanup p99: ~300ms
+  Memory Peak: ~500MB
+  Failure Rate: 0-10%
+
+High Stress (150 sandboxes):
+  Init p99: ~300ms
+  Exec p99: ~3000ms
+  Cleanup p99: ~1000ms
+  Memory Peak: ~800MB
+  Failure Rate: 5-15%
+
+Extreme Stress (200 sandboxes):
+  Init p99: ~500ms
+  Exec p99: ~5000ms
+  Cleanup p99: ~2000ms
+  Memory Peak: ~1200MB
+  Failure Rate: 10-25%
+
+================================================================================
+REVISION HISTORY
+================================================================================
+
+v1.0 (2026-06-22) - Initial Release
+  - 4 stress test scenarios
+  - 4 configurable stress levels (low/medium/high/extreme)
+  - Memory exhaustion and failure injection
+  - JSON/Markdown reporting
+  - Comprehensive documentation (5 files)
+  - No external dependencies
+  - Production ready
+
+================================================================================
+DOCUMENTATION STRUCTURE
+================================================================================
+
+README.md
+  └─ User guide for all experience levels
+     - Use cases and overview
+     - Configuration and usage
+     - Output interpretation
+     - Performance tuning
+
+QUICK-START.md
+  └─ First-time user guide
+     - 2-minute setup
+     - Stress level selection
+     - Basic commands
+     - Quick troubleshooting
+
+SPECIFICATION.md
+  └─ Technical design document
+     - Requirements and architecture
+     - Test scenario details
+     - Metrics and formulas
+     - Success criteria
+     - CI/CD patterns
+
+INDEX.md
+  └─ Navigation and reference
+     - File organization
+     - Quick lookup tables
+     - Common workflows
+     - Extension guide
+
+MANIFEST.txt
+  └─ This file
+     - File listing
+     - Organization and structure
+     - Command reference
+     - Troubleshooting
+
+================================================================================
+CONTACT & SUPPORT
+================================================================================
+
+Repository: /Users/tushar/Desktop/Claudient/
+Directory: stress-tests/
+Maintained By: Claudient Team
+Status: Production Ready
+Last Updated: 2026-06-22
+
+For Issues:
+  1. Check QUICK-START.md troubleshooting section
+  2. Review SPECIFICATION.md for design details
+  3. Examine JSON report for specific failures
+  4. Check system resources (disk, memory, file handles)
+
+================================================================================
+END OF MANIFEST
+================================================================================

@@ -25,6 +25,7 @@ import { CompareApp } from "./apps/CompareApp";
 import { SwarmApp } from "./apps/SwarmApp";
 import { MarketplaceApp } from "./apps/MarketplaceApp";
 import { ExamplesApp } from "./apps/ExamplesApp";
+import { FeatureFlagsApp } from "./apps/FeatureFlagsApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -79,6 +80,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <MarketplaceApp />;
     case "examples":
       return <ExamplesApp />;
+    case "feature-flags":
+      return <FeatureFlagsApp />;
     default:
       return null;
   }

@@ -1,0 +1,1143 @@
+openapi: 3.0.3
+info:
+  title: Matrix Theme API
+  description: |
+    RESTful API for the Matrix Theme plugin — a cyberpunk-inspired dark theme
+    for Claude Code with neon green aesthetics, customizable effects, and
+    advanced configuration.
+
+    The Matrix Theme API provides endpoints to apply themes, retrieve theme
+    configurations, list available themes and variants, customize theme properties,
+    and validate theme configurations in real-time.
+  version: 1.0.0
+  contact:
+    name: Claudient Support
+    url: https://github.com/Claudient/Claudient
+    email: support@uitbreiden.com
+  license:
+    name: CC-BY-SA-4.0
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+
+servers:
+  - url: http://localhost:3000/api/themes
+    description: Local development server
+  - url: https://themes-api.claudient.io/api/themes
+    description: Production API endpoint
+
+paths:
+  /apply:
+    post:
+      summary: Apply a theme to the current session
+      description: |
+        Applies a specified theme or theme variant to the Claude Code instance.
+        Changes take effect immediately without requiring a restart.
+      operationId: applyTheme
+      tags:
+        - Theme Management
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        description: Theme application parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemeApplicationRequest'
+            examples:
+              applyMatrix:
+                summary: Apply Matrix theme with strict variant
+                value:
+                  themeName: matrix
+                  variant: strict
+                  options:
+                    enableAnimations: true
+                    glowIntensity: 0.8
+              applyCustom:
+                summary: Apply custom theme variant
+                value:
+                  themeName: matrix-custom
+                  variant: neon
+                  options:
+                    accentColor: '#39ff14'
+                    terminalOpacity: 0.95
+      responses:
+        200:
+          description: Theme applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeApplicationResponse'
+              examples:
+                success:
+                  summary: Successful application
+                  value:
+                    success: true
+                    message: Theme 'matrix' (strict) applied successfully
+                    appliedTheme:
+                      name: matrix
+                      version: 1.0.0
+                      variant: strict
+                      timestamp: '2026-06-22T14:30:00Z'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        422:
+          $ref: '#/components/responses/UnprocessableEntity'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /get:
+    get:
+      summary: Retrieve current active theme configuration
+      description: |
+        Returns the current active theme configuration, including all colors,
+        typography settings, effects, and component styles.
+      operationId: getCurrentTheme
+      tags:
+        - Theme Retrieval
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: includeComponents
+          in: query
+          description: Include detailed component styles in response
+          schema:
+            type: boolean
+            default: false
+        - name: includeAnimations
+          in: query
+          description: Include animation definitions in response
+          schema:
+            type: boolean
+            default: false
+      responses:
+        200:
+          description: Current theme configuration retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeConfiguration'
+              examples:
+                full:
+                  summary: Full theme configuration
+                  value:
+                    name: matrix
+                    version: 1.0.0
+                    type: dark
+                    variant: strict
+                    colors:
+                      primary: '#00ff41'
+                      background: '#0a0e27'
+                      surface: '#0f1419'
+                      text: '#00ff41'
+                      error: '#ff004d'
+                    typography:
+                      fontFamily:
+                        mono: 'Courier New, monospace'
+                      fontSize:
+                        base: '13px'
+                    effects:
+                      scanlines:
+                        enabled: true
+                        opacity: 0.03
+                      glow:
+                        enabled: true
+                        intensity: medium
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /list:
+    get:
+      summary: List available themes and variants
+      description: |
+        Retrieves a paginated list of all available themes, including built-in
+        Matrix themes and custom user-defined themes. Each item includes metadata,
+        variant information, and compatibility details.
+      operationId: listThemes
+      tags:
+        - Theme Discovery
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: page
+          in: query
+          description: Page number for pagination (1-indexed)
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+        - name: filter
+          in: query
+          description: Filter themes by tag (e.g., 'matrix', 'dark', 'cyberpunk')
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by theme type
+          schema:
+            type: string
+            enum:
+              - dark
+              - light
+              - auto
+        - name: sortBy
+          in: query
+          description: Sort field
+          schema:
+            type: string
+            enum:
+              - name
+              - created
+              - updated
+              - popularity
+            default: name
+        - name: sortOrder
+          in: query
+          description: Sort direction
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+      responses:
+        200:
+          description: List of available themes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeListResponse'
+              examples:
+                list:
+                  summary: Themes list with pagination
+                  value:
+                    page: 1
+                    pageSize: 20
+                    total: 5
+                    themes:
+                      - id: matrix
+                        name: Matrix
+                        description: Terminal-inspired Matrix aesthetic with neon green
+                        version: 1.0.0
+                        type: dark
+                        author: tushar2704
+                        variants:
+                          - strict
+                          - soft
+                          - neon
+                        tags:
+                          - matrix
+                          - cyberpunk
+                          - terminal
+                        compatible: true
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /customize:
+    post:
+      summary: Customize theme properties
+      description: |
+        Customizes specific theme properties without creating a new theme.
+        Accepts partial updates to colors, typography, effects, and component
+        styles. Changes are persisted to user preferences.
+      operationId: customizeTheme
+      tags:
+        - Theme Customization
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        description: Theme customization parameters
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemeCustomizationRequest'
+            examples:
+              colorOverride:
+                summary: Override primary color
+                value:
+                  themeName: matrix
+                  updates:
+                    colors:
+                      primary: '#39ff14'
+                      text: '#39ff14'
+              effectsTuning:
+                summary: Adjust glow intensity and scanlines
+                value:
+                  themeName: matrix
+                  updates:
+                    effects:
+                      glow:
+                        intensity: high
+                      scanlines:
+                        opacity: 0.05
+              typography:
+                summary: Change font family and size
+                value:
+                  themeName: matrix
+                  updates:
+                    typography:
+                      fontFamily:
+                        mono: 'Monaco, monospace'
+                      fontSize:
+                        base: '14px'
+      responses:
+        200:
+          description: Theme customization applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeCustomizationResponse'
+              examples:
+                success:
+                  summary: Successful customization
+                  value:
+                    success: true
+                    message: Theme customization applied
+                    customizedTheme:
+                      name: matrix
+                      variant: custom
+                      customizations:
+                        colors:
+                          primary: '#39ff14'
+                        effects:
+                          glow:
+                            intensity: high
+                      timestamp: '2026-06-22T14:30:00Z'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        422:
+          $ref: '#/components/responses/UnprocessableEntity'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /validate:
+    post:
+      summary: Validate theme configuration
+      description: |
+        Validates a theme configuration for correctness, compatibility, and
+        conformance to the theme schema. Returns detailed validation errors
+        and warnings.
+      operationId: validateTheme
+      tags:
+        - Theme Validation
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        description: Theme configuration to validate
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemeValidationRequest'
+            examples:
+              validateMatrix:
+                summary: Validate Matrix theme config
+                value:
+                  name: matrix
+                  version: 1.0.0
+                  colors:
+                    primary: '#00ff41'
+                    background: '#0a0e27'
+                    text: '#00ff41'
+                  effects:
+                    glow:
+                      enabled: true
+                      intensity: medium
+      responses:
+        200:
+          description: Theme validation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeValidationResponse'
+              examples:
+                valid:
+                  summary: Valid theme
+                  value:
+                    valid: true
+                    errors: []
+                    warnings: []
+                    schema_version: '3.0.0'
+                invalid:
+                  summary: Invalid theme with errors
+                  value:
+                    valid: false
+                    errors:
+                      - field: colors.primary
+                        message: Invalid color format. Expected hex code (e.g., #00ff41)
+                      - field: effects.glow.intensity
+                        message: Invalid value. Expected 'low', 'medium', or 'high'
+                    warnings:
+                      - field: typography.fontFamily
+                        message: Font 'Courier Old' may not be available on all systems
+                    schema_version: '3.0.0'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        422:
+          $ref: '#/components/responses/UnprocessableEntity'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /preview:
+    post:
+      summary: Generate theme preview
+      description: |
+        Generates a visual preview of a theme without applying it to the session.
+        Returns a data URI of an SVG or PNG preview image.
+      operationId: generateThemePreview
+      tags:
+        - Theme Preview
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemePreviewRequest'
+      responses:
+        200:
+          description: Theme preview generated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemePreviewResponse'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /{themeId}:
+    get:
+      summary: Get theme details by ID
+      description: Retrieves full configuration for a specific theme by ID
+      operationId: getThemeById
+      tags:
+        - Theme Retrieval
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: themeId
+          in: path
+          required: true
+          description: Theme identifier
+          schema:
+            type: string
+            example: matrix
+      responses:
+        200:
+          description: Theme configuration retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThemeConfiguration'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+  /{themeId}/variants:
+    get:
+      summary: List variants for a theme
+      description: Retrieves all available variants for a specific theme
+      operationId: getThemeVariants
+      tags:
+        - Theme Discovery
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      parameters:
+        - name: themeId
+          in: path
+          required: true
+          schema:
+            type: string
+            example: matrix
+      responses:
+        200:
+          description: List of theme variants
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariantListResponse'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    ThemeApplicationRequest:
+      type: object
+      required:
+        - themeName
+      properties:
+        themeName:
+          type: string
+          description: Name of the theme to apply
+          example: matrix
+        variant:
+          type: string
+          description: Theme variant (if multiple exist)
+          example: strict
+          enum:
+            - strict
+            - soft
+            - neon
+            - amber
+        options:
+          type: object
+          description: Optional theme configuration overrides
+          properties:
+            enableAnimations:
+              type: boolean
+              default: true
+            glowIntensity:
+              type: number
+              minimum: 0
+              maximum: 1
+              default: 0.8
+            accentColor:
+              type: string
+              pattern: '^#[0-9A-Fa-f]{6}$'
+              example: '#00ff41'
+            terminalOpacity:
+              type: number
+              minimum: 0.5
+              maximum: 1
+              default: 0.95
+
+    ThemeApplicationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        appliedTheme:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+            variant:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+
+    ThemeConfiguration:
+      type: object
+      required:
+        - name
+        - version
+        - type
+      properties:
+        name:
+          type: string
+          example: matrix
+        version:
+          type: string
+          example: 1.0.0
+        description:
+          type: string
+          example: Terminal-inspired Matrix aesthetic with neon green on black
+        type:
+          type: string
+          enum:
+            - dark
+            - light
+            - auto
+        variant:
+          type: string
+          example: strict
+        author:
+          type: string
+        license:
+          type: string
+        colors:
+          $ref: '#/components/schemas/ColorPalette'
+        typography:
+          $ref: '#/components/schemas/Typography'
+        spacing:
+          type: object
+          additionalProperties:
+            type: string
+        borderRadius:
+          type: object
+          additionalProperties:
+            type: string
+        shadows:
+          type: object
+          additionalProperties:
+            type: string
+        effects:
+          $ref: '#/components/schemas/ThemeEffects'
+        components:
+          type: object
+          additionalProperties:
+            type: object
+        animations:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Animation'
+        states:
+          type: object
+          additionalProperties:
+            type: object
+        metadata:
+          $ref: '#/components/schemas/ThemeMetadata'
+
+    ColorPalette:
+      type: object
+      properties:
+        primary:
+          type: string
+          pattern: '^#[0-9A-Fa-f]{6}$|^rgba?\(.*\)$'
+          example: '#00ff41'
+        primaryLight:
+          type: string
+          example: '#39ff14'
+        primaryDark:
+          type: string
+          example: '#00cc33'
+        secondary:
+          type: string
+          example: '#00ff41'
+        background:
+          type: string
+          example: '#0a0e27'
+        surface:
+          type: string
+          example: '#0f1419'
+        text:
+          type: string
+          example: '#00ff41'
+        textSecondary:
+          type: string
+          example: '#00cc33'
+        error:
+          type: string
+          example: '#ff004d'
+        success:
+          type: string
+          example: '#00ff41'
+        warning:
+          type: string
+          example: '#ffb700'
+        info:
+          type: string
+          example: '#00d4ff'
+        border:
+          type: string
+          example: '#00ff41'
+        overlay:
+          type: string
+          example: 'rgba(0, 0, 0, 0.8)'
+
+    Typography:
+      type: object
+      properties:
+        fontFamily:
+          type: object
+          properties:
+            mono:
+              type: string
+              example: Courier New, monospace
+            sans:
+              type: string
+              example: Monaco, Menlo, monospace
+        fontSize:
+          type: object
+          properties:
+            xs:
+              type: string
+              example: 11px
+            sm:
+              type: string
+              example: 12px
+            base:
+              type: string
+              example: 13px
+            lg:
+              type: string
+              example: 14px
+            xl:
+              type: string
+              example: 16px
+        fontWeight:
+          type: object
+          properties:
+            light:
+              type: integer
+              example: 300
+            normal:
+              type: integer
+              example: 400
+            bold:
+              type: integer
+              example: 700
+        lineHeight:
+          type: object
+          properties:
+            tight:
+              type: number
+              example: 1.2
+            normal:
+              type: number
+              example: 1.5
+
+    ThemeEffects:
+      type: object
+      properties:
+        scanlines:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            opacity:
+              type: number
+              minimum: 0
+              maximum: 1
+            animation:
+              type: string
+        crt:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            curvature:
+              type: string
+            vignette:
+              type: string
+        glow:
+          type: object
+          properties:
+            enabled:
+              type: boolean
+            intensity:
+              type: string
+              enum:
+                - low
+                - medium
+                - high
+            blur:
+              type: string
+            color:
+              type: string
+        terminal:
+          type: object
+          properties:
+            cursor:
+              type: object
+              properties:
+                style:
+                  type: string
+                  enum:
+                    - block
+                    - beam
+                    - underline
+                animation:
+                  type: string
+                color:
+                  type: string
+
+    Animation:
+      type: object
+      required:
+        - name
+        - duration
+      properties:
+        name:
+          type: string
+        keyframes:
+          type: object
+          additionalProperties:
+            type: object
+        duration:
+          type: string
+          example: 1s
+        timingFunction:
+          type: string
+          example: ease-in-out
+        iterationCount:
+          type: string
+          example: infinite
+
+    ThemeMetadata:
+      type: object
+      properties:
+        lastUpdated:
+          type: string
+          format: date
+        production:
+          type: boolean
+        tags:
+          type: array
+          items:
+            type: string
+        compatibility:
+          type: object
+          properties:
+            claudeCode:
+              type: string
+            vscode:
+              type: string
+            terminal:
+              type: string
+            os:
+              type: array
+              items:
+                type: string
+
+    ThemeListResponse:
+      type: object
+      properties:
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThemeSummary'
+
+    ThemeSummary:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        version:
+          type: string
+        type:
+          type: string
+          enum:
+            - dark
+            - light
+            - auto
+        author:
+          type: string
+        variants:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+        compatible:
+          type: boolean
+
+    VariantListResponse:
+      type: object
+      properties:
+        themeId:
+          type: string
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              preview:
+                type: string
+                format: uri
+
+    ThemeCustomizationRequest:
+      type: object
+      required:
+        - themeName
+        - updates
+      properties:
+        themeName:
+          type: string
+          example: matrix
+        updates:
+          type: object
+          properties:
+            colors:
+              $ref: '#/components/schemas/ColorPalette'
+            typography:
+              $ref: '#/components/schemas/Typography'
+            effects:
+              $ref: '#/components/schemas/ThemeEffects'
+        saveAsVariant:
+          type: boolean
+          description: Save customizations as a new variant
+          default: false
+        variantName:
+          type: string
+          description: Name for new variant (if saveAsVariant is true)
+
+    ThemeCustomizationResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        customizedTheme:
+          type: object
+          properties:
+            name:
+              type: string
+            variant:
+              type: string
+            customizations:
+              type: object
+            timestamp:
+              type: string
+              format: date-time
+
+    ThemeValidationRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        colors:
+          $ref: '#/components/schemas/ColorPalette'
+        typography:
+          $ref: '#/components/schemas/Typography'
+        effects:
+          $ref: '#/components/schemas/ThemeEffects'
+        strictMode:
+          type: boolean
+          description: Enforce strict schema validation
+          default: false
+
+    ThemeValidationResponse:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationWarning'
+        schema_version:
+          type: string
+
+    ValidationError:
+      type: object
+      properties:
+        field:
+          type: string
+          example: colors.primary
+        message:
+          type: string
+        code:
+          type: string
+
+    ValidationWarning:
+      type: object
+      properties:
+        field:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+
+    ThemePreviewRequest:
+      type: object
+      required:
+        - themeName
+      properties:
+        themeName:
+          type: string
+        variant:
+          type: string
+        format:
+          type: string
+          enum:
+            - svg
+            - png
+            - datauri
+          default: datauri
+        width:
+          type: integer
+          default: 400
+        height:
+          type: integer
+          default: 300
+
+    ThemePreviewResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        preview:
+          type: string
+          format: binary
+          description: Preview image as base64 or SVG
+        format:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        code:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        details:
+          type: object
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: BadRequest
+            message: Invalid color format in customization
+            code: INVALID_COLOR_FORMAT
+            timestamp: '2026-06-22T14:30:00Z'
+
+    Unauthorized:
+      description: Authentication required or failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: Unauthorized
+            message: Bearer token invalid or expired
+            code: AUTH_FAILED
+            timestamp: '2026-06-22T14:30:00Z'
+
+    NotFound:
+      description: Theme not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: NotFound
+            message: Theme 'matrix-nonexistent' does not exist
+            code: THEME_NOT_FOUND
+            timestamp: '2026-06-22T14:30:00Z'
+
+    UnprocessableEntity:
+      description: Theme configuration is invalid or incompatible
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: UnprocessableEntity
+            message: Theme validation failed
+            code: VALIDATION_FAILED
+            details:
+              errors:
+                - field: effects.glow.intensity
+                  message: Expected 'low', 'medium', or 'high'
+
+    InternalServerError:
+      description: Server error occurred
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: InternalServerError
+            message: Theme application failed
+            code: INTERNAL_ERROR
+            timestamp: '2026-06-22T14:30:00Z'
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token authentication for API access
+
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication
+
+tags:
+  - name: Theme Management
+    description: Apply and manage active themes
+  - name: Theme Retrieval
+    description: Fetch theme configurations
+  - name: Theme Discovery
+    description: List and discover available themes
+  - name: Theme Customization
+    description: Customize theme properties
+  - name: Theme Validation
+    description: Validate theme configurations
+  - name: Theme Preview
+    description: Generate theme previews
+
+x-internal-note: |
+  This API specification documents the Matrix Theme plugin endpoints.
+  All endpoints support both Bearer token (JWT) and API key authentication.
+  Rate limiting: 100 requests/minute per authenticated user.
+  Response times: <500ms for theme operations.

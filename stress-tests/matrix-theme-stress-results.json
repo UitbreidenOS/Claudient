@@ -1,0 +1,451 @@
+{
+  "timestamp": "2026-06-22T04:12:02.826Z",
+  "duration": 154.046542,
+  "totalTests": 44,
+  "passed": 44,
+  "failed": 0,
+  "passRate": "100.0",
+  "summary": {
+    "Rapid sequential switches (1000)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "10.444",
+      "minDuration": "10.444",
+      "maxDuration": "10.444",
+      "medianDuration": "10.444"
+    },
+    "Rapid cycling with state updates": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.171",
+      "minDuration": "0.171",
+      "maxDuration": "0.171",
+      "medianDuration": "0.171"
+    },
+    "Concurrent rapid switches (100 parallel simulations)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "25.986",
+      "minDuration": "25.986",
+      "maxDuration": "25.986",
+      "medianDuration": "25.986"
+    },
+    "Theme switch with immediate re-apply": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "6.541",
+      "minDuration": "6.541",
+      "maxDuration": "6.541",
+      "medianDuration": "6.541"
+    },
+    "Back-and-forth rapid switching": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "5.348",
+      "minDuration": "5.348",
+      "maxDuration": "5.348",
+      "medianDuration": "5.348"
+    },
+    "Large theme file (1MB)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "6.608",
+      "minDuration": "6.608",
+      "maxDuration": "6.608",
+      "medianDuration": "6.608"
+    },
+    "Very large theme file (5MB)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "17.187",
+      "minDuration": "17.187",
+      "maxDuration": "17.187",
+      "medianDuration": "17.187"
+    },
+    "Serializing large theme to JSON": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "3.186",
+      "minDuration": "3.186",
+      "maxDuration": "3.186",
+      "medianDuration": "3.186"
+    },
+    "Parsing large theme from JSON": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "1.815",
+      "minDuration": "1.815",
+      "maxDuration": "1.815",
+      "medianDuration": "1.815"
+    },
+    "Deep cloning large theme": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "1.661",
+      "minDuration": "1.661",
+      "maxDuration": "1.661",
+      "medianDuration": "1.661"
+    },
+    "Merging multiple large themes": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "1.449",
+      "minDuration": "1.449",
+      "maxDuration": "1.449",
+      "medianDuration": "1.449"
+    },
+    "Apply theme with allZeros": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.013",
+      "minDuration": "0.013",
+      "maxDuration": "0.013",
+      "medianDuration": "0.013"
+    },
+    "Apply theme with allWhite": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.001",
+      "minDuration": "0.001",
+      "maxDuration": "0.001",
+      "medianDuration": "0.001"
+    },
+    "Apply theme with randomHex": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.002",
+      "minDuration": "0.002",
+      "maxDuration": "0.002",
+      "medianDuration": "0.002"
+    },
+    "Apply theme with lowercaseHex": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.001",
+      "minDuration": "0.001",
+      "maxDuration": "0.001",
+      "medianDuration": "0.001"
+    },
+    "Apply theme with uppercaseHex": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.001",
+      "minDuration": "0.001",
+      "maxDuration": "0.001",
+      "medianDuration": "0.001"
+    },
+    "Apply theme with mixedCaseHex": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.001",
+      "minDuration": "0.001",
+      "maxDuration": "0.001",
+      "medianDuration": "0.001"
+    },
+    "Apply theme with withAlpha": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.001",
+      "minDuration": "0.001",
+      "maxDuration": "0.001",
+      "medianDuration": "0.001"
+    },
+    "Extreme RGB values (edge cases)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.020",
+      "minDuration": "0.020",
+      "maxDuration": "0.020",
+      "medianDuration": "0.020"
+    },
+    "Extreme RGBA values with alpha edge cases": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.018",
+      "minDuration": "0.018",
+      "maxDuration": "0.018",
+      "medianDuration": "0.018"
+    },
+    "Color value edge case: HSL": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.064",
+      "minDuration": "0.064",
+      "maxDuration": "0.064",
+      "medianDuration": "0.064"
+    },
+    "Invalid color formats (error case)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.038",
+      "minDuration": "0.038",
+      "maxDuration": "0.038",
+      "medianDuration": "0.038"
+    },
+    "Malformed hex values (error case)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.148",
+      "minDuration": "0.148",
+      "maxDuration": "0.148",
+      "medianDuration": "0.148"
+    },
+    "Null theme (error case)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.016",
+      "minDuration": "0.016",
+      "maxDuration": "0.016",
+      "medianDuration": "0.016"
+    },
+    "Undefined theme (error case)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.016",
+      "minDuration": "0.016",
+      "maxDuration": "0.016",
+      "medianDuration": "0.016"
+    },
+    "Empty theme object": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.017",
+      "minDuration": "0.017",
+      "maxDuration": "0.017",
+      "medianDuration": "0.017"
+    },
+    "Theme with missing colors": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.020",
+      "minDuration": "0.020",
+      "maxDuration": "0.020",
+      "medianDuration": "0.020"
+    },
+    "Theme with null color values": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.034",
+      "minDuration": "0.034",
+      "maxDuration": "0.034",
+      "medianDuration": "0.034"
+    },
+    "Theme with undefined color values": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.063",
+      "minDuration": "0.063",
+      "maxDuration": "0.063",
+      "medianDuration": "0.063"
+    },
+    "Circular reference in theme": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.053",
+      "minDuration": "0.053",
+      "maxDuration": "0.053",
+      "medianDuration": "0.053"
+    },
+    "Deeply nested theme structure (100 levels)": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.138",
+      "minDuration": "0.138",
+      "maxDuration": "0.138",
+      "medianDuration": "0.138"
+    },
+    "Type mismatch: string where number expected": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.148",
+      "minDuration": "0.148",
+      "maxDuration": "0.148",
+      "medianDuration": "0.148"
+    },
+    "Array instead of object in colors": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.035",
+      "minDuration": "0.035",
+      "maxDuration": "0.035",
+      "medianDuration": "0.035"
+    },
+    "Boolean in color value": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.039",
+      "minDuration": "0.039",
+      "maxDuration": "0.039",
+      "medianDuration": "0.039"
+    },
+    "Number in color value": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.013",
+      "minDuration": "0.013",
+      "maxDuration": "0.013",
+      "medianDuration": "0.013"
+    },
+    "Allocate and release 100 large themes": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "17.611",
+      "minDuration": "17.611",
+      "maxDuration": "17.611",
+      "medianDuration": "17.611"
+    },
+    "Memory stability with repeated apply/clear": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "33.747",
+      "minDuration": "33.747",
+      "maxDuration": "33.747",
+      "medianDuration": "33.747"
+    },
+    "Theme cloning memory efficiency": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "9.213",
+      "minDuration": "9.213",
+      "maxDuration": "9.213",
+      "medianDuration": "9.213"
+    },
+    "Color palette iteration under memory pressure": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "8.979",
+      "minDuration": "8.979",
+      "maxDuration": "8.979",
+      "medianDuration": "8.979"
+    },
+    "Recovery from invalid theme": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.068",
+      "minDuration": "0.068",
+      "maxDuration": "0.068",
+      "medianDuration": "0.068"
+    },
+    "Graceful fallback on color validation error": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.048",
+      "minDuration": "0.048",
+      "maxDuration": "0.048",
+      "medianDuration": "0.048"
+    },
+    "Batch operations with partial failures": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.040",
+      "minDuration": "0.040",
+      "maxDuration": "0.040",
+      "medianDuration": "0.040"
+    },
+    "Sequential retries with exponential backoff": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.032",
+      "minDuration": "0.032",
+      "maxDuration": "0.032",
+      "medianDuration": "0.032"
+    },
+    "Theme validation with detailed error messages": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "passRate": "100.0",
+      "avgDuration": "0.042",
+      "minDuration": "0.042",
+      "maxDuration": "0.042",
+      "medianDuration": "0.042"
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,1057 @@
+openapi: 3.1.0
+info:
+  title: Swarm Sandbox API
+  version: 1.0.0
+  description: |
+    REST API for Swarm Sandbox — multi-agent orchestration sandbox with async job handling,
+    webhook callbacks, and resource-isolated execution. This API enables creation, monitoring,
+    and control of distributed agent swarms before production deployment.
+  contact:
+    name: Claudient Support
+    url: https://github.com/claudient/swarm-sandbox
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+servers:
+  - url: http://localhost:3001/api
+    description: Local development sandbox
+  - url: https://sandbox.claudient.io/api
+    description: Production sandbox
+
+tags:
+  - name: Jobs
+    description: Create, run, and manage async jobs
+  - name: Status
+    description: Query job and swarm status
+  - name: Control
+    description: Stop, pause, and resume jobs
+  - name: Webhooks
+    description: Configure callback handlers
+  - name: Topology
+    description: Load and manage swarm topologies
+
+paths:
+  /jobs:
+    post:
+      operationId: createJob
+      tags:
+        - Jobs
+      summary: Create and queue a new job
+      description: |
+        Creates a new async job for swarm execution. The job is queued immediately
+        and returns a job ID. Use GET /jobs/{jobId} to poll status or configure
+        webhooks for completion callbacks.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJobRequest'
+            examples:
+              simpleJob:
+                summary: Simple agent invocation
+                value:
+                  agent_name: echo-agent
+                  input: { message: "hello world" }
+                  timeout_ms: 30000
+              pipelineJob:
+                summary: Sequential pipeline job
+                value:
+                  topology_name: data-pipeline
+                  input: { data: [1, 2, 3] }
+                  timeout_ms: 120000
+                  priority: high
+              fanoutJob:
+                summary: Fan-out/fan-in research swarm
+                value:
+                  topology_name: research-swarm
+                  input: { query: "Claude API pricing" }
+                  timeout_ms: 60000
+                  webhook_url: https://webhook.example.com/complete
+                  webhook_events: [completed, failed]
+      responses:
+        202:
+          description: Job created and queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobCreatedResponse'
+        400:
+          description: Invalid request (missing topology/agent, malformed input)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        409:
+          description: Conflict (topology not loaded, agent not registered)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        429:
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        503:
+          description: Service unavailable (sandbox overloaded)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}:
+    get:
+      operationId: getJobStatus
+      tags:
+        - Status
+      summary: Get job status and results
+      description: |
+        Retrieve full status, progress, and results of a job.
+        If status is "completed" or "failed", includes final output or error details.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        200:
+          description: Job status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}/stop:
+    post:
+      operationId: stopJob
+      tags:
+        - Control
+      summary: Stop a running job
+      description: |
+        Immediately stops a job and cleans up resources.
+        Running workers are terminated gracefully (SIGTERM).
+        Partial results may be available in the job status.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                force:
+                  type: boolean
+                  default: false
+                  description: Force kill without graceful shutdown (SIGKILL)
+                reason:
+                  type: string
+                  description: Optional reason for stopping the job
+      responses:
+        200:
+          description: Job stopped successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [stopped]
+                  stopped_at:
+                    type: string
+                    format: date-time
+                  partial_results:
+                    type: object
+                    description: Any accumulated results before stop
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        409:
+          description: Cannot stop job (already completed or failed)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}/pause:
+    post:
+      operationId: pauseJob
+      tags:
+        - Control
+      summary: Pause a running job
+      description: |
+        Pauses job execution. Workers enter idle state.
+        Can be resumed later with the same job ID.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        200:
+          description: Job paused
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [paused]
+                  paused_at:
+                    type: string
+                    format: date-time
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}/resume:
+    post:
+      operationId: resumeJob
+      tags:
+        - Control
+      summary: Resume a paused job
+      description: |
+        Resumes execution of a paused job.
+        Workers resume from checkpoint if available.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        200:
+          description: Job resumed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [running]
+                  resumed_at:
+                    type: string
+                    format: date-time
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        409:
+          description: Cannot resume (job not paused)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}/logs:
+    get:
+      operationId: getJobLogs
+      tags:
+        - Status
+      summary: Stream job execution logs
+      description: |
+        Returns logs from all workers in JSONL format (one JSON object per line).
+        Supports filtering by worker and log level.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+        - name: worker
+          in: query
+          schema:
+            type: string
+          description: Filter logs by worker name (optional)
+        - name: level
+          in: query
+          schema:
+            type: string
+            enum: [debug, info, warn, error]
+          description: Minimum log level (optional)
+        - name: follow
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Stream logs in real-time (Server-Sent Events)
+      responses:
+        200:
+          description: Job logs retrieved
+          content:
+            application/x-ndjson:
+              schema:
+                $ref: '#/components/schemas/JobLog'
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /jobs/{jobId}/events:
+    get:
+      operationId: getJobEvents
+      tags:
+        - Status
+      summary: Subscribe to job events (Server-Sent Events)
+      description: |
+        Streams job lifecycle events in real-time via Server-Sent Events (SSE).
+        Includes status changes, worker lifecycle, and error events.
+      parameters:
+        - $ref: '#/components/parameters/jobId'
+      responses:
+        200:
+          description: Event stream established
+          content:
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/JobEvent'
+        404:
+          description: Job not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /status:
+    get:
+      operationId: getSandboxStatus
+      tags:
+        - Status
+      summary: Get sandbox health and statistics
+      description: |
+        Returns overall sandbox health, active jobs count, resource utilization,
+        and queue depth.
+      responses:
+        200:
+          description: Sandbox status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SandboxStatus'
+
+  /status/jobs:
+    get:
+      operationId: listJobs
+      tags:
+        - Status
+      summary: List all jobs with optional filtering
+      description: |
+        Returns paginated list of all jobs, optionally filtered by status and date range.
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [queued, running, paused, completed, failed, stopped]
+          description: Filter by job status
+        - name: since
+          in: query
+          schema:
+            type: string
+            format: date-time
+          description: Only jobs created after this timestamp
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+            minimum: 1
+            maximum: 500
+          description: Maximum number of jobs to return
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+          description: Pagination offset
+      responses:
+        200:
+          description: Jobs list retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobStatus'
+                  total:
+                    type: integer
+                    description: Total number of jobs matching filter
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+
+  /webhooks:
+    post:
+      operationId: registerWebhook
+      tags:
+        - Webhooks
+      summary: Register a webhook endpoint
+      description: |
+        Register a webhook URL to receive callbacks for job events.
+        Webhooks are delivered as HTTP POST requests with job status in the body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterWebhookRequest'
+      responses:
+        201:
+          description: Webhook registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRegistration'
+        400:
+          description: Invalid webhook URL
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /webhooks/{webhookId}:
+    get:
+      operationId: getWebhookDetails
+      tags:
+        - Webhooks
+      summary: Get webhook registration details
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Webhook details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRegistration'
+
+    delete:
+      operationId: deleteWebhook
+      tags:
+        - Webhooks
+      summary: Unregister a webhook
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Webhook deleted
+
+  /webhooks/{webhookId}/test:
+    post:
+      operationId: testWebhook
+      tags:
+        - Webhooks
+      summary: Send a test event to a webhook
+      description: Useful for validating webhook configuration before production use
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Test event sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    description: HTTP status code returned by webhook
+                  latency_ms:
+                    type: integer
+                    description: Response time in milliseconds
+
+  /topologies:
+    post:
+      operationId: loadTopology
+      tags:
+        - Topology
+      summary: Load a swarm topology
+      description: |
+        Load a topology configuration (pipeline, fan-out, hierarchical, mesh, etc.)
+        for use in job execution. Validates agent templates and configuration syntax.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopologyConfig'
+          application/yaml:
+            schema:
+              type: string
+              description: YAML topology definition
+      responses:
+        201:
+          description: Topology loaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  topology_name:
+                    type: string
+                  topology_type:
+                    type: string
+                    enum: [sequential, fanout-fanin, hierarchical, mesh, request-response]
+                  agents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        template:
+                          type: string
+                        count:
+                          type: integer
+                  loaded_at:
+                    type: string
+                    format: date-time
+        400:
+          description: Invalid topology configuration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    get:
+      operationId: listTopologies
+      tags:
+        - Topology
+      summary: List loaded topologies
+      responses:
+        200:
+          description: Topologies list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  topologies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        type:
+                          type: string
+                        agent_count:
+                          type: integer
+                        loaded_at:
+                          type: string
+                          format: date-time
+
+  /topologies/{topologyName}:
+    delete:
+      operationId: unloadTopology
+      tags:
+        - Topology
+      summary: Unload a topology
+      description: Removes a topology from memory. Cannot unload if jobs are running.
+      parameters:
+        - name: topologyName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Topology unloaded
+        409:
+          description: Cannot unload (jobs running on this topology)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: ^[a-zA-Z0-9_-]+$
+      description: Unique job identifier
+
+  schemas:
+    CreateJobRequest:
+      type: object
+      required:
+        - agent_name
+      properties:
+        agent_name:
+          type: string
+          description: |
+            Name of a single agent to invoke. Mutually exclusive with topology_name.
+            Example: "echo-agent", "query-agent"
+        topology_name:
+          type: string
+          description: |
+            Name of a loaded topology. Mutually exclusive with agent_name.
+            Example: "data-pipeline", "research-swarm"
+        input:
+          type: object
+          description: Job input data (agent-specific schema)
+        timeout_ms:
+          type: integer
+          minimum: 1000
+          maximum: 300000
+          default: 30000
+          description: Maximum execution time in milliseconds (1s–5min)
+        priority:
+          type: string
+          enum: [low, normal, high, critical]
+          default: normal
+          description: Job priority for queue scheduling
+        webhook_url:
+          type: string
+          format: uri
+          description: Callback URL for job completion (HTTP POST)
+        webhook_events:
+          type: array
+          items:
+            type: string
+            enum: [queued, started, progress, completed, failed, stopped]
+          default: [completed, failed]
+          description: Events to trigger webhook callbacks
+        max_retries:
+          type: integer
+          minimum: 0
+          maximum: 10
+          default: 0
+          description: Auto-retry on transient failures
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+          description: Arbitrary key-value tags for filtering and tracking
+        idempotency_key:
+          type: string
+          description: |
+            Unique key for idempotent job submission.
+            If provided and a job with this key exists, returns existing job ID instead of creating new one.
+
+    JobCreatedResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+          description: Unique job identifier for polling
+        status:
+          type: string
+          enum: [queued]
+        created_at:
+          type: string
+          format: date-time
+        queue_position:
+          type: integer
+          description: Position in execution queue
+        estimated_start_time:
+          type: string
+          format: date-time
+          description: Estimated time until job begins execution
+
+    JobStatus:
+      type: object
+      properties:
+        job_id:
+          type: string
+        agent_name:
+          type: string
+          description: Name of single agent (if agent_name was used)
+        topology_name:
+          type: string
+          description: Name of topology (if topology_name was used)
+        status:
+          type: string
+          enum: [queued, running, paused, completed, failed, stopped]
+          description: Current job state
+        created_at:
+          type: string
+          format: date-time
+        started_at:
+          type: string
+          format: date-time
+        completed_at:
+          type: string
+          format: date-time
+        progress:
+          type: object
+          properties:
+            workers_total:
+              type: integer
+            workers_active:
+              type: integer
+            workers_completed:
+              type: integer
+            workers_failed:
+              type: integer
+            percent_complete:
+              type: number
+              minimum: 0
+              maximum: 100
+        result:
+          type: object
+          description: Job output (only when status is "completed")
+        error:
+          $ref: '#/components/schemas/JobError'
+        resource_usage:
+          type: object
+          properties:
+            cpu_percent:
+              type: number
+            memory_mb:
+              type: number
+            duration_ms:
+              type: integer
+            worker_count:
+              type: integer
+
+    JobError:
+      type: object
+      properties:
+        code:
+          type: string
+          enum:
+            - TIMEOUT
+            - RESOURCE_LIMIT
+            - AGENT_CRASHED
+            - NETWORK_ERROR
+            - VALIDATION_ERROR
+            - SANDBOX_ERROR
+        message:
+          type: string
+        details:
+          type: object
+        worker_id:
+          type: string
+          description: ID of worker where error occurred (if applicable)
+        stack_trace:
+          type: string
+          description: Stack trace (debug mode only)
+
+    JobLog:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        worker_id:
+          type: string
+        level:
+          type: string
+          enum: [debug, info, warn, error]
+        message:
+          type: string
+        context:
+          type: object
+          additionalProperties: true
+
+    JobEvent:
+      type: object
+      properties:
+        event_type:
+          type: string
+          enum:
+            - job_queued
+            - job_started
+            - worker_spawned
+            - worker_completed
+            - worker_failed
+            - progress_update
+            - job_completed
+            - job_failed
+            - job_stopped
+            - error
+        job_id:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        data:
+          type: object
+          description: Event-specific data
+
+    SandboxStatus:
+      type: object
+      properties:
+        health:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        uptime_ms:
+          type: integer
+        jobs:
+          type: object
+          properties:
+            total:
+              type: integer
+            queued:
+              type: integer
+            running:
+              type: integer
+            completed:
+              type: integer
+            failed:
+              type: integer
+        workers:
+          type: object
+          properties:
+            total:
+              type: integer
+            active:
+              type: integer
+        queue:
+          type: object
+          properties:
+            depth:
+              type: integer
+            max_capacity:
+              type: integer
+        resources:
+          type: object
+          properties:
+            cpu_percent:
+              type: number
+            memory_mb:
+              type: number
+            memory_limit_mb:
+              type: integer
+            disk_usage_mb:
+              type: number
+        topologies:
+          type: object
+          properties:
+            loaded_count:
+              type: integer
+            names:
+              type: array
+              items:
+                type: string
+
+    TopologyConfig:
+      type: object
+      required:
+        - topology_type
+        - topology_name
+      properties:
+        topology_type:
+          type: string
+          enum: [sequential, fanout-fanin, hierarchical, mesh, request-response]
+        topology_name:
+          type: string
+          description: Unique name for this topology
+        agents:
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - template
+            properties:
+              name:
+                type: string
+              template:
+                type: string
+                description: Agent template name (must be registered)
+              count:
+                type: integer
+                default: 1
+              config:
+                type: object
+                additionalProperties: true
+        coordinator:
+          type: string
+          description: Coordinator agent (for fanout-fanin)
+        flow:
+          type: array
+          description: Edges between agents (for sequential/request-response)
+          items:
+            type: object
+            properties:
+              from:
+                type: string
+              to:
+                type: string
+              on:
+                type: string
+                enum: [success, failure, always]
+              timeout_ms:
+                type: integer
+
+    RegisterWebhookRequest:
+      type: object
+      required:
+        - url
+      properties:
+        url:
+          type: string
+          format: uri
+          description: HTTPS endpoint to receive callbacks
+        events:
+          type: array
+          items:
+            type: string
+            enum: [queued, started, progress, completed, failed, stopped]
+          default: [completed, failed]
+        job_filter:
+          type: object
+          properties:
+            labels:
+              type: object
+              additionalProperties:
+                type: string
+            topologies:
+              type: array
+              items:
+                type: string
+          description: Optional filters to only trigger on matching jobs
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom HTTP headers to include in callbacks
+        retry_policy:
+          type: object
+          properties:
+            max_retries:
+              type: integer
+              default: 3
+            backoff_ms:
+              type: integer
+              default: 1000
+            backoff_multiplier:
+              type: number
+              default: 2
+
+    WebhookRegistration:
+      type: object
+      properties:
+        webhook_id:
+          type: string
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        last_delivered_at:
+          type: string
+          format: date-time
+        delivery_count:
+          type: integer
+        failure_count:
+          type: integer
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: object
+              description: Additional error context
+            request_id:
+              type: string
+              description: Correlation ID for debugging
+
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication (required for production)
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for authentication
+
+security:
+  - ApiKeyAuth: []
+  - BearerAuth: []
+
+x-webhook-examples:
+  jobCompletedWebhook:
+    summary: Job completed webhook callback
+    description: Example payload sent to registered webhook URL when a job completes
+    value:
+      event_type: job_completed
+      job_id: job-12345
+      timestamp: 2026-06-22T14:30:00Z
+      data:
+        status: completed
+        result:
+          output: "processed data"
+          metrics:
+            duration_ms: 5432
+            workers_used: 4
+        resource_usage:
+          cpu_percent: 45.2
+          memory_mb: 512
+
+  jobFailedWebhook:
+    summary: Job failed webhook callback
+    description: Example payload sent when a job fails
+    value:
+      event_type: job_failed
+      job_id: job-12346
+      timestamp: 2026-06-22T14:35:00Z
+      data:
+        status: failed
+        error:
+          code: TIMEOUT
+          message: Job exceeded maximum execution time
+          details:
+            timeout_ms: 30000
+            elapsed_ms: 31500
+
+  progressUpdateWebhook:
+    summary: Job progress update webhook
+    description: Periodic progress updates (if enabled)
+    value:
+      event_type: progress_update
+      job_id: job-12347
+      timestamp: 2026-06-22T14:40:15Z
+      data:
+        progress:
+          workers_total: 10
+          workers_completed: 4
+          workers_active: 3
+          workers_failed: 0
+          percent_complete: 40

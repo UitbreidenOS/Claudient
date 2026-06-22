@@ -1,0 +1,24 @@
+# Profiler results (generated, not tracked)
+results/
+*.json
+worker-stub.js
+
+# System files
+.DS_Store
+.env
+.env.local
+
+# Node modules (if profiler becomes standalone package)
+node_modules/
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Heap snapshots (large files)
+*.heapsnapshot
+*.heapdump
+
+# CPU profiles
+*.cpuprofile

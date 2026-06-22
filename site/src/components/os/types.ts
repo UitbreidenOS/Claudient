@@ -23,7 +23,8 @@ export type AppId =
   | "compare"
   | "marketplace"
   | "examples"
-  | "swarm";
+  | "swarm"
+  | "feature-flags";
 
 export interface AppMeta {
   id: AppId;

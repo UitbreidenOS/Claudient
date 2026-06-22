@@ -1,10 +1,10 @@
-# Task Optimizer Library - Complete Index
+# Task Optimizer & Resume Engine Library - Complete Index
 
-ML-based adaptive task sequencing with confidence scoring, duration estimation, and failure pattern analysis.
+ML-based adaptive task sequencing with confidence scoring, duration estimation, and failure pattern analysis. Smart resume logic for interrupted or failed runs.
 
 ## Files Overview
 
-### Core Library
+### Task Optimizer (Core)
 
 | File | Purpose |
 |------|---------|
@@ -13,7 +13,27 @@ ML-based adaptive task sequencing with confidence scoring, duration estimation, 
 | `task-optimizer.test.js` | Unit + integration tests (40+ tests) |
 | `task-optimizer.example.js` | 8 detailed usage examples |
 
-### Documentation
+### Resume Engine (New)
+
+| File | Purpose |
+|------|---------|
+| `resume-engine.js` | Smart resume logic (400+ lines) |
+| `resume-engine.test.js` | Comprehensive tests (30+ tests) |
+| `resume-engine-integration-example.js` | Integration patterns with state manager |
+| `RESUME_ENGINE_README.md` | Complete API reference |
+| `RESUME_ENGINE_QUICK_REFERENCE.md` | Quick snippets & decision tree |
+
+### State Management & Execution
+
+| File | Purpose |
+|------|---------|
+| `state-manager.js` | Checkpoint persistence |
+| `task-executor.js` | Task type detection & routing |
+| `failure-learner.js` | Failure pattern analysis |
+| `task-splitter.js` | Task decomposition |
+| `goal-parser.js` | Goal analysis & parsing |
+
+### Documentation (Task Optimizer)
 
 | File | Purpose |
 |------|---------|
@@ -23,24 +43,60 @@ ML-based adaptive task sequencing with confidence scoring, duration estimation, 
 
 ## Quick Links
 
-### For First-Time Users
+### Resume Engine (NEW)
+1. Start with [RESUME_ENGINE_QUICK_REFERENCE.md](./RESUME_ENGINE_QUICK_REFERENCE.md) for quick snippets
+2. Full API: [RESUME_ENGINE_README.md](./RESUME_ENGINE_README.md)
+3. Integration example: `resume-engine-integration-example.js` → `ResumableWorkflow` class
+4. Run tests: `npm test -- lib/resume-engine.test.js`
+
+### Task Optimizer
 1. Start with [TASK_OPTIMIZER_README.md](./TASK_OPTIMIZER_README.md) - Quick Start section
 2. Run examples: `node lib/task-optimizer.example.js`
 3. Run tests: `node lib/task-optimizer.test.js`
 
-### For Integration
+### For Integration (Resume Engine)
+1. Review [RESUME_ENGINE_README.md](./RESUME_ENGINE_README.md) - Integration Pattern section
+2. Study `resume-engine-integration-example.js` → `ResumableWorkflow` class
+3. Adapt pattern to your workflow (detector → validator → strategizer → executor)
+
+### For Integration (Task Optimizer)
 1. Review [INTEGRATION_EXAMPLES.md](./INTEGRATION_EXAMPLES.md) for your use case
 2. Copy the appropriate pattern to your codebase
 3. Adapt to your task definitions and execution logic
 
 ### For Deep Dive
-1. Read [TASK_OPTIMIZER_README.md](./TASK_OPTIMIZER_README.md) - API Reference section
-2. Review source code comments in `task-optimizer.js`
-3. Study type definitions in `task-optimizer.d.ts`
+1. Read [RESUME_ENGINE_README.md](./RESUME_ENGINE_README.md) - API Reference section
+2. Read [TASK_OPTIMIZER_README.md](./TASK_OPTIMIZER_README.md) - API Reference section
+3. Review source code comments in both files
+4. Study integration examples
 
 ## Core Concepts
 
-### Confidence Score (0-1)
+### Resume Engine
+
+#### Execution State Detection
+Determines what happened in previous run:
+- **SUCCESS** - Exited cleanly (code 0)
+- **FAILED** - Non-zero exit code
+- **INTERRUPTED** - Killed by signal or incomplete checkpoint
+- **UNKNOWN** - Cannot determine
+
+#### Recovery Strategy Selection
+Routes to optimal recovery path:
+- **RESUME_FROM_CHECKPOINT** - Continue from saved point (safest)
+- **RETRY_WITH_FALLBACK** - Retry with different approach
+- **RESTART_FRESH** - Start over from beginning
+- **MANUAL_INTERVENTION** - Requires human review (high risk)
+
+#### Safety Verification
+Three-layer validation before resuming:
+1. **Goal Consistency** - Ensures original goal unchanged
+2. **Repository State** - Detects branch switches, uncommitted files
+3. **Conflict Detection** - Identifies high-risk scenarios
+
+### Task Optimizer
+
+#### Confidence Score (0-1)
 Success likelihood for a task based on:
 - Historical success rate
 - Number of attempts (minimum threshold)
@@ -48,19 +104,19 @@ Success likelihood for a task based on:
 
 Higher confidence → attempt first
 
-### Duration Estimate
+#### Duration Estimate
 Task completion prediction:
 - Average of historical durations
 - Confidence in estimate increases with sample size
 - Used for completion forecasting
 
-### Failure Patterns
+#### Failure Patterns
 Error tracking and grouping:
 - Tracks which errors occur most frequently
 - Associates errors with specific execution approaches
 - Enables smart error recovery
 
-### Approach Suggestions
+#### Approach Suggestions
 Recommends alternative execution strategies:
 - Compares success rates across approaches
 - Prioritizes by impact (success rate or duration improvement)
@@ -68,13 +124,29 @@ Recommends alternative execution strategies:
 
 ## Core Methods
 
-### Registration & Recording
+### Resume Engine
+```
+detectExecutionState(options)       - Determine what happened
+verifyGoalConsistency(prev, curr)   - Check goal hasn't changed
+detectConflictingChanges(options)   - Find repo conflicts
+determineRecoveryStrategy(...)      - Choose recovery path
+validateResumeSafety(...)           - Confirm safe to resume
+createResumeSession(options)        - Audit trail descriptor
+saveResumeMetadata(metadata)        - Persist resume state
+loadResumeMetadata()                - Load previous state
+generateResumeReport(options)       - Diagnostic report
+clearResumeMetadata()               - Cleanup after success
+```
+
+### Task Optimizer
+
+#### Registration & Recording
 ```
 registerTask(taskId, metadata)    - Define task with metadata
 recordResult(taskId, result)      - Log execution outcome
 ```
 
-### Analysis
+#### Analysis
 ```
 calculateConfidenceScore(taskId)  - Get confidence (0-1)
 estimateDuration(taskId)          - Predict task duration
@@ -82,19 +154,19 @@ predictSuccess(taskId)            - Forecast success probability
 getTaskAnalytics(taskId)          - Complete task metrics
 ```
 
-### Sequencing & Forecasting
+#### Sequencing & Forecasting
 ```
 getOptimalSequence(taskIds)       - Order tasks by confidence
 estimateCompletion(taskIds)       - Forecast total workflow time
 ```
 
-### Recovery & Suggestions
+#### Recovery & Suggestions
 ```
 suggestAlternativeApproach()      - Recommend fallback strategies
 getFailurePatterns(taskId)        - Get error history
 ```
 
-### Persistence
+#### Persistence
 ```
 save()                            - Persist to localStorage
 load()                            - Restore from localStorage
@@ -103,14 +175,57 @@ exportModel()                     - Export for analysis
 
 ## Usage Patterns
 
-### Pattern 1: Basic Workflow
+### Resume Engine Pattern
+
+```javascript
+const ResumeEngine = require('./resume-engine');
+const StateManager = require('./state-manager');
+
+// 1. Detect what happened in previous run
+const executionState = ResumeEngine.detectExecutionState({
+  previousExitCode: 1,
+  hasCheckpoint: true,
+  completedTasks: 3,
+  totalTasks: 10
+});
+
+// 2. Verify goal unchanged and check repo state
+const goalCheck = ResumeEngine.verifyGoalConsistency(prevGoal, currGoal);
+const conflicts = ResumeEngine.detectConflictingChanges({...});
+
+// 3. Determine recovery strategy
+const strategy = ResumeEngine.determineRecoveryStrategy(
+  executionState,
+  goalCheck,
+  conflicts
+);
+
+// 4. Apply strategy
+switch (strategy.strategy) {
+  case 'resume_from_checkpoint':
+    const state = StateManager.resume();
+    // Continue from state.currentTask
+    break;
+  case 'restart_fresh':
+    ResumeEngine.clearResumeMetadata();
+    // Start fresh workflow
+    break;
+  case 'manual_intervention':
+    console.log(ResumeEngine.generateResumeReport({...}));
+    throw new Error('Manual review needed');
+}
+```
+
+### Task Optimizer Patterns
+
+#### Pattern 1: Basic Workflow
 ```javascript
 optimizer.registerTask('build');
 await runBuild();
 optimizer.recordResult('build', { success: true, duration: 1000 });
 ```
 
-### Pattern 2: Adaptive Sequencing
+#### Pattern 2: Adaptive Sequencing
 ```javascript
 const sequence = optimizer.getOptimalSequence(taskIds);
 for (const task of sequence) {
@@ -118,7 +233,7 @@ for (const task of sequence) {
 }
 ```
 
-### Pattern 3: Failure Recovery
+#### Pattern 3: Failure Recovery
 ```javascript
 try {
   await runTask();
@@ -131,13 +246,13 @@ try {
 }
 ```
 
-### Pattern 4: Predictive Scheduling
+#### Pattern 4: Predictive Scheduling
 ```javascript
 const completion = optimizer.estimateCompletion(taskIds, parallelism);
 console.log(`ETA: ${completion.parallel}ms with ${(completion.avgConfidence * 100).toFixed(0)}% confidence`);
 ```
 
-### Pattern 5: Monitoring
+#### Pattern 5: Monitoring
 ```javascript
 const analytics = optimizer.getTaskAnalytics(taskId);
 if (analytics.confidence < 0.5) {

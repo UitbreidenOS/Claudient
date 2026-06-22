@@ -1,0 +1,1041 @@
+openapi: 3.0.3
+info:
+  title: SVG Inspector API
+  description: |
+    Comprehensive API for inspecting, rendering, exporting, and validating SVG files.
+    Supports large-scale graph rendering (10K+ nodes), nested SVG flattening, spatial indexing,
+    and multi-format export (GeoJSON, TopoJSON, CSV, PNG, SVG).
+  version: 1.0.0
+  contact:
+    name: Claudient
+    url: https://github.com/tushar2704/Claudient
+  license:
+    name: MIT
+
+servers:
+  - url: https://api.svg-inspector.io/v1
+    description: Production API
+  - url: http://localhost:8080/v1
+    description: Local development server
+
+tags:
+  - name: Inspection
+    description: Parse and analyze SVG structure
+  - name: Rendering
+    description: Render SVG with transformations and viewport operations
+  - name: Export
+    description: Export SVG and extracted data in multiple formats
+  - name: Validation
+    description: Validate SVG structure and integrity
+  - name: Spatial
+    description: Spatial indexing, queries, and geographic operations
+
+paths:
+  /inspect:
+    post:
+      summary: Parse and inspect SVG file
+      description: |
+        Load SVG file and return full DOM structure with all attributes,
+        layers, paths, and metadata. Supports nested SVG flattening.
+      operationId: inspectSVG
+      tags:
+        - Inspection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                  description: Absolute path to SVG file or URL
+                  example: /maps/regions.svg
+                flatten_nested:
+                  type: boolean
+                  default: false
+                  description: Automatically flatten nested SVG elements
+                merge_defs:
+                  type: boolean
+                  default: false
+                  description: Merge defs from nested SVGs to avoid ID collisions
+                max_file_size_mb:
+                  type: integer
+                  default: 50
+                  description: Maximum file size to process in MB
+      responses:
+        '200':
+          description: SVG successfully parsed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SVGInspectionResult'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '413':
+          $ref: '#/components/responses/PayloadTooLarge'
+
+  /inspect/layers:
+    post:
+      summary: Extract layers and groups
+      description: |
+        Extract all layer groups (`<g>` elements), paths, polygons, and circles
+        with their properties, hierarchy, and bounding boxes.
+      operationId: getLayers
+      tags:
+        - Inspection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                  description: Path to SVG file
+                recursive:
+                  type: boolean
+                  default: true
+                  description: Include nested layers
+                include_bounds:
+                  type: boolean
+                  default: true
+                  description: Calculate bounding box for each layer
+                layer_filter:
+                  type: array
+                  items:
+                    type: string
+                  description: Only return layers matching these IDs or classes
+      responses:
+        '200':
+          description: Layers extracted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  layers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SVGLayer'
+                  total_count:
+                    type: integer
+                  metadata:
+                    type: object
+
+  /inspect/features:
+    post:
+      summary: Query SVG features
+      description: |
+        Search features by name, ID, class, custom attributes, or spatial bounds.
+        Supports pagination for large result sets.
+      operationId: queryFeatures
+      tags:
+        - Inspection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                query:
+                  $ref: '#/components/schemas/FeatureQuery'
+                pagination:
+                  $ref: '#/components/schemas/Pagination'
+      responses:
+        '200':
+          description: Features found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureQueryResult'
+
+  /inspect/coordinates:
+    post:
+      summary: Extract and analyze coordinates
+      description: |
+        Extract coordinate data from path elements and convert between formats
+        (SVG units, pixel, lat/lon, model coordinates).
+      operationId: getCoordinates
+      tags:
+        - Inspection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                element_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: Specific elements to extract (if null, extract all)
+                output_format:
+                  type: string
+                  enum: [svg_units, pixels, lat_lon, model_coordinates]
+                  default: svg_units
+                coordinate_system:
+                  type: string
+                  description: |
+                    Expected coordinate system. Auto-detected if omitted.
+                    Options: cartesian, geographic, pixels
+      responses:
+        '200':
+          description: Coordinates extracted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoordinatesResult'
+
+  /inspect/intersections:
+    post:
+      summary: Find intersecting features
+      description: |
+        Identify overlapping or adjacent features based on bounding boxes
+        and coordinate ranges. Supports spatial indexing for fast queries.
+      operationId: findIntersections
+      tags:
+        - Spatial
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+                - bounding_box
+              properties:
+                file_path:
+                  type: string
+                bounding_box:
+                  $ref: '#/components/schemas/BoundingBox'
+                max_distance:
+                  type: number
+                  default: 0
+                  description: Maximum distance for adjacency detection
+                include_edges:
+                  type: boolean
+                  default: false
+                  description: Include features that touch but don't overlap
+      responses:
+        '200':
+          description: Intersecting features found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  features:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feature'
+                  intersection_count:
+                    type: integer
+
+  /validate:
+    post:
+      summary: Validate SVG structure
+      description: |
+        Check SVG integrity, detect missing attributes, validate coordinate formats,
+        verify layer hierarchy, and report structural issues.
+      operationId: validateSVG
+      tags:
+        - Validation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                check_coordinates:
+                  type: boolean
+                  default: true
+                  description: Validate coordinate formats
+                check_ids:
+                  type: boolean
+                  default: true
+                  description: Check for duplicate IDs
+                check_transforms:
+                  type: boolean
+                  default: true
+                  description: Validate transform attributes
+                check_nested_svg:
+                  type: boolean
+                  default: true
+                  description: Validate nested SVG structure
+      responses:
+        '200':
+          description: Validation complete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationResult'
+
+  /render:
+    post:
+      summary: Render SVG with transformations
+      description: |
+        Render SVG with pan/zoom, viewport clipping, and optional LOD (level-of-detail).
+        For large graphs (10K+ nodes), uses virtual rendering and spatial indexing.
+      operationId: renderSVG
+      tags:
+        - Rendering
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                viewport:
+                  $ref: '#/components/schemas/Viewport'
+                pan_offset:
+                  $ref: '#/components/schemas/Point'
+                zoom_level:
+                  type: number
+                  default: 1.0
+                  minimum: 0.1
+                  maximum: 100.0
+                lod_enabled:
+                  type: boolean
+                  default: true
+                  description: Enable level-of-detail rendering for large graphs
+                render_edges:
+                  type: boolean
+                  default: true
+                render_labels:
+                  type: boolean
+                  default: true
+                output_format:
+                  type: string
+                  enum: [svg, png, jpg]
+                  default: svg
+      responses:
+        '200':
+          description: SVG rendered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RenderResult'
+            image/png:
+              schema:
+                type: string
+                format: binary
+
+  /render/viewport-update:
+    post:
+      summary: Update viewport after pan/zoom
+      description: |
+        For virtual rendering at scale, update visible nodes based on current
+        viewport. Returns only nodes in the visible region.
+      operationId: updateViewport
+      tags:
+        - Rendering
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+                - viewport
+              properties:
+                file_path:
+                  type: string
+                viewport:
+                  $ref: '#/components/schemas/Viewport'
+                pan_offset:
+                  $ref: '#/components/schemas/Point'
+                zoom_level:
+                  type: number
+      responses:
+        '200':
+          description: Viewport updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  visible_nodes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Node'
+                  visible_edges:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Edge'
+                  node_count:
+                    type: integer
+                  edge_count:
+                    type: integer
+
+  /export:
+    post:
+      summary: Export SVG or features
+      description: |
+        Export SVG and extracted data in multiple formats (SVG, GeoJSON, TopoJSON, CSV, JSON).
+        Supports filtering by feature type, layer, or custom attributes.
+      operationId: exportData
+      tags:
+        - Export
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+                - format
+              properties:
+                file_path:
+                  type: string
+                format:
+                  type: string
+                  enum: [svg, geojson, topojson, csv, json]
+                  description: Output format
+                include_metadata:
+                  type: boolean
+                  default: true
+                feature_filter:
+                  type: object
+                  description: Filter features by properties
+                  additionalProperties: true
+                layer_filter:
+                  type: array
+                  items:
+                    type: string
+                  description: Only export specific layers
+                exclude_layers:
+                  type: array
+                  items:
+                    type: string
+                  description: Exclude specific layers
+      responses:
+        '200':
+          description: Data exported successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExportResult'
+            application/geo+json:
+              schema:
+                type: object
+            text/csv:
+              schema:
+                type: string
+
+  /export/compare:
+    post:
+      summary: Compare two SVG versions
+      description: |
+        Compare two SVG files and report which features were added, removed,
+        or had properties changed. Useful for version control and audit trails.
+      operationId: compareSVG
+      tags:
+        - Export
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path_1
+                - file_path_2
+              properties:
+                file_path_1:
+                  type: string
+                  description: Path to first SVG file
+                file_path_2:
+                  type: string
+                  description: Path to second SVG file
+                compare_styles:
+                  type: boolean
+                  default: false
+      responses:
+        '200':
+          description: Comparison complete
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComparisonResult'
+
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: Optional API key for rate limiting and usage tracking
+
+  schemas:
+    # Core data structures
+    SVGInspectionResult:
+      type: object
+      properties:
+        file_path:
+          type: string
+        file_size_bytes:
+          type: integer
+        viewBox:
+          type: array
+          items:
+            type: number
+          minItems: 4
+          maxItems: 4
+          description: "[x, y, width, height]"
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        root_element:
+          $ref: '#/components/schemas/SVGElement'
+        metadata:
+          $ref: '#/components/schemas/SVGMetadata'
+        statistics:
+          $ref: '#/components/schemas/SVGStatistics'
+
+    SVGElement:
+      type: object
+      properties:
+        tag:
+          type: string
+          example: g
+        id:
+          type: string
+        class:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: true
+        transform:
+          type: string
+          description: SVG transform attribute
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/SVGElement'
+        bounds:
+          $ref: '#/components/schemas/BoundingBox'
+
+    SVGLayer:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        tag:
+          type: string
+          enum: [g, svg]
+        class:
+          type: string
+        index:
+          type: integer
+          description: Position in layer hierarchy
+        bounds:
+          $ref: '#/components/schemas/BoundingBox'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        transform:
+          type: string
+        opacity:
+          type: number
+          minimum: 0
+          maximum: 1
+        display:
+          type: string
+          enum: [visible, hidden]
+
+    Feature:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [circle, rect, path, polygon, line, polyline, text, image, tspan]
+        class:
+          type: string
+        attributes:
+          type: object
+          additionalProperties: true
+        coordinates:
+          type: array
+          description: Extracted coordinate array
+        bounds:
+          $ref: '#/components/schemas/BoundingBox'
+        fill:
+          type: string
+        stroke:
+          type: string
+        stroke_width:
+          type: number
+        opacity:
+          type: number
+
+    Node:
+      type: object
+      description: Graph node (for network-style SVGs)
+      properties:
+        id:
+          type: string
+        x:
+          type: number
+        y:
+          type: number
+        r:
+          type: number
+          description: Radius (if circle)
+        label:
+          type: string
+        class:
+          type: string
+        attributes:
+          type: object
+
+    Edge:
+      type: object
+      description: Graph edge (connection between nodes)
+      properties:
+        id:
+          type: string
+        from:
+          type: string
+          description: Source node ID
+        to:
+          type: string
+          description: Target node ID
+        x1:
+          type: number
+        y1:
+          type: number
+        x2:
+          type: number
+        y2:
+          type: number
+        weight:
+          type: number
+          description: Edge weight for bundling/filtering
+        stroke_width:
+          type: number
+
+    FeatureQuery:
+      type: object
+      properties:
+        by_id:
+          type: string
+          description: Exact element ID
+        by_class:
+          type: string
+          description: CSS class name
+        by_name:
+          type: string
+          description: Feature name (search in text content)
+        by_attributes:
+          type: object
+          description: Match custom attributes
+          additionalProperties: true
+        by_type:
+          type: string
+          enum: [circle, rect, path, polygon, text]
+        in_bounds:
+          $ref: '#/components/schemas/BoundingBox'
+        exclude_layers:
+          type: array
+          items:
+            type: string
+
+    CoordinatesResult:
+      type: object
+      properties:
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              coordinates:
+                type: array
+              type:
+                type: string
+              bounds:
+                $ref: '#/components/schemas/BoundingBox'
+        coordinate_system:
+          type: string
+          enum: [cartesian, geographic, pixels]
+        conversion_info:
+          type: object
+          description: Metadata about coordinate conversion
+
+    BoundingBox:
+      type: object
+      required:
+        - x
+        - y
+        - width
+        - height
+      properties:
+        x:
+          type: number
+          description: Top-left x coordinate
+        y:
+          type: number
+          description: Top-left y coordinate
+        width:
+          type: number
+        height:
+          type: number
+        x_min:
+          type: number
+        x_max:
+          type: number
+        y_min:
+          type: number
+        y_max:
+          type: number
+
+    Viewport:
+      type: object
+      required:
+        - width
+        - height
+      properties:
+        width:
+          type: integer
+          description: Viewport width in pixels
+        height:
+          type: integer
+          description: Viewport height in pixels
+        x:
+          type: number
+          default: 0
+        y:
+          type: number
+          default: 0
+
+    Point:
+      type: object
+      required:
+        - x
+        - y
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+
+    Dimensions:
+      type: object
+      properties:
+        width:
+          type: number
+        height:
+          type: number
+        unit:
+          type: string
+          default: px
+
+    SVGMetadata:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        creator:
+          type: string
+        date:
+          type: string
+        coordinate_system:
+          type: string
+          description: Geographic or pixel-based
+        projection:
+          type: string
+          description: Map projection (if geographic)
+        custom_attributes:
+          type: object
+          additionalProperties: true
+
+    SVGStatistics:
+      type: object
+      properties:
+        total_elements:
+          type: integer
+        element_counts:
+          type: object
+          properties:
+            circles:
+              type: integer
+            paths:
+              type: integer
+            rects:
+              type: integer
+            polygons:
+              type: integer
+            text:
+              type: integer
+            groups:
+              type: integer
+        total_layers:
+          type: integer
+        nesting_depth:
+          type: integer
+        has_nested_svg:
+          type: boolean
+        has_transforms:
+          type: boolean
+
+    ValidationResult:
+      type: object
+      properties:
+        is_valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+        warnings:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationWarning'
+        summary:
+          type: string
+
+    ValidationError:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [invalid_xml, missing_attribute, duplicate_id, invalid_coordinate, invalid_transform]
+        element_id:
+          type: string
+        message:
+          type: string
+        line_number:
+          type: integer
+
+    ValidationWarning:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [unused_def, deprecated_attribute, performance_issue, missing_metadata]
+        message:
+          type: string
+        suggestion:
+          type: string
+
+    RenderResult:
+      type: object
+      properties:
+        format:
+          type: string
+        size_bytes:
+          type: integer
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        data:
+          type: string
+          format: binary
+          description: Rendered data (base64 for images, SVG string for SVG output)
+        render_time_ms:
+          type: number
+        performance_metrics:
+          type: object
+          properties:
+            fps:
+              type: number
+            memory_mb:
+              type: number
+            node_count:
+              type: integer
+
+    ExportResult:
+      type: object
+      properties:
+        format:
+          type: string
+        file_size_bytes:
+          type: integer
+        feature_count:
+          type: integer
+        layer_count:
+          type: integer
+        data:
+          type: object
+          description: Exported data (format-dependent)
+        export_time_ms:
+          type: number
+
+    ComparisonResult:
+      type: object
+      properties:
+        added_features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        removed_features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        modified_features:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              changes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    property:
+                      type: string
+                    old_value:
+                      type: string
+                    new_value:
+                      type: string
+        statistics:
+          type: object
+          properties:
+            added_count:
+              type: integer
+            removed_count:
+              type: integer
+            modified_count:
+              type: integer
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          default: 1
+          minimum: 1
+        page_size:
+          type: integer
+          default: 100
+          minimum: 1
+          maximum: 1000
+        sort_by:
+          type: string
+          description: Field to sort results by
+        sort_order:
+          type: string
+          enum: [asc, desc]
+          default: asc
+
+    FeatureQueryResult:
+      type: object
+      properties:
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+        total_count:
+          type: integer
+        page:
+          type: integer
+        page_size:
+          type: integer
+        total_pages:
+          type: integer
+
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+          additionalProperties: true
+
+  responses:
+    BadRequest:
+      description: Invalid request parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: File not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    PayloadTooLarge:
+      description: File exceeds maximum size limit
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+security:
+  - apiKey: []
+
+x-performance-guidelines:
+  scalar-throughput:
+    - Node count ≤ 1K: Full rendering, 60 FPS sustained
+    - Node count 1K-5K: Virtual rendering (quadtree), 30-60 FPS
+    - Node count 5K-10K: LOD + edge culling, 15-30 FPS
+    - Node count 10K-50K: Aggressive LOD + clustering, 10-15 FPS
+    - Node count 50K+: Server-side aggregation required
+
+  memory-limits:
+    - Recommended max per request: 500MB
+    - Recommended max per session: 2GB
+    - Virtual rendering reduces DOM memory by 80-90%
+
+  spatial-indexing:
+    - Quadtree for viewport queries (10K+ nodes)
+    - Connection index for selection highlighting (<5ms)
+    - Edge bundling for dense edge sets
+
+  browser-compatibility:
+    - Chrome/Chromium: 10K nodes @ 60 FPS
+    - Firefox: 5K nodes @ 60 FPS
+    - Safari: 500 nodes @ 60 FPS
+    - Mobile: 100-500 nodes (virtual rendering recommended)
