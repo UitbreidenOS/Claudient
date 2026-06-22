@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.circleci
+
+# Development
+node_modules
+npm-debug.log
+yarn-error.log
+.npm
+.yarn
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.nyc_output
+coverage
+test
+
+# Build outputs (keep clean)
+dist
+build
+*.tgz
+
+# Temporary files
+*.tmp
+.kimchi
+audit_*.py
+audit_*.sh
+cleanup_*.py
+fix_*.py
+feature-*.txt
+showcase-audit-report.md
+
+# OS
+Thumbs.db
+
+# Documentation build artifacts
+docs/.build
+docs/_build
+site/.next
+site/out
+
+# Lock files (use pre-installed dependencies)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

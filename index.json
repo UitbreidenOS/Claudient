@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-22T04:05:20.170Z",
+  "generated": "2026-06-22T04:06:37.903Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -26983,6 +26983,12 @@
       "file": "guides/enterprise/nl/multi-region-deployment.md"
     },
     {
+      "id": "observability-error-tracking",
+      "lang": "en",
+      "title": "Observability & Error Tracking with Sentry/Rollbar",
+      "file": "guides/enterprise/observability-error-tracking.md"
+    },
+    {
       "id": "security-hardening",
       "lang": "en",
       "title": "Enterprise Security Hardening Checklist",
@@ -31074,7 +31080,7 @@
     "rules": 35,
     "workflows": 56,
     "prompts": 31,
-    "guides": 128,
+    "guides": 129,
     "structures": 82,
     "outputStyles": 8,
     "statuslines": 7,

@@ -7,15 +7,15 @@
 const assert = require('assert');
 const { performance } = require('perf_hooks');
 
-// Constants
-const DATASET_CONFIG = {
+// Constants - can be overridden via CLI arguments
+let DATASET_CONFIG = {
   nodes: 5_000,
   edges: 25_000,
   viewportWidth: 1920,
   viewportHeight: 1080,
 };
 
-const LOAD_CONFIG = {
+let LOAD_CONFIG = {
   concurrentOps: 100,
   operationsPerConcurrent: 10,
   totalOperations: 500,
@@ -357,9 +357,35 @@ class LoadTestValidator {
   }
 }
 
+// CLI argument parser
+function parseArgs() {
+  const args = process.argv.slice(2);
+
+  args.forEach(arg => {
+    if (arg.startsWith('--nodes=')) {
+      DATASET_CONFIG.nodes = parseInt(arg.split('=')[1]);
+    }
+    if (arg.startsWith('--edges=')) {
+      DATASET_CONFIG.edges = parseInt(arg.split('=')[1]);
+    }
+    if (arg.startsWith('--ops=')) {
+      LOAD_CONFIG.totalOperations = parseInt(arg.split('=')[1]);
+    }
+    if (arg.startsWith('--concurrent=')) {
+      LOAD_CONFIG.concurrentOps = parseInt(arg.split('=')[1]);
+    }
+    if (arg === '--full-scale') {
+      DATASET_CONFIG.nodes = 10_000;
+      DATASET_CONFIG.edges = 50_000;
+      LOAD_CONFIG.totalOperations = 1_000;
+    }
+  });
+}
+
 // Main execution
 async function main() {
   try {
+    parseArgs();
     console.log('🚀 Initializing SVG Inspector Load Test...\n');
 
     // Generate dataset

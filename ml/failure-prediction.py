@@ -322,7 +322,7 @@ class FailurePredictor:
             scored_failures.append((similarity, failure))
 
         # Return top 5 most similar failures
-        scored_failures.sort(reverse=True)
+        scored_failures.sort(key=lambda x: x[0], reverse=True)
         return [f[1] for f in scored_failures[:5]]
 
     def _parameter_similarity(self, params1: Dict, params2: Dict) -> float:

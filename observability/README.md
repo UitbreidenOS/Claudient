@@ -4,6 +4,8 @@ Prometheus alerting rules and configuration for monitoring Claudient services.
 
 ## Files
 
+- **structured-logging.md** — JSON logging schema for all features (log levels, core fields, feature-specific schemas, error codes, examples)
+
 - **ALERTING_RULES.yaml** — Prometheus alert rules for:
   - Feature error rate (>5%)
   - Don't Stop budget utilization (>90%, critical at 100%)

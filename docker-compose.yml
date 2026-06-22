@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  claudient:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: claudient:latest
+    container_name: claudient
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+      - "8080:8080"
+    volumes:
+      - ./skills:/app/skills:ro
+      - ./agents:/app/agents:ro
+      - ./hooks:/app/hooks:ro
+      - ./rules:/app/rules:ro
+      - ./workflows:/app/workflows:ro
+      - ./prompts:/app/prompts:ro
+      - ./mcp:/app/mcp:ro
+      - ./guides:/app/guides:ro
+    healthcheck:
+      test: [ "CMD", "node", "-e", "console.log('OK')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
