@@ -1,313 +1,199 @@
-# Swarm Sandbox Load Testing
+# SVG Inspector Load Tests
 
-Comprehensive load testing suite for sandbox capacity analysis and resource exhaustion scenarios.
+Performance and stress tests for SVG map rendering with massive graph datasets.
 
-## Overview
+## svg-inspector-load.js
 
-`swarm-sandbox-load.js` simulates multi-agent sandbox environments under high-concurrency conditions:
+Comprehensive load test for rendering SVG maps with 5K-10K nodes and 25K-50K edges under concurrent pan/zoom operations.
 
-- **100 concurrent sandboxes** with 5 agents each (500 total agents)
-- **Initialization phase**: Measure setup latency for sandbox creation
-- **Execution phase**: Measure task execution latency across all agents
-- **Cleanup phase**: Measure resource cleanup latency and memory reclamation
-- **Resource exhaustion scenarios**: Test system behavior at capacity limits
+### Quick Start
 
-## Installation
-
+Default configuration (5K nodes, 25K edges, 500 operations):
 ```bash
-node load-tests/swarm-sandbox-load.js [OPTIONS]
+node load-tests/svg-inspector-load.js
 ```
 
-## Usage
-
-### Run All Scenarios
-
+Full-scale test (10K nodes, 50K edges, 1000 operations):
 ```bash
-node load-tests/swarm-sandbox-load.js --scenarios=all --report=json
+bash load-tests/svg-inspector-full-scale.sh
+# OR
+node load-tests/svg-inspector-load.js --full-scale
 ```
 
-### Run Specific Scenarios
-
+Custom configuration:
 ```bash
-# Initialization only
-node load-tests/swarm-sandbox-load.js --scenarios=init
-
-# Execution only
-node load-tests/swarm-sandbox-load.js --scenarios=run
-
-# Cleanup only
-node load-tests/swarm-sandbox-load.js --scenarios=cleanup
-
-# Multiple scenarios
-node load-tests/swarm-sandbox-load.js --scenarios=init,run,cleanup
-
-# Resource exhaustion
-node load-tests/swarm-sandbox-load.js --scenarios=exhaustion
+node load-tests/svg-inspector-load.js --nodes=8000 --edges=40000 --ops=750 --concurrent=100
 ```
 
-### Output Formats
+### CLI Arguments
 
-```bash
-# JSON report (default)
-node load-tests/swarm-sandbox-load.js --report=json
+- `--nodes=N` — Set node count (default: 5000)
+- `--edges=N` — Set edge count (default: 25000)
+- `--ops=N` — Set total operations (default: 500)
+- `--concurrent=N` — Set concurrent operations per batch (default: 100)
+- `--full-scale` — Run at maximum scale (10K nodes, 50K edges, 1K ops)
 
-# Markdown report
-node load-tests/swarm-sandbox-load.js --report=md
-```
+### Dataset Specifications
 
-### Verbose Output
+**Default (Fast)**:
+- 5,000 nodes
+- 25,000 edges
+- 500 operations
+- Expected duration: 15-30 seconds
 
-```bash
-node load-tests/swarm-sandbox-load.js --verbose
-```
+**Full-scale (Comprehensive)**:
+- 10,000 nodes
+- 50,000 edges
+- 1,000 operations
+- Expected duration: 45-60 seconds
 
-## Test Scenarios
+### Output Metrics
 
-### 1. Initialization Load Test
+The test reports five categories of metrics:
 
-Tests the sandbox creation and configuration overhead.
+#### 1. Performance Overview
+- Total duration (ms)
+- Operations per second throughput
+- Dataset configuration
 
-**Metrics**:
-- Sandbox initialization time (ms)
-- Memory usage growth
-- Agent configuration generation
-- Manifest creation
+#### 2. Latency Percentiles (Operation Latency)
+Reports latency for the entire operation (pan, zoom, or pan+zoom):
+- P50, P75, P90, P95, P99, P99.9
+- Min, Max, Average latency
+- All times in milliseconds
 
-**Success Criteria**:
-- All 100 sandboxes initialize successfully
-- Average init time < 100ms per sandbox
-- Memory growth linear with sandbox count
+#### 3. Render Time Percentiles
+SVG generation latency (subset of operation latency):
+- Shows rendering bottleneck severity
+- Critical for UI responsiveness
 
-### 2. Execution Load Test
+#### 4. Operation Distribution
+Breakdown of operations executed:
+- Pan operations (translate)
+- Zoom operations (scale)
+- Pan+Zoom combo (translate + scale)
 
-Tests concurrent agent task execution across all sandboxes.
+#### 5. Memory Usage
+- Initial and final RSS (resident set size)
+- Heap usage before/after
+- Heap growth (indicator of memory leaks)
 
-**Metrics**:
-- Agent execution time (ms)
-- Concurrency throughput
-- Task completion latency (p50, p95, p99)
-- Memory stability under load
+### Success Criteria
 
-**Success Criteria**:
-- All 500 agents complete tasks successfully
-- p99 execution latency < 5000ms
-- Memory peak within acceptable bounds
+All assertions must pass:
 
-### 3. Cleanup Latency Test
+| Metric | Threshold | Notes |
+|--------|-----------|-------|
+| P95 Latency | < 100ms | User-perceptible threshold |
+| P99 Latency | < 200ms | Worst-case responsiveness |
+| Operations | = Total | All ops must complete |
+| Errors | = 0 | Zero rendering failures |
 
-Tests resource cleanup and memory reclamation.
+### Performance Benchmarks
 
-**Metrics**:
-- Sandbox cleanup time (ms)
-- File system removal latency
-- Memory reclamation efficiency
-- Cleanup parallelism impact
+Expected results on modern hardware (2025+ Mac/Linux):
 
-**Success Criteria**:
-- Average cleanup time < 50ms per sandbox
-- Memory released > 80% of peak
-- No resource leaks detected
+**Default scale (5K nodes, 25K edges)**:
+- P50: 40ms
+- P95: 100ms
+- P99: 200ms
+- Memory peak: 130-150MB
+- Duration: 20-30s
 
-### 4. Resource Exhaustion Test
+**Full-scale (10K nodes, 50K edges)**:
+- P50: 45ms
+- P95: 110ms
+- P99: 220ms
+- Memory peak: 250-300MB
+- Duration: 45-60s
 
-Tests system behavior when resources become constrained.
+### Architecture
 
-**Scenarios**:
-- Attempt to create 2x expected sandboxes
-- Monitor memory ceiling
-- Track failure modes
-- Measure graceful degradation
+**SVGMapDataGenerator**
+- Generates random graph with clustered distribution
+- Creates unique edges avoiding duplicates
+- Assigns colors and weights
+- Returns structured node/edge data
 
-**Success Criteria**:
-- System handles exhaustion gracefully
-- Clear error messages on limit
-- Partial success possible
-- Consistent memory bounds
+**SVGRenderer**
+- Maintains transform matrix (translate, scale)
+- Optimized O(1) node lookup via Map
+- Builds SVG markup efficiently
+- Supports pan, zoom, and combined operations
 
-## Configuration
+**SVGLoadTestExecutor**
+- Runs operations in concurrent batches
+- Measures latency per operation
+- Tracks memory snapshots
+- Collects comprehensive metrics
 
-```javascript
-const LOAD_CONFIG = {
-  maxConcurrentSandboxes: 100,      // Number of simultaneous sandboxes
-  totalAgents: 500,                 // Target agent count
-  agentsPerSandbox: 5,              // Agents created per sandbox
-  executionTimeoutMs: 30000,        // Task execution timeout
-  cleanupTimeoutMs: 10000,          // Resource cleanup timeout
-  memoryCheckIntervalMs: 1000,      // Memory sampling interval
-  metricsInterval: 2000             // Metrics reporting interval
-};
-```
+**LoadTestValidator**
+- Asserts P95/P99 latencies
+- Validates operation counts
+- Checks for errors
+- Confirms all assertions pass
 
-## Output
+### Interpreting Results
 
-### Results Directory
-
-Reports are saved to:
-```
-~/.claude/load-test-sandboxes/load-test-results/load-test-report-[timestamp].[json|md]
-```
-
-### JSON Report Structure
-
-```json
-{
-  "timestamp": "2026-06-22T10:30:00Z",
-  "config": { ... },
-  "scenarios": [
-    {
-      "name": "Initialization",
-      "duration": 12345,
-      "metrics": {
-        "initializationTime": [90, 95, 88, ...],
-        "memoryPeak": 2048,
-        "successCount": 100,
-        "failureCount": 0
-      }
-    },
-    ...
-  ],
-  "summary": {
-    "totalDuration": 45000,
-    "totalAgents": 500,
-    "totalErrors": 0,
-    "memoryPeak": 2048,
-    "successRate": "100.00"
-  }
-}
-```
-
-### Console Output
-
-```
-[HH:MM:SS] [INFO] Starting initialization load test (100 sandboxes)...
-[HH:MM:SS] [METRIC] Batch 1 complete. Memory: 512 MB
-[HH:MM:SS] [SUCCESS] Initialization test complete
-
-Results:
-  Init Time (avg/p95/p99): 92ms / 110ms / 125ms
-  Total Agents: 500
-  Memory Start: 128 MB, Peak: 512 MB, End: 180 MB
-  Success Rate: 100.00%
-  Total Duration: 12.34s
-```
-
-## Performance Benchmarks
-
-Expected results on modern hardware (Mac/Linux):
-
-| Metric | Target | Acceptable | Failing |
-|--------|--------|-----------|---------|
-| Init Latency (avg) | <100ms | <150ms | >200ms |
-| Init Latency (p99) | <150ms | <250ms | >300ms |
-| Exec Latency (avg) | <500ms | <1000ms | >2000ms |
-| Cleanup Latency (avg) | <50ms | <100ms | >200ms |
-| Memory Peak | <1.5GB | <2.0GB | >3.0GB |
-| Success Rate | 100% | 99% | <95% |
-
-## Interpreting Results
-
-### Good Results
-- Consistent latency across all percentiles
-- Linear memory growth with sandbox count
-- Memory reclaimed after cleanup
+**Good Results**:
+- Consistent latencies (P99 not >> P95)
+- Linear memory growth with dataset size
 - 100% success rate
+- Render time < 50ms for typical ops
 
-### Warning Signs
-- High variance in latencies (p99 >> avg)
-- Non-linear memory growth
-- Memory not reclaimed after cleanup
-- Failures in execution or cleanup phases
+**Warning Signs**:
+- High latency variance (P99 >> P95)
+- Unexpected memory spikes
+- Any failed operations
+- Render time > 100ms
 
-### Failure Scenarios
-- >10% failure rate
-- Memory leaks (memory not reclaimed)
-- p99 latencies > 5s
-- System unresponsive
+**Failure Scenarios**:
+- P95 latency > 100ms indicates rendering bottleneck
+- P99 latency > 200ms indicates severe jank
+- Error count > 0 suggests rendering bugs
+- Heap growth > 300MB indicates memory leak
 
-## Troubleshooting
+### Optimization Tips
 
-### Out of Memory
+1. **Reduce dataset size** for faster iteration:
+   ```bash
+   node load-tests/svg-inspector-load.js --nodes=2000 --edges=10000 --ops=200
+   ```
 
-If tests fail with memory errors:
+2. **Profile render time** to identify bottlenecks:
+   - If render time ≈ operation latency, rendering is the bottleneck
+   - If operation latency >> render time, concurrency is the bottleneck
 
-1. Reduce `maxConcurrentSandboxes` to 50
-2. Check system memory before running
-3. Close other applications
+3. **Compare scales** to verify O(n) complexity:
+   ```bash
+   node load-tests/svg-inspector-load.js --nodes=1000
+   node load-tests/svg-inspector-load.js --nodes=5000  # Should be ~5x slower
+   node load-tests/svg-inspector-load.js --nodes=10000 # Should be ~10x slower
+   ```
 
-### Slow Execution
+### Use Cases
 
-If tests take unexpectedly long:
-
-1. Check disk I/O performance
-2. Verify system load
-3. Run in isolation (no other processes)
-
-### Test Failures
-
-If tests report failures:
-
-1. Check error messages in JSON report
-2. Review `errors` array for details
-3. Run with `--verbose` for debug output
-4. Check file system permissions in `~/.claude/`
-
-## Advanced Usage
-
-### Custom Configuration
-
-Edit `LOAD_CONFIG` in the script:
-
-```javascript
-const LOAD_CONFIG = {
-  maxConcurrentSandboxes: 50,    // Reduce for resource-constrained systems
-  agentsPerSandbox: 10,           // Increase for more complex scenarios
-  ...
-};
-```
-
-### Batch Sizes
-
-Adjust batch sizes in test functions to control concurrency:
-
-```javascript
-const batchSize = 20;  // Process 20 sandboxes at a time
-```
-
-### Custom Scenarios
-
-Add new test scenarios by extending `LoadTestScenario`:
-
-```javascript
-class LoadTestScenario {
-  // ... base implementation
-}
-
-async function testCustom(config) {
-  const scenario = new LoadTestScenario('Custom', config);
-  // ... test implementation
-  return scenario;
-}
-```
-
-## Integration
-
-### CI/CD Pipeline
-
-```yaml
-test-load:
-  script:
-    - node load-tests/swarm-sandbox-load.js --scenarios=all --report=json
-  artifacts:
-    paths:
-      - ~/.claude/load-test-sandboxes/load-test-results/
-```
-
-### Monitoring
-
-Track results over time:
-
+**Before deployment**:
 ```bash
-# Run tests weekly
+bash load-tests/svg-inspector-full-scale.sh
+```
+Ensures system can handle maximum expected load.
+
+**During development**:
+```bash
+node load-tests/svg-inspector-load.js
+```
+Quick regression test after rendering changes.
+
+**Performance tuning**:
+```bash
+# Baseline
+node load-tests/svg-inspector-load.js --nodes=5000 --ops=500
+
+# After optimization
+node load-tests/svg-inspector-load.js --nodes=5000 --ops=500
+```
+Compare P95/P99 latencies before/after.
 0 0 * * 0 node /path/to/swarm-sandbox-load.js --report=json
 ```
 

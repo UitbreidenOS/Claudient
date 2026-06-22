@@ -1,6 +1,6 @@
 {
   "version": "1.10.1",
-  "generated": "2026-06-22T04:06:37.903Z",
+  "generated": "2026-06-22T04:08:25.049Z",
   "skills": [
     {
       "id": "ai-engineering/advanced-tool-use",
@@ -26963,6 +26963,12 @@
       "lang": "fr",
       "title": "Déploiement Entreprise Multi-Région",
       "file": "guides/enterprise/fr/multi-region-deployment.md"
+    },
+    {
+      "id": "observability-error-tracking",
+      "lang": "fr",
+      "title": "Observabilité & Suivi des Erreurs avec Sentry/Rollbar",
+      "file": "guides/enterprise/fr/observability-error-tracking.md"
     },
     {
       "id": "multi-region-deployment",
