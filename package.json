@@ -72,6 +72,7 @@
     "matrix": "node scripts/matrix-cli.js",
     "svg-inspector": "node scripts/svg-inspector.js",
     "swarm-sandbox": "node scripts/swarm-sandbox.js",
+    "moe": "node scripts/claudient-moe.js",
     "theme-builder": "node scripts/theme-builder.js",
     "theme-builder-batch": "node scripts/theme-builder-batch.js",
     "contributor-onboarding": "node scripts/contributor-onboarding.js",

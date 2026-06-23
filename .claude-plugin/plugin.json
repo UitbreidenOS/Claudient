@@ -1570,6 +1570,12 @@
       "status": "active"
     },
     {
+      "id": "ai-engineering/model-router",
+      "name": "MoE Model Router",
+      "file": "skills/ai-engineering/model-router.md",
+      "status": "active"
+    },
+    {
       "id": "database/vector-databases",
       "name": "Vector Databases",
       "file": "skills/database/vector-databases.md",
@@ -1701,6 +1707,12 @@
       "id": "core/security-reviewer",
       "name": "Security Reviewer",
       "file": "agents/core/security-reviewer.md",
+      "status": "active"
+    },
+    {
+      "id": "core/moe-router",
+      "name": "MoE Router",
+      "file": "agents/core/moe-router.md",
       "status": "active"
     },
     {
