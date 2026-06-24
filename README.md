@@ -714,6 +714,99 @@ Event-driven automation for Claude Code — runs outside Claude's context as rea
 
 ---
 
+## Agent OS Features — Sorted by Power Level
+
+### Tier 1: Game-Changing (Fundamental Capabilities)
+
+| Feature | Power Level | Description |
+|---|---|---|
+| **Multi-Agent Coordination System** | ⭐⭐⭐⭐⭐ | Run unlimited agents simultaneously with shared context and coordination |
+| **Unified Shared Memory/Brain** | ⭐⭐⭐⭐⭐ | Cross-agent knowledge base accessible to all agents (persistent) |
+| **Computer Control (Full Desktop Automation)** | ⭐⭐⭐⭐⭐ | Mac/Windows/Linux desktop control — agents can execute anything |
+| **Mission Control Dashboard** | ⭐⭐⭐⭐⭐ | Centralized hub for managing all agents, status, real-time progress |
+| **Goal Mode (Autonomous Multi-Turn)** | ⭐⭐⭐⭐⭐ | Set objectives → agents execute autonomously with no intervention |
+| **Continuous Self-Improving Loops** | ⭐⭐⭐⭐⭐ | Agents evaluate own outputs, iterate, refine without human input |
+
+### Tier 2: Content & Background Operations
+
+| Feature | Power Level | Description |
+|---|---|---|
+| **Autonomous Content Generation** | ⭐⭐⭐⭐ | Generate videos, compose music, design graphics autonomously |
+| **Computer Use (Background Operations)** | ⭐⭐⭐⭐ | Run unattended on local machines with full OS access |
+| **Memory Galaxy (3D Knowledge Visualization)** | ⭐⭐⭐⭐ | 3D interactive map of all stored knowledge nodes |
+| **Local Rendering (No Cloud)** | ⭐⭐⭐⭐ | Process video, render outputs locally—zero cloud costs |
+
+### Tier 3: Specialized High-Value Features
+
+| Feature | Power Level | Description |
+|---|---|---|
+| **SEO Operations Suite** | ⭐⭐⭐ | Keyword research, ranking tracking, backlink automation, GSC integration |
+| **AI Search Ranking** | ⭐⭐⭐ | Optimize for ChatGPT, Perplexity, GLM—rank in AI search results |
+| **Voice Assistant (Jarvis Mode)** | ⭐⭐⭐ | Voice commands + phone integration + ElevenLabs synthesis |
+| **Swarm Map Visualization** | ⭐⭐⭐ | See all agents as glowing circles with communication edges |
+| **Obsidian Vault Integration** | ⭐⭐⭐ | Connect knowledge base to persistent second brain |
+| **Multi-Agent Debate** | ⭐⭐⭐ | Competing agents argue, vote on optimal solution |
+| **Job Queue Management** | ⭐⭐⭐ | Queue, schedule, prioritize agent tasks |
+| **Live News Integration (X Firehose)** | ⭐⭐⭐ | Real-time trending topic monitoring |
+| **Skill Vault (1,138+ Capabilities)** | ⭐⭐⭐ | Pre-built agent abilities with security scanning |
+| **Code Generation + App Builder** | ⭐⭐⭐ | Claude Code integration + rapid prototyping from text |
+| **Instant Link Machine** | ⭐⭐⭐ | Generate shareable public links for agent outputs instantly |
+
+### Tier 4: Workflow Enhancers
+
+| Feature | Power Level | Description |
+|---|---|---|
+| **Scheduling & Triggers** | ⭐⭐ | Time-based or event-based automation workflows |
+| **Real-Time Ranking Dashboard** | ⭐⭐ | Monitor search rankings, traffic per topic in real-time |
+| **NotebookLM Integration** | ⭐⭐ | Research synthesis and document Q&A |
+| **Website Generation & Deployment** | ⭐⭐ | Auto-create and deploy websites from prompts |
+| **Game Creation from Text** | ⭐⭐ | Generate playable games from descriptions |
+| **Podcast/Audio Synthesis** | ⭐⭐ | Turn documents into spoken podcasts |
+| **Performance Dashboards** | ⭐⭐ | Multi-agent execution metrics and analytics |
+| **Voice Translation (Real-Time)** | ⭐⭐ | Translate voice input across languages |
+| **Continuous Monitoring Systems** | ⭐⭐ | Watch news, rankings, metrics autonomously |
+
+### Tier 5: Utility & Enhancement Features
+
+| Feature | Power Level | Description |
+|---|---|---|
+| **Pixel Pet Status Indicator** | ⭐ | Visual feedback showing agent state (running, idle, etc.) |
+| **PARA System Organization** | ⭐ | Projects, Areas, Resources, Archive framework |
+| **Free Tier Options** | ⭐ | Free Claude Code access for cost-effective operation |
+| **Token-Saving Optimization** | ⭐ | Reduce token usage across workflows |
+| **Flat-Rate Model Pricing** | ⭐ | Predictable costs without per-build billing |
+| **HTML/Video/Audio Output Handling** | ⭐ | Multi-format export capabilities |
+
+### Model Integrations (Power Levels)
+
+| Model | Tier | Key Strength |
+|---|---|---|
+| **Claude (Fable 5/Mythos)** | APEX | Best reasoning + code generation |
+| **GLM-5.2** | APEX | 1M token context, SEO optimization |
+| **Kimi K2.7** | HIGH | Chinese language, fast inference |
+| **Gemma 4** | CORE | Balanced performance, open-source |
+| **Local Models (Ollama)** | UTILITY | Privacy-first, zero cloud costs |
+
+### Top 15 Quick Power Ranking
+
+1. **Multi-Agent Coordination** — Enables everything else
+2. **Shared Memory/Brain** — The connective tissue
+3. **Computer Control** — Eliminates all technical limits
+4. **Goal Mode** — True autonomy
+5. **Continuous Loops** — Self-improvement
+6. **Browser Automation** — Web interaction
+7. **Email Automation** — Workflow integration
+8. **Content Generation** — Production at scale
+9. **Multi-Model Ensemble** — Quality assurance
+10. **Mission Control Dashboard** — Management visibility
+11. **Kanban Board** — Task orchestration
+12. **SEO Suite** — Revenue generation
+13. **Memory Galaxy** — Knowledge management
+14. **Voice Assistant** — Natural interface
+15. **Research Synthesis** — Intelligence gathering
+
+---
+
 ## What's Included — Complete Claude Code Toolkit
 
 | Type | Count |
