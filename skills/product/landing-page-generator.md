@@ -261,7 +261,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'UitKit — Skills & Agents for Claude Code',
     description: '150+ skills across 15 categories. Install with: npx uitkit add all',
-    url: 'https://uitkit.dev',
+    url: 'https://uitkit-os.vercel.app',
     siteName: 'UitKit',
     images: [{ url: '/social-preview.png', width: 1280, height: 640 }],
     type: 'website',
@@ -277,7 +277,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: 'https://uitkit.dev',
+    canonical: 'https://uitkit-os.vercel.app',
   },
 }
 

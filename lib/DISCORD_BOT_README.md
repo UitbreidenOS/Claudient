@@ -444,7 +444,7 @@ Tested with:
 ### Documentation
 - [Discord.js Docs](https://discord.js.org/)
 - [Discord Developer Portal](https://discord.com/developers)
-- [UitKit Skills Library](https://uitkit.dev)
+- [UitKit Skills Library](https://uitkit-os.vercel.app)
 
 ### External Guides
 - [Creating Discord Applications](https://discord.com/developers/docs/getting-started)

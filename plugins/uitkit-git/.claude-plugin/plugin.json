@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "uitkit-git",
   "displayName": "UitKit — Git",
-  "version": "1.10.1",
+  "version": "1.1.0",
   "description": "Commit message writing, PR description generation, and changelog automation.",
   "author": {
     "name": "tushar2704",

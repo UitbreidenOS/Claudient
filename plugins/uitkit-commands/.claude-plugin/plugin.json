@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "uitkit-commands",
   "displayName": "UitKit — Slash Commands",
-  "version": "1.10.1",
+  "version": "1.1.0",
   "description": "100+ slash commands across git, testing, refactor, docs, debug, devops, database, security, frontend, api, ai-engineering, and productivity.",
   "author": {
     "name": "tushar2704",

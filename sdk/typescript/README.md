@@ -557,4 +557,4 @@ This SDK is part of UitKit and follows the same license: AGPL-3.0-or-later AND C
 
 For issues, questions, or contributions:
 - GitHub: https://github.com/UitbreidenOS/UitKit
-- Docs: https://uitkit.dev
+- Docs: https://uitkit-os.vercel.app

@@ -94,7 +94,7 @@ This document outlines where and how to submit feedback, report issues, and sugg
 **Best for:** Newsletters, long-form feedback, formal inquiries, privacy-sensitive topics
 
 - **Mailing List:** [community-list@uitkit.dev](mailto:community-list@uitkit.dev)
-- **Subscribe:** [https://uitkit.dev/subscribe](https://uitkit.dev/subscribe)
+- **Subscribe:** [https://uitkit-os.vercel.app/subscribe](https://uitkit-os.vercel.app/subscribe)
 
 **Use cases:**
 - Subscribe for monthly newsletters (stack releases, community highlights, roadmap updates)

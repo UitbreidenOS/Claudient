@@ -382,7 +382,7 @@ const commands = [
           },
           {
             name: 'Resources',
-            value: '[GitHub](https://github.com/UitbreidenOS/UitKit) • [Docs](https://uitkit.dev) • [Discord](https://discord.gg/uitkit)',
+            value: '[GitHub](https://github.com/UitbreidenOS/UitKit) • [Docs](https://uitkit-os.vercel.app) • [Discord](https://discord.gg/uitkit)',
             inline: false
           }
         ])

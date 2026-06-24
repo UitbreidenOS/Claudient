@@ -1,6 +1,6 @@
 # Compétences Claude Code, Agents et Plugins — UitKit
 
-**UitKit** est la plus grande base de connaissances open-source pour **Claude Code** — l'outil CLI de codage IA d'Anthropic. Il comprend 400+ compétences de domaine, 182+ agents spécialisés, 42 piles de travail pré-filaires, 41 configurations MCP, 100+ commandes slash, hooks et workflows, tous installables en 30 secondes. Pas de réexplication de pile. Claude connaît déjà votre domaine.
+**UitKit** est la plus grande base de connaissances open-source pour **Claude Code** — l'outil CLI de codage IA d'Anthropic. Il comprend 1,138+ compétences de domaine, 728+ agents spécialisés, 42 piles de travail pré-filaires, 41 configurations MCP, 100+ commandes slash, hooks et workflows, tous installables en 30 secondes. Pas de réexplication de pile. Claude connaît déjà votre domaine.
 
 **Nouveau dans Claude Code ?** Claude Code est l'assistant IA officiel en ligne de commande d'Anthropic pour le développement logiciel — il lit votre codebase, exécute les commandes, édite les fichiers et complète les tâches de manière autonome dans votre terminal ou IDE. UitKit est la bibliothèque communautaire open-source qui l'étend avec des compétences au niveau des experts dans toutes les piles et domaines.
 
@@ -9,8 +9,8 @@
 [![GitHub Stars](https://img.shields.io/github/stars/UitbreidenOS/UitKit?color=f97316&label=stars)](https://github.com/UitbreidenOS/UitKit)
 [![License: AGPL-3.0](https://img.shields.io/badge/code-AGPL--3.0-3b82f6.svg)](LICENSE-CODE)
 [![Content License: CC-BY-SA-4.0](https://img.shields.io/badge/content-CC--BY--SA--4.0-ec4899.svg)](LICENSE-CONTENT)
-[![Skills](https://img.shields.io/badge/skills-400+-f97316)](#skills-by-category)
-[![Agents](https://img.shields.io/badge/agents-182+-ec4899)](#agents)
+[![Skills](https://img.shields.io/badge/skills-1,138+-f97316)](#skills-by-category)
+[![Agents](https://img.shields.io/badge/agents-728+-ec4899)](#agents)
 [![Commands](https://img.shields.io/badge/commands-100+-a855f7)](#slash-commands)
 [![Plugins](https://img.shields.io/badge/plugin_marketplace-19_plugins-22c55e)](#install-as-a-claude-code-plugin)
 [![Claude for Small Business](https://img.shields.io/badge/small_business-30+_skills-06b6d4)](#claude-for-small-business)
@@ -25,7 +25,7 @@
 
 **Arrêtez d'expliquer votre pile à Claude à chaque session.**
 
-UitKit est la plus grande base de connaissances open-source pour **Claude Code** — 400+ compétences, 182+ agents spécialisés, 100+ commandes slash, 100+ guides, 40 hooks, 45 workflows, 83 structures de projet, 42 piles de travail, 10 personas, 32 règles, 41 configurations de serveurs MCP, 10 routines d'automatisation, 20 exemples CLAUDE.md annotés, adaptateurs inter-harness (Cursor/Windsurf/Codex/Gemini/Copilot), plus des styles de sortie, des thèmes, des statuslines, des raccourcis clavier, des modèles de paramètres et un pack Agent SDK — tous installables en 30 secondes.
+UitKit est la plus grande base de connaissances open-source pour **Claude Code** — 1,138+ compétences, 728+ agents spécialisés, 100+ commandes slash, 100+ guides, 40 hooks, 45 workflows, 83 structures de projet, 42 piles de travail, 10 personas, 32 règles, 41 configurations de serveurs MCP, 10 routines d'automatisation, 20 exemples CLAUDE.md annotés, adaptateurs inter-harness (Cursor/Windsurf/Codex/Gemini/Copilot), plus des styles de sortie, des thèmes, des statuslines, des raccourcis clavier, des modèles de paramètres et un pack Agent SDK — tous installables en 30 secondes.
 
 ```bash
 # Installer en tant que plugin du marché Claude Code (recommandé)
@@ -55,7 +55,7 @@ UitKit se présente comme un **marché de plugins** natif de Claude Code. Ajoute
 /plugin install uitkit-everything@uitkit
 ```
 
-**19 plugins, 400+ compétences auto-invoquées, 182 agents, 100 commandes slash :**
+**19 plugins, 1,138+ compétences auto-invoquées, 728 agents, 100 commandes slash :**
 
 | Plugin | Compétences | Plugin | Compétences |
 |---|---|---|---|
@@ -126,7 +126,7 @@ Installer : `/plugin install uitkit-commands@uitkit` ou copier [`commands/`](com
 | Problème | Sans UitKit | Avec UitKit |
 |---|---|---|
 | **Contexte de domaine** | Réexpliquer votre pile à chaque session | Les compétences s'activent automatiquement |
-| **Tâches spécialisées** | Claude devine les meilleures pratiques | 182+ agents experts avec outils limités |
+| **Tâches spécialisées** | Claude devine les meilleures pratiques | 728+ agents experts avec outils limités |
 | **Intégrations d'outils** | Copier-coller manuel entre les outils | 41 configurations de serveurs MCP prêtes à installer |
 | **Automatisation d'événements** | Déclencheurs manuels, étapes oubliées | 40 hooks qui s'activent au bon moment |
 | **Équipe / langue** | Anglais uniquement, config unique | 5 langues, composable par projet |
@@ -162,7 +162,7 @@ Claude Code est l'assistant IA officiel en ligne de commande d'Anthropic pour le
 Les compétences sont des fichiers markdown dans `.claude/commands/` (ou chargés via le système de plugins) qui définissent des comportements experts réutilisables. Lorsqu'elles sont déclenchées par une commande slash ou des mots clés, Claude Code lit la compétence et applique son expertise de domaine à votre contexte actuel — aucun invite répété requis.
 
 ### En quoi UitKit est-il différent de l'écriture d'un fichier CLAUDE.md ?
-Un `CLAUDE.md` définit le contexte au niveau du projet pour un seul repo. Les compétences de UitKit sont au niveau du domaine et réutilisables dans tous les projets — 400+ compétences couvrant FastAPI, Kubernetes, HubSpot, React, Terraform et des centaines d'autres piles.
+Un `CLAUDE.md` définit le contexte au niveau du projet pour un seul repo. Les compétences de UitKit sont au niveau du domaine et réutilisables dans tous les projets — 1,138+ compétences couvrant FastAPI, Kubernetes, HubSpot, React, Terraform et des centaines d'autres piles.
 
 ### UitKit fonctionne-t-il avec Cursor, GitHub Copilot ou d'autres outils de codage IA ?
 UitKit est conçu pour Claude Code (CLI et extensions IDE). Les adaptateurs inter-harness dans [`compatibility/`](compatibility/) supportent également Cursor, Windsurf, Codex CLI, Gemini Code Assist et GitHub Copilot.
@@ -294,7 +294,7 @@ npx uitkit add skills finance          # DCF, modèle 3 déclarations, pitch dec
 npx uitkit add skills small-business   # Invoice chaser, flux de trésorerie, Shopify
 
 # Installer des agents
-npx uitkit add agents                  # Tous les 182+ agents spécialisés
+npx uitkit add agents                  # Tous les 728+ agents spécialisés
 
 # Installer dans votre langue
 npx uitkit add all --lang fr           # Français
@@ -337,7 +337,7 @@ UitKit/
 │   ├── uitkit-personas/         # 10 personas
 │   └── uitkit-everything/       # meta-bundle (tous les domaines)
 │
-├── skills/                   # 400+ compétences de domaine auto-invoquées
+├── skills/                   # 1,138+ compétences de domaine auto-invoquées
 │   ├── backend/              # Next.js, FastAPI, Go, Rust, .NET, Rails, Laravel, Flutter
 │   ├── devops-infra/         # Kubernetes, Terraform, Docker, CI/CD, AWS/GCP/Azure, Helm
 │   ├── ai-engineering/       # Claude API, RAG, LangGraph, MCP builder, Agent Teams, Ultraplan
@@ -356,7 +356,7 @@ UitKit/
 │   ├── sdr/                  # Compétences du représentant du développement des ventes
 │   └── finance-payments/     # Compétences des paiements et fintech
 │
-├── agents/                   # 182+ subagents spécialisés
+├── agents/                   # 728+ subagents spécialisés
 │   ├── advisors/             # 15 agents de la suite C (PDG, CTO, CFO, CMO, CISO, COO, CPO...)
 │   ├── core/                 # architect · planner · code-reviewer · security-reviewer
 │   ├── roles/                # 100+ spécialistes de domaine (SRE, k8s, RAG, fintech, juriste...)
@@ -615,7 +615,7 @@ Les compétences UitKit s'exécutent sur les données copier-coller lorsqu'une i
 
 <a name="agents"></a>
 
-## 182+ agents spécialisés Claude Code
+## 728+ agents spécialisés Claude Code
 
 Agents spécialisés invoqués avec l'outil `Agent` dans Claude Code. Chaque agent a un modèle spécifique, des restrictions d'outils et des conditions de déclenchement afin que Claude délègue le bon travail au bon expert.
 
@@ -651,9 +651,9 @@ npx uitkit add agents
 
 <a name="skills-by-category"></a>
 
-## Compétences par catégorie — 400+ compétences Claude Code
+## Compétences par catégorie — 1,138+ compétences Claude Code
 
-**400+ compétences · 19 catégories · EN · FR · DE · NL · ES**
+**1,138+ compétences · 19 catégories · EN · FR · DE · NL · ES**
 
 | Catégorie | Nombre | Compétences populaires |
 |---|---|---|
@@ -717,8 +717,8 @@ Automatisation pilotée par événements pour Claude Code — s'exécute en deho
 
 | Type | Nombre |
 |---|---|
-| **Compétences** | **400+** |
-| **Agents** | **182+** |
+| **Compétences** | **1,138+** |
+| **Agents** | **728+** |
 | **Piles d'espace de travail** | **42** |
 | **Hooks** | **40** |
 | **Guides de configuration MCP** | **40** |

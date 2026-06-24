@@ -387,7 +387,7 @@ Post in #project-showcase manually (or via `/project submit`):
 
 - [Discord.js Documentation](https://discord.js.org/)
 - [Discord Developer Portal](https://discord.com/developers)
-- [UitKit Skills Library](https://uitkit.dev)
+- [UitKit Skills Library](https://uitkit-os.vercel.app)
 - [Claude Code Documentation](https://claude.com/docs)
 
 ---

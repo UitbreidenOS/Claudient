@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "uitkit-ai-engineering",
   "displayName": "UitKit — AI Engineering",
-  "version": "1.10.1",
+  "version": "1.1.0",
   "description": "Claude API, agent construction, RAG, LangGraph, CrewAI, MCP server building, prompt caching, LLM eval, and AI-native development patterns.",
   "author": {
     "name": "tushar2704",

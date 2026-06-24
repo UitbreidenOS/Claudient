@@ -566,7 +566,7 @@ cat ~/.claude/logs/mcp.log
 
 ### Documentation
 - **README:** [github.com/UitbreidenOS/UitKit](https://github.com/UitbreidenOS/UitKit)
-- **Full Docs:** [uitkit.dev](https://uitkit.dev) (if available)
+- **Full Docs:** [uitkit.dev](https://uitkit-os.vercel.app) (if available)
 - **CLAUDE.md Guide:** See `claude-md-examples/` for 20 annotated templates
 
 ### Community

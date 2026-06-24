@@ -144,18 +144,18 @@ Shows breakdown by category, recent activities, and path to next badge level.
 
 ### Q: How do I add my badge to my GitHub profile?
 **A:** Once awarded:
-1. Go to https://uitkit.dev/badges/verify/USERNAME
+1. Go to https://uitkit-os.vercel.app/badges/verify/USERNAME
 2. Copy the badge markdown or SVG URL
 3. Add to your GitHub bio or README:
 ```markdown
-![UitKit Contributor Badge](https://uitkit.dev/badges/contributor-badge.svg)
+![UitKit Contributor Badge](https://uitkit-os.vercel.app/badges/contributor-badge.svg)
 ```
 
 ### Q: How do I add my badge to LinkedIn?
 **A:** 
 1. Go to your LinkedIn profile
 2. Add a "Credential" under licenses & certifications
-3. Use URL: `https://uitkit.dev/badges/verify/USERNAME`
+3. Use URL: `https://uitkit-os.vercel.app/badges/verify/USERNAME`
 4. UitKit company profile will show the endorsement
 
 ### Q: Can I customize my badge appearance?
@@ -172,7 +172,7 @@ Request customization in your renewal or during award process.
 - Shows expiration date + renewal status
 - Links to your merged PRs for proof
 
-URL format: `https://uitkit.dev/badges/verify/USERNAME`
+URL format: `https://uitkit-os.vercel.app/badges/verify/USERNAME`
 
 ---
 
@@ -348,5 +348,5 @@ Have ideas to improve the badge system? File an issue or discussion in the UitKi
 | How do I get started? | Make your first contribution | [CONTRIBUTION_GUIDE.md](../community/CONTRIBUTION_GUIDE.md) |
 | What are the requirements? | See full badge specs | [BADGE_SYSTEM.md](BADGE_SYSTEM.md) |
 | How do I renew? | Submit application or wait for auto-check | [RENEWAL_CHECKLIST.md](RENEWAL_CHECKLIST.md) |
-| How do I verify a badge? | Visit verification URL | https://uitkit.dev/badges/ |
+| How do I verify a badge? | Visit verification URL | https://uitkit-os.vercel.app/badges/ |
 | Who are our Expert contributors? | Browse showcase wall | [SHOWCASE_WALL.md](../community/SHOWCASE_WALL.md) |

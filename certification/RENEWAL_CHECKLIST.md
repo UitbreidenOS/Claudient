@@ -320,14 +320,14 @@ npm run badge:verify <your-github-username>
 - [ ] Badge level shows correctly
 - [ ] New expiration date shows (18 months from renewal date)
 - [ ] Renewal status shows "active"
-- [ ] Badge appears on your profile at https://uitkit.dev/badges/
+- [ ] Badge appears on your profile at https://uitkit-os.vercel.app/badges/
 
 ### Update Your Profiles
 
 #### GitHub
 Add or update your profile/README with badge:
 ```markdown
-[![UitKit Contributor](https://uitkit.dev/badges/contributor-badge.svg)](https://uitkit.dev/badges/verify/YOUR-USERNAME)
+[![UitKit Contributor](https://uitkit-os.vercel.app/badges/contributor-badge.svg)](https://uitkit-os.vercel.app/badges/verify/YOUR-USERNAME)
 ```
 
 #### LinkedIn

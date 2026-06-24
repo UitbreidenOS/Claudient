@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://uitkit.dev',
+  site: 'https://uitkit-os.vercel.app',
   output: 'static',
   integrations: [
     react(),

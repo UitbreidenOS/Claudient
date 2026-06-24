@@ -476,4 +476,4 @@ AGPL-3.0 (Code) / CC-BY-SA-4.0 (Content)
 
 - **Issues**: GitHub Issues
 - **Discussions**: GitHub Discussions
-- **Documentation**: [uitkit.dev](https://uitkit.dev)
+- **Documentation**: [uitkit.dev](https://uitkit-os.vercel.app)

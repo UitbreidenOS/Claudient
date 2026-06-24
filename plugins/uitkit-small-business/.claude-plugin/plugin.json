@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "uitkit-small-business",
   "displayName": "UitKit — Small Business",
-  "version": "1.10.1",
+  "version": "1.1.0",
   "description": "47 skills for small business operations: cash flow forecasting, invoicing, campaign briefs, QuickBooks workflows, Shopify operations, SOP writing, job descriptions, and weekly business pulse.",
   "author": {
     "name": "tushar2704",
@@ -39,6 +39,7 @@
     "./agents/proptech-specialist.md",
     "./agents/saas-pricing-strategist.md",
     "./agents/small-business-advisor.md",
+    "./agents/swarm-sandbox-orchestrator.md",
     "./agents/vision-analyst.md"
   ]
 }

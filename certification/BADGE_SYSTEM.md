@@ -405,7 +405,7 @@ jobs:
       "domains": ["skills", "workflows"],
       "contributions": 25,
       "reputation_score": 520,
-      "verification_url": "https://uitkit.dev/badges/verify/username"
+      "verification_url": "https://uitkit-os.vercel.app/badges/verify/username"
     }
   ]
 }
@@ -489,7 +489,7 @@ jobs:
 ### For Community
 - **[SHOWCASE_WALL.md](../community/SHOWCASE_WALL.md)** — Featured contributors
 - **Badge registry:** `community/badges/registry.json`
-- **Verification pages:** `https://uitkit.dev/badges/`
+- **Verification pages:** `https://uitkit-os.vercel.app/badges/`
 
 ---
 
