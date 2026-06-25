@@ -295,6 +295,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#10b981",
     defaultSize: { width: 880, height: 600 },
   },
+  "radar-feed": {
+    id: "radar-feed",
+    title: "Radar Activity",
+    icon: "📊",
+    accent: "#38bdf8",
+    defaultSize: { width: 720, height: 500 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -339,5 +346,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "search-console",
   "studios",
   "pipeline",
+  "radar-feed",
   "trash",
 ];

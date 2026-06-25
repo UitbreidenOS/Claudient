@@ -42,6 +42,7 @@ import { LeadGenApp } from "./apps/LeadGenApp";
 import { SearchConsoleApp } from "./apps/SearchConsoleApp";
 import { StudiosApp } from "./apps/StudiosApp";
 import { PipelineApp } from "./apps/PipelineApp";
+import { RadarFeedApp } from "./apps/RadarFeedApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -130,6 +131,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <StudiosApp />;
     case "pipeline":
       return <PipelineApp />;
+    case "radar-feed":
+      return <RadarFeedApp />;
     default:
       return null;
   }

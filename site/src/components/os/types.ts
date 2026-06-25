@@ -40,7 +40,8 @@ export type AppId =
   | "lead-gen"
   | "search-console"
   | "studios"
-  | "pipeline";
+  | "pipeline"
+  | "radar-feed";
 
 export interface AppMeta {
   id: AppId;
