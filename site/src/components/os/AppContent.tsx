@@ -37,6 +37,7 @@ import { JarvisApp } from "./apps/JarvisApp";
 import { TokenSaverApp } from "./apps/TokenSaverApp";
 import { FusionApp } from "./apps/FusionApp";
 import { CleanSlateApp } from "./apps/CleanSlateApp";
+import { TakeoverApp } from "./apps/TakeoverApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -115,6 +116,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <FusionApp />;
     case "clean-slate":
       return <CleanSlateApp />;
+    case "takeover":
+      return <TakeoverApp />;
     default:
       return null;
   }

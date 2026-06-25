@@ -35,7 +35,8 @@ export type AppId =
   | "jarvis"
   | "token-saver"
   | "fusion"
-  | "clean-slate";
+  | "clean-slate"
+  | "takeover";
 
 export interface AppMeta {
   id: AppId;

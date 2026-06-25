@@ -260,6 +260,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#76786c",
     defaultSize: { width: 680, height: 500 },
   },
+  "takeover": {
+    id: "takeover",
+    title: "Computer Use Engine",
+    icon: "🖥️",
+    accent: "#ef4444",
+    defaultSize: { width: 840, height: 580 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -299,5 +306,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "token-saver",
   "fusion",
   "clean-slate",
+  "takeover",
   "trash",
 ];
