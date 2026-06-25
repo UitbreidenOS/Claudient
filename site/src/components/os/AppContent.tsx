@@ -45,6 +45,7 @@ import { PipelineApp } from "./apps/PipelineApp";
 import { RadarFeedApp } from "./apps/RadarFeedApp";
 import { RoadmapApp } from "./apps/RoadmapApp";
 import { MastermindApp } from "./apps/MastermindApp";
+import { OldVsNewApp } from "./apps/OldVsNewApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -139,6 +140,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <RoadmapApp />;
     case "mastermind":
       return <MastermindApp />;
+    case "old-vs-new":
+      return <OldVsNewApp />;
     default:
       return null;
   }
