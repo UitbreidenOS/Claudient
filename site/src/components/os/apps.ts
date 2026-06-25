@@ -330,6 +330,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#3b82f6",
     defaultSize: { width: 840, height: 600 },
   },
+  "testimonials": {
+    id: "testimonials",
+    title: "Wall of Love",
+    icon: "💬",
+    accent: "#fb7185",
+    defaultSize: { width: 820, height: 560 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -379,5 +386,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "mastermind",
   "old-vs-new",
   "animated-flow",
+  "testimonials",
   "trash",
 ];

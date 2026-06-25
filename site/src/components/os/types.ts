@@ -45,7 +45,8 @@ export type AppId =
   | "roadmap"
   | "mastermind"
   | "old-vs-new"
-  | "animated-flow";
+  | "animated-flow"
+  | "testimonials";
 
 export interface AppMeta {
   id: AppId;

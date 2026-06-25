@@ -47,6 +47,7 @@ import { RoadmapApp } from "./apps/RoadmapApp";
 import { MastermindApp } from "./apps/MastermindApp";
 import { OldVsNewApp } from "./apps/OldVsNewApp";
 import { AnimatedFlowApp } from "./apps/AnimatedFlowApp";
+import { TestimonialsApp } from "./apps/TestimonialsApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -145,6 +146,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <OldVsNewApp />;
     case "animated-flow":
       return <AnimatedFlowApp />;
+    case "testimonials":
+      return <TestimonialsApp />;
     default:
       return null;
   }
