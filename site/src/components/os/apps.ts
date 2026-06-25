@@ -323,6 +323,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#ef4444",
     defaultSize: { width: 780, height: 520 },
   },
+  "animated-flow": {
+    id: "animated-flow",
+    title: "Ecosystem Flow",
+    icon: "🧬",
+    accent: "#3b82f6",
+    defaultSize: { width: 840, height: 600 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -371,5 +378,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "roadmap",
   "mastermind",
   "old-vs-new",
+  "animated-flow",
   "trash",
 ];

@@ -44,7 +44,8 @@ export type AppId =
   | "radar-feed"
   | "roadmap"
   | "mastermind"
-  | "old-vs-new";
+  | "old-vs-new"
+  | "animated-flow";
 
 export interface AppMeta {
   id: AppId;
