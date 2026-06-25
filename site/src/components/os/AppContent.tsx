@@ -43,6 +43,7 @@ import { SearchConsoleApp } from "./apps/SearchConsoleApp";
 import { StudiosApp } from "./apps/StudiosApp";
 import { PipelineApp } from "./apps/PipelineApp";
 import { RadarFeedApp } from "./apps/RadarFeedApp";
+import { RoadmapApp } from "./apps/RoadmapApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -133,6 +134,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <PipelineApp />;
     case "radar-feed":
       return <RadarFeedApp />;
+    case "roadmap":
+      return <RoadmapApp />;
     default:
       return null;
   }

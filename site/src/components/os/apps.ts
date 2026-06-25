@@ -302,6 +302,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#38bdf8",
     defaultSize: { width: 720, height: 500 },
   },
+  "roadmap": {
+    id: "roadmap",
+    title: "30-Day Roadmap",
+    icon: "🗺️",
+    accent: "#f59e0b",
+    defaultSize: { width: 780, height: 540 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -347,5 +354,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "studios",
   "pipeline",
   "radar-feed",
+  "roadmap",
   "trash",
 ];
