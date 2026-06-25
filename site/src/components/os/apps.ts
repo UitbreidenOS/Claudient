@@ -267,6 +267,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#ef4444",
     defaultSize: { width: 840, height: 580 },
   },
+  "lead-gen": {
+    id: "lead-gen",
+    title: "Lead Gen Pipeline",
+    icon: "📧",
+    accent: "#1078a3",
+    defaultSize: { width: 820, height: 580 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -307,5 +314,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "fusion",
   "clean-slate",
   "takeover",
+  "lead-gen",
   "trash",
 ];

@@ -36,7 +36,8 @@ export type AppId =
   | "token-saver"
   | "fusion"
   | "clean-slate"
-  | "takeover";
+  | "takeover"
+  | "lead-gen";
 
 export interface AppMeta {
   id: AppId;

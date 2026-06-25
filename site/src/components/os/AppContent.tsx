@@ -38,6 +38,7 @@ import { TokenSaverApp } from "./apps/TokenSaverApp";
 import { FusionApp } from "./apps/FusionApp";
 import { CleanSlateApp } from "./apps/CleanSlateApp";
 import { TakeoverApp } from "./apps/TakeoverApp";
+import { LeadGenApp } from "./apps/LeadGenApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -118,6 +119,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <CleanSlateApp />;
     case "takeover":
       return <TakeoverApp />;
+    case "lead-gen":
+      return <LeadGenApp />;
     default:
       return null;
   }
