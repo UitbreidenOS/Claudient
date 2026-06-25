@@ -225,6 +225,13 @@ export const APPS: Record<AppId, AppMeta> = {
     accent: "#06b6d4",
     defaultSize: { width: 780, height: 560 },
   },
+  "learn-eng": {
+    id: "learn-eng",
+    title: "Learn Engine",
+    icon: "🎓",
+    accent: "#6366f1",
+    defaultSize: { width: 840, height: 580 },
+  },
 };
 
 export const DESKTOP_ICONS: AppId[] = [
@@ -259,5 +266,6 @@ export const DESKTOP_ICONS: AppId[] = [
   "goals",
   "kanban",
   "oracle",
+  "learn-eng",
   "trash",
 ];

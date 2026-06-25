@@ -32,6 +32,7 @@ import { LoopApp } from "./apps/LoopApp";
 import { GoalModeApp } from "./apps/GoalModeApp";
 import { KanbanApp } from "./apps/KanbanApp";
 import { OracleApp } from "./apps/OracleApp";
+import { LearnEngineApp } from "./apps/LearnEngineApp";
 
 export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
   switch (appId) {
@@ -100,6 +101,8 @@ export function AppContent({ appId, wm }: { appId: AppId; wm: WindowManager }) {
       return <KanbanApp />;
     case "oracle":
       return <OracleApp />;
+    case "learn-eng":
+      return <LearnEngineApp />;
     default:
       return null;
   }

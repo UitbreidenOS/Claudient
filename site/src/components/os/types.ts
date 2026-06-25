@@ -30,7 +30,8 @@ export type AppId =
   | "loop-eng"
   | "goals"
   | "kanban"
-  | "oracle";
+  | "oracle"
+  | "learn-eng";
 
 export interface AppMeta {
   id: AppId;
